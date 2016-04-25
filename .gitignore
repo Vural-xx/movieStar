@@ -12,7 +12,7 @@ h2db/
 logs/
 .checkstyle
 *.gz
-
+pom.properties
 .buildpath
 
 WebContent/META-INF/MANIFEST.MF
