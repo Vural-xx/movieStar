@@ -1,5 +1,7 @@
 package controller;
 
+import javax.ws.rs.Path;
+
 import interfaces.BenutzerFacade;
 
 public class BenutzerController implements BenutzerFacade {
