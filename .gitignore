@@ -1,1 +1,23 @@
+#ignore everything under the build folder
+bin/
+target/
+#ignore the eclipse configuration files
+.settings/
+.classpath
+.project
+.metadata/
+#ignore mac spam
+.DS_Store
+h2db/
+logs/
+.checkstyle
+*.gz
 
+.buildpath
+
+WebContent/META-INF/MANIFEST.MF
+
+WebContent/WEB-INF/faces-config.xml
+
+WebContent/WEB-INF/web.xml
+~          
