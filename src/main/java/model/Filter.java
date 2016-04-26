@@ -1,5 +1,7 @@
 package model;
 
-public class Filter {
+import abstracts.AbstractEntity;
+
+public class Filter extends AbstractEntity {
 
 }

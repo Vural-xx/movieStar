@@ -22,3 +22,5 @@ WebContent/WEB-INF/faces-config.xml
 WebContent/WEB-INF/web.xml
 ~          
 .classpath
+
+target/classes/META-INF/maven/de.hs-bremen/movieStar/pom.properties
