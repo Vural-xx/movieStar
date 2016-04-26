@@ -2,10 +2,11 @@ package interfaces;
 
 import java.util.List;
 
+import enums.Status;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
-import model.Status;
+
 
 public interface DAO {
 
