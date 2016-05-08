@@ -4,6 +4,7 @@ import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -107,7 +108,6 @@ public class BenutzerRest {
 	}
 	
 	@POST
-	@Path("create")
 	public Response createUser(@FormParam("name") String name, @FormParam("email") String email){
 		fillBenutzer();
 		Benutzer benutzer = new Benutzer();
@@ -116,6 +116,18 @@ public class BenutzerRest {
 		benutzer.setEmail(email);
 		benutzers.add(benutzer);
 		return Response.status(200).build();
+	}
+	
+	@DELETE
+	public Response deleteUser(@FormParam("name") String name){
+		fillBenutzer();
+		for(Benutzer b: benutzers){
+			if(b.getBenutzername().equals(name)){
+				benutzers.remove(b);
+				return Response.status(200).build();
+			}
+		}
+		return Response.status(200).entity("Nichts zum löschen gefunden").build();
 	}
 	
 	public String keinErgebnisse(){
