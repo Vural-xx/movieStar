@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.hibernate.annotations.Entity;
+
 import abstracts.AbstractEntity;
 import enums.Rolle;
 @ManagedBean(name = "Benutzer")
