@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="model.Benutzer" table="Benutzer">
+   
+      <id name="email" type="string" column="email">
+         <generator class="assigned"/>
+      </id>
+      <property name="benutzername" column="benutzername" type="string"/>
+      <property name="passwort" column="passwort" type="string"/>
+   </class>
+</hibernate-mapping>

@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+html {
+	font-size: 1em;
+	line-height: 1.4;
+        overflow-x: hidden;
+        font-family: 'Jura', sans-serif; !important;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility !important;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-size: 1em;
+	line-height: 1.4;
+        overflow-x: hidden;
+        font-family: 'Jura', sans-serif; !important;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility !important;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;	
+}
+
+input, button {
+	font-family: 'Jura', sans-serif !important;
+}
+
+#button {
+	margin: 50px 0;
+}
+
+.checkBtn{
+	margin-top: 50px;
+}
+#eingabe {
+	margin: 20px 0;
+}
+
+#registrieren {
+	margin: auto;
+	width: 400px;
+	margin-top: 150px;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 40px;
+}
+h2 {
+	font-size: 25px;
+	font-weight: 100;
+}
+
+button:focus, input:focus {
+	outline: none;
+} 
+
+#control {
+	margin-top: 50px;
+	margin-left: 20px;
+	float: left
+}
+
+.ergebnis_container {
+	margin-top: 50px;
+	margin-left: 20px;
+	margin-right: 40px;
+	float: left;
+	font-size: 25px;
+	font-weight: 100;
+}
+
+.ergebnis_container:last-child {
+	margin-left: 100px;
+}
+
+#ergebnisse {
+	display: flex;
+}
+
+input, #button {
+	display: block;
+	border: 0;
+	margin: 5px 0;
+	margin-bottom: 15px;
+	border-bottom: 1px solid grey;
+	background-color: transparent;
+	font-size: 16px;
+}
+
+.statusMessage {
+	margin-top: 30px;
+    color: lightblue;
+}
+
+#control_zurueck {
+	margin-left: 20px;
+}
+
+
+
+
