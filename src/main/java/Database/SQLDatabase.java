@@ -46,7 +46,7 @@ public class SQLDatabase implements DAO {
 
 	@Override
 	public boolean benutzerErstellen(Benutzer benutzer) {
-		con.configure("hs-bremen.sql.cfg.xml");
+		con.configure("local.sql.cfg.xml");
 		con.addResource("user.hbm.xml");
 		SessionFactory sessionFactory= con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
