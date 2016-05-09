@@ -1,0 +1,17 @@
+<hibernate-configuration>
+<session-factory>
+
+<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+<property name="hibernate.connection.url">jdbc:mysql://195.37.176.178:11336/dbwebanw_sose16_18</property>
+<property name="hibernate.connection.username">dbweb_user_18</property>
+<property name="hibernate.connection.password">MdCYMC</property>   
+
+
+<property name="show_sql">true </property>
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+<property name="hbm2ddl.auto">update</property>
+
+<mapping resource="user.hbm.xml"  />
+
+</session-factory>
+</hibernate-configuration>
