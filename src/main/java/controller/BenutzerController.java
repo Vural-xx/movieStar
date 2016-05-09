@@ -1,15 +1,22 @@
 package controller;
 
-import javax.ws.rs.Path;
+import javax.faces.bean.ManagedBean;
 
+import Database.SQLDatabase;
 import interfaces.BenutzerFacade;
+import model.Benutzer;
 
+@ManagedBean(name="BenutzerController")
 public class BenutzerController implements BenutzerFacade {
 	
+		SQLDatabase sqlDatabase = new SQLDatabase();
+	
 	public void registrieren(String email, String benutzername, String passwort) {
-		// TODO Auto-generated method stub
+		Benutzer benutzer = new Benutzer(email,benutzername,passwort);
+		sqlDatabase.benutzerErstellen(benutzer);
 		
 	}
+	
 
 	public void logIn(String logIn, String passwort) {
 		// TODO Auto-generated method stub

@@ -2,10 +2,11 @@ package model;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 
 import abstracts.AbstractEntity;
 import enums.Rolle;
-
+@ManagedBean(name = "Benutzer")
 public class Benutzer extends AbstractEntity {
 
 	private String email;
@@ -14,10 +15,13 @@ public class Benutzer extends AbstractEntity {
 	private Rolle rolle;
 	List<Film> erstellteFilme;
 
+
 	public Benutzer() {
 		// TODO Auto-generated constructor stub
 	}
 	
+
+
 	public Benutzer(String email, String benutzername, String passwort){
 		this.benutzername= benutzername;
 		this.email= email;
@@ -63,5 +67,8 @@ public class Benutzer extends AbstractEntity {
 	public void setErstellteFilme(List<Film> erstellteFilme) {
 		this.erstellteFilme = erstellteFilme;
 	}
+	
+	
+
 	
 }

@@ -3,8 +3,11 @@ package model;
 import java.sql.Blob;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import abstracts.AbstractEntity;
 import enums.Genre;
+
 
 public class Film extends AbstractEntity{
 	private String name;
