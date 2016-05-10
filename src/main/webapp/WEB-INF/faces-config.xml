@@ -6,19 +6,17 @@
     version="2.2">
 
 <navigation-rule>
-    <from-view-id>registieren.xhtml</from-view-id>
     <navigation-case>
-        <from-action>#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}</from-action>
-        <to-view-id>regAusgabe.xhtml</to-view-id>
+        <from-outcome>success</from-outcome>
+        <to-view-id>/regAusgabe.xhtml</to-view-id>
     </navigation-case>
 </navigation-rule>
 
 <navigation-rule>
-    <from-view-id>login.xhtml</from-view-id>
+    <from-view-id>/login.xhtml</from-view-id>
     <navigation-case>
-        <from-action>#{BenutzerController.logIn(input1.value,input2.value)}</from-action>
         <from-outcome>success</from-outcome>
-        <to-view-id>regAusgabe.xhtml</to-view-id>
+        <to-view-id>/regAusgabe.xhtml</to-view-id>
     </navigation-case>
 </navigation-rule>
 

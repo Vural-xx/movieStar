@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="assets/css/main.css"></link>
+<link href='https://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'></link>
+    <title>movieStar</title>
+    
+
+    
+</h:head>
+<h:body bgcolor="white">
+	<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+	<div id="registrieren">
+			<h1>Benutzer Registrieren</h1>
+	<h:form>
+	<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
+	<h:inputText id="email_input" binding="#{input1}" />
+	<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
+	<h:inputText id="benutzername_input" binding="#{input2}"  />
+	<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
+	<h:inputSecret id="password_input" binding="#{input3}"  />
+	
+<h:commandButton value="registrieren" action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}">
+ </h:commandButton>
+ 
+  <h:commandButton class="checkBtn" value="DB Überprüfen"> <f:ajax listener="#{SQLDatabase.statusAenderung}" render="outputMessage" />
+ </h:commandButton>
+<h:outputLabel class="statusMessage" id="outputMessage" value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
+
+</h:form>
+
+
+
+
+</div>
+	</div>
+	</div>
+	</div>
+	<div id="registrieren">
+
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+</h:body>
+</html>
