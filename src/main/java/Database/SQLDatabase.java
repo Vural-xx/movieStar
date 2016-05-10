@@ -93,14 +93,13 @@ public class SQLDatabase implements DAO {
 				return null;
 			}else{
 				Benutzer dbBenutzer =(Benutzer) results.get(0);
-				System.out.println("Benutzer gefunden" + benutzer.getBenutzername());
 				return dbBenutzer;
 			}
 			
 						
 		} catch (Exception e) {
 			System.err.println("Fail");
-			sqlStatus="Registrierung fehlgeschlagen";
+			sqlStatus="Suche fehlgeschlagen";
 		}
 		
 		// TODO Auto-generated method stub
