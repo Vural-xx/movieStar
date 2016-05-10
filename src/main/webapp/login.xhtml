@@ -13,6 +13,7 @@
     <title>movieStar</title>
 	</head>
 	<h:body bgcolor="white">
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -40,6 +41,7 @@
 				<div id="registrieren">
 					<h1>Benutzer Einloggen</h1>
 	<h:form>
+		<h:messages id="messages" infoStyle="color:green,margin:8px" />
 		<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse oder ihren Benuternamen ein:</h:outputLabel>
 		<h:inputText id="log_In_input" binding="#{input1}" />
 		<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
@@ -52,7 +54,7 @@
  		</h:commandButton>
  		
 		<h:outputLabel class="statusMessage" id="outputMessage" value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
-
+		
 	</h:form>
 					</div>
 			</div>

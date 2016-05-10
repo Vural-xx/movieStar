@@ -24,6 +24,7 @@
 	<div id="registrieren">
 			<h1>Benutzer Registrieren</h1>
 	<h:form>
+
 	<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
 	<h:inputText id="email_input" binding="#{input1}" />
 	<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
@@ -31,7 +32,7 @@
 	<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
 	<h:inputSecret id="password_input" binding="#{input3}"  />
 	
-<h:commandButton value="registrieren" action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}">
+<h:commandButton value="registrieren" action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}" update=":benutzer, :message" >
  </h:commandButton>
  
   <h:commandButton class="checkBtn" value="DB Überprüfen"> <f:ajax listener="#{SQLDatabase.statusAenderung}" render="outputMessage" />
