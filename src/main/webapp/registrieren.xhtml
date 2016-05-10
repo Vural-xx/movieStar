@@ -26,7 +26,10 @@
 	<h:form>
 
 	<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
-	<h:inputText id="email_input" binding="#{input1}" />
+	<h:inputText id="email_input" binding="#{input1}">
+		<f:validator validatorId="EmailValidation"></f:validator>
+	</h:inputText>
+	<h:message for="email_input" style="color:red" />
 	<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
 	<h:inputText id="benutzername_input" binding="#{input2}"  />
 	<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
