@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -26,14 +27,14 @@
 	<h:form>
 
 	<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
-	<h:inputText id="email_input" binding="#{input1}">
+	<h:inputText id="email_input" binding="#{input1}" size="40" a:placeholder="E-Mail Adresse">
 		<f:validator validatorId="EmailValidation"></f:validator>
 	</h:inputText>
 	<h:message for="email_input" style="color:red" />
 	<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
-	<h:inputText id="benutzername_input" binding="#{input2}"  />
+	<h:inputText id="benutzername_input" binding="#{input2}"  size="40" a:placeholder="Benutzername"/>
 	<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
-	<h:inputSecret id="password_input" binding="#{input3}"  />
+	<h:inputSecret id="password_input" binding="#{input3}" size="60" a:placeholder="mind. 1 Zahl, mind. 1 Kleinbuchstaben, mind. 1 Großbuchstaben, mind. 1 Sonderzeichen"/>
 	
 <h:commandButton value="registrieren" action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}" update=":benutzer, :message" >
  </h:commandButton>
