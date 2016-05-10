@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:registieren.xhtml" PATH="registieren.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:registieren.xhtml:0" NAME="item"
+   PATH="registieren.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    NAME="output" PATH="regAusgabe.xhtml"
+    TARGET="rules:regAusgabe.xhtml"
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:regAusgabe.xhtml" PATH="regAusgabe.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:login.xhtml" PATH="login.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:login.xhtml:0" NAME="item" PATH="login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{BenutzerController.logIn(input1.value,input2.value)}:regAusgabe.xhtml"
+    NAME="output" PATH="regAusgabe.xhtml"
+    TARGET="rules:regAusgabe.xhtml"
+    TITLE="#{BenutzerController.logIn(input1.value,input2.value)}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
