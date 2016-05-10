@@ -13,7 +13,7 @@ public class BenutzerController implements BenutzerFacade {
 	
 	public void registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email,benutzername,passwort);
-		sqlDatabase.benutzerErstellen(benutzer);
+		sqlDatabase.benutzerSuchen(benutzer);
 		
 	}
 	

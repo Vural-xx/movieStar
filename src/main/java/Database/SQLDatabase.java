@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -75,6 +76,33 @@ public class SQLDatabase implements DAO {
 
 	@Override
 	public Benutzer benutzerSuchen(Benutzer benutzer) {
+		con.configure("local.sql.cfg.xml");
+		con.addResource("user.hbm.xml");
+		SessionFactory sessionFactory= con.buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		Transaction transaction = session.beginTransaction();
+		
+		try {
+			Query query = session.createQuery("from Benutzer where email = :email ");
+			query.setParameter("email", benutzer.getEmail());
+			List results = query.list();
+			session.close();
+			sessionFactory.close();
+			if (results.size()==0){
+				return null;
+			}else{
+				Benutzer dbBenutzer =(Benutzer) results.get(0);
+				System.out.println("Benutzer gefunden" + benutzer.getBenutzername());
+				return dbBenutzer;
+			}
+			
+						
+		} catch (Exception e) {
+			System.err.println("Fail");
+			sqlStatus="Registrierung fehlgeschlagen";
+		}
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
