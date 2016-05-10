@@ -16,6 +16,7 @@ html {
 
 body {
 	font-size: 1em;
+	color: black;
 	line-height: 1.4;
         overflow-x: hidden;
         font-family: 'Jura', sans-serif; !important;
@@ -27,6 +28,18 @@ body {
     -moz-text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;	
 }
+
+/* NAVBAR */
+.navbar-brand {
+	font-size:24px;
+}
+
+#login-nav {
+	margin-left: 6px;
+	top:4px;
+}
+
+/* /NAVBAR */
 
 input, button {
 	font-family: 'Jura', sans-serif !important;
@@ -43,15 +56,70 @@ input, button {
 	margin: 20px 0;
 }
 
+
+/*Registrieren Fenster*/
+
 #registrieren {
 	margin: auto;
-	width: 400px;
+	width: 350px;
 	margin-top: 150px;
+	border: 1px solid grey;
+    border-radius: 11px;
+    text-align: center;
 }
 
+#registrieren input {
+	margin: auto;
+}
+
+#registrieren h1 {
+	    font-size: 30px;
+}
+#registrieren label {
+	    font-size: 16px;
+    font-weight: 100;
+    margin-top: 30px;
+}
+
+.loginBtn {
+	    margin-top: 40px !important;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.login-registrierungNotiz {
+	padding: 2px;
+    font-size: 12px !important; 
+}
+
+
+/* /Registrieren Fenster*/
 .firstContainer {
 	margin-top: 50px;
 }
+.container-height {
+	height: 400px;
+}
+
+.container-btrap-clear {
+	padding:0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* STARTSEITE*/
+.textpadding {
+	padding: 20px;
+}
+.h1padding {
+	padding-left: 20px;
+}
+
+.bordertest {
+	border:1px solid grey;
+	border-radius: 2px;
+}
+/* /STARTSEITE*/
 
 h1 {
 	font-weight: 100;
@@ -92,7 +160,6 @@ button:focus, input:focus {
 input, #button {
 	display: block;
 	border: 0;
-	margin: 5px 0;
 	margin-bottom: 15px;
 	border-bottom: 1px solid grey;
 	background-color: transparent;
@@ -108,6 +175,39 @@ input, #button {
 	margin-left: 20px;
 }
 
+
+/* Preoloader */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1031;
+}
+
+#status {
+    width: 100px;
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    margin-left: -60px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#load {
+    width: 600px;
+    font-size: 3em;
+    position: fixed;
+    margin-left: -300px;
+    top: 30%;
+    left: 50%;
+    text-align: center;
+    letter-spacing: 10px;
+}
 
 
 
