@@ -6,7 +6,9 @@
     version="2.2">
 
 <navigation-rule>
+    <from-view-id>/registrieren.xhtml</from-view-id>
     <navigation-case>
+        <from-action>#{benutzerController.registrieren}</from-action>
         <from-outcome>success</from-outcome>
         <to-view-id>/regAusgabe.xhtml</to-view-id>
     </navigation-case>
@@ -15,6 +17,7 @@
 <navigation-rule>
     <from-view-id>/login.xhtml</from-view-id>
     <navigation-case>
+        <from-action>#{benutzerController.logIn}</from-action>
         <from-outcome>success</from-outcome>
         <to-view-id>/regAusgabe.xhtml</to-view-id>
     </navigation-case>
