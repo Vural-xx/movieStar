@@ -43,9 +43,9 @@
 		<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse oder ihren Benuternamen ein:</h:outputLabel>
 		<h:inputText id="log_In_input" binding="#{input1}" />
 		<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
-		<h:inputSecret id="password_input" binding="#{input2}"  />
+		<h:inputSecret id="password_input" binding="#{input3}"  />
 	
-		<h:commandButton value="Einloggen" action="#{BenutzerController.logIn(input1.value,input2.value)}">
+		<h:commandButton value="Einloggen" action="#{BenutzerController.logIn(input1.value,input3.value)}">
  		</h:commandButton>
  
   		<h:commandButton class="checkBtn" value="DB Überprüfen"> <f:ajax listener="#{SQLDatabase.statusAenderung}" render="outputMessage" />

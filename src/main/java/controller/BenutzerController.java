@@ -18,9 +18,12 @@ public class BenutzerController implements BenutzerFacade {
 	}
 	
 
-	public void logIn(String logIn, String passwort) {
-		// TODO Auto-generated method stub
-		
+	public String logIn(String logIn, String passwort) {
+		Benutzer benutzer = sqlDatabase.benutzerSuchen(new Benutzer(logIn,passwort));
+		if(benutzer != null){
+			return "success";
+		}
+		return "false";
 	}
 
 	public void logOut() {

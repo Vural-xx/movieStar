@@ -4,7 +4,7 @@ public interface BenutzerFacade {
 	
 	public void registrieren(String email, String benutzername, String passwort);
 
-	public void logIn(String logIn, String passwort);
+	public String logIn(String logIn, String passwort);
 	
 	public void logOut();
 	
