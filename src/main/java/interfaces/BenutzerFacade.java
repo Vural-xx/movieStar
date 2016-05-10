@@ -2,7 +2,7 @@ package interfaces;
 
 public interface BenutzerFacade {
 	
-	public void registrieren(String email, String benutzername, String passwort);
+	public String registrieren(String email, String benutzername, String passwort);
 
 	public String logIn(String logIn, String passwort);
 	

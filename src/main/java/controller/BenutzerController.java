@@ -1,6 +1,8 @@
 package controller;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import Database.SQLDatabase;
 import interfaces.BenutzerFacade;
@@ -11,9 +13,14 @@ public class BenutzerController implements BenutzerFacade {
 	
 		SQLDatabase sqlDatabase = new SQLDatabase();
 	
-	public void registrieren(String email, String benutzername, String passwort) {
+	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email,benutzername,passwort);
-		sqlDatabase.benutzerErstellen(benutzer);
+		boolean registrieren = sqlDatabase.benutzerErstellen(benutzer);
+		if(registrieren = true){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Registrierung war erfolgreich!", null));
+			return "login";
+		}
+		return " ";
 		
 	}
 	

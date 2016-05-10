@@ -5,6 +5,9 @@
 	<artifactId>movieStar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Movie Star</name>
+	<properties>
+		<org.richfaces.bom.version>4.1.0.Final</org.richfaces.bom.version>  
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -62,6 +65,15 @@
 	<artifactId>mysql-connector-java</artifactId>
 	<version>5.1.38</version>
 </dependency>
+  <dependency>  
+    <groupId>org.richfaces</groupId>  
+       <artifactId>richfaces-bom</artifactId>  
+       <version>${org.richfaces.bom.version}</version>  
+       <scope>import</scope>  
+     <type>pom</type>  
+    </dependency>  
+
+    
   </dependencies>
   
   <!-- Richtige Java Version -->

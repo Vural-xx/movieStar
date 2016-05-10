@@ -84,8 +84,18 @@ public class SQLDatabase implements DAO {
 		Transaction transaction = session.beginTransaction();
 		
 		try {
-			Query query = session.createQuery("from Benutzer where email = :email ");
+			String selectionQuery ="from Benutzer where (email = :email OR benutzername = :benutzername)";
+			boolean  passwortGesetzt= false;
+			if(!benutzer.getPasswort().equals("")){
+				selectionQuery = selectionQuery + " AND passwort = :passwort ";
+				passwortGesetzt = true;
+			}
+			Query query = session.createQuery(selectionQuery);
 			query.setParameter("email", benutzer.getEmail());
+			query.setParameter("benutzername", benutzer.getEmail());
+			if(passwortGesetzt){
+				query.setParameter("passwort", benutzer.getPasswort());
+			}
 			List results = query.list();
 			session.close();
 			sessionFactory.close();

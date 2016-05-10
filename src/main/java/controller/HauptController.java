@@ -14,8 +14,8 @@ public class HauptController implements Facade {
 	}
 
 	@Override
-	public void registrieren(String email, String benutzername, String passwort) {
-		benutzerController.registrieren(email,benutzername,passwort);
+	public String registrieren(String email, String benutzername, String passwort) {
+		return benutzerController.registrieren(email,benutzername,passwort);
 		// TODO Auto-generated method stub
 		
 	}

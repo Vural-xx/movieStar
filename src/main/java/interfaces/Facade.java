@@ -5,7 +5,7 @@ import model.Filter;
 
 public interface Facade {
 
-	public void registrieren(String email, String benutzername, String passwort);
+	public String registrieren(String email, String benutzername, String passwort);
 
 	public void logIn(String logIn, String passwort);
 	
