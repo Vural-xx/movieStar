@@ -5,10 +5,20 @@
   <PROCESS-ITEM ID="rules:#registrieren.xhtml:0" NAME="item"
    PATH="/registrieren.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="success:#{benutzerController.registrieren}:#registrieren.xhtml"
-    NAME="output" PATH="/registrieren.xhtml"
-    TARGET="rules:#registrieren.xhtml"
+    ID="success:#{benutzerController.registrieren}:#login.xhtml"
+    NAME="output" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{benutzerController.registrieren}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#registrieren.xhtml:1" NAME="item1"
+   PATH="/registrieren.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{benutzerController.registrieren}:#mainPage.xhtml"
+    NAME="output" PATH="/mainPage.xhtml" TARGET="rules:#mainPage.xhtml"
     TITLE="#{benutzerController.registrieren}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#mainPage.xhtml" PATH="/mainPage.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

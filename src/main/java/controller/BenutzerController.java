@@ -28,7 +28,7 @@ public class BenutzerController implements BenutzerFacade {
 	public String logIn(String logIn, String passwort) {
 		Benutzer benutzer = sqlDatabase.benutzerSuchen(new Benutzer(logIn,passwort));
 		if(benutzer != null){
-			return "regAusgabe";
+			return "mainPage";
 		}
 		return "false";
 	}
