@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#registrieren.xhtml"
   PATH="/registrieren.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#registrieren.xhtml:0" NAME="item"
    PATH="/registrieren.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="success:#{benutzerController.registrieren}:#registrieren.xhtml"
-    NAME="output" PATH="/registrieren.xhtml"
-    TARGET="rules:#registrieren.xhtml"
+    ID="success:#{benutzerController.registrieren}:#index.xhtml"
+    NAME="output" PATH="/index.xhtml" TARGET="rules:#index.xhtml"
     TITLE="#{benutzerController.registrieren}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
