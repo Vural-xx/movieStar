@@ -3,6 +3,7 @@ package controller;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import Database.SQLDatabase;
 import interfaces.BenutzerFacade;
@@ -59,6 +60,16 @@ public class BenutzerController implements BenutzerFacade {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void benutzerVorhanden(String logIn){
+		Benutzer benutzer = new Benutzer(logIn, "email");
+		System.out.println(benutzer.getEmail());
+		String vorhanden = sqlDatabase.benutzerVorhanden(benutzer, "email");
+		
+	}
+
 	
 	
 

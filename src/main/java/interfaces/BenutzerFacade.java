@@ -1,5 +1,7 @@
 package interfaces;
 
+import javax.faces.event.AjaxBehaviorEvent;
+
 public interface BenutzerFacade {
 	
 	public String registrieren(String email, String benutzername, String passwort);
@@ -15,5 +17,7 @@ public interface BenutzerFacade {
 	public void benutzerBlockieren(String benutzername, String email);
 	
 	public void kommentareLoeschen(Long KID);
+
+	void benutzerVorhanden(String logIn);
 
 }

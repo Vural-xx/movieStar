@@ -10,18 +10,16 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+@FacesValidator("PasswordValidation")
+public class PasswordValidator implements Validator{
 
-
-@FacesValidator("BenutzernameValidator")
-public class BenutzernameValidator implements Validator{
-
-	private static final String PASSWORT_PATTERN = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{5,10}";
+	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
 
 	private Pattern pattern;
 	private Matcher matcher;
 	
-	public BenutzernameValidator(){
-		  pattern = Pattern.compile(PASSWORT_PATTERN);
+	public PasswordValidator(){
+		  pattern = Pattern.compile(PASSWORD_PATTERN);
 	}
 	
 	@Override
@@ -31,7 +29,7 @@ public class BenutzernameValidator implements Validator{
 		matcher = pattern.matcher(value.toString());
 		if(!matcher.matches()){
 			
-			FacesMessage msg = new FacesMessage("Falsches E-Mail Format");
+			FacesMessage msg = new FacesMessage("Falsches Passwortformat");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 
