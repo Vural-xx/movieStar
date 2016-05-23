@@ -12,13 +12,13 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import enums.Status;
-import interfaces.DAO;
+import interfaces.BenutzerDAO;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
 
 @ManagedBean(name = "SQLDatabase")
-public class SQLDatabase implements DAO {
+public class SQLDatabase implements BenutzerDAO {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
@@ -144,35 +144,9 @@ public class SQLDatabase implements DAO {
 		return null;
 	}
 
-	@Override
-	public Film filmErstellen(Film film) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Film> filmSuchen(Film film) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public void filmBewerten(Long FID, double sterne) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void filmKommentieren(Long FID, String kommentar) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Film> filmFiltern(Filter filter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email) {
