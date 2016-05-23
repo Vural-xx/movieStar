@@ -14,6 +14,8 @@ public interface DAO {
 	
 	public Benutzer benutzerSuchen(Benutzer benutzer);
 	
+	public String benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername);
+	
 	public Film filmErstellen(Film film); 
 	
 	public List<Film> filmSuchen(Film film);

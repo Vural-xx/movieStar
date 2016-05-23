@@ -14,16 +14,19 @@
     <link rel="stylesheet" href="assets/css/main.css"></link>
 <link href='https://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'></link>
     <title>movieDatabase</title>
-    
-
-    
+  
 </h:head>
 
- 	<div id="preloader">
-    <div id="status"><h:graphicImage value="assets/img/preloader.gif" /></div>
-    <h1 id="load"><strong>movie</strong>Database</h1></div>
-	<h:body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+<div id="preloader">
+	<div id="status">
+		<h:graphicImage value="assets/img/preloader.gif" />
+	</div>
+	<h1 id="load">
+		<strong>movie</strong>Database
+	</h1>
+</div>
+<h:body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -38,7 +41,7 @@
           <ul class="nav navbar-nav">
           <li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li>
           <li><h:link outcome="login">Login<span id="login-nav" class="glyphicon glyphicon-log-in"></span></h:link></li>
-            <li><h:link outcome="filmformular">Film erstellen <span id="film-nav" class="glyphicon glyphicon-film"></span></h:link></li>
+            <li><h:link outcome="filmformular">Film erstellen<span id="film-nav" class="glyphicon glyphicon-film"></span></h:link></li>
             <li><h:link outcome="benutzerVerwalten">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-profil"></span></h:link></li>
             <li><a href="#about">Über uns</a></li>
             <li><a href="#contact">Kontakt</a></li>
@@ -52,54 +55,82 @@
 			</div>
 		</div>
 		</h:form>
-			</div>
+		</div>
         </div><!--/.nav-collapse -->
       </div>
     </nav>  
-    
-    
+
 	<div class="container">
-	<div class="row">
-	<div class="col-md-12">
-	<div id="registrieren">
-	<h1>Benutzer Registrieren</h1>
-	
-	<h:form>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="registrieren">
+					<h1>Benutzer Registrieren</h1>
+					<h:form id="myform" action="#">
 
-		<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
-		<h:inputText id="email_input" binding="#{input1}" size="40" a:placeholder="E-Mail Adresse">
-			<f:validator validatorId="EmailValidation"></f:validator>
-		</h:inputText>
-		<h:message for="email_input" style="color:red" />
-		<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
-		<h:inputText id="benutzername_input" binding="#{input2}"  size="40" a:placeholder="Benutzername"/>
-		<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
-		<h:inputSecret id="password_input" binding="#{input3}" size="60" a:placeholder="mind. 1 Zahl, mind. 1 Kleinbuchstaben, mind. 1 Großbuchstaben, mind. 1 Sonderzeichen"/>
-	
-		<h:commandButton value="registrieren" action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}" update=":benutzer, :message" >
- 		</h:commandButton>
- 
-	  	<h:commandButton class="checkBtn" value="DB Überprüfen"> <f:ajax listener="#{SQLDatabase.statusAenderung}" render="outputMessage" />
- 		</h:commandButton>
-		<h:outputLabel class="statusMessage" id="outputMessage" value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
+						<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
+						<h:inputText id="email_input" binding="#{input1}" size="40"
+							a:placeholder="E-Mail Adresse">
+							<f:validator validatorId="EmailValidation"></f:validator>
+						</h:inputText>
 
-	</h:form>
 
-	</div>
-	</div>
-	</div>
-	</div>
+						<h:message for="email_input" style="color:red" />
+						<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
+						<h:inputText id="benutzername_input" binding="#{input2}" size="40"
+							a:placeholder="Benutzername" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    //<![CDATA[
-        $(window).load(function() { // makes sure the whole site is loaded
-            $('#status').fadeOut(); // will first fade out the loading animation
-            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
-            $('body').delay(350).css({'overflow':'visible'});
-        })
-    //]]>
-</script>
+						<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
+						<h:inputSecret
+							title="mind. 1 Zahl, mind. 1 Großbuchstaben, mind. 1 Kleinbuchstaben, 
+							mind. 1 Sonderzeichen (@#$%), 6 - 20 Zeichen lang"
+							id="password_input" binding="#{input3}" size="40"
+							a:placeholder="Password">
+							<f:validator validatorId="PasswordValidation"></f:validator>
+						</h:inputSecret>
+						<h:message for="password_input" style="color:red" />
+
+
+						<h:commandButton value="registrieren"
+							action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}"
+							update=":benutzer, :message">
+						</h:commandButton>
+
+						<h:commandButton class="checkBtn" value="DB Überprüfen">
+							<f:ajax listener="#{SQLDatabase.statusAenderung}"
+								render="outputMessage" />
+						</h:commandButton>
+						<h:outputLabel class="statusMessage" id="outputMessage"
+							value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
+
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="registrieren"></div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<script>
+		$("#myform :input").tooltip({
+			position : "center right",
+			offset : [ -7, 10 ],
+			effect : "fade",
+			opacity : 0.7
+		});
+	</script>
+	<script type="text/javascript">
+		//<![CDATA[
+		$(window).load(function() { // makes sure the whole site is loaded
+			$('#status').fadeOut(); // will first fade out the loading animation
+			$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+			$('body').delay(350).css({
+				'overflow' : 'visible'
+			});
+		})
+		//]]>
+	</script>
 </h:body>
 </html>

@@ -1,10 +1,11 @@
 package controller;
 
-import interfaces.Facade;
+import interfaces.BenutzerFacade;
+import interfaces.FilmFacade;
 import model.Film;
 import model.Filter;
 
-public class HauptController implements Facade {
+public class HauptController implements BenutzerFacade, FilmFacade {
 	BenutzerController benutzerController;
 	FilmController filmController;
 	
@@ -21,8 +22,8 @@ public class HauptController implements Facade {
 	}
 
 	@Override
-	public void logIn(String logIn, String passwort) {
-		benutzerController.logIn(logIn, passwort);
+	public String logIn(String logIn, String passwort) {
+		return benutzerController.logIn(logIn, passwort);
 		// TODO Auto-generated method stub
 		
 	}
