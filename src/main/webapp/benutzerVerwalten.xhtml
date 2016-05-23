@@ -61,7 +61,7 @@
         <div class="containerRegistieren">
         <div class="row">
             <div class="col-md-12">
-                <div id="registrieren">
+                <div id="benutzerAendern">
                     <h1>Benutzerdaten ändern</h1>
     <h:form>
 
@@ -82,8 +82,7 @@
         <h:commandButton value="Speichern" action="#{BenutzerController.benutzerVerwalten(input1.value,input3.value)}">
          </h:commandButton>
  
-          <h:commandButton class="checkBtn" value="DB Überprüfen"> <f:ajax listener="#{SQLDatabase.statusAenderung}" render="outputMessage" />
-         </h:commandButton>
+         
          
         <h:outputLabel class="statusMessage" id="outputMessage" value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
         
@@ -92,9 +91,7 @@
             </div>
         </div>
     </div>
-    <div id="registrieren">
 
-</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">

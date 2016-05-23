@@ -265,6 +265,29 @@ input, #button {
     text-align: center;
     letter-spacing: 10px;
 }
+/* Benutzer Ändern */
+#benutzerAendern {
+	margin: auto;
+	width: 350px;
+	margin-top: 150px;
+	border: 1px solid grey;
+    border-radius: 11px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+#benutzerAendern input {
+	margin: auto;
+}
+
+#benutzerAendern h1 {
+	    font-size: 30px;
+}
+#benutzerAendern label {
+	    font-size: 16px;
+    font-weight: 100;
+    margin-top: 30px;
+}
 
 @media only screen and (max-width: 768px) {
 	
