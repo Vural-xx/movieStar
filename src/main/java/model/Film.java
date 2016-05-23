@@ -20,7 +20,7 @@ public class Film extends AbstractEntity{
 	private double sterne;
 	private List<Mitwirkende> mitwirkende;
 	private List<Kommentar> kommentare;
-	private Genre genre;
+	private List<Genre> genre;
 	private Blob titelbild;
 	private List<Blob> gallerie;
 	private List<Film> verwandteFilme;
@@ -72,10 +72,10 @@ public class Film extends AbstractEntity{
 	public void setKommentare(List<Kommentar> kommentare) {
 		this.kommentare = kommentare;
 	}
-	public Genre getGenre() {
+	public List<Genre> getGenre() {
 		return genre;
 	}
-	public void setGenre(Genre genre) {
+	public void setGenre(List<Genre> genre) {
 		this.genre = genre;
 	}
 	public Blob getTitelbild() {

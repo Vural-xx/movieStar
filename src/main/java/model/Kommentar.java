@@ -3,6 +3,7 @@ package model;
 public class Kommentar {
 	private String text;
 	private Kommentar kommentar;
+	private Benutzer ersteller;
 	
 	public String getText() {
 		return text;
