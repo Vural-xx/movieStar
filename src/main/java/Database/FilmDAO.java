@@ -53,13 +53,13 @@ public class FilmDAO implements interfaces.FilmDAO {
 			transaction.commit();
 			session.close();
 			sessionFactory.close();
-			setSqlStatus("Erfolgreich registriert");
+			setSqlStatus("Film erfolgreich angelegt");
 			System.out.println(sqlStatus);
 			return film;
 
 		} catch (Exception e) {
 			System.err.println("Fail");
-			sqlStatus = "Registrierung fehlgeschlagen";
+			sqlStatus = "Film anlegen fehlgeschlagen";
 			return null;
 		}
 	}
