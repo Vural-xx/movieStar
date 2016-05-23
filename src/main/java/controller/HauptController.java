@@ -105,4 +105,10 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 		
 	}
 
+	@Override
+	public void benutzerVorhanden(String logIn) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
