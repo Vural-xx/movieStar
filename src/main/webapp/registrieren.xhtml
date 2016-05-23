@@ -13,7 +13,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
     <link rel="stylesheet" href="assets/css/main.css"></link>
 <link href='https://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'></link>
-    <title>movieStar</title>
+    <title>movieDatabase</title>
     
 
     
@@ -36,11 +36,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+          <li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li>
           <li><h:link outcome="login">Login<span id="login-nav" class="glyphicon glyphicon-log-in"></span></h:link></li>
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Über uns</a></li>
             <li><h:link outcome="filmformular">Film erstellen <span id="film-nav" class="glyphicon glyphicon-film"></span></h:link></li>
             <li><h:link outcome="benutzerVerwalten">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-profil"></span></h:link></li>
+            <li><a href="#about">Über uns</a></li>
             <li><a href="#contact">Kontakt</a></li>
           </ul>
           	<div class="col-sm-3 col-md-3 pull-right">

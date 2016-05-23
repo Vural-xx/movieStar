@@ -45,6 +45,13 @@ public class BenutzerController implements BenutzerFacade {
 	// Update Benutzer
 	public void benutzerVerwalten(String email, String benutzername, String passwort) {
 		// TODO Auto-generated method stub
+		//Benutzerdaten suchen, überprüfung, ob Passwort richtig ist, dann überschreiben
+		
+		//Benutzer benutzer = sqlDatabase.benutzerSuchen(email, benutzername, passwort);
+		//if(benutzer !=null){
+			//alten Benutzer löschen, nur wie? bzw Benutzerdaten überschreiben ??? 
+			//boolean benutzerExistiert = sqlDatabase.benutzerErstellen(benutzer);
+		//}
 		
 	}
 
