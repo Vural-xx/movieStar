@@ -71,7 +71,7 @@ select {
 	font-size:24px;
 }
 
-#login-nav {
+.glyphicon-nav-pos {
 	margin-left: 6px;
 	top:4px;
 }
