@@ -4,6 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import Database.FilmDAO;
 import interfaces.FilmFacade;
 import model.Film;
 import model.Filter;
@@ -14,9 +15,19 @@ public class FilmController implements FilmFacade {
 	
 	@ManagedProperty(value="#{film}")
 	private Film film;
+	private FilmDAO filmDAO;
+	
+	public FilmController() {
+		filmDAO = new FilmDAO();
+	}
+	
+	public void setFilm(Film film){
+		this.film = film;
+	}
 
 	@Override
 	public void filmErstellen(Film film) {
+		filmDAO.filmErstellen(film);
 		// TODO Auto-generated method stub
 		
 	}
