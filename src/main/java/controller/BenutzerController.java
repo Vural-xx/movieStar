@@ -13,6 +13,8 @@ import model.Benutzer;
 public class BenutzerController implements BenutzerFacade {
 	
 		SQLDatabase sqlDatabase = new SQLDatabase();
+		
+		
 	
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email,benutzername,passwort);

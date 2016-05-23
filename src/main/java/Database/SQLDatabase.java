@@ -23,6 +23,12 @@ public class SQLDatabase implements BenutzerDAO {
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
 	private static String sqlStatus = "";
+	
+	public SQLDatabase(){
+		con.configure("local.sql.cfg.xml");
+		con.addResource("user.hbm.xml");
+		con.addResource("film.hbm.xml");
+	}
 
 	public String getSqlStatus() {
 		return sqlStatus;
@@ -42,8 +48,6 @@ public class SQLDatabase implements BenutzerDAO {
 
 	@Override
 	public boolean benutzerErstellen(Benutzer benutzer) {
-		con.configure("local.sql.cfg.xml");
-		con.addResource("user.hbm.xml");
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
@@ -71,8 +75,6 @@ public class SQLDatabase implements BenutzerDAO {
 
 	@Override
 	public Benutzer benutzerSuchen(Benutzer benutzer) {
-		con.configure("local.sql.cfg.xml");
-		con.addResource("user.hbm.xml");
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
@@ -111,8 +113,6 @@ public class SQLDatabase implements BenutzerDAO {
 	}
 
 	public String benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername) {
-		con.configure("local.sql.cfg.xml");
-		con.addResource("user.hbm.xml");
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
