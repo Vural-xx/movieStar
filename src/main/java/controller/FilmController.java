@@ -1,10 +1,19 @@
 package controller;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+
 import interfaces.FilmFacade;
 import model.Film;
 import model.Filter;
 
+@ManagedBean(name="filmController")
+@RequestScoped
 public class FilmController implements FilmFacade {
+	
+	@ManagedProperty(value="#{film}")
+	private Film film;
 
 	@Override
 	public void filmErstellen(Film film) {

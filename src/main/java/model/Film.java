@@ -4,11 +4,13 @@ import java.sql.Blob;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import abstracts.AbstractEntity;
 import enums.Genre;
 
-
+@ManagedBean(name="film")
+@RequestScoped
 public class Film extends AbstractEntity{
 	private String name;
 	private String beschreibung;

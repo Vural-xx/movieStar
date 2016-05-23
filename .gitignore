@@ -26,3 +26,5 @@ WebContent/WEB-INF/web.xml
 target/classes/META-INF/maven/de.hs-bremen/movieStar/pom.properties
 
 src/main/java/local.sql.cfg.xml
+
+src/main/java/local.sql.cfg.xml
