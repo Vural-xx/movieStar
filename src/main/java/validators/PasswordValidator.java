@@ -13,7 +13,7 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("PasswordValidation")
 public class PasswordValidator implements Validator{
 
-	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%/+&!()?-]).{6,20})";
 
 	private Pattern pattern;
 	private Matcher matcher;

@@ -113,26 +113,37 @@ public class SQLDatabase implements BenutzerDAO {
 	}
 
 	public String benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername) {
+		Query query;
+		List results = null;
+		String vorhanden = "";
+		
+		
 		SessionFactory sessionFactory = con.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
 		Transaction transaction = session.beginTransaction();
 
 		try {
-			String selectionQuery = "from Benutzer where email = :email";
-			Query query = session.createQuery(selectionQuery);
-			query.setParameter("email", benutzer.getEmail());
+			if(emailOderBenutzername.equals("E-mail")){
+				String selectionQuery = "from Benutzer where email = :email";
+				query = session.createQuery(selectionQuery);
+				query.setParameter("email", benutzer.getEmail());
+			}else{
+				String selectionQuery = "from Benutzer where benutzername = :benutzername";
+				query = session.createQuery(selectionQuery);
+				query.setParameter("benutzername", benutzer.getBenutzername());
+			}
 			
-			List results = query.list();
+			results = query.list();
 			session.close();
 			sessionFactory.close();
 			
 			if (results.size() == 0) {
 				System.out.println("nicht vorhanden");
-				return "nichtvorhanden";
+				return "";
 			} else {
 				System.out.println("vorhanden");
-				return "vorhanden";
+				return emailOderBenutzername + " schon vorhanden.";
 			}
 			
 		} catch (Exception e) {

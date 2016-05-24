@@ -59,11 +59,11 @@
 	<h:form>
 		<h:messages id="messages" infoStyle="color:green" />
 		<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse oder ihren Benuternamen ein:</h:outputLabel>
-		<h:inputText id="log_In_input" binding="#{input1}" />
+		<h:inputText id="log_In_input" binding="#{logInInput}" />
 		<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
 		<h:inputSecret id="password_input" binding="#{input3}"  />
 	
-		<h:commandButton class="loginBtn" value="Einloggen" action="#{BenutzerController.logIn(input1.value,input3.value)}">
+		<h:commandButton class="loginBtn" value="Einloggen" action="#{BenutzerController.logIn(logInInput.value,input3.value)}">
  		</h:commandButton>
 
  		

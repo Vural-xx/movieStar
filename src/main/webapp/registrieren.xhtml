@@ -69,15 +69,16 @@
 
 						<h:outputLabel>Bitte geben Sie ihre <strong>E-Mail</strong> ein:</h:outputLabel>
 						<h:inputText id="email_input" binding="#{input1}" size="40"
-							a:placeholder="E-Mail Adresse">
+							a:placeholder="E-Mail Adresse" value="#{BenutzerController.emailAdresse}">
 							<f:validator validatorId="EmailValidation"></f:validator>
+							<f:ajax event="valueChange" execute="email_input" render="outputEmailCheck"></f:ajax>
 						</h:inputText>
-
-
+						<h:outputText id="outputEmailCheck" value="#{BenutzerController.emailVorhanden}" style="color:red; margin:5px; display:block" />
 						<h:message for="email_input" style="color:red" />
+						
 						<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
 						<h:inputText id="benutzername_input" binding="#{input2}" size="40"
-							a:placeholder="Benutzername" />
+							a:placeholder="Benutzername" value="#{BenutzerController.nutzername}"/>
 
 						<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
 						<h:inputSecret

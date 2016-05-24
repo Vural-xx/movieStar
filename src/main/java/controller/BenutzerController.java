@@ -13,9 +13,31 @@ import model.Benutzer;
 public class BenutzerController implements BenutzerFacade {
 	
 		SQLDatabase sqlDatabase = new SQLDatabase();
+		String emailAdresse;
+		String nutzername;
 		
 		
 	
+	public String getNutzername() {
+			return nutzername;
+		}
+
+
+		public void setNutzername(String nutzername) {
+			this.nutzername = nutzername;
+		}
+
+
+	public String getEmailAdresse() {
+			return emailAdresse;
+		}
+
+
+		public void setEmailAdresse(String emailAdresse) {
+			this.emailAdresse = emailAdresse;
+		}
+
+
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email,benutzername,passwort);
 		boolean registrieren = sqlDatabase.benutzerErstellen(benutzer);
@@ -72,11 +94,11 @@ public class BenutzerController implements BenutzerFacade {
 
 
 	@Override
-	public void benutzerVorhanden(String logIn){
-		Benutzer benutzer = new Benutzer(logIn, "email");
-		System.out.println(benutzer.getEmail());
-		String vorhanden = sqlDatabase.benutzerVorhanden(benutzer, "email");
-		
+	public String getEmailVorhanden(){
+		Benutzer benutzer = new Benutzer(emailAdresse, "email");
+		System.out.println(emailAdresse + " Hallo");
+		String vorhanden = sqlDatabase.benutzerVorhanden(benutzer, "E-mail");
+		return vorhanden;
 	}
 
 	
