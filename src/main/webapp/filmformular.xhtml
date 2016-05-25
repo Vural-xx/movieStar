@@ -71,13 +71,13 @@
 				</h1>
 				
 				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">name:</div>
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmName']}</div>
 					<div class="col-xs-10 inputpd-80-768">
 						<h:inputText id="filmname" class="" value="#{film.name}"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">genre:</div>
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>
 					<div class="col-xs-10 inputpd-80-768">
 					<!-- 
 							<h:selectOneMenu class="inputmarginbottom-15"
@@ -89,19 +89,19 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">dauer:</div>
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmDauer']}</div>
 					<div class="col-xs-10 inputpd-80-768">
 							<h:inputText class="" value="#{film.dauer}"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">mitwirkende:</div>
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
 					<div class="col-xs-10 inputpd-80-768">
 							<h:inputText class=""></h:inputText>
 					</div>
 				</div>
 								<div class="row">
-					<div class="col-sm-2 txt-pd-l-20">beschreibung:</div>
+					<div class="col-sm-2 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
 					<div class="col-sm-10">
 							<h:inputTextarea class="beschreibunginput" value="#{film.beschreibung}" ></h:inputTextarea>
 					</div>
@@ -113,10 +113,10 @@
 
 			<div class="col-lg-4">
 				<div id="film-img" class=""></div>
-				<h:button id="uploadFotoButton" value="Upload Film Foto"></h:button>
+				<h:button id="uploadFotoButton" value="#{msg['filmFotoUpload']}"></h:button>
 			</div>
 		</div>
-		<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="Film speichern" action="#{filmController.filmErstellen(film)}" ></h:commandButton></div></div>
+		<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(film)}" ></h:commandButton></div></div>
 	</div>
 	</h:form>
 
