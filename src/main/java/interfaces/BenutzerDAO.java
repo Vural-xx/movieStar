@@ -9,7 +9,7 @@ public interface BenutzerDAO {
 	
 	public Benutzer benutzerSuchen(Benutzer benutzer);
 	
-	public String benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername);
+	public boolean benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername);
 	
 	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email);
 	

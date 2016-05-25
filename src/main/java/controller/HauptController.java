@@ -106,15 +106,15 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public String getEmailVorhanden() {
+	public boolean getEmailInDBVorhanden() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
-	public String getNutzernameVorhanden() {
+	public boolean getNutzernameInDBVorhanden() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 	
 	

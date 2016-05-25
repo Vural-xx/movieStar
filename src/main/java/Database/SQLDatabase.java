@@ -107,7 +107,7 @@ public class SQLDatabase implements BenutzerDAO {
 		return null;
 	}
 
-	public String benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername) {
+	public boolean benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername) {
 		Query query;
 		List results = null;
 		String vorhanden = "";
@@ -128,11 +128,9 @@ public class SQLDatabase implements BenutzerDAO {
 			results = query.list();
 			
 			if (results.size() == 0) {
-				System.out.println("nicht vorhanden");
-				return "";
+				return false;
 			} else {
-				System.out.println("vorhanden");
-				return emailOderBenutzername + " schon vorhanden.";
+				return true;
 			}
 			
 		} catch (Exception e) {
@@ -141,7 +139,7 @@ public class SQLDatabase implements BenutzerDAO {
 		}
 
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 
