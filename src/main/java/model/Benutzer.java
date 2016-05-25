@@ -18,6 +18,10 @@ public class Benutzer extends AbstractEntity {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Benutzer(String benutzername){
+		this.benutzername = benutzername;
+	}
+	
 
 	public Benutzer(String email, String passwort){
 		this.email= email;

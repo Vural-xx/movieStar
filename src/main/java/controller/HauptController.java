@@ -111,4 +111,12 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 		return null;
 	}
 
+	@Override
+	public String getNutzernameVorhanden() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }

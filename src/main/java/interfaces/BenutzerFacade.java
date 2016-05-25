@@ -19,5 +19,7 @@ public interface BenutzerFacade {
 	public void kommentareLoeschen(Long KID);
 
 	public String getEmailVorhanden();
+	
+	public String getNutzernameVorhanden();
 
 }

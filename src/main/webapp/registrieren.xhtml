@@ -78,8 +78,11 @@
 						
 						<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
 						<h:inputText id="benutzername_input" binding="#{input2}" size="40"
-							a:placeholder="Benutzername" value="#{BenutzerController.nutzername}"/>
-
+							a:placeholder="Benutzername" value="#{BenutzerController.nutzername}">
+							<f:ajax event="valueChange" execute="benutzername_input" render="outputNutzernameCheck"></f:ajax>
+						</h:inputText>
+							<h:outputText id="outputNutzernameCheck" value="#{BenutzerController.nutzernameVorhanden}" style="color:red; margin:5px; display:block"/>
+							
 						<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
 						<h:inputSecret
 							title="mind. 1 Zahl, mind. 1 Großbuchstaben, mind. 1 Kleinbuchstaben, 

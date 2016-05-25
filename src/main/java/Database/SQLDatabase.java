@@ -16,6 +16,7 @@ import interfaces.BenutzerDAO;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
+import util.HibernateUtil;
 
 @ManagedBean(name = "SQLDatabase")
 public class SQLDatabase implements BenutzerDAO {
@@ -23,6 +24,8 @@ public class SQLDatabase implements BenutzerDAO {
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
 	private static String sqlStatus = "";
+	
+	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
 	public SQLDatabase(){
 		con.configure("local.sql.cfg.xml");
@@ -48,17 +51,13 @@ public class SQLDatabase implements BenutzerDAO {
 
 	@Override
 	public boolean benutzerErstellen(Benutzer benutzer) {
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 
-		Transaction transaction = session.beginTransaction();
+		session.beginTransaction();
 
 		try {
 			session.save(benutzer);
 			System.out.println("Object Saved");
-			transaction.commit();
-			session.close();
-			sessionFactory.close();
+			session.getTransaction().commit();
 			setSqlStatus("Erfolgreich registriert");
 			System.out.println(sqlStatus);
 			return true;
@@ -75,10 +74,8 @@ public class SQLDatabase implements BenutzerDAO {
 
 	@Override
 	public Benutzer benutzerSuchen(Benutzer benutzer) {
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 
-		Transaction transaction = session.beginTransaction();
+		session.beginTransaction();
 
 		try {
 			String selectionQuery = "from Benutzer where (email = :email OR benutzername = :benutzername)";
@@ -94,8 +91,6 @@ public class SQLDatabase implements BenutzerDAO {
 				query.setParameter("passwort", benutzer.getPasswort());
 			}
 			List results = query.list();
-			session.close();
-			sessionFactory.close();
 			if (results.size() == 0) {
 				return null;
 			} else {
@@ -116,12 +111,8 @@ public class SQLDatabase implements BenutzerDAO {
 		Query query;
 		List results = null;
 		String vorhanden = "";
-		
-		
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 
-		Transaction transaction = session.beginTransaction();
+		session.beginTransaction();
 
 		try {
 			if(emailOderBenutzername.equals("E-mail")){
@@ -135,8 +126,6 @@ public class SQLDatabase implements BenutzerDAO {
 			}
 			
 			results = query.list();
-			session.close();
-			sessionFactory.close();
 			
 			if (results.size() == 0) {
 				System.out.println("nicht vorhanden");

@@ -41,6 +41,7 @@ public class BenutzerController implements BenutzerFacade {
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email,benutzername,passwort);
 		boolean registrieren = sqlDatabase.benutzerErstellen(benutzer);
+		System.out.println(nutzername);
 		if(registrieren = true){
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Registrierung war erfolgreich!", null));
 			return "login";
@@ -96,8 +97,15 @@ public class BenutzerController implements BenutzerFacade {
 	@Override
 	public String getEmailVorhanden(){
 		Benutzer benutzer = new Benutzer(emailAdresse, "email");
-		System.out.println(emailAdresse + " Hallo");
 		String vorhanden = sqlDatabase.benutzerVorhanden(benutzer, "E-mail");
+		return vorhanden;
+	}
+	
+	@Override
+	public String getNutzernameVorhanden(){
+		Benutzer benutzer = new Benutzer(nutzername);
+		System.out.println(nutzername + "Nutzername");
+		String vorhanden = sqlDatabase.benutzerVorhanden(benutzer, "Benutzername");
 		return vorhanden;
 	}
 
