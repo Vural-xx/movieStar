@@ -68,6 +68,10 @@ body {
 	display: none;
 }
 
+th,tr,td {
+	padding: 5px;
+}
+
 
 
 select {
