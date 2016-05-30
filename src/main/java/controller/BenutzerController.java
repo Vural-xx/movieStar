@@ -9,7 +9,7 @@ import Database.SQLDatabase;
 import interfaces.BenutzerFacade;
 import model.Benutzer;
 
-@ManagedBean(name = "BenutzerController")
+@ManagedBean(name="BenutzerController")
 public class BenutzerController implements BenutzerFacade {
 
 	SQLDatabase sqlDatabase = new SQLDatabase();

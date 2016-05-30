@@ -1,67 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
-	<link rel="stylesheet" href="assets/css/main.css"></link>
-	<link href='https://fonts.googleapis.com/css?family=Jura:400,300'
-		rel='stylesheet' type='text/css'></link>
-	<title>movieDatabase</title>
-</h:head>
-<div id="preloader">
-	<div id="status">
-		<h:graphicImage value="assets/img/preloader.gif" />
-	</div>
-	<h1 id="load">
-		<strong>movie</strong>Database
-	</h1>
-</div>
-<h:body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<h:link class="navbar-brand" outcome="index">movie<strong>Database</strong>
-			</h:link>
-		</div>
-		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">	
-				<li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li>
-          <li><h:link outcome="login">Login<span id="login-nav" class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span></h:link></li>
-            <li><h:link outcome="filmformular">Film erstellen<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:link></li>
-            <li><h:link outcome="benutzerVerwalten">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-profil"></span></h:link></li>
-				<li><a href="#about">Über uns</a></li>
-				<li><a href="#contact">Kontakt</a></li>
-			</ul>
-			<div class="col-sm-3 col-md-3 pull-right">
-				<h:form class="navbar-form" role="search">
-					<div class="input-group">
-						<h:inputText type="text" class="form-control" placeholder="Search"
-							name="srch-term" id="srch-term"></h:inputText>
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</h:form>
-			</div>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
-	</nav>
-
+<ui:composition template = "/templates/commom-template.xhtml">
+<ui:define name="content">
 	<h:form>
 	<div class="container-fluid firstContainer container-btrap-clear ">
 		<div class="row">
@@ -100,23 +46,23 @@
 							<h:inputText class=""></h:inputText>
 					</div>
 				</div>
-								<div class="row">
-					<div class="col-sm-2 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
-					<div class="col-sm-10">
+					<div class="row">
+						<div class="col-sm-2 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
+						<div class="col-sm-10">
 							<h:inputTextarea class="beschreibunginput" value="#{film.beschreibung}" ></h:inputTextarea>
-					</div>
+						</div>
 					
+					</div>
+
+			</div>
+
+
+				<div class="col-lg-4">
+					<div id="film-img" class=""></div>
+					<h:button id="uploadFotoButton" value="#{msg['filmFotoUpload']}"></h:button>
 				</div>
-
-			</div>
-
-
-			<div class="col-lg-4">
-				<div id="film-img" class=""></div>
-				<h:button id="uploadFotoButton" value="#{msg['filmFotoUpload']}"></h:button>
-			</div>
 		</div>
-		<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(film)}" ></h:commandButton></div></div>
+			<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(film)}" ></h:commandButton></div></div>
 	</div>
 	</h:form>
 
@@ -135,5 +81,8 @@
 		})
 		//]]>
 	</script>
-</h:body>
+
+</ui:define>
+	
+</ui:composition>
 </html>
