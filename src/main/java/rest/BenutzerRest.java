@@ -25,33 +25,33 @@ public class BenutzerRest {
 		if(benutzers.size()==0){
 			benutzers= new ArrayList<Benutzer>();
 			Benutzer benutzer = new Benutzer();
-			benutzer.setId(1L);
+			//benutzer.setId(1L);
 			benutzer.setBenutzername("test1");
 			Film film = new Film();
-			film.setId(1L);
+		//	film.setId(1L);
 			film.setName("Casablanca");
 			Film film2 = new Film();
-			film2.setId(2L);
+		//	film2.setId(2L);
 			film2.setName("Scarface");
 			List<Film> filme = new ArrayList<Film>();
 			filme.add(film);
 			filme.add(film2);
-			benutzer.setErstellteFilme(filme);
+		//	benutzer.setErstellteFilme(filme);
 			benutzers.add(benutzer);
 			
 			Benutzer benutzer1 = new Benutzer();
-			benutzer1.setId(2L);
+			//benutzer1.setId(2L);
 			benutzer1.setBenutzername("test2");
 			Film film3 = new Film();
-			film3.setId(3L);
+		//	film3.setId(3L);
 			film3.setName("Spiderman");
 			Film film4 = new Film();
-			film4.setId(4L);
+		//	film4.setId(4L);
 			film4.setName("Superman");
 			List<Film> filme2 = new ArrayList<Film>();
 			filme2.add(film3);
 			filme2.add(film4);
-			benutzer1.setErstellteFilme(filme2);
+		//	benutzer1.setErstellteFilme(filme2);
 			benutzers.add(benutzer1);
 		}
 	}
@@ -69,9 +69,9 @@ public class BenutzerRest {
 		fillBenutzer();
 		Gson gson = new Gson();
 		for(Benutzer b: benutzers){
-			if(b.getId() == userid){
+		//	if(b.getId() == userid){
 				return gson.toJson(b);
-			}
+		//	}
 		}		
 		return keinErgebnisse();
 		
@@ -83,9 +83,9 @@ public class BenutzerRest {
 		fillBenutzer();
 		Gson gson = new Gson();
 		for(Benutzer b: benutzers){
-			if(b.getId() == userid){
-				return gson.toJson(b.getErstellteFilme());
-			}
+		//	if(b.getId() == userid){
+		//		return gson.toJson(b.getErstellteFilme());
+		//	}
 		}			
 		return keinErgebnisse();
 	}
@@ -96,13 +96,13 @@ public class BenutzerRest {
 		fillBenutzer();
 		Gson gson = new Gson();
 		for(Benutzer b: benutzers){
-			if(b.getId() == userid){
-				for(Film f: b.getErstellteFilme()){
-					if(f.getId() == filmId){
-						return gson.toJson(f);
-					}
-				}
-			}
+		//	if(b.getId() == userid){
+			//	for(Film f: b.getErstellteFilme()){
+				//	if(f.getId() == filmId){
+						//return gson.toJson(f);
+				//	}
+		//		}
+		//	}
 		}			
 		return keinErgebnisse();
 	}
@@ -111,7 +111,7 @@ public class BenutzerRest {
 	public Response createUser(@FormParam("name") String name, @FormParam("email") String email){
 		fillBenutzer();
 		Benutzer benutzer = new Benutzer();
-		benutzer.setId(Long.valueOf(benutzers.size()));
+	//	benutzer.setId(Long.valueOf(benutzers.size()));
 		benutzer.setBenutzername(name);
 		benutzer.setEmail(email);
 		benutzers.add(benutzer);

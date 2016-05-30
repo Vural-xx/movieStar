@@ -19,14 +19,23 @@ public class Kommentar implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2995107663554379051L;
-	private Integer id;
-	private String text;
-	private Kommentar kommentar;
-	private Benutzer ersteller;
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id")
+	private Integer id;
+	
+	@Column(name = "text")
+	private String text;
+	
+	@JoinColumn(name = "kommentar_id")
+	private Kommentar kommentar;
+
+	@OneToOne
+	@JoinColumn(name = "benutzer_id")
+	private Benutzer ersteller;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -35,7 +44,7 @@ public class Kommentar implements Serializable{
 		this.id = id;
 	}
 	
-	@Column(name = "text")
+	
 	public String getText() {
 		return text;
 	}
@@ -44,7 +53,7 @@ public class Kommentar implements Serializable{
 		this.text = text;
 	}
 	
-	@JoinColumn(name = "kommentar_id")
+	
 	public Kommentar getKommentar() {
 		return kommentar;
 	}
@@ -53,8 +62,6 @@ public class Kommentar implements Serializable{
 		this.kommentar = kommentar;
 	}
 	
-	@OneToOne
-	@JoinColumn(name = "benutzer_id")
 	public Benutzer getErsteller() {
 		return ersteller;
 	}
