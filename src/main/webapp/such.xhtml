@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a = "http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template = "/templates/commom-template.xhtml">
+	
+		<ui:define name="content">
+	<div class="container firstContainer">
+		<div class="row">
+		<div class="col-md-12 maTop100">
+		
+		
+		<h:form>
+		<h:inputText class="dpnone"  binding="#{jaja}"></h:inputText>
+		
+		<h:dataTable value="#{filmController.filmList}" var="fi" style="border-collapse: collapse" border="1" cellpadding="10px">
+		<h:column>
+		<f:facet name="header">Name</f:facet>
+		#{fi.name}
+		</h:column>
+			<h:column>
+		<f:facet name="header">Erscheinungsjahr</f:facet>
+		#{fi.erscheinungsjahr}
+		</h:column>
+			<h:column>
+		<f:facet name="header">Beschreibung</f:facet>
+		#{fi.beschreibung}
+		</h:column>
+		</h:dataTable>
+		</h:form>
+
+		</div>
+		
+		
+		
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<script>
+		$("#myform :input").tooltip({
+			position : "center right",
+			offset : [ -7, 10 ],
+			effect : "fade",
+			opacity : 0.7
+		});
+	</script>
+	<script type="text/javascript">
+		//<![CDATA[
+		$(window).load(function() { // makes sure the whole site is loaded
+			$('#status').fadeOut(); // will first fade out the loading animation
+			$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+			$('body').delay(350).css({
+				'overflow' : 'visible'
+			});
+		})
+		//]]>
+	</script>
+</ui:define>	
+</ui:composition>
+</html>

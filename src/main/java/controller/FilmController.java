@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -16,7 +18,19 @@ public class FilmController implements FilmFacade {
 	@ManagedProperty(value="#{film}")
 	private Film film;
 	private FilmDAO filmDAO;
+
+	List<Film> filmList = new ArrayList<Film>();
 	
+	 
+	 
+	public List<Film> getFilmList() {
+		return filmList;
+	}
+
+	public void setFilmList(List<Film> filmList) {
+		this.filmList = filmList;
+	}
+
 	public FilmController() {
 		filmDAO = new FilmDAO();
 	}
@@ -34,7 +48,7 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public void filmSuchen(String suche) {
-		// TODO Auto-generated method stub
+		filmList = filmDAO.filmSuchen(suche);
 		
 	}
 

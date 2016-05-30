@@ -1,9 +1,11 @@
 package Database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 
 import model.Film;
 import model.Filter;
+import util.HibernateUtil;
 
 public class FilmDAO implements interfaces.FilmDAO {
 	
@@ -65,10 +68,33 @@ public class FilmDAO implements interfaces.FilmDAO {
 	}
 
 	@Override
-	public List<Film> filmSuchen(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Film> filmSuchen(String film) {
+		SessionFactory sessionFactory = con.buildSessionFactory();
+		Session s= null;
+		try {
+			s= HibernateUtil.getSessionFactory().getCurrentSession();
+		} catch (org.hibernate.HibernateException he) {
+			s= sessionFactory.openSession();
+		}
+		
+		
+		List<Film> filmList= new ArrayList<Film>();
+		
+		try {
+			s.beginTransaction();
+			System.out.println(film);
+			Query q= s.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
+			q.setParameter("keyWord", "%"+film+"%");
+			filmList = q.list();
+			s.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			s.getTransaction().rollback();
+			// TODO: handle exception
+		}
+		return filmList;
 	}
+	
 
 	@Override
 	public void filmBewerten(Long FID, double sterne) {
