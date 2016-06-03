@@ -3,12 +3,16 @@ package model;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,15 +25,16 @@ public class Kommentar implements Serializable{
 	private static final long serialVersionUID = -2995107663554379051L;
 	
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
 	
 	@Column(name = "text")
 	private String text;
 	
+	@OneToMany
 	@JoinColumn(name = "kommentar_id")
-	private Kommentar kommentar;
+	private List<Kommentar> kommentar = new ArrayList<Kommentar>(0);
 
 	@OneToOne
 	@JoinColumn(name = "benutzer_id")
@@ -53,14 +58,14 @@ public class Kommentar implements Serializable{
 		this.text = text;
 	}
 	
-	
-	public Kommentar getKommentar() {
+	public List<Kommentar> getKommentar() {
 		return kommentar;
 	}
-	
-	public void setKommentar(Kommentar kommentar) {
+
+	public void setKommentar(List<Kommentar> kommentar) {
 		this.kommentar = kommentar;
 	}
+	
 	
 	public Benutzer getErsteller() {
 		return ersteller;

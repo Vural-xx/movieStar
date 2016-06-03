@@ -63,6 +63,7 @@ public class Film implements Serializable{
 	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
 	
 	@OneToMany
+	@JoinColumn(name = "unterkommentare_id")
 	private List<Kommentar> kommentare;
 	
 	/*
@@ -73,14 +74,16 @@ public class Film implements Serializable{
 	*/
 	
 	@Column(name="titelbild")
+	@Lob
 	private Blob titelbild;
 	
+	/*
 	@Column(name = "gallerie" )
 	@Lob
-	private List<Blob> gallerie = new ArrayList<Blob>(0);
+	private List<Blob> gallerie = new ArrayList<Blob>(0);*/
 	
 	@OneToMany
-	@Column(name="verwandte_filme")
+	@JoinColumn(name="verwandte_filme_ids")
 	private List<Film> verwandteFilme = new ArrayList<Film>(0);
 	
 	public String getName() {
@@ -165,12 +168,13 @@ public class Film implements Serializable{
 		this.titelbild = titelbild;
 	}
 	
+	/*
 	public List<Blob> getGallerie() {
 		return gallerie;
 	}
 	public void setGallerie(List<Blob> gallerie) {
 		this.gallerie = gallerie;
-	}
+	}*/
 	
 	
 	public List<Film> getVerwandteFilme() {

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import enums.Rolle;
 import model.Benutzer;
 import model.Film;
 import model.Kommentar;
@@ -25,29 +26,24 @@ public class testKommentar {
 			benutzer.setBenutzername("test");
 			benutzer.setEmail("test@test.de");
 			benutzer.setPasswort("Test#124!");
+			benutzer.setRolle(Rolle.BENUTZER);
 			session.save(benutzer);
 	
 			benutzer.getErstellteFilme().add(film);
 			film.setErsteller(benutzer);
 			
+			Kommentar kommentar = new Kommentar();
+			kommentar.setErsteller(benutzer);
+			kommentar.setText("Hier kommt ein Kommentar");
+			List<Kommentar>kommentare = new ArrayList<Kommentar>();
+			kommentare.add(kommentar);
+			film.setKommentare(kommentare);
+			session.save(kommentar);
 			session.save(film);
 			
-			/*
-			
-			Kommentar kommentar = new Kommentar();
-			kommentar.setId(1);
-			kommentar.setText("Hallo");
-			Benutzer ersteller = new Benutzer();
-			ersteller.setEmail("vural@test.de");
-			ersteller.setBenutzername("vural");
-			kommentar.setErsteller(ersteller);
-
-			session.save(ersteller);
-			session.save(kommentar);*/
-
+		
 			session.getTransaction().commit();
 			System.out.println("Done");
-		// TODO Auto-generated method stub
 
 	}
 

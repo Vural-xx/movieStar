@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import enums.FilmRolle;
 
 @Entity
-@Table(name = "Benutzer")
+@Table(name = "Mitwirkende")
 public class Mitwirkende implements Serializable {
 
 	/**
