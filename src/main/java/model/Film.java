@@ -2,10 +2,12 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,6 +15,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -50,33 +54,34 @@ public class Film implements Serializable{
 	
 	@Column(name = "sterne")
 	private double sterne;
-	
-	/*
-	
-	@ManyToMany
-	@JoinColumn(name = "mitwirkende_id")
-	private List<Mitwirkende> mitwirkende;
+		
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "film_mitwirkende", joinColumns = { 
+			@JoinColumn(name = "film_name", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "mitwirkende_name", 
+					nullable = false, updatable = false) })
+	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
 	
 	@OneToMany
-	@JoinColumn(name = "kommentare_id")
 	private List<Kommentar> kommentare;
 	
+	/*
 	@OneToMany
 	@JoinColumn(name = "genre_id")
 	@Enumerated(EnumType.STRING)
 	private List<Genre> genre;
+	*/
 	
 	@Column(name="titelbild")
 	private Blob titelbild;
 	
+	@Column(name = "gallerie" )
+	@Lob
+	private List<Blob> gallerie = new ArrayList<Blob>(0);
+	
 	@OneToMany
-	@JoinColumn(name = "gallerie")
-	private List<Blob> gallerie;
-	
 	@Column(name="verwandte_filme")
-	private List<Film> verwandteFilme;
-	
-	*/
+	private List<Film> verwandteFilme = new ArrayList<Film>(0);
 	
 	public String getName() {
 		return name;
@@ -126,7 +131,7 @@ public class Film implements Serializable{
 	public void setSterne(double sterne) {
 		this.sterne = sterne;
 	}
-	/*
+	
 	
 	public List<Mitwirkende> getMitwirkende() {
 		return mitwirkende;
@@ -144,13 +149,13 @@ public class Film implements Serializable{
 		this.kommentare = kommentare;
 	}
 	
-	
+	/*
 	public List<Genre> getGenre() {
 		return genre;
 	}
 	public void setGenre(List<Genre> genre) {
 		this.genre = genre;
-	} 
+	} */
 	
 	
 	public Blob getTitelbild() {
@@ -173,6 +178,6 @@ public class Film implements Serializable{
 	}
 	public void setVerwandteFilme(List<Film> verwandteFilme) {
 		this.verwandteFilme = verwandteFilme;
-	} */
+	} 
 
 }
