@@ -47,9 +47,9 @@ public static List<Film> filme = new ArrayList<Film>();
 		fillFilme();
 		Gson gson = new Gson();
 		for(Film f: filme){
-			if(f.getId() == filmid){
+		//	if(f.getId() == filmid){
 				return gson.toJson(f);
-			}
+		//	}
 		}		
 		return keinErgebnisse();
 		
@@ -59,7 +59,7 @@ public static List<Film> filme = new ArrayList<Film>();
 	public Response createFilm(@FormParam("name") String name, @FormParam("beschreibung") String beschreibung){
 		fillFilme();
 		Film film = new Film();
-		film.setId(Long.valueOf(filme.size()));
+	//	film.setId(Long.valueOf(filme.size()));
 		film.setName(name);
 		film.setBeschreibung(beschreibung);
 		return Response.status(200).build();

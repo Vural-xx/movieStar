@@ -2,6 +2,7 @@ package abstracts;
 
 public abstract class AbstractEntity {
 
+
 	private Long id;
 
 	public Long getId() {
