@@ -86,7 +86,9 @@ public class SQLDatabase implements BenutzerDAO {
 			criteria.add(Restrictions.or(
 					Restrictions.eq("email", benutzer.getEmail()), 
 					Restrictions.eq("benutzername", benutzer.getEmail())));
-			criteria.add(Restrictions.eq("passwort", benutzer.getPasswort()));
+			if(!benutzer.getPasswort().equals("")){
+				criteria.add(Restrictions.eq("passwort", benutzer.getPasswort()));
+			}
 			List results = criteria.list();
 			if (results.size() == 0) {
 				return null;
