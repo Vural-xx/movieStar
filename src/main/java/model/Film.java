@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -66,12 +67,12 @@ public class Film implements Serializable{
 	@JoinColumn(name = "unterkommentare_id")
 	private List<Kommentar> kommentare;
 	
-	/*
-	@OneToMany
-	@JoinColumn(name = "genre_id")
+	
+	@ElementCollection(targetClass = Genre.class)
+	@Column(name = "genre", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private List<Genre> genre;
-	*/
+	
 	
 	@Column(name="titelbild")
 	@Lob
