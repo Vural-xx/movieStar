@@ -5,6 +5,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -78,26 +82,19 @@ public class SQLDatabase implements BenutzerDAO {
 		session.beginTransaction();
 
 		try {
-			String selectionQuery = "from Benutzer where (email = :email OR benutzername = :benutzername)";
-			boolean passwortGesetzt = false;
-			if (!benutzer.getPasswort().equals("")) {
-				selectionQuery = selectionQuery + " AND passwort = :passwort ";
-				passwortGesetzt = true;
-			}
-			Query query = session.createQuery(selectionQuery);
-			query.setParameter("email", benutzer.getEmail());
-			query.setParameter("benutzername", benutzer.getEmail());
-			if (passwortGesetzt) {
-				query.setParameter("passwort", benutzer.getPasswort());
-			}
-			List results = query.list();
+			Criteria criteria = session.createCriteria(Benutzer.class);
+			criteria.add(Restrictions.or(
+					Restrictions.eq("email", benutzer.getEmail()), 
+					Restrictions.eq("benutzername", benutzer.getEmail())));
+			criteria.add(Restrictions.eq("passwort", benutzer.getPasswort()));
+			List results = criteria.list();
 			if (results.size() == 0) {
 				return null;
 			} else {
 				Benutzer dbBenutzer = (Benutzer) results.get(0);
 				return dbBenutzer;
 			}
-
+			
 		} catch (Exception e) {
 			System.err.println("Fail");
 			sqlStatus = "Suche fehlgeschlagen";
