@@ -9,57 +9,28 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import model.Benutzer;
 import model.Film;
 import model.Filter;
+import util.HibernateUtil;
 
 public class FilmDAO implements interfaces.FilmDAO {
 	
-	Configuration con = new Configuration();
-	public static String sqlNotification = "";
-	private static String sqlStatus = "";
+	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
-	public FilmDAO(){
-		con.configure("local.sql.cfg.xml");
-		con.addResource("film.hbm.xml");
-	}
-
-	public String getSqlStatus() {
-		return sqlStatus;
-	}
-
-	public void setSqlStatus(String sqlStatus) {
-		FilmDAO.sqlStatus = sqlStatus;
-	}
-
-	public String getSqlNotification() {
-		return sqlNotification;
-	}
-
-	public void setSqlNotification(String sqlNotification) {
-		FilmDAO.sqlNotification = sqlNotification;
-	}
 
 	@Override
 	public Film filmErstellen(Film film) {
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 		System.out.println(film.getName());
-
-		Transaction transaction = session.beginTransaction();
-
+		session.beginTransaction();
 		try {
 			session.save(film);
-			System.out.println("Object Saved");
-			transaction.commit();
-			session.close();
-			sessionFactory.close();
-			setSqlStatus("Film erfolgreich angelegt");
-			System.out.println(sqlStatus);
+			session.getTransaction().commit();
+			System.out.println("Film erfolgreich angelegt");
 			return film;
 
 		} catch (Exception e) {
 			System.err.println("Fail");
-			sqlStatus = "Film anlegen fehlgeschlagen";
 			return null;
 		}
 	}

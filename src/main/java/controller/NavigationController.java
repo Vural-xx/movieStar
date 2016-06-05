@@ -23,5 +23,13 @@ public class NavigationController  {
     public String toLogin() {
         return "/login.xhtml";
     }
+    
+    /**
+     * Go to login page.
+     * @return Login page name.
+     */
+    public String toFilmListe() {
+        return "/secured/test.xhtml";
+    }
 
 }

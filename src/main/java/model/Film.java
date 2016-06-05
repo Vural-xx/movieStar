@@ -50,7 +50,7 @@ public class Film implements Serializable{
 	private String dauer;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ersteller", nullable = false)
+	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
 	
 	@Column(name = "sterne")
@@ -58,9 +58,8 @@ public class Film implements Serializable{
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "film_mitwirkende", joinColumns = { 
-			@JoinColumn(name = "film_name", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "mitwirkende_name", 
-					nullable = false, updatable = false) })
+			@JoinColumn(name = "film_name") }, 
+			inverseJoinColumns = { @JoinColumn(name = "mitwirkende_name") })
 	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
 	
 	@OneToMany

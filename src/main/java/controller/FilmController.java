@@ -16,7 +16,10 @@ public class FilmController implements FilmFacade {
 	@ManagedProperty(value="#{film}")
 	private Film film;
 	private FilmDAO filmDAO;
+	@ManagedProperty(value="#{navigationController}")
+	private NavigationController navigationController;
 	
+
 	public FilmController() {
 		filmDAO = new FilmDAO();
 	}
@@ -25,9 +28,18 @@ public class FilmController implements FilmFacade {
 		this.film = film;
 	}
 
+	public NavigationController getNavigationController() {
+		return navigationController;
+	}
+
+	public void setNavigationController(NavigationController navigationController) {
+		this.navigationController = navigationController;
+	}
+	
 	@Override
-	public void filmErstellen(Film film) {
+	public String filmErstellen(Film film) {
 		filmDAO.filmErstellen(film);
+		return navigationController.toFilmListe();
 		// TODO Auto-generated method stub
 		
 	}

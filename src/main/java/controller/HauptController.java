@@ -50,8 +50,8 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public void filmErstellen(Film film) {
-		filmController.filmErstellen(film);
+	public String filmErstellen(Film film) {
+		return filmController.filmErstellen(film);
 		// TODO Auto-generated method stub
 		
 	}
