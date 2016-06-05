@@ -2,6 +2,7 @@ package controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
@@ -10,6 +11,7 @@ import interfaces.BenutzerFacade;
 import model.Benutzer;
 
 @ManagedBean(name="BenutzerController")
+@SessionScoped
 public class BenutzerController implements BenutzerFacade {
 
 	SQLDatabase sqlDatabase = new SQLDatabase();
@@ -17,6 +19,7 @@ public class BenutzerController implements BenutzerFacade {
 	String nutzername;
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
+	private boolean loggedIn = false;
 
 	public boolean isEmailVorhanden() {
 		return emailVorhanden;
@@ -66,6 +69,7 @@ public class BenutzerController implements BenutzerFacade {
 	public String logIn(String logIn, String passwort) {
 		Benutzer benutzer = sqlDatabase.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
+			setLoggedIn(true);
 			return "index";
 		}
 		return "false";
@@ -120,6 +124,14 @@ public class BenutzerController implements BenutzerFacade {
 		Benutzer benutzer = new Benutzer(nutzername);
 		nutzernameVorhanden = sqlDatabase.benutzerVorhanden(benutzer, "Benutzername");
 		return nutzernameVorhanden;
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 
 }
