@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -59,4 +60,8 @@ public class FilmDAO implements interfaces.FilmDAO {
 		return null;
 	}
 
+	public List<Film> findAlle(){
+		Criteria criteria = session.createCriteria(Film.class);
+		return criteria.list();
+	}
 }

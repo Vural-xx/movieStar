@@ -29,7 +29,7 @@ public class NavigationController  {
      * @return Login page name.
      */
     public String toFilmListe() {
-        return "/secured/test.xhtml";
+        return "/filmListe.xhtml";
     }
 
 }

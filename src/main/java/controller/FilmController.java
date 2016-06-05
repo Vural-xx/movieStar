@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -18,6 +20,7 @@ public class FilmController implements FilmFacade {
 	private FilmDAO filmDAO;
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
+	private List filme;
 	
 
 	public FilmController() {
@@ -39,7 +42,7 @@ public class FilmController implements FilmFacade {
 	@Override
 	public String filmErstellen(Film film) {
 		filmDAO.filmErstellen(film);
-		return navigationController.toFilmListe();
+		return listeVorbereiten();
 		// TODO Auto-generated method stub
 		
 	}
@@ -72,6 +75,19 @@ public class FilmController implements FilmFacade {
 	public void filmFiltern(Filter filter) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public String listeVorbereiten(){
+		this.setFilme(filmDAO.findAlle());
+		return navigationController.toFilmListe();
+	}
+
+	public List getFilme() {
+		return filme;
+	}
+
+	public void setFilme(List filme) {
+		this.filme = filme;
 	}
 
 }
