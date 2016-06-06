@@ -15,7 +15,7 @@ import model.Benutzer;
 @SessionScoped
 public class BenutzerController implements BenutzerFacade {
 
-	BenutzerDAO benutzerDAO = new BenutzerDAO();
+	BenutzerDAO benutzerDAO;
 	@ManagedProperty(value="#{benutzer}")
 	private Benutzer benutzer;
 	String emailAdresse;
@@ -23,6 +23,10 @@ public class BenutzerController implements BenutzerFacade {
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
 	private boolean loggedIn = false;
+	
+	public BenutzerController() {
+		benutzerDAO = new BenutzerDAO();
+	}
 	
 	public Benutzer getBenutzer() {
 		return benutzer;

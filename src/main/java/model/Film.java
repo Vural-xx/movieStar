@@ -66,6 +66,9 @@ public class Film implements Serializable{
 	@JoinColumn(name = "unterkommentare_id")
 	private List<Kommentar> kommentare;
 	
+	@OneToMany
+	@JoinColumn(name = "bewertungen_id")
+	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)
 	@Column(name = "genre", nullable = false)
@@ -182,6 +185,12 @@ public class Film implements Serializable{
 	}
 	public void setVerwandteFilme(List<Film> verwandteFilme) {
 		this.verwandteFilme = verwandteFilme;
+	}
+	public List <Bewertung> getBewertungen() {
+		return bewertungen;
+	}
+	public void setBewertungen(List <Bewertung> bewertungen) {
+		this.bewertungen = bewertungen;
 	} 
 
 }
