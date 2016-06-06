@@ -71,11 +71,21 @@ public class Film implements Serializable{
 	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)
-	@Column(name = "genre", nullable = false)
+	@Column(name = "genres", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private List<Genre> genre;
+	private List<Genre> genres;
+	
+	@Column(name = "genres", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Genre genre;
 	
 	
+	public Genre getGenre() {
+		return genre;
+	}
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 	@Column(name="titelbild")
 	@Lob
 	private Blob titelbild;
@@ -155,13 +165,13 @@ public class Film implements Serializable{
 		this.kommentare = kommentare;
 	}
 	
-	/*
-	public List<Genre> getGenre() {
-		return genre;
+	
+	public List<Genre> getGenres() {
+		return genres;
 	}
-	public void setGenre(List<Genre> genre) {
-		this.genre = genre;
-	} */
+	public void setGenres(List<Genre> genre) {
+		this.genres = genre;
+	}
 	
 	
 	public Blob getTitelbild() {

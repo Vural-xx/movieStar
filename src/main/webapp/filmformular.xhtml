@@ -25,13 +25,10 @@
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>
 					<div class="col-xs-10 inputpd-80-768">
-					<!-- 
 							<h:selectOneMenu class="inputmarginbottom-15"
-								value="#{user.favCoffee1}">
-								<f:selectItem itemValue="Cream Latte" itemLabel="Drama" />
-								<f:selectItem itemValue="Extreme Mocha" itemLabel="Komödie" />
-								<f:selectItem itemValue="Buena Vista" itemLabel="Horror" />
-							</h:selectOneMenu>  -->
+								value="#{film.genre}">
+								<f:selectItems value="#{filmController.genreValues}" />
+							</h:selectOneMenu>  
 					</div>
 				</div>
 				<div class="row">

@@ -5,8 +5,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 import Database.FilmDAO;
+import enums.Genre;
 import interfaces.FilmFacade;
 import model.Film;
 import model.Filter;
@@ -89,5 +91,14 @@ public class FilmController implements FilmFacade {
 	public void setFilme(List filme) {
 		this.filme = filme;
 	}
+	
+	public SelectItem[] getGenreValues() {
+	    SelectItem[] items = new SelectItem[Genre.values().length];
+	    int i = 0;
+	    for(Genre g: Genre.values()) {
+	      items[i++] = new SelectItem(g, g.getLabel());
+	    }
+	    return items;
+	  }
 
 }
