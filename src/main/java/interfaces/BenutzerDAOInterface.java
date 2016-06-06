@@ -11,6 +11,8 @@ public interface BenutzerDAOInterface {
 	
 	public boolean benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername);
 	
+	public Benutzer benutzerUpdate(Benutzer benutzer);
+	
 	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email);
 	
 	public boolean kommentareLoeschen(Long KID);

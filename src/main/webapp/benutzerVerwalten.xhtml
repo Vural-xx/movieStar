@@ -5,7 +5,8 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a = "http://xmlns.jcp.org/jsf/passthrough">
 <ui:composition template = "/templates/commom-template.xhtml">
 	
 		<ui:define name="content">
@@ -16,22 +17,34 @@
                     <h1>Benutzerdaten ändern</h1>
     		<h:form>
    				<h:outputLabel>Bitte geben Sie ihre neue E-Mail Adresse ein:</h:outputLabel>
-    			<h:inputText id="email_input" binding="#{input1}">
+    			<h:inputText id="email_input" value = "#{BenutzerController.benutzer.email}" binding="#{input1}">
      					<f:validator validatorId="EmailValidation"></f:validator>
  				</h:inputText>
-    			<h:outputLabel>Bitte geben Sie ihren alten Benutzernamen ein:</h:outputLabel>
-   				<h:inputText id="benutzername_input2" binding="#{input5}"  />
  				<h:outputLabel>Bitte geben Sie ihren neuen Benutzernamen ein:</h:outputLabel>
-    			<h:inputText id="benutzername_input" binding="#{input2}"  />
+    			<h:inputText id="benutzername_input" value="#{BenutzerController.benutzer.benutzername}" binding="#{input2}"  />
         		<h:outputLabel>Bitte geben Sie ihr altes Passwort ein:</h:outputLabel>
 				<h:inputSecret id="password_input2" binding="#{input4}"  />
   				<h:outputLabel>Bitte geben Sie ihr neues Passwort ein:</h:outputLabel>
-    			<h:inputSecret id="password_input" binding="#{input3}"  />
+    			
+    			
+    			<h:inputSecret
+							title="mind. 1 Zahl, mind. 1 Großbuchstaben, mind. 1 Kleinbuchstaben, 
+							mind. 1 Sonderzeichen (@#$%), 6 - 20 Zeichen lang"
+							id="password_input" binding="#{input3}" size="40"
+							a:placeholder="Password">
+							<f:validator validatorId="PasswordValidation"></f:validator>
+						</h:inputSecret>
+						<h:message for="password_input" style="color:red" />
 
-    
+						<h:panelGroup id="speicherButton">
+							<h:commandButton value="Speichern"
+								action="#{BenutzerController.benutzerVerwalten(input1.value,input2.value, input4.value)}"
+								update=":benutzer, :message"
+								rendered="#{!BenutzerController.nutzernameVorhanden and !BenutzerController.emailVorhanden}">
+							</h:commandButton>
+						</h:panelGroup>
 
-        		<h:commandButton value="Speichern" action="#{BenutzerController.benutzerVerwalten(input1.value,input3.value)}">
-         		</h:commandButton>
+
  
         		<h:outputLabel class="statusMessage" id="outputMessage" value="#{benutzerDAO.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
         

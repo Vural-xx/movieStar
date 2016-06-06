@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,6 +24,8 @@ import enums.Rolle;
 
 @Entity
 @Table(name = "Benutzer")
+@ManagedBean(name = "benutzer")
+@SessionScoped
 public class Benutzer implements Serializable {
 
 	/**

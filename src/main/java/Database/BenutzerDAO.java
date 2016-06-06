@@ -140,6 +140,18 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public Benutzer benutzerUpdate(Benutzer benutzer) {
+		// TODO Auto-generated method stub
+		session.beginTransaction();
+		
+		session.update(benutzer);
+		session.getTransaction().commit();
+		
+		
+		return null;
+	}
 
 
 
@@ -160,5 +172,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 	public void statusAenderung(AjaxBehaviorEvent event) {
 		setSQLnotification(getSqlStatus());
 	}
+
+
 
 }

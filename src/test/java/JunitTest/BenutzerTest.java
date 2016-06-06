@@ -1,4 +1,4 @@
-package unitTests;
+package JunitTest;
 
 import org.junit.Test;
 
@@ -36,3 +36,4 @@ public class BenutzerTest {
 	}
 
 }
+

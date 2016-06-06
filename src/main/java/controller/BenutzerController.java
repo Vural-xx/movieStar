@@ -2,6 +2,7 @@ package controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
@@ -15,11 +16,21 @@ import model.Benutzer;
 public class BenutzerController implements BenutzerFacade {
 
 	BenutzerDAO benutzerDAO = new BenutzerDAO();
+	@ManagedProperty(value="#{benutzer}")
+	private Benutzer benutzer;
 	String emailAdresse;
 	String nutzername;
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
 	private boolean loggedIn = false;
+	
+	public Benutzer getBenutzer() {
+		return benutzer;
+	}
+
+	public void setBenutzer(Benutzer benutzer) {
+		this.benutzer = benutzer;
+	}
 
 	public boolean isEmailVorhanden() {
 		return emailVorhanden;
@@ -70,6 +81,7 @@ public class BenutzerController implements BenutzerFacade {
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
 			setLoggedIn(true);
+			this.benutzer = benutzer;
 			return "index";
 		}
 		return "false";
@@ -88,6 +100,12 @@ public class BenutzerController implements BenutzerFacade {
 	// Update Benutzer
 	public void benutzerVerwalten(String email, String benutzername, String passwort) {
 		// TODO Auto-generated method stub
+		benutzer.setEmail(email);
+		benutzer.setBenutzername(benutzername);
+		if(benutzer.getPasswort().equals(passwort)){
+			benutzer.setPasswort(passwort);	
+		}
+		benutzerDAO.benutzerUpdate(benutzer);
 		// Benutzerdaten suchen, überprüfung, ob Passwort richtig ist, dann
 		// überschreiben
 
