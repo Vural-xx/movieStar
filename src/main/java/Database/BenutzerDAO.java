@@ -31,6 +31,10 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 	
 	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
+	public BenutzerDAO() {
+		
+	}
+	
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
