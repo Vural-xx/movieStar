@@ -15,7 +15,7 @@ import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
-public class FilmDAO implements interfaces.FilmDAO {
+public class FilmDAO implements interfaces.FilmDAOInterface {
 	
 	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	

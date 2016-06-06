@@ -19,7 +19,7 @@ public class testKommentar {
 
 			session.beginTransaction();
 			Film film = new Film();
-			film.setName("testFilm");
+			film.setName("testFilme");
 			film.setBeschreibung("testBeschreibung");
 			
 			Benutzer benutzer = new Benutzer();

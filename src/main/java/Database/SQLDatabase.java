@@ -16,14 +16,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import enums.Status;
-import interfaces.BenutzerDAO;
+import interfaces.BenutzerDAOInterface;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
 @ManagedBean(name = "SQLDatabase")
-public class SQLDatabase implements BenutzerDAO {
+public class SQLDatabase implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";

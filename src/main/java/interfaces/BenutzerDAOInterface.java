@@ -3,7 +3,7 @@ package interfaces;
 import enums.Status;
 import model.Benutzer;
 
-public interface BenutzerDAO {
+public interface BenutzerDAOInterface {
 	
 	public boolean benutzerErstellen(Benutzer benutzer); 
 	

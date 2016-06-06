@@ -5,7 +5,7 @@ import java.util.List;
 import model.Film;
 import model.Filter;
 
-public interface FilmDAO {
+public interface FilmDAOInterface {
 	
 	
 	public Film filmErstellen(Film film); 
