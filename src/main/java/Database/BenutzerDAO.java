@@ -22,8 +22,8 @@ import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
-@ManagedBean(name = "SQLDatabase")
-public class SQLDatabase implements BenutzerDAOInterface {
+@ManagedBean(name = "benutzerDAO")
+public class BenutzerDAO implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
@@ -31,7 +31,7 @@ public class SQLDatabase implements BenutzerDAOInterface {
 	
 	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
-	public SQLDatabase(){
+	public BenutzerDAO(){
 		con.configure("local.sql.cfg.xml");
 		con.addResource("user.hbm.xml");
 		con.addResource("film.hbm.xml");
@@ -42,7 +42,7 @@ public class SQLDatabase implements BenutzerDAOInterface {
 	}
 
 	public void setSqlStatus(String sqlStatus) {
-		SQLDatabase.sqlStatus = sqlStatus;
+		BenutzerDAO.sqlStatus = sqlStatus;
 	}
 
 	public String getSQLnotification() {

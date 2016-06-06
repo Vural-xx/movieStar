@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import Database.SQLDatabase;
+import Database.BenutzerDAO;
 import interfaces.BenutzerFacade;
 import model.Benutzer;
 
@@ -14,7 +14,7 @@ import model.Benutzer;
 @SessionScoped
 public class BenutzerController implements BenutzerFacade {
 
-	SQLDatabase sqlDatabase = new SQLDatabase();
+	BenutzerDAO benutzerDAO = new BenutzerDAO();
 	String emailAdresse;
 	String nutzername;
 	private boolean emailVorhanden = false;
@@ -55,7 +55,7 @@ public class BenutzerController implements BenutzerFacade {
 
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
-		boolean registrieren = sqlDatabase.benutzerErstellen(benutzer);
+		boolean registrieren = benutzerDAO.benutzerErstellen(benutzer);
 		System.out.println(nutzername);
 		if (registrieren = true) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -67,7 +67,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	public String logIn(String logIn, String passwort) {
-		Benutzer benutzer = sqlDatabase.benutzerSuchen(new Benutzer(logIn, passwort));
+		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
 			setLoggedIn(true);
 			return "index";
@@ -115,14 +115,14 @@ public class BenutzerController implements BenutzerFacade {
 	@Override
 	public boolean getEmailInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(emailAdresse, "email");
-		emailVorhanden = sqlDatabase.benutzerVorhanden(benutzer, "E-mail");
+		emailVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "E-mail");
 		return emailVorhanden;
 	}
 
 	@Override
 	public boolean getNutzernameInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(nutzername);
-		nutzernameVorhanden = sqlDatabase.benutzerVorhanden(benutzer, "Benutzername");
+		nutzernameVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "Benutzername");
 		return nutzernameVorhanden;
 	}
 

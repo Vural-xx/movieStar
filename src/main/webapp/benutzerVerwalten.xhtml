@@ -33,7 +33,7 @@
         		<h:commandButton value="Speichern" action="#{BenutzerController.benutzerVerwalten(input1.value,input3.value)}">
          		</h:commandButton>
  
-        		<h:outputLabel class="statusMessage" id="outputMessage" value="#{SQLDatabase.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
+        		<h:outputLabel class="statusMessage" id="outputMessage" value="#{benutzerDAO.SQLnotification}" infoClass="infoMessage"></h:outputLabel>
         
     		</h:form>
              	</div>
