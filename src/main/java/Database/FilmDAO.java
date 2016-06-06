@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import model.Benutzer;
 import model.Film;
@@ -63,5 +64,14 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	public List<Film> findAlle(){
 		Criteria criteria = session.createCriteria(Film.class);
 		return criteria.list();
+	}
+
+	@Override
+	public Film filmSuchenByName(String name) {
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Film.class);
+		criteria.add(Restrictions.eq("name", name));
+		List results = criteria.list();
+		return (Film) results.get(0);
 	}
 }

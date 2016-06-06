@@ -17,5 +17,7 @@ public interface FilmDAOInterface {
 	public void filmKommentieren(Long FID, String kommentar);
 	
 	public List<Film> filmFiltern(Filter filter);
+	
+	public Film filmSuchenByName(String name);
 
 }

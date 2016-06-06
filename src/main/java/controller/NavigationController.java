@@ -31,5 +31,13 @@ public class NavigationController  {
     public String toFilmListe() {
         return "/filmListe.xhtml";
     }
+    
+    /**
+     * Go to login page.
+     * @return Login page name.
+     */
+    public String toFilmFormular() {
+        return "/filmformular?faces-redirect=true";
+    }
 
 }

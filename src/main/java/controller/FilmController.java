@@ -100,5 +100,10 @@ public class FilmController implements FilmFacade {
 	    }
 	    return items;
 	  }
+	
+	public String selectFilm(String  name){
+		film = filmDAO.filmSuchenByName(name);
+		return "filmformular?faces-redirect=true";
+	}
 
 }
