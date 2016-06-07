@@ -12,6 +12,15 @@
 			<to-view-id>/index.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/filmListe.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{filmController.selectFilm}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/filmformular.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 
 	<application>

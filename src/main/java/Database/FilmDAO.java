@@ -6,90 +6,54 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
+import model.Benutzer;
 import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
-public class FilmDAO implements interfaces.FilmDAO {
+public class FilmDAO implements interfaces.FilmDAOInterface {
 	
-	Configuration con = new Configuration();
-	public static String sqlNotification = "";
-	private static String sqlStatus = "";
+	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
-	public FilmDAO(){
-		con.configure("local.sql.cfg.xml");
-		con.addResource("film.hbm.xml");
-	}
-
-	public String getSqlStatus() {
-		return sqlStatus;
-	}
-
-	public void setSqlStatus(String sqlStatus) {
-		FilmDAO.sqlStatus = sqlStatus;
-	}
-
-	public String getSqlNotification() {
-		return sqlNotification;
-	}
-
-	public void setSqlNotification(String sqlNotification) {
-		FilmDAO.sqlNotification = sqlNotification;
-	}
 
 	@Override
 	public Film filmErstellen(Film film) {
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 		System.out.println(film.getName());
-
-		Transaction transaction = session.beginTransaction();
-
+		session.beginTransaction();
 		try {
 			session.save(film);
-			System.out.println("Object Saved");
-			transaction.commit();
-			session.close();
-			sessionFactory.close();
-			setSqlStatus("Film erfolgreich angelegt");
-			System.out.println(sqlStatus);
+			session.getTransaction().commit();
+			System.out.println("Film erfolgreich angelegt");
 			return film;
 
 		} catch (Exception e) {
 			System.err.println("Fail");
-			sqlStatus = "Film anlegen fehlgeschlagen";
 			return null;
 		}
 	}
 
 	@Override
 	public List<Film> filmSuchen(String film) {
-		SessionFactory sessionFactory = con.buildSessionFactory();
-		Session s= null;
-		try {
-			s= HibernateUtil.getSessionFactory().getCurrentSession();
-		} catch (org.hibernate.HibernateException he) {
-			s= sessionFactory.openSession();
-		}
-		
 		
 		List<Film> filmList= new ArrayList<Film>();
 		
 		try {
-			s.beginTransaction();
+			session.beginTransaction();
 			System.out.println(film);
-			Query q= s.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
+			Query q= session.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
 			q.setParameter("keyWord", "%"+film+"%");
 			filmList = q.list();
-			s.getTransaction().commit();
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			s.getTransaction().rollback();
+			session.getTransaction().rollback();
 			// TODO: handle exception
 		}
 		return filmList;
@@ -114,4 +78,17 @@ public class FilmDAO implements interfaces.FilmDAO {
 		return null;
 	}
 
+	public List<Film> findAlle(){
+		Criteria criteria = session.createCriteria(Film.class);
+		return criteria.list();
+	}
+
+	@Override
+	public Film filmSuchenByName(String name) {
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Film.class);
+		criteria.add(Restrictions.eq("name", name));
+		List results = criteria.list();
+		return (Film) results.get(0);
+	}
 }

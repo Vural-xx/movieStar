@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/templates/commom-template.xhtml">
+	<ui:define name="content">
+		<div class="container-fluid firstContainer container-btrap-clear ">
+
+			<h:form>
+				<h:dataTable value="#{filmController.filme}" var="f"
+					styleClass="order-table" headerClass="order-table-header"
+					rowClasses="order-table-odd-row,order-table-even-row">
+
+					<h:column>
+						<!-- column header -->
+						<f:facet name="header">Name</f:facet>
+						<!-- row record -->
+						<h:commandLink action="#{filmController.selectFilm(f.name)}"
+							value="#{f.name}" />
+
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Beschreibung</f:facet>
+    				#{f.beschreibung}
+    			</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+
+		</div>
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			$(window).load(function() { // makes sure the whole site is loaded
+				$('#status').fadeOut(); // will first fade out the loading animation
+				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+				$('body').delay(350).css({
+					'overflow' : 'visible'
+				});
+			})
+			//]]>
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+</html>
+

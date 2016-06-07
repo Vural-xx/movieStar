@@ -5,9 +5,9 @@ import model.Filter;
 
 public interface FilmFacade {
 	
-	public void filmErstellen(Film film);
+	public String filmErstellen(Film film);
 	
-	public void filmSuchen(String suche);
+	public String filmSuchen(String suche);
 	
 	public void filmSuchenErweitert(Film film);
 	

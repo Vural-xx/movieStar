@@ -11,9 +11,12 @@
 <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 <property name="hbm2ddl.auto">update</property>
 
-<mapping resource="user.hbm.xml"  />
-<mapping resource="film.hbm.xml"  />
+<mapping class="model.Benutzer"  />
+<mapping class="model.Film"  />
 <mapping class="model.Kommentar" />
+<mapping class="model.Mitwirkende" />
+<mapping class="model.Bewertung" />
+
 
 </session-factory>
 </hibernate-configuration>

@@ -1,8 +1,8 @@
-package unitTests;
+package JunitTest;
 
 import org.junit.Test;
 
-import Database.SQLDatabase;
+import Database.BenutzerDAO;
 import controller.BenutzerController;
 import enums.Rolle;
 import model.Benutzer;
@@ -36,3 +36,4 @@ public class BenutzerTest {
 	}
 
 }
+

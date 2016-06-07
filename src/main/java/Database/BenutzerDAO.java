@@ -5,6 +5,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,14 +16,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import enums.Status;
-import interfaces.BenutzerDAO;
+import interfaces.BenutzerDAOInterface;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
-@ManagedBean(name = "SQLDatabase")
-public class SQLDatabase implements BenutzerDAO {
+@ManagedBean(name = "benutzerDAO")
+public class BenutzerDAO implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
@@ -27,18 +31,16 @@ public class SQLDatabase implements BenutzerDAO {
 	
 	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
-	public SQLDatabase(){
-		con.configure("local.sql.cfg.xml");
-		con.addResource("user.hbm.xml");
-		con.addResource("film.hbm.xml");
+	public BenutzerDAO() {
+		
 	}
-
+	
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
 
 	public void setSqlStatus(String sqlStatus) {
-		SQLDatabase.sqlStatus = sqlStatus;
+		BenutzerDAO.sqlStatus = sqlStatus;
 	}
 
 	public String getSQLnotification() {
@@ -78,26 +80,21 @@ public class SQLDatabase implements BenutzerDAO {
 		session.beginTransaction();
 
 		try {
-			String selectionQuery = "from Benutzer where (email = :email OR benutzername = :benutzername)";
-			boolean passwortGesetzt = false;
-			if (!benutzer.getPasswort().equals("")) {
-				selectionQuery = selectionQuery + " AND passwort = :passwort ";
-				passwortGesetzt = true;
+			Criteria criteria = session.createCriteria(Benutzer.class);
+			criteria.add(Restrictions.or(
+					Restrictions.eq("email", benutzer.getEmail()), 
+					Restrictions.eq("benutzername", benutzer.getEmail())));
+			if(!benutzer.getPasswort().equals("")){
+				criteria.add(Restrictions.eq("passwort", benutzer.getPasswort()));
 			}
-			Query query = session.createQuery(selectionQuery);
-			query.setParameter("email", benutzer.getEmail());
-			query.setParameter("benutzername", benutzer.getEmail());
-			if (passwortGesetzt) {
-				query.setParameter("passwort", benutzer.getPasswort());
-			}
-			List results = query.list();
+			List results = criteria.list();
 			if (results.size() == 0) {
 				return null;
 			} else {
 				Benutzer dbBenutzer = (Benutzer) results.get(0);
 				return dbBenutzer;
 			}
-
+			
 		} catch (Exception e) {
 			System.err.println("Fail");
 			sqlStatus = "Suche fehlgeschlagen";
@@ -141,6 +138,18 @@ public class SQLDatabase implements BenutzerDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public Benutzer benutzerUpdate(Benutzer benutzer) {
+		// TODO Auto-generated method stub
+		session.beginTransaction();
+		
+		session.update(benutzer);
+		session.getTransaction().commit();
+		
+		
+		return null;
+	}
 
 
 
@@ -161,5 +170,7 @@ public class SQLDatabase implements BenutzerDAO {
 	public void statusAenderung(AjaxBehaviorEvent event) {
 		setSQLnotification(getSqlStatus());
 	}
+
+
 
 }

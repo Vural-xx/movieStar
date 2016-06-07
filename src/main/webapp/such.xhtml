@@ -18,7 +18,7 @@
 		<h:form>
 		<h:inputText class="dpnone"  binding="#{jaja}"></h:inputText>
 		
-		<h:dataTable value="#{filmController.filmList}" var="fi" style="border-collapse: collapse" border="1" cellpadding="10px">
+		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="1" cellpadding="10px">
 		<h:column>
 		<f:facet name="header">Name</f:facet>
 		#{fi.name}

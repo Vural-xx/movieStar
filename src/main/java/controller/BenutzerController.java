@@ -2,21 +2,39 @@ package controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import Database.SQLDatabase;
+import Database.BenutzerDAO;
 import interfaces.BenutzerFacade;
 import model.Benutzer;
 
 @ManagedBean(name="BenutzerController")
+@SessionScoped
 public class BenutzerController implements BenutzerFacade {
 
-	SQLDatabase sqlDatabase = new SQLDatabase();
+	BenutzerDAO benutzerDAO;
+	@ManagedProperty(value="#{benutzer}")
+	private Benutzer benutzer;
 	String emailAdresse;
 	String nutzername;
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
+	private boolean loggedIn = false;
+	
+	public BenutzerController() {
+		benutzerDAO = new BenutzerDAO();
+	}
+	
+	public Benutzer getBenutzer() {
+		return benutzer;
+	}
+
+	public void setBenutzer(Benutzer benutzer) {
+		this.benutzer = benutzer;
+	}
 
 	public boolean isEmailVorhanden() {
 		return emailVorhanden;
@@ -52,7 +70,7 @@ public class BenutzerController implements BenutzerFacade {
 
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
-		boolean registrieren = sqlDatabase.benutzerErstellen(benutzer);
+		boolean registrieren = benutzerDAO.benutzerErstellen(benutzer);
 		System.out.println(nutzername);
 		if (registrieren = true) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -64,8 +82,10 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	public String logIn(String logIn, String passwort) {
-		Benutzer benutzer = sqlDatabase.benutzerSuchen(new Benutzer(logIn, passwort));
+		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
+			setLoggedIn(true);
+			this.benutzer = benutzer;
 			return "index";
 		}
 		return "false";
@@ -84,6 +104,12 @@ public class BenutzerController implements BenutzerFacade {
 	// Update Benutzer
 	public void benutzerVerwalten(String email, String benutzername, String passwort) {
 		// TODO Auto-generated method stub
+		benutzer.setEmail(email);
+		benutzer.setBenutzername(benutzername);
+		if(benutzer.getPasswort().equals(passwort)){
+			benutzer.setPasswort(passwort);	
+		}
+		benutzerDAO.benutzerUpdate(benutzer);
 		// Benutzerdaten suchen, überprüfung, ob Passwort richtig ist, dann
 		// überschreiben
 
@@ -111,15 +137,23 @@ public class BenutzerController implements BenutzerFacade {
 	@Override
 	public boolean getEmailInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(emailAdresse, "email");
-		emailVorhanden = sqlDatabase.benutzerVorhanden(benutzer, "E-mail");
+		emailVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "E-mail");
 		return emailVorhanden;
 	}
 
 	@Override
 	public boolean getNutzernameInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(nutzername);
-		nutzernameVorhanden = sqlDatabase.benutzerVorhanden(benutzer, "Benutzername");
+		nutzernameVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "Benutzername");
 		return nutzernameVorhanden;
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 
 }

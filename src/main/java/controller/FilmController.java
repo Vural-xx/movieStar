@@ -1,35 +1,29 @@
 package controller;
 
 import java.util.List;
-import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import Database.FilmDAO;
+import enums.Genre;
 import interfaces.FilmFacade;
 import model.Film;
 import model.Filter;
 
 @ManagedBean(name="filmController")
-@RequestScoped
+@SessionScoped
 public class FilmController implements FilmFacade {
 	
-	@ManagedProperty(value="#{film}")
 	private Film film;
 	private FilmDAO filmDAO;
 
-	List<Film> filmList = new ArrayList<Film>();
+	@ManagedProperty(value="#{navigationController}")
+	private NavigationController navigationController;
+	private List filme;
 	
-	 
-	 
-	public List<Film> getFilmList() {
-		return filmList;
-	}
-
-	public void setFilmList(List<Film> filmList) {
-		this.filmList = filmList;
-	}
 
 	public FilmController() {
 		filmDAO = new FilmDAO();
@@ -39,16 +33,26 @@ public class FilmController implements FilmFacade {
 		this.film = film;
 	}
 
+	public NavigationController getNavigationController() {
+		return navigationController;
+	}
+
+	public void setNavigationController(NavigationController navigationController) {
+		this.navigationController = navigationController;
+	}
+	
 	@Override
-	public void filmErstellen(Film film) {
+	public String filmErstellen(Film film) {
 		filmDAO.filmErstellen(film);
+		return listeVorbereiten();
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void filmSuchen(String suche) {
-		filmList = filmDAO.filmSuchen(suche);
+	public String filmSuchen(String suche) {
+		filme = filmDAO.filmSuchen(suche);
+		return navigationController.toSuche();
 		
 	}
 
@@ -74,6 +78,33 @@ public class FilmController implements FilmFacade {
 	public void filmFiltern(Filter filter) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public String listeVorbereiten(){
+		this.setFilme(filmDAO.findAlle());
+		return navigationController.toFilmListe();
+	}
+
+	public List getFilme() {
+		return filme;
+	}
+
+	public void setFilme(List filme) {
+		this.filme = filme;
+	}
+	
+	public SelectItem[] getGenreValues() {
+	    SelectItem[] items = new SelectItem[Genre.values().length];
+	    int i = 0;
+	    for(Genre g: Genre.values()) {
+	      items[i++] = new SelectItem(g, g.getLabel());
+	    }
+	    return items;
+	  }
+	
+	public String selectFilm(String  name){
+		film = filmDAO.filmSuchenByName(name);
+		return "filmformular?faces-redirect=true";
 	}
 
 }
