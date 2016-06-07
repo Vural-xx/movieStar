@@ -25,8 +25,6 @@ import javax.persistence.Table;
 
 import enums.Genre;
 
-@ManagedBean(name="film")
-@RequestScoped
 @Entity
 @Table(name = "Filme")
 public class Film implements Serializable{

@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
 
 import Database.FilmDAO;
@@ -27,6 +28,10 @@ public class FilmController implements FilmFacade {
 
 	public FilmController() {
 		filmDAO = new FilmDAO();
+	}
+	
+	public Film getFilm() {
+		return film;
 	}
 	
 	public void setFilm(Film film){
@@ -78,6 +83,11 @@ public class FilmController implements FilmFacade {
 	public void filmFiltern(Filter filter) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void filmVorbereiten(ComponentSystemEvent event){
+		this.film = new Film();
+		System.out.println("Bin drin");
 	}
 	
 	public String listeVorbereiten(){
