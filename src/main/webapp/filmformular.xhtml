@@ -63,7 +63,7 @@
 					<h:button id="uploadFotoButton" class="uploadFotoButtonClass" value="#{msg['filmFotoUpload']}"></h:button>
 				</div>
 		</div>
-			<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(filmController.film)}" ></h:commandButton></div></div>
+			<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(filmController.film)}" ><f:setPropertyActionListener target="#{filmController.film.ersteller}" value="#{BenutzerController.benutzer}" /></h:commandButton></div></div>
 	</div>
 	</h:form>
 
