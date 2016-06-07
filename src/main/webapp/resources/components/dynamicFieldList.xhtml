@@ -1,0 +1,17 @@
+<ui:composition
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite">
+    <cc:interface componentType="dynamicFieldList">
+        <cc:attribute name="value" type="java.util.List" required="true" />
+    </cc:interface>
+    <cc:implementation>
+        <h:dataTable id="table" binding="#{cc.table}" value="#{cc.attrs.value}" var="field">
+            <h:column><h:outputLabel value="#{field.label}" /></h:column>
+            <h:column><h:inputText value="#{field.value}" /></h:column>
+            <h:column><h:commandButton value="remove" action="#{cc.remove}" /></h:column>
+        </h:dataTable>
+        <h:commandButton value="add" action="#{cc.add}" />
+    </cc:implementation>
+</ui:composition>

@@ -5,7 +5,8 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:my="http://java.sun.com/jsf/composite/components">
 <ui:composition template = "/templates/commom-template.xhtml">
 <f:metadata>
 	<f:event listener="#{filmController.filmVorbereiten}" type="preRenderView" />
@@ -25,6 +26,9 @@
 					<div class="col-xs-10 inputpd-80-768">
 						<h:inputText id="filmname" class="" value="#{filmController.film.name}"></h:inputText>
 					</div>
+				</div>
+				<div class="row">
+					 <my:dynamicFieldList value="#{filmController.felder}" />
 				</div>
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>

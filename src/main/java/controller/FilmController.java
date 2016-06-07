@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -11,6 +12,7 @@ import javax.faces.model.SelectItem;
 import Database.FilmDAO;
 import enums.Genre;
 import interfaces.FilmFacade;
+import model.Feld;
 import model.Film;
 import model.Filter;
 
@@ -24,6 +26,7 @@ public class FilmController implements FilmFacade {
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
+	private List<Feld> felder = new ArrayList<Feld>();
 	
 
 	public FilmController() {
@@ -115,6 +118,14 @@ public class FilmController implements FilmFacade {
 	public String selectFilm(String  name){
 		film = filmDAO.filmSuchenByName(name);
 		return navigationController.toFilm();
+	}
+
+	public List<Feld> getFelder() {
+		return felder;
+	}
+
+	public void setFelder(List<Feld> felder) {
+		this.felder = felder;
 	}
 
 }
