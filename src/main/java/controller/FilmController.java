@@ -114,7 +114,7 @@ public class FilmController implements FilmFacade {
 	
 	public String selectFilm(String  name){
 		film = filmDAO.filmSuchenByName(name);
-		return "filmformular?faces-redirect=true";
+		return navigationController.toFilm();
 	}
 
 }

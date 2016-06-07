@@ -46,6 +46,10 @@ public class NavigationController  {
     public String toSuche(){
     	return "/such.xhtml";
     }
+    
+    public String toFilm(){
+    	return "film.xhtml";
+    }
 
 
 }
