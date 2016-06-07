@@ -13,7 +13,7 @@
 
 <ui:define name="content">
 	<h:form>
-	<div class="container-fluid firstContainer container-btrap-clear ">
+	<div class="container firstContainer container-btrap-clear ">
 		<div class="row">
 			<div class="col-lg-8 textpadding pd-l-50">
 				<h1>
@@ -60,7 +60,7 @@
 
 				<div class="col-lg-4">
 					<div id="film-img" class=""></div>
-					<h:button id="uploadFotoButton" value="#{msg['filmFotoUpload']}"></h:button>
+					<h:button id="uploadFotoButton" class="uploadFotoButtonClass" value="#{msg['filmFotoUpload']}"></h:button>
 				</div>
 		</div>
 			<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(filmController.film)}" ></h:commandButton></div></div>

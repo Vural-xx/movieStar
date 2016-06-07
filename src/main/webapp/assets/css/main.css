@@ -241,7 +241,7 @@ input, #button {
     margin-bottom: 50px;
 }
 
-#uploadFotoButton {
+#uploadFotoButton, .uploadFotoButtonClass {
 	    margin: auto;
     margin-bottom: 48px;
 	
