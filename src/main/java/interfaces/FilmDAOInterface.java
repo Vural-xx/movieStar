@@ -10,7 +10,7 @@ public interface FilmDAOInterface {
 	
 	public Film filmErstellen(Film film); 
 	
-	public List<Film> filmSuchen(Film film);
+	public List<Film> filmSuchen(String film);
 	
 	public void filmBewerten(Long FID, double sterne);
 	

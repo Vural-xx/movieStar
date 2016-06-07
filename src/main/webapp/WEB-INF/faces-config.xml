@@ -22,6 +22,7 @@
 		</navigation-case>
 	</navigation-rule>
 
+
 	<application>
 		<locale-config>
 			<default-locale>de</default-locale>

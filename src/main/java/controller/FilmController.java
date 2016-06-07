@@ -1,10 +1,10 @@
 package controller;
 
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 import Database.FilmDAO;
@@ -14,12 +14,12 @@ import model.Film;
 import model.Filter;
 
 @ManagedBean(name="filmController")
-@RequestScoped
+@SessionScoped
 public class FilmController implements FilmFacade {
 	
-	@ManagedProperty(value="#{film}")
 	private Film film;
 	private FilmDAO filmDAO;
+
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
@@ -50,8 +50,9 @@ public class FilmController implements FilmFacade {
 	}
 
 	@Override
-	public void filmSuchen(String suche) {
-		// TODO Auto-generated method stub
+	public String filmSuchen(String suche) {
+		filme = filmDAO.filmSuchen(suche);
+		return navigationController.toSuche();
 		
 	}
 

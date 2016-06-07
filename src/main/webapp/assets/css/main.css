@@ -38,6 +38,10 @@ body {
 	display: inline;
 }
 
+.maTop100 {
+	margin-top: 100px;
+}
+
 .inputmargin-50 {
 	margin-left:50px;
 }
@@ -58,6 +62,14 @@ body {
 
 .pd-l-50 {
 	padding-left: 50px;
+}
+
+.dpnone {
+	display: none;
+}
+
+th,tr,td {
+	padding: 5px;
 }
 
 
@@ -191,6 +203,8 @@ button:focus, input:focus {
 #ergebnisse {
 	display: flex;
 }
+
+
 
 input, #button {
 	display: block;

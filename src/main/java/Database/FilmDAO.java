@@ -1,8 +1,11 @@
 package Database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+
+import org.hibernate.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -38,10 +41,25 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	@Override
-	public List<Film> filmSuchen(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Film> filmSuchen(String film) {
+		
+		List<Film> filmList= new ArrayList<Film>();
+		
+		try {
+			session.beginTransaction();
+			System.out.println(film);
+			Query q= session.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
+			q.setParameter("keyWord", "%"+film+"%");
+			filmList = q.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			// TODO: handle exception
+		}
+		return filmList;
 	}
+	
 
 	@Override
 	public void filmBewerten(Long FID, double sterne) {

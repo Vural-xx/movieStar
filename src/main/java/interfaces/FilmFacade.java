@@ -7,7 +7,7 @@ public interface FilmFacade {
 	
 	public String filmErstellen(Film film);
 	
-	public void filmSuchen(String suche);
+	public String filmSuchen(String suche);
 	
 	public void filmSuchenErweitert(Film film);
 	

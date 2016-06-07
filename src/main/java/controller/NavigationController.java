@@ -39,5 +39,13 @@ public class NavigationController  {
     public String toFilmFormular() {
         return "/filmformular?faces-redirect=true";
     }
+    /**
+     * Go to such page
+     * @return String suche
+     */
+    public String toSuche(){
+    	return "/such.xhtml";
+    }
+
 
 }
