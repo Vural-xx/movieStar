@@ -23,6 +23,14 @@ public class Mitwirkende implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -3185319011120312486L;
+	
+	public Mitwirkende(){
+		
+	}
+	
+	public Mitwirkende(String name){
+		this.name = name;
+	}
 
 	@Id
 	@Column(name="name")

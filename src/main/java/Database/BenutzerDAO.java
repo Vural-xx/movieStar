@@ -29,10 +29,10 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 	public static String SQLnotification = "";
 	private static String sqlStatus = "";
 	
-	private final Session session = HibernateUtil.getSessionFactory().openSession();
+	private final Session session;
 	
 	public BenutzerDAO() {
-		
+		session =  HibernateUtil.getSessionFactory().openSession();
 	}
 	
 	public String getSqlStatus() {
