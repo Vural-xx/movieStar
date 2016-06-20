@@ -17,12 +17,15 @@ import model.Mitwirkende;
 public class DynamicFieldList extends UINamingContainer {
 
     private UIData table;
+    private static int counter = 0;
 
     public void add() {
-        ((List) getAttributes().get("value")).add(new Feld("test"));
+    	counter++;
+        ((List) getAttributes().get("value")).add(new Feld(counter +"."));
     }
 
     public void remove() {
+    	counter--;
         ((List) getAttributes().get("value")).remove(table.getRowData());
     }
 

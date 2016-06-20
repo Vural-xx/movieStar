@@ -14,6 +14,7 @@ import interfaces.FilmFacade;
 import model.Feld;
 import model.Film;
 import model.Filter;
+import model.Mitwirkende;
 
 @ManagedBean(name="filmController")
 @SessionScoped
@@ -61,6 +62,7 @@ public class FilmController implements FilmFacade {
 	
 	@Override
 	public String filmErstellen(Film film) {
+		mitwirkendeZuFilmHinzufuegen();
 		filmDAO.filmErstellen(film);
 		return listeVorbereiten();
 		// TODO Auto-generated method stub
@@ -149,6 +151,18 @@ public class FilmController implements FilmFacade {
 	public List<Film> top10() {
 		filme = filmDAO.top10();
 		return filme;
+	}
+	
+	public void mitwirkendeZuFilmHinzufuegen(){
+		for(Feld f : felder){
+			Mitwirkende mitwirkende = new Mitwirkende();
+			if(!f.getValue().equals("")){
+				mitwirkende.setName(f.getValue());
+				film.getMitwirkende().add(mitwirkende);
+			}
+		}
+		felder = new ArrayList<Feld>();
+		
 	}
 	
 
