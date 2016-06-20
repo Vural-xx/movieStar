@@ -39,6 +39,50 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			return null;
 		}
 	}
+	
+	public List<Film> filmFuerErsteller(Benutzer benutzer){
+		session.beginTransaction();
+
+		try {
+			Criteria criteria = session.createCriteria(Benutzer.class);
+			criteria.add(Restrictions.or(
+					Restrictions.eq("email", benutzer.getEmail()), 
+					Restrictions.eq("benutzername", benutzer.getEmail())));
+			List results = criteria.list();
+			if (results.size() == 0) {
+				return null;
+			} else {
+				Benutzer dbBenutzer = (Benutzer) results.get(0);
+				return (List<Film>) dbBenutzer.getErstellteFilme();
+			}
+			
+		} catch (Exception e) {
+			System.err.println("Fail");
+	
+		}
+		return null;
+	}
+	
+
+	/*
+	public List<Film> filmFuerErsteller(Benutzer benutzer){
+		List<Film> filmList= new ArrayList<Film>();
+		
+		session.beginTransaction();
+		try {
+			Query q= session.createQuery("select b from Benutzer b LEFT JOIN Film as f ON b.email = f.ersteller WHERE b.email= :benutzermail ;" );
+					
+			//Query q= session.createQuery("select Benutzer, Filme from Benutzer LEFT JOIN Filme ON Benutzer.email = Filme.ersteller WHERE Benutzer.email= :benutzermail;" );
+			q.setParameter("benutzermail", "%"+benutzer.getEmail()+"%");
+			filmList = q.list();
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+			return null;
+		}
+		return filmList;
+	}*/
 
 	@Override
 	public List<Film> filmSuchen(String film) {

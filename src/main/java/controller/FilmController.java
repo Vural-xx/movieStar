@@ -23,6 +23,17 @@ public class FilmController implements FilmFacade {
 	private Film film;
 	private FilmDAO filmDAO;
 
+	@ManagedProperty(value="#{BenutzerController}")
+	private BenutzerController benutzerController;
+	
+	public BenutzerController getBenutzerController() {
+		return benutzerController;
+	}
+
+	public void setBenutzerController(BenutzerController benutzerController) {
+		this.benutzerController = benutzerController;
+	}
+
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
@@ -94,7 +105,8 @@ public class FilmController implements FilmFacade {
 	}
 	
 	public String listeVorbereiten(){
-		this.setFilme(filmDAO.findAlle());
+		System.out.println("test");
+		this.setFilme(filmDAO.filmFuerErsteller(benutzerController.getBenutzer()));
 		return navigationController.toFilmListe();
 	}
 
