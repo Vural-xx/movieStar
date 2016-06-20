@@ -23,6 +23,9 @@ public class BenutzerController implements BenutzerFacade {
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
 	private boolean loggedIn = false;
+	private boolean registrieren = false;
+	private boolean datenÄndern = false;
+	private String neues_passwort = null;
 	
 	public BenutzerController() {
 		benutzerDAO = new BenutzerDAO();
@@ -70,7 +73,7 @@ public class BenutzerController implements BenutzerFacade {
 
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
-		boolean registrieren = benutzerDAO.benutzerErstellen(benutzer);
+		registrieren = benutzerDAO.benutzerErstellen(benutzer);
 		System.out.println(nutzername);
 		if (registrieren = true) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -87,12 +90,24 @@ public class BenutzerController implements BenutzerFacade {
 			setLoggedIn(true);
 			this.benutzer = benutzer;
 			return "index";
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login nicht möglich. Benutzername oder Passwort ist falsch", null));
+			return "login";
 		}
-		return "false";
+	}
+	
+	public String kontakt(){
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank. Ihre Nachricht wurde erfolgreich übermittelt", null));
+		return "kontakt";
+		
 	}
 
 	public void logOut() {
 		// TODO Auto-generated method stub
+		setLoggedIn(false);
+		benutzer = null;
 
 	}
 
@@ -101,24 +116,29 @@ public class BenutzerController implements BenutzerFacade {
 
 	}
 
-	// Update Benutzer
-	public void benutzerVerwalten(String email, String benutzername, String passwort) {
+	
+	public void benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
 		// TODO Auto-generated method stub
-		benutzer.setEmail(email);
-		benutzer.setBenutzername(benutzername);
-		if(benutzer.getPasswort().equals(passwort)){
-			benutzer.setPasswort(passwort);	
+		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(email,benutzername, passwort));
+		if(benutzer == null){
+			datenÄndern = false;
+			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+		}else{
+			datenÄndern = benutzer.getPasswort().equals(passwort);
+		}
+		if (datenÄndern) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
+			benutzer.setEmail(email);
+			benutzer.setBenutzername(benutzername);
+			benutzer.setPasswort(neues_passwort);
+
+		}else{
+			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+
 		}
 		benutzerDAO.benutzerUpdate(benutzer);
-		// Benutzerdaten suchen, überprüfung, ob Passwort richtig ist, dann
-		// überschreiben
-
-		// Benutzer benutzer = sqlDatabase.benutzerSuchen(email, benutzername,
-		// passwort);
-		// if(benutzer !=null){
-		// alten Benutzer löschen, nur wie? bzw Benutzerdaten überschreiben ???
-		// boolean benutzerExistiert = sqlDatabase.benutzerErstellen(benutzer);
-		// }
 
 	}
 

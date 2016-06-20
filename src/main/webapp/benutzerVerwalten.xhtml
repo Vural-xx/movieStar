@@ -16,29 +16,53 @@
                 <div id="benutzerAendern">
                     <h1>Benutzerdaten ändern</h1>
     		<h:form>
+    		<h:messages id="messagesInfo" infoStyle="color:green" />
+    		<h:messages for="speicherButton" style="color:red" />
    				<h:outputLabel>Bitte geben Sie ihre neue E-Mail Adresse ein:</h:outputLabel>
-    			<h:inputText id="email_input" value = "#{BenutzerController.benutzer.email}" binding="#{input1}">
-     					<f:validator validatorId="EmailValidation"></f:validator>
- 				</h:inputText>
+ 				<h:inputText id="email_input" a:placeholder = "#{BenutzerController.benutzer.email}" binding="#{input1}">
+							<f:validator validatorId="EmailValidation"></f:validator>
+							<f:ajax event="valueChange" execute="email_input"
+								render="outputEmailCheck speicherButton"></f:ajax>
+						</h:inputText>
+						<h:panelGroup id="outputEmailCheck">
+							<h:outputText id="outputEmailCheckZwei"
+								value="E-Mail schon vorhanden."
+								rendered="#{BenutzerController.emailInDBVorhanden}"
+								style="color:red; margin:5px; display:block" />
+						</h:panelGroup>
+
+						<h:message for="email_input" style="color:red" />
+ 				
+ 				
+ 				
+ 				
  				<h:outputLabel>Bitte geben Sie ihren neuen Benutzernamen ein:</h:outputLabel>
-    			<h:inputText id="benutzername_input" value="#{BenutzerController.benutzer.benutzername}" binding="#{input2}"  />
-        		<h:outputLabel>Bitte geben Sie ihr altes Passwort ein:</h:outputLabel>
-				<h:inputSecret id="password_input2" binding="#{input4}"  />
-  				<h:outputLabel>Bitte geben Sie ihr neues Passwort ein:</h:outputLabel>
+    			<h:inputText id="benutzername_input" binding="#{input2}" a:placeholder="#{BenutzerController.benutzer.benutzername}" >
+						<f:ajax event="valueChange" execute="benutzername_input"
+								render="outputNutzernameCheck speicherButton"></f:ajax>
+				</h:inputText>
+				<h:panelGroup id="outputNutzernameCheck">
+					<h:outputText id="outputNutzernameCheckZwei"
+								value="Benutzername schon vorhanden."
+								rendered="#{BenutzerController.nutzernameInDBVorhanden}"
+								style="color:red; margin:5px; display:block" />
+				</h:panelGroup>
     			
+        		<h:outputLabel>Bitte geben Sie ihr altes Passwort ein:</h:outputLabel>
+				<h:inputSecret id="altes_password_input" binding="#{input3}"  />
+  				<h:outputLabel>Bitte geben Sie ihr neues Passwort ein:</h:outputLabel>
     			
     			<h:inputSecret
 							title="mind. 1 Zahl, mind. 1 Großbuchstaben, mind. 1 Kleinbuchstaben, 
 							mind. 1 Sonderzeichen (@#$%), 6 - 20 Zeichen lang"
-							id="password_input" binding="#{input3}" size="40"
-							a:placeholder="Password">
+							id="neues_password_input" binding="#{input4}" >
 							<f:validator validatorId="PasswordValidation"></f:validator>
 						</h:inputSecret>
-						<h:message for="password_input" style="color:red" />
+						<h:message for="neues_password_input" style="color:red" />
 
 						<h:panelGroup id="speicherButton">
 							<h:commandButton value="Speichern"
-								action="#{BenutzerController.benutzerVerwalten(input1.value,input2.value, input4.value)}"
+								action="#{BenutzerController.benutzerVerwalten(input1.value,input2.value, input3.value, input4.value)}"
 								update=":benutzer, :message"
 								rendered="#{!BenutzerController.nutzernameVorhanden and !BenutzerController.emailVorhanden}">
 							</h:commandButton>

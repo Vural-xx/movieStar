@@ -34,7 +34,7 @@ public class EmailValidator implements Validator{
 		if(!matcher.matches()){
 			
 			FacesMessage msg = new FacesMessage("Falsches E-Mail Format");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
 			throw new ValidatorException(msg);
 
 		}

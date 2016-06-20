@@ -141,6 +141,12 @@ input, button {
     font-size: 12px !important; 
 }
 
+.absendeBtn {
+	    margin-top: 40px !important;
+    font-weight: 600;
+    font-size: 20px;
+}
+
 
 /* /Registrieren Fenster*/
 .firstContainer {

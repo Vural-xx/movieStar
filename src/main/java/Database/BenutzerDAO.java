@@ -144,8 +144,17 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		// TODO Auto-generated method stub
 		session.beginTransaction();
 		
-		session.update(benutzer);
-		session.getTransaction().commit();
+		try {
+			session.update(benutzer);
+			session.getTransaction().commit();
+			setSqlStatus("Erfolgreich geändert");
+			System.out.println(sqlStatus);
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+			sqlStatus = "Änderung fehlgeschlagen";
+		}
+
 		
 		
 		return null;

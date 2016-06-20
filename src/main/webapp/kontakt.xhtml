@@ -5,28 +5,32 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a = "http://xmlns.jcp.org/jsf/passthrough">
 <ui:composition template = "/templates/commom-template.xhtml">
 <ui:define name="content">
 	<div class="containerRegistieren">
 	<div class="row">
 		<div class="col-md-12">
 			<div id="registrieren">
-				<h1>Benutzer Einloggen</h1>
+				<h1>Kontaktieren Sie uns</h1>
 	<h:form>
-		<h:messages id="messages" errorStyle="color:red" />
-		<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse oder ihren Benuternamen ein:</h:outputLabel>
-		<h:inputText id="log_In_input" binding="#{logInInput}" />
-		<h:outputLabel>Bitte geben Sie ihr Passwort ein:</h:outputLabel>
-		<h:inputSecret id="password_input" binding="#{input3}"  />
-	
-		<h:commandButton class="loginBtn" value="Einloggen" action="#{BenutzerController.logIn(logInInput.value,input3.value)}">
+		<h:messages for="absendeBtn" style="color:green" />
+		<h:messages style="color:green"/>
+		
+		<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse ein:</h:outputLabel>
+		<h:inputText id="email_input" >
+			<f:validator validatorId="EmailValidation" style="color:red; margin:5px; display:block"></f:validator>
+		</h:inputText>
+		<h:outputLabel>Bitte geben Sie ihren Namen ein:</h:outputLabel>
+		<h:inputText id="name_input" />
+		<h:outputLabel>Bitte geben Sie ihren Nachricht ein:</h:outputLabel>
+		<h:inputTextarea id="nachricht_input" cols="30" rows="5"></h:inputTextarea>
+		
+		<h:panelGroup id="absendeBtn">
+		<h:commandButton class="absendeBtn" value="Absenden" action="#{BenutzerController.kontakt}">
  		</h:commandButton>
- 		
- 		
-
- 		
-		<h:outputLabel class="login-registrierungNotiz">Solltest du noch nicht registriert sein bitte <h:link outcome="registrieren"><strong>klicken</strong></h:link></h:outputLabel>
+		</h:panelGroup>
 
 
 	</h:form>

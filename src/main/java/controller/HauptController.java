@@ -45,8 +45,8 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public void benutzerVerwalten(String email, String benutzername, String passwort) {
-		benutzerController.benutzerVerwalten(email, benutzername, passwort);
+	public void benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
+		benutzerController.benutzerVerwalten(email, benutzername, passwort, neues_passwort);
 		// TODO Auto-generated method stub
 		
 	}

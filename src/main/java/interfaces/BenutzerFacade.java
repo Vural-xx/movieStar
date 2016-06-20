@@ -12,7 +12,7 @@ public interface BenutzerFacade {
 	
 	public void passwortVergessen(String email, String benutzername, String passwort);
 	
-	public void benutzerVerwalten(String email, String benutzername, String passwort);
+	public void benutzerVerwalten(String email, String benutzername, String passwort, String new_passwort);
 	
 	public void benutzerBlockieren(String benutzername, String email);
 	
