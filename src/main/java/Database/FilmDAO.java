@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import model.Benutzer;
@@ -104,6 +105,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		return filmList;
 	}
 	
+	
+	
 
 	@Override
 	public void filmBewerten(Long FID, double sterne) {
@@ -136,4 +139,29 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		List results = criteria.list();
 		return (Film) results.get(0);
 	}
+
+	@Override
+	public List<Film> neusteFilme() {
+		
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Film.class);
+		criteria.addOrder(Order.desc("uploaddatum"));
+		List<Film> results = criteria.list();
+	
+
+		return results;
+	}
+
+	@Override
+	public List<Film> top10() {
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Film.class);
+		criteria.addOrder(Order.desc("sterne"));
+		List<Film> results = criteria.list();
+	
+
+		return results;
+	}
+	
+	
 }

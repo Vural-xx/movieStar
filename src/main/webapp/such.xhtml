@@ -16,6 +16,10 @@
 		
 		
 		<h:form>
+		<h:commandButton class="btn btn-default" type="submit" action="#{filmController.top10}" value="Suche">
+											</h:commandButton>
+													<h:commandButton class="btn btn-default" type="submit" action="#{filmController.neusteFilme}" value="Suche">
+											</h:commandButton>
 		<h:inputText class="dpnone"  binding="#{jaja}"></h:inputText>
 		
 		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="1" cellpadding="10px">
@@ -30,6 +34,14 @@
 			<h:column>
 		<f:facet name="header">Beschreibung</f:facet>
 		#{fi.beschreibung}
+		</h:column>
+			<h:column>
+		<f:facet name="header">Sterne</f:facet>
+		#{fi.sterne}
+		</h:column>
+		<h:column>
+		<f:facet name="header">Datum</f:facet>
+		#{fi.uploaddatum}
 		</h:column>
 		</h:dataTable>
 		</h:form>

@@ -8,7 +8,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
-
 import Database.FilmDAO;
 import enums.Genre;
 import interfaces.FilmFacade;
@@ -139,5 +138,18 @@ public class FilmController implements FilmFacade {
 	public void setFelder(List<Feld> felder) {
 		this.felder = felder;
 	}
+
+	@Override
+	public List<Film> neusteFilme() {
+		filme = filmDAO.neusteFilme();
+		return filme;
+	}
+
+	@Override
+	public List<Film> top10() {
+		filme = filmDAO.top10();
+		return filme;
+	}
+	
 
 }

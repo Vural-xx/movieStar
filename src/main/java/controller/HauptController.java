@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import interfaces.BenutzerFacade;
 import interfaces.FilmFacade;
 import model.Film;
@@ -61,6 +63,7 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 		return filmController.filmSuchen(suche);
 		// TODO Auto-generated method stub
 	}
+	
 
 	@Override
 	public void filmSuchenErweitert(Film film) {
@@ -114,6 +117,16 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	public boolean getNutzernameInDBVorhanden() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Film> neusteFilme() {
+		return filmController.neusteFilme();
+	}
+
+	@Override
+	public List<Film> top10() {
+		return filmController.top10();
 	}
 	
 	

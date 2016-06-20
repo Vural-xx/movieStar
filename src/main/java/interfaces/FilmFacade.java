@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 import model.Film;
 import model.Filter;
 
@@ -10,6 +12,10 @@ public interface FilmFacade {
 	public String filmSuchen(String suche);
 	
 	public void filmSuchenErweitert(Film film);
+	
+	public List<Film> neusteFilme();
+	
+	public List<Film> top10();
 	
 	public void filmBewerten( Long FID, double sterne);
 	
