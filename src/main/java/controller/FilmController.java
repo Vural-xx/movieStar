@@ -68,6 +68,15 @@ public class FilmController implements FilmFacade {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String filmUpdate(Film film) {
+		mitwirkendeZuFilmHinzufuegen();
+		filmDAO.filmUpdate(film);
+		return listeVorbereiten();
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 	@Override
 	public String filmSuchen(String suche) {

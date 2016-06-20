@@ -41,6 +41,21 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 	}
 	
+	public Film filmUpdate(Film film) {
+		System.out.println(film.getName());
+		session.beginTransaction();
+		try {
+			session.update(film);
+			session.getTransaction().commit();
+			System.out.println("Film erfolgreich angelegt");
+			return film;
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+			return null;
+		}
+	}
+	
 	public List<Film> filmFuerErsteller(Benutzer benutzer){
 		session.beginTransaction();
 
