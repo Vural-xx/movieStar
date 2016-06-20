@@ -130,6 +130,7 @@ public class FilmController implements FilmFacade {
 	
 	public String selectFilm(String  name){
 		film = filmDAO.filmSuchenByName(name);
+		mitwirkendeZuFelderHinzufuegen();
 		return navigationController.toFilm();
 	}
 
@@ -164,6 +165,17 @@ public class FilmController implements FilmFacade {
 		felder = new ArrayList<Feld>();
 		
 	}
+	
+	public void mitwirkendeZuFelderHinzufuegen(){
+		int counter = 0;
+		for(Mitwirkende m : film.getMitwirkende()){
+			counter++;
+			Feld feld = new Feld(counter+".");
+			feld.setValue(m.getName());
+			felder.add(feld);
+		}
+	}
+	
 	
 
 }
