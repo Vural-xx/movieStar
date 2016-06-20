@@ -45,20 +45,16 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		session.beginTransaction();
 
 		try {
-			Criteria criteria = session.createCriteria(Benutzer.class);
-			criteria.add(Restrictions.or(
-					Restrictions.eq("email", benutzer.getEmail()), 
-					Restrictions.eq("benutzername", benutzer.getEmail())));
-			List results = criteria.list();
+			Query q= session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer" );
+			List results = q.list();
 			if (results.size() == 0) {
 				return null;
 			} else {
-				Benutzer dbBenutzer = (Benutzer) results.get(0);
-				return (List<Film>) dbBenutzer.getErstellteFilme();
+				return results;
 			}
 			
 		} catch (Exception e) {
-			System.err.println("Fail");
+			System.err.println(e.getMessage());
 	
 		}
 		return null;
