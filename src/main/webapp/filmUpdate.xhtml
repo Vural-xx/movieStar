@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:my="http://java.sun.com/jsf/composite/components">
+<ui:composition template = "/templates/commom-template.xhtml">
+
+<ui:define name="content">
+	<h:form>
+	<div class="container-fluid firstContainer container-btrap-clear ">
+		<div class="row">
+			<div class="col-lg-8 textpadding pd-l-50">
+				<h1>
+					Film <strong>erstellen</strong>
+				</h1>
+				
+				<div class="row">
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmName']}</div>
+					<div class="col-xs-10 inputpd-80-768">
+						<h:inputText id="filmname" class="" value="#{filmController.film.name}"></h:inputText>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>
+					<div class="col-xs-10 inputpd-80-768">
+							<h:selectOneMenu class="inputmarginbottom-15"
+								value="#{filmController.film.genre}">
+								<f:selectItems value="#{filmController.genreValues}" />
+							</h:selectOneMenu>  
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmDauer']}</div>
+					<div class="col-xs-10 inputpd-80-768">
+							<h:inputText class="" value="#{filmController.film.dauer}"></h:inputText>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
+					<div class="col-xs-10 inputpd-80-768">
+							 <my:dynamicFieldList value="#{filmController.felder}" />
+					</div>
+				</div>
+					<div class="row">
+						<div class="col-sm-2 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
+						<div class="col-sm-10">
+							<h:inputTextarea class="beschreibunginput" value="#{filmController.film.beschreibung}" ></h:inputTextarea>
+						</div>
+					
+					</div>
+					<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(filmController.film)}" ></h:commandButton></div></div>
+
+			</div>
+			
+		</div>
+	</div>
+	</h:form>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		$(window).load(function() { // makes sure the whole site is loaded
+			$('#status').fadeOut(); // will first fade out the loading animation
+			$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+			$('body').delay(350).css({
+				'overflow' : 'visible'
+			});
+		})
+		//]]>
+	</script>
+
+</ui:define>
+	
+</ui:composition>
+</html>

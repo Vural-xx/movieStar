@@ -140,7 +140,7 @@ public class FilmController implements FilmFacade {
 	public String selectFilm(String  name){
 		film = filmDAO.filmSuchenByName(name);
 		mitwirkendeZuFelderHinzufuegen();
-		return navigationController.toFilm();
+		return navigationController.toFilmUpdate();
 	}
 
 	public List<Feld> getFelder() {
@@ -152,15 +152,23 @@ public class FilmController implements FilmFacade {
 	}
 
 	@Override
-	public List<Film> neusteFilme() {
+	public String neusteFilme() {
+		filme = null;
 		filme = filmDAO.neusteFilme();
-		return filme;
+		return navigationController.toSuche();
 	}
 
 	@Override
 	public List<Film> top10() {
 		filme = filmDAO.top10();
 		return filme;
+	}
+
+	@Override
+	public String alleFilme() {
+		filme = null;
+		filme = filmDAO.alleFilme();
+		return navigationController.toAlleFilme();
 	}
 	
 	public void mitwirkendeZuFilmHinzufuegen(){

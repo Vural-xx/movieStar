@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
 
 import enums.Genre;
 
@@ -55,7 +60,6 @@ public class Film implements Serializable{
 	@Column(name = "sterne")
 	private double sterne;
 	
-	@Column(name = "uploaddatum")
 	private Timestamp uploaddatum;
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

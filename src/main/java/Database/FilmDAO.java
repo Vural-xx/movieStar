@@ -136,6 +136,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	public List<Film> findAlle(){
 		Criteria criteria = session.createCriteria(Film.class);
@@ -158,10 +159,12 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		Criteria criteria = session.createCriteria(Film.class);
 		criteria.addOrder(Order.desc("uploaddatum"));
 		List<Film> results = criteria.list();
+		session.getTransaction().commit();
 	
 
 		return results;
 	}
+
 
 	@Override
 	public List<Film> top10() {
@@ -172,6 +175,14 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	
 
 		return results;
+	}
+
+	@Override
+	public List<Film> alleFilme() {
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Film.class);
+		session.flush();
+		return criteria.list();
 	}
 	
 	

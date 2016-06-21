@@ -20,6 +20,8 @@ public interface FilmDAOInterface {
 	
 	public List<Film> neusteFilme();
 	
+	public List<Film> alleFilme();
+	
 	public List<Film> top10();
 	
 	public Film filmSuchenByName(String name);

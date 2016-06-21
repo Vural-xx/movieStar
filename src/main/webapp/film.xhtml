@@ -13,47 +13,32 @@
 	<h:form>
 	<div class="container-fluid firstContainer container-btrap-clear ">
 		<div class="row">
-			<div class="col-lg-8 textpadding pd-l-50">
-				<h1>
-					Film <strong>erstellen</strong>
-				</h1>
-				
-				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">#{msg['filmName']}</div>
-					<div class="col-xs-10 inputpd-80-768">
-						<h:inputText id="filmname" class="" value="#{filmController.film.name}"></h:inputText>
-					</div>
+
+			<div class="col-lg-6 textpadding pd-l-50 pd-t-30">
+				<h1 class="font-50">Django Unchained</h1>
+				<img class="mg-l-70 pd-t-20 w250" src="assets/img/django.jpg"></img>
+		</div>
+			
+			<div class="col-lg-6 textpadding pd-l-50 pd-t-50">
+				<h2>Erscheinungsjahr:</h2>
+				<p>2015</p>
+				<h2>Dauer:</h2>
+				<p>120min</p>
+				<h2>Mitwirkende:</h2>
+				<p>Amber Tamblyn, Arielle Kebbel, Jennifer Beals, Edison Chen, Sarah Michelle Gellar</p>
+				<div class="starsContainer">
+				<p class="pd-t-30 font-40">Sterne:</p>
+				<p class="pd-l-30 font-100">9</p>
 				</div>
-				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>
-					<div class="col-xs-10 inputpd-80-768">
-							<h:selectOneMenu class="inputmarginbottom-15"
-								value="#{filmController.film.genre}">
-								<f:selectItems value="#{filmController.genreValues}" />
-							</h:selectOneMenu>  
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">#{msg['filmDauer']}</div>
-					<div class="col-xs-10 inputpd-80-768">
-							<h:inputText class="" value="#{filmController.film.dauer}"></h:inputText>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
-					<div class="col-xs-10 inputpd-80-768">
-							 <my:dynamicFieldList value="#{filmController.felder}" />
-					</div>
-				</div>
-					<div class="row">
-						<div class="col-sm-2 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
-						<div class="col-sm-10">
-							<h:inputTextarea class="beschreibunginput" value="#{filmController.film.beschreibung}" ></h:inputTextarea>
-						</div>
-					
-					</div>
-					<div class="row"><div class="col-md-12  pd-l-50"><h:commandButton class="" value="#{msg['filmSpeichern']}" action="#{filmController.filmErstellen(filmController.film)}" ></h:commandButton></div></div>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 textpadding pd-l-50">
+				<h2>Beschreibung:</h2>
+				<p>Ein japanisches Sprichwort sagt, wenn jemand in einem Zustand unbändiger Wut zu Tode kommt, lastet fortan ein Fluch auf dem Ort seines Todes. Niemand im Tokioter Krankenhaus glaubt Karen Davis (Sarah Michelle Gellar), dass sie ein Haus in Brand gesteckt hat, um ihrem Freund das Leben zu retten. Schlimmer noch: Seit dem Feuer wird sie von einer geisterhaften Frauengestalt in weißem Kimono und mit schwarzen Haaren verfolgt. Aubrey Davis (Amber Tamblyn) erfährt von ihrer Mutter, dass ihrer Schwester einen Unfall hatte. Um ihr beizustehen, reist sie nach Japan, wo sie selbst bald in unerklärliche Situationen gerät und auf myseriöse Ereignisse stößt. Aubrey ist dem Fluch, der auf Karen lastet, näher als sie ahnt. Und nach und nach geraten immer mehr Personen in den Bann der geheimnisvollen Frauengestalt aus dem ausgebrannten Haus. Der Fluch scheint sich auszubreiten und nach scheinbar Unbeteiligten zu greifen, die doch durch ein Schicksal miteinander verbunden sind...</p>
+		
+			</div>
+			
 		</div>
 	</div>
 	</h:form>

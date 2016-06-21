@@ -36,14 +36,18 @@
 							</h:link>
 						</div>
 					<div id="navbar" class="collapse navbar-collapse">
+						<h:form>
 						<ul class="nav navbar-nav">	
 							<li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li>
           					<li><h:link outcome="login" rendered="#{BenutzerController.loggedIn}" action="#{BenutzerController.logOut}" >Logout<span id="logout-nav" class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span></h:link></li>
             				<li><h:link outcome="login" rendered="#{!BenutzerController.loggedIn}">Login<span id="login-nav" class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span></h:link></li>
             				<li><h:link outcome="filmformular">Film erstellen<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:link></li>
+            				<li><h:commandLink action="#{filmController.alleFilme}">Filme</h:commandLink></li>
             				<li><h:link outcome="benutzerVerwalten">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-user"></span></h:link></li>
 							<li><h:link outcome="kontakt">Kontakt<span id="kontakt-nav" class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span></h:link></li>
+							<li><a href="#about">Über uns</a></li>
 						</ul>
+						</h:form>
 							<div class="col-sm-3 col-md-3 pull-right">
 								<h:form class="navbar-form" role="search">
 									<div class="input-group">
@@ -72,7 +76,7 @@
    		<div id = "content" class = "content">
    			<ui:insert name = "content">Main Content</ui:insert>
    		</div>
-   		<div id = "bottom" class = "bottom">
+   		<div id = "bottom" class = "bottom pd-l-30 pd-t-50">
    			<ui:insert name = "bottom"> &copy;Copyright 2016 HS Bremen</ui:insert>
    		</div>
    

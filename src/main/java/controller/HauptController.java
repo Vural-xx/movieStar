@@ -120,13 +120,18 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public List<Film> neusteFilme() {
+	public String neusteFilme() {
 		return filmController.neusteFilme();
 	}
 
 	@Override
 	public List<Film> top10() {
 		return filmController.top10();
+	}
+
+	@Override
+	public String alleFilme() {
+		return filmController.alleFilme();
 	}
 	
 	

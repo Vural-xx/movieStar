@@ -13,7 +13,9 @@ public interface FilmFacade {
 	
 	public void filmSuchenErweitert(Film film);
 	
-	public List<Film> neusteFilme();
+	public String neusteFilme();
+	
+	public String alleFilme();
 	
 	public List<Film> top10();
 	
