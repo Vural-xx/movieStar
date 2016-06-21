@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
 import Database.FilmDAO;
+import enums.FilmAuswahl;
 import enums.Genre;
 import interfaces.FilmFacade;
 import model.Feld;
@@ -139,10 +140,17 @@ public class FilmController implements FilmFacade {
 	    return items;
 	  }
 	
-	public String selectFilm(String  name){
+	public String selectFilm(String  name, String filmauswahl){
 		film = filmDAO.filmSuchenByName(name);
 		mitwirkendeZuFelderHinzufuegen();
-		return navigationController.toFilmUpdate();
+		System.out.println(FilmAuswahl.FILM);
+		System.out.println(filmauswahl);
+		if(filmauswahl.equals(FilmAuswahl.FILM.toString())){
+			return navigationController.toFilm();	
+		}else if(filmauswahl.equals(FilmAuswahl.FILMUPDATE.toString())){
+			return navigationController.toFilmUpdate();
+		}
+		return "false";
 	}
 
 	public List<Feld> getFelder() {
