@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -63,6 +64,7 @@ public class FilmController implements FilmFacade {
 	@Override
 	public String filmErstellen(Film film) {
 		mitwirkendeZuFilmHinzufuegen();
+		film.setUploaddatum(new Date());
 		filmDAO.filmErstellen(film);
 		return listeVorbereiten();
 		// TODO Auto-generated method stub

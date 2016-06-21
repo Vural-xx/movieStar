@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public class Film implements Serializable{
 	@Column(name = "sterne")
 	private double sterne;
 	
-	private Timestamp uploaddatum;
+	private Date uploaddatum;
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "film_mitwirkende", joinColumns = { 
@@ -130,10 +130,10 @@ public class Film implements Serializable{
 	
 	
 	
-	public Timestamp getUploaddatum() {
+	public Date getUploaddatum() {
 		return uploaddatum;
 	}
-	public void setUploaddatum(Timestamp uploaddatum) {
+	public void setUploaddatum(Date uploaddatum) {
 		this.uploaddatum = uploaddatum;
 	}
 	public String getDauer() {
