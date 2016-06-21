@@ -16,12 +16,12 @@
 			<div class="col-lg-12 textpadding pd-l-50 pd-t-30">
 				<h1 class="font-50">Django Unchained</h1>
 				
-					<h:form>
 		
-		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="0" cellpadding="10px">
+		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="0" cellpadding="10">
 		<h:column>
 		<f:facet name="header">Name</f:facet>
-		<h:commandLink action="#{filmController.selectFilm(fi.name)}" value="#{fi.name}" />
+						<h:commandLink action="#{filmController.selectFilm(fi.name)}"
+							value="#{fi.name}" />
 		</h:column>
 			<h:column>
 		<f:facet name="header">Erscheinungsjahr</f:facet>
@@ -40,7 +40,6 @@
 		#{fi.uploaddatum}
 		</h:column>
 		</h:dataTable>
-		</h:form>
 				
 		</div>
 			

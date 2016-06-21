@@ -48,16 +48,16 @@ public class NavigationController  {
     }
     
     public String toFilm(){
-    	return "film.xhtml";
+    	return "/film.xhtml";
     }
     
     public String toFilmUpdate() {
-    	return "filmUpdate.xhtml";
+    	return "/filmUpdate.xhtml";
     }
  
 
     public String toAlleFilme(){
-    	return "alleFilme.xhtml";
+    	return "/alleFilme.xhtml";
     }
 
 }
