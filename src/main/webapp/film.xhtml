@@ -13,34 +13,33 @@
 	<h:form>
 	<div class="container-fluid firstContainer container-btrap-clear ">
 		<div class="row">
-
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-30">
-				<h1 class="font-50">Django Unchained</h1>
+				<h1 class="font-50">#{filmController.film.name}</h1>
 				<img class="mg-l-70 pd-t-20 w250" src="assets/img/django.jpg"></img>
 		</div>
 			
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-50">
-				<h2>Erscheinungsjahr:</h2>
-				<p>2015</p>
-				<h2>Dauer:</h2>
-				<p>120min</p>
-				<h2>Mitwirkende:</h2>
+				<h2>#{msg['filmErscheinungsjahr']}</h2>
+				<p>#{filmController.film.erscheinungsjahr}</p>
+				<h2>#{msg['filmDauer']}</h2>
+				<p>#{filmController.film.dauer}</p>
+				<h2>#{msg['filmMitwirkende']}</h2>
 				<p>Amber Tamblyn, Arielle Kebbel, Jennifer Beals, Edison Chen, Sarah Michelle Gellar</p>
 				<div class="starsContainer">
-				<p class="pd-t-30 font-40">Sterne:</p>
-				<p class="pd-l-30 font-100">9</p>
+				<p class="pd-t-30 font-40">#{msg['filmSterne']}</p>
+				<p class="pd-l-30 font-100">#{filmController.film.sterne}</p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-12 textpadding pd-l-50">
-				<h2>Beschreibung:</h2>
-				<p>Ein japanisches Sprichwort sagt, wenn jemand in einem Zustand unbändiger Wut zu Tode kommt, lastet fortan ein Fluch auf dem Ort seines Todes. Niemand im Tokioter Krankenhaus glaubt Karen Davis (Sarah Michelle Gellar), dass sie ein Haus in Brand gesteckt hat, um ihrem Freund das Leben zu retten. Schlimmer noch: Seit dem Feuer wird sie von einer geisterhaften Frauengestalt in weißem Kimono und mit schwarzen Haaren verfolgt. Aubrey Davis (Amber Tamblyn) erfährt von ihrer Mutter, dass ihrer Schwester einen Unfall hatte. Um ihr beizustehen, reist sie nach Japan, wo sie selbst bald in unerklärliche Situationen gerät und auf myseriöse Ereignisse stößt. Aubrey ist dem Fluch, der auf Karen lastet, näher als sie ahnt. Und nach und nach geraten immer mehr Personen in den Bann der geheimnisvollen Frauengestalt aus dem ausgebrannten Haus. Der Fluch scheint sich auszubreiten und nach scheinbar Unbeteiligten zu greifen, die doch durch ein Schicksal miteinander verbunden sind...</p>
-		
+				<h2>#{msg['filmBeschreibung']}</h2>
+				<p>#{filmController.film.beschreibung}</p>		
 			</div>
 			
 		</div>
 	</div>
+
 	</h:form>
 
 

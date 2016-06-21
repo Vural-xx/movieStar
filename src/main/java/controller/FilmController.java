@@ -146,7 +146,8 @@ public class FilmController implements FilmFacade {
 		System.out.println(FilmAuswahl.FILM);
 		System.out.println(filmauswahl);
 		if(filmauswahl.equals(FilmAuswahl.FILM.toString())){
-			return navigationController.toFilm();	
+			return navigationController.toFilm();
+			
 		}else if(filmauswahl.equals(FilmAuswahl.FILMUPDATE.toString())){
 			return navigationController.toFilmUpdate();
 		}
