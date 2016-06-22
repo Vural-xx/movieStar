@@ -42,7 +42,7 @@
           					<li><h:link outcome="login" rendered="#{BenutzerController.loggedIn}" action="#{BenutzerController.logOut}" >Logout<span id="logout-nav" class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span></h:link></li>
             				<li><h:link outcome="login" rendered="#{!BenutzerController.loggedIn}">Login<span id="login-nav" class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span></h:link></li>
             				<li><h:link outcome="filmformular">Film erstellen<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:link></li>
-            				<li><h:commandLink action="#{filmController.alleFilme}">Filme</h:commandLink></li>
+            				<li><h:commandLink action="#{filmController.alleFilme}">Filme<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:commandLink></li>
             				<li><h:link outcome="benutzerVerwalten">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-user glyphicon-nav-pos"></span></h:link></li>
 							<li><h:link outcome="kontakt">Kontakt<span id="kontakt-nav" class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span></h:link></li>
 							<li><a href="#about">Über uns</a></li>
