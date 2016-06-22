@@ -26,6 +26,16 @@ public class BenutzerController implements BenutzerFacade {
 	private boolean registrieren = false;
 	private boolean datenÄndern = false;
 	private String neues_passwort = null;
+	@ManagedProperty(value="#{navigationController}")
+	private NavigationController navigationController;
+	
+	public NavigationController getNavigationController() {
+		return navigationController;
+	}
+
+	public void setNavigationController(NavigationController navigationController) {
+		this.navigationController = navigationController;
+	}
 	
 	public BenutzerController() {
 		benutzerDAO = new BenutzerDAO();
@@ -104,10 +114,11 @@ public class BenutzerController implements BenutzerFacade {
 		
 	}
 
-	public void logOut() {
+	public String logOut() {
 		// TODO Auto-generated method stub
 		setLoggedIn(false);
 		benutzer = null;
+		return navigationController.toIndex();
 
 	}
 

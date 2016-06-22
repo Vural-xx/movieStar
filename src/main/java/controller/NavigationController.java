@@ -54,6 +54,9 @@ public class NavigationController  {
     public String toFilmUpdate() {
     	return "/filmUpdate.xhtml";
     }
+    public String toIndex() {
+    	return "/index.xhtml";
+    }
  
 
     public String toAlleFilme(){

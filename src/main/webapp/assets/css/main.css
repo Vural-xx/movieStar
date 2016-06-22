@@ -116,7 +116,13 @@ th:first-child, tr:first-child,td:first-child {
 	padding-left: 0;
 }
 
+.c-white {
+	color: #ffffff !important;
+}
 
+.c-white:hover {
+	color: #9d9d9d !important;
+}
 
 select {
 	border:none;

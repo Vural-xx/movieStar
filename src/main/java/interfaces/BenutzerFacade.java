@@ -8,7 +8,7 @@ public interface BenutzerFacade {
 
 	public String logIn(String logIn, String passwort);
 	
-	public void logOut();
+	public String logOut();
 	
 	public void passwortVergessen(String email, String benutzername, String passwort);
 	

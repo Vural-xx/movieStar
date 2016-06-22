@@ -31,8 +31,8 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public void logOut() {
-		benutzerController.logOut();
+	public String logOut() {
+		return benutzerController.logOut();
 		// TODO Auto-generated method stub
 		
 	}
