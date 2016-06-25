@@ -36,6 +36,16 @@ width:100%;
 height:auto;
 display:block;
 }
+
+.titellink{
+	color: #000000 !important;
+	text-decoration: none;
+}
+.titellink:hover {
+	color: lightblue !important;
+	text-decoration: none;
+}
+
 .w250 {
 	width: 250px;
 }
@@ -73,8 +83,16 @@ display:block;
 	margin-left: 70px;
 }
 
+.mg-t-b-20 {
+	margin: 20px 0;
+}
+
 .pd-l-50 {
 	padding-left: 50px;
+}
+
+.pd-l-45 {
+	padding-left: 45px;
 }
 .pd-l-30 {
 	padding-left: 30px;
@@ -103,7 +121,9 @@ display:block;
 .font-30 {
 	font-size: 30px;
 }
-
+.font-15 {
+	font-size: 15px;
+}
 .dpnone {
 	display: none;
 }
@@ -222,6 +242,14 @@ input, button {
 	border:1px solid grey;
 	border-radius: 2px;
 }
+
+.border-bottom {
+	border-bottom:1px solid grey;
+}
+.border-left {
+	border-left:1px solid grey;
+}
+
 /* /STARTSEITE*/
 
 h1 {
@@ -278,6 +306,11 @@ input, #button {
 
 #control_zurueck {
 	margin-left: 20px;
+}
+
+.picContainer {
+	padding: 30px;
+	padding-top:20px;
 }
 
 /* Film erstellen*/
@@ -358,7 +391,7 @@ input, #button {
     font-weight: 100;
     margin-top: 30px;
 }
-
+/* RESPONSIVE */
 @media only screen and (max-width: 768px) {
 	
 	.inputpd-80-768 {
