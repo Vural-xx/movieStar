@@ -23,6 +23,7 @@ import model.Mitwirkende;
 public class FilmController implements FilmFacade {
 	
 	private Film film;
+	private List top10List;
 	private FilmDAO filmDAO;
 
 	@ManagedProperty(value="#{BenutzerController}")
@@ -46,6 +47,16 @@ public class FilmController implements FilmFacade {
 		filmDAO = new FilmDAO();
 	}
 	
+	
+	
+	public List getTop10List() {
+		return top10List;
+	}
+
+	public void setTop10List(List top10List) {
+		this.top10List = top10List;
+	}
+
 	public Film getFilm() {
 		return film;
 	}
@@ -171,8 +182,9 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public List<Film> top10() {
-		filme = filmDAO.top10();
-		return filme;
+		top10List =null;
+		top10List = filmDAO.top10();
+		return top10List;
 	}
 
 	@Override

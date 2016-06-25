@@ -10,6 +10,7 @@
 <ui:define name="content">
 <f:metadata>
 	<f:event listener="#{filmController.neusteFilme}" type="preRenderView" />
+	<f:event listener="#{filmController.top10}" type="preRenderView" />
 </f:metadata>
 
 
@@ -29,8 +30,7 @@
 				</div>
 			</div>
 			 <div class="col-sm-8">
-			 <h2>						<h:commandLink class="titellink" action="#{filmController.selectFilm(fi.name, 'FILM')}"
-							value="#{fi.name}" /></h2>
+			 <h2><h:commandLink class="titellink" action="#{filmController.selectFilm(fi.name, 'FILM')}" value="#{fi.name}" /></h2>
 			 <h4 class="pd-t-20">Beschreibung</h4>
 			 <p>#{fi.beschreibung}</p>
 
@@ -53,8 +53,20 @@
     			<div class="row"><div class="col-md-12 border-left"><h1 class="h1padding">Film der Woche</h1><p class="textpadding">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
 					</p></div>
 				</div>
-    			<div class="row"><div class="col-md-12 border-left border-bottom"><h1 class="h1padding">Top 10</h1><p class="textpadding">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-					</p></div>
+    			<div class="row"><div class="col-md-12 border-left border-bottom"><h1 class="h1padding">Top 10</h1>
+    			<div class="top10Container pd-l-25">
+    			<h:dataTable value="#{filmController.top10List}" var="fi" style="border-collapse: collapse" border="0" cellpadding="10">
+		<h:column>
+		<f:facet name="header">Name</f:facet>
+			#{fi.name}	
+		</h:column>
+			<h:column>
+		<f:facet name="header">Sterne</f:facet>
+		#{fi.sterne}
+		</h:column>
+		</h:dataTable>
+		</div>
+    			</div>
 				</div>
     		</div>
     	</div>

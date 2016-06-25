@@ -97,6 +97,10 @@ display:block;
 .pd-l-30 {
 	padding-left: 30px;
 }
+
+.pd-l-25 {
+	padding-left: 25px;
+}
 .pd-t-50 {
 	padding-top: 50px;
 }
@@ -311,6 +315,10 @@ input, #button {
 .picContainer {
 	padding: 30px;
 	padding-top:20px;
+}
+
+.top10Container {
+	margin-bottom: 30px;
 }
 
 /* Film erstellen*/

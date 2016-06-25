@@ -171,6 +171,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		session.beginTransaction();
 		Criteria criteria = session.createCriteria(Film.class);
 		criteria.addOrder(Order.desc("sterne"));
+		criteria.setMaxResults(5);
 		List<Film> results = criteria.list();
 	
 
