@@ -255,10 +255,10 @@ input, button {
 }
 
 .border-bottom {
-	border-bottom:1px solid grey;
+	border-bottom:1px solid gainsboro;
 }
 .border-left {
-	border-left:1px solid grey;
+	border-left:1px solid gainsboro;
 }
 
 /* /STARTSEITE*/
