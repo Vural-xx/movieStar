@@ -50,10 +50,16 @@
     		</div>
     		
     		<div class="col-lg-4">
-    			<div class="row"><div class="col-md-12 border-left"><h1 class="h1padding">Film der Woche</h1><p class="textpadding">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  
-					</p></div>
+    			<div class="row">
+    			<div class="col-md-12 border-left filmDerWoche"><h1 class="h1padding">Film der Woche</h1>
+    			<h2 class="pd-l-20">#{filmController.wochenFilm.name}</h2>
+    			<p class="pd-l-20">Dauer: #{filmController.wochenFilm.dauer}</p>
+    			<p class="pd-l-20">Erscheinungsjahr: #{filmController.wochenFilm.erscheinungsjahr}</p>
+    			<p class="pd-l-20">Genre: #{filmController.wochenFilm.genre}</p>
+    			<p class="pd-l-20 font-30">Sterne: #{filmController.wochenFilm.sterne}</p>
+    			</div>
 				</div>
-    			<div class="row"><div class="col-md-12 border-left border-bottom"><h1 class="h1padding">Top 10</h1>
+    			<div class="row"><div class="col-md-12 border-left border-bottom pd-t-50"><h1 class="h1padding">Top 10</h1>
     			<div class="top10Container pd-l-25">
     			<h:dataTable value="#{filmController.top10List}" var="fi" style="border-collapse: collapse" border="0" cellpadding="10">
 		<h:column>

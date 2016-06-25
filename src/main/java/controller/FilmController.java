@@ -3,6 +3,8 @@ package controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -24,6 +26,7 @@ public class FilmController implements FilmFacade {
 	
 	private Film film;
 	private List top10List;
+	private Film wochenFilm;
 	private FilmDAO filmDAO;
 
 	@ManagedProperty(value="#{BenutzerController}")
@@ -49,6 +52,14 @@ public class FilmController implements FilmFacade {
 	
 	
 	
+	public Film getWochenFilm() {
+		return wochenFilm;
+	}
+
+	public void setWochenFilm(Film wochenFilm) {
+		this.wochenFilm = wochenFilm;
+	}
+
 	public List getTop10List() {
 		return top10List;
 	}
@@ -184,6 +195,8 @@ public class FilmController implements FilmFacade {
 	public List<Film> top10() {
 		top10List =null;
 		top10List = filmDAO.top10();
+		wochenFilm = filmDerWoche(top10List);
+		System.out.println(wochenFilm.getName());
 		return top10List;
 	}
 
@@ -213,6 +226,18 @@ public class FilmController implements FilmFacade {
 			Feld feld = new Feld(counter+".");
 			feld.setValue(m.getName());
 			felder.add(feld);
+		}
+	}
+	
+	public Film filmDerWoche(List<Film> filme){
+		Random random= new Random();
+		int i = random.nextInt((2 - 0)+1)+0;
+		System.out.println(i);
+		System.out.println(filme.get(i).getName());
+		if(filme.get(i) != null){
+			return filme.get(i);	
+		} else{
+			return filme.get(0);
 		}
 	}
 	

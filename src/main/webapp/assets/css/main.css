@@ -101,6 +101,10 @@ display:block;
 .pd-l-25 {
 	padding-left: 25px;
 }
+
+.pd-l-20 {
+	padding-left: 20px;
+}
 .pd-t-50 {
 	padding-top: 50px;
 }
@@ -109,6 +113,9 @@ display:block;
 }
 .pd-t-30 {
 	padding-top: 30px;
+}
+.pd-t-50 {
+	padding-top: 50px;
 }
 .font-100 {
 	font-size: 100px;
@@ -318,9 +325,13 @@ input, #button {
 }
 
 .top10Container {
-	margin-bottom: 30px;
+	margin-bottom: 100px;
 }
 
+.filmDerWoche {
+	padding-bottom: 100px;
+    border-bottom: 1px solid gainsboro;
+}
 /* Film erstellen*/
 
 .beschreibunginput {
