@@ -231,14 +231,16 @@ public class FilmController implements FilmFacade {
 	
 	public Film filmDerWoche(List<Film> filme){
 		Random random= new Random();
-		int i = random.nextInt((2 - 0)+1)+0;
+		Film film= null;
+		int i = random.nextInt(((filme.size()-1) - 0)+1)+0;
 		System.out.println(i);
 		System.out.println(filme.get(i).getName());
 		if(filme.get(i) != null){
-			return filme.get(i);	
+		film=filme.get(i);	
 		} else{
-			return filme.get(0);
+		film=filmDerWoche(top10List);
 		}
+		return film;
 	}
 	
 	
