@@ -24,6 +24,6 @@ public interface BenutzerFacade {
 	
 	public boolean getNutzernameInDBVorhanden();
 	
-	public String benutzerLoeschen(Benutzer benutzer);
+	public boolean benutzerLoeschen(Benutzer benutzer);
 
 }

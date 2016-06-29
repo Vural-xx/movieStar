@@ -2,29 +2,17 @@ package JunitTest;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
-import javax.faces.FacesException;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.junit.runners.MethodSorters;
 
-import com.sun.faces.config.InitFacesContext;
-
-import Database.BenutzerDAO;
 import controller.BenutzerController;
-import enums.Rolle;
 import model.Benutzer;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BenutzerControllerTest{
 	
 	private String email;
@@ -33,10 +21,6 @@ public class BenutzerControllerTest{
 	private String neuesPasswort;
 	private BenutzerController benCon;
 	private Benutzer benutzer;
-	private String registriert;
-	
-	@Mock
-    private FacesContext context;
 	
 	@Before
 	public void initialisieren(){
@@ -46,28 +30,27 @@ public class BenutzerControllerTest{
 		passwort = "Test-1!";
 		neuesPasswort = "Test-123";
 		benutzer = new Benutzer(email, benutzername, passwort);
-		registriert =  benCon.registrieren(benutzer.getEmail(), benutzer.getBenutzername(), benutzer.getPasswort());
-		regTest();
+		
 	}
 	
 	@Test
-	public void regTest(){
-		Assert.assertEquals("login" , registriert);
+	public void aRegTest(){
+		Assert.assertEquals("login" , benCon.registrieren(benutzer.getEmail(), benutzer.getBenutzername(), benutzer.getPasswort()));
 	}
 	
 	@Test
-	public void logInTestEmail(){
+	public void bLogInTestEmail(){
 		Assert.assertEquals("index", benCon.logIn(benutzer.getEmail(), benutzer.getPasswort()));
 	}
-//	
-//	@Test
-//	public void benutzerVerwaltenTest(){
-//		Assert.assertTrue(benCon.benutzerVerwalten(email, benutzername, passwort, neuesPasswort));
-//	}
-//	
+	
+	@Test
+	public void cEmailInDBVorhanden(){
+		Assert.assertFalse(benCon.getEmailInDBVorhanden());
+	}
 	
 	@After
-	public void loeschenTest(){
-		Assert.assertEquals("geloescht", benCon.benutzerLoeschen(benutzer));
+	public void dLoeschenTest(){
+		benCon.benutzerLoeschen(benutzer);
 	}
+
 }

@@ -196,10 +196,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	@Override
-	public String benutzerLoeschen(Benutzer benutzer) {
-		if(benutzerDAO.benutzerLoeschen(benutzer)){
-			return "geloescht";
-		}
-		return "fail";
+	public boolean benutzerLoeschen(Benutzer benutzer) {
+		return benutzerDAO.benutzerLoeschen(benutzer);
 	}
 }
