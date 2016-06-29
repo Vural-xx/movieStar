@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,10 @@ public class BenutzerControllerTest{
 	private String email;
 	private String benutzername;
 	private String passwort;
+	private String neuesPasswort;
 	private BenutzerController benCon;
+	private Benutzer benutzer;
+	private String registriert;
 	
 	@Mock
     private FacesContext context;
@@ -37,17 +41,33 @@ public class BenutzerControllerTest{
 	@Before
 	public void initialisieren(){
 		benCon = new BenutzerController();
-		this.email = "test@web.de";
-		this.benutzername = "Horst1";
-		this.passwort = "Test-1!";
-		
-		context = Mockito.mock(FacesContext.class);
-//		Mockito.when(mockFacesContext.getResponseWriter()).thenReturn(mockResponseWriter);
+		email = "test@web.de";
+		benutzername = "Horst1";
+		passwort = "Test-1!";
+		neuesPasswort = "Test-123";
+		benutzer = new Benutzer(email, benutzername, passwort);
+		registriert =  benCon.registrieren(benutzer.getEmail(), benutzer.getBenutzername(), benutzer.getPasswort());
+		regTest();
 	}
 	
 	@Test
 	public void regTest(){
-		Assert.assertEquals("login" , benCon.registrieren(email, benutzername, passwort));
+		Assert.assertEquals("login" , registriert);
 	}
-
+	
+	@Test
+	public void logInTestEmail(){
+		Assert.assertEquals("index", benCon.logIn(benutzer.getEmail(), benutzer.getPasswort()));
+	}
+//	
+//	@Test
+//	public void benutzerVerwaltenTest(){
+//		Assert.assertTrue(benCon.benutzerVerwalten(email, benutzername, passwort, neuesPasswort));
+//	}
+//	
+	
+	@After
+	public void loeschenTest(){
+		Assert.assertEquals("geloescht", benCon.benutzerLoeschen(benutzer));
+	}
 }

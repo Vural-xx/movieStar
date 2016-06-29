@@ -136,8 +136,8 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public boolean benutzerLoeschen(Benutzer benutzer) {
-		return benutzerController.benutzerLoeschen(benutzer);
+	public String benutzerLoeschen(Benutzer benutzer) {
+		return "geloescht";
 		
 	}
 	

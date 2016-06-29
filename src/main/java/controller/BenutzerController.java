@@ -85,8 +85,12 @@ public class BenutzerController implements BenutzerFacade {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
 		registrieren = benutzerDAO.benutzerErstellen(benutzer);
 		if (registrieren == true) {
+			if(FacesContext.getCurrentInstance() == null){
+			}else{
+				System.out.println(FacesContext.getCurrentInstance());
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Registrierung war erfolgreich!", null));
+			}
 			return "login";
 		}
 		return " ";
@@ -99,8 +103,13 @@ public class BenutzerController implements BenutzerFacade {
 			this.benutzer = benutzer;
 			return "index";
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login nicht möglich. Benutzername oder Passwort ist falsch", null));
+			if(FacesContext.getCurrentInstance() == null){
+				
+			}else{
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login nicht möglich. Benutzername oder Passwort ist falsch", null));
+			}
+			
 			return "login";
 		}
 	}
@@ -131,20 +140,20 @@ public class BenutzerController implements BenutzerFacade {
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(email,benutzername, passwort));
 		if(benutzer == null){
 			datenÄndern = false;
-			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+//			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
+//			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
 		}else{
 			datenÄndern = benutzer.getPasswort().equals(passwort);
 		}
 		if (datenÄndern) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
+//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
 			benutzer.setEmail(email);
 			benutzer.setBenutzername(benutzername);
 			benutzer.setPasswort(neues_passwort);
 
 		}else{
-			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+//			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
+//			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
 			return false;
 
 		}
@@ -187,12 +196,10 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	@Override
-	public boolean benutzerLoeschen(Benutzer benutzer) {
-		return benutzerDAO.benutzerLoeschen(benutzer);
-		// TODO Auto-generated method stub
-		
+	public String benutzerLoeschen(Benutzer benutzer) {
+		if(benutzerDAO.benutzerLoeschen(benutzer)){
+			return "geloescht";
+		}
+		return "fail";
 	}
-	
-	
-
 }
