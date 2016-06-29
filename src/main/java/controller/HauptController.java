@@ -4,6 +4,7 @@ import java.util.List;
 
 import interfaces.BenutzerFacade;
 import interfaces.FilmFacade;
+import model.Benutzer;
 import model.Film;
 import model.Filter;
 
@@ -45,8 +46,8 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public void benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
-		benutzerController.benutzerVerwalten(email, benutzername, passwort, neues_passwort);
+	public boolean benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
+		return benutzerController.benutzerVerwalten(email, benutzername, passwort, neues_passwort);
 		// TODO Auto-generated method stub
 		
 	}
@@ -132,6 +133,12 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	@Override
 	public String alleFilme() {
 		return filmController.alleFilme();
+	}
+
+	@Override
+	public boolean benutzerLoeschen(Benutzer benutzer) {
+		return benutzerController.benutzerLoeschen(benutzer);
+		
 	}
 	
 	

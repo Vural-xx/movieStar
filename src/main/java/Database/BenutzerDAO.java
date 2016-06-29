@@ -92,6 +92,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 				return null;
 			} else {
 				Benutzer dbBenutzer = (Benutzer) results.get(0);
+				sqlStatus = "Benutzer gefunden";
 				return dbBenutzer;
 			}
 			
@@ -127,6 +128,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 			if (results.size() == 0) {
 				return false;
 			} else {
+				sqlStatus = "Benutzer vorhanden";
 				return true;
 			}
 			
@@ -154,15 +156,8 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 			System.err.println("Fail");
 			sqlStatus = "Änderung fehlgeschlagen";
 		}
-
-		
-		
 		return null;
 	}
-
-
-
-
 
 	@Override
 	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email) {
@@ -179,7 +174,21 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 	public void statusAenderung(AjaxBehaviorEvent event) {
 		setSQLnotification(getSqlStatus());
 	}
+	
+	public boolean benutzerLoeschen(Benutzer benutzer){
+		session.beginTransaction();
+		
+		try {
+			session.delete(benutzer);
+			session.getTransaction().commit();
+			setSqlStatus("Erfolgreich gelöscht");
+			System.out.println(sqlStatus);
+			return true;
 
-
-
+		} catch (Exception e) {
+			System.err.println("Fail");
+			sqlStatus = "Löschen fehlgeschlagen";
+			return false;
+		}
+	}
 }

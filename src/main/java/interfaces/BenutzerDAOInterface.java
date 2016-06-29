@@ -17,4 +17,5 @@ public interface BenutzerDAOInterface {
 	
 	public boolean kommentareLoeschen(Long KID);
 
+	public boolean benutzerLoeschen(Benutzer benutzer);
 }

@@ -84,14 +84,12 @@ public class BenutzerController implements BenutzerFacade {
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
 		registrieren = benutzerDAO.benutzerErstellen(benutzer);
-		System.out.println(nutzername);
-		if (registrieren = true) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Registrierung war erfolgreich!", null));
+		if (registrieren == true) {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Registrierung war erfolgreich!", null));
 			return "login";
 		}
 		return " ";
-
 	}
 
 	public String logIn(String logIn, String passwort) {
@@ -128,7 +126,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	
-	public void benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
+	public boolean benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
 		// TODO Auto-generated method stub
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(email,benutzername, passwort));
 		if(benutzer == null){
@@ -147,10 +145,11 @@ public class BenutzerController implements BenutzerFacade {
 		}else{
 			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+			return false;
 
 		}
 		benutzerDAO.benutzerUpdate(benutzer);
-
+		return true;
 	}
 
 	@Override
@@ -186,5 +185,14 @@ public class BenutzerController implements BenutzerFacade {
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+
+	@Override
+	public boolean benutzerLoeschen(Benutzer benutzer) {
+		return benutzerDAO.benutzerLoeschen(benutzer);
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }
