@@ -9,7 +9,8 @@
 <ui:composition template = "/templates/commom-template.xhtml">
 <ui:define name="content">
 <f:metadata>
-	<f:event listener="#{filmController.neusteFilme}" type="preRenderView" />
+	<f:event listener="#{filmController.alleFilme}" type="preRenderView" />
+	<f:event listener="#{filmController.sortiereFilm('NEUSTERUPLOAD')}" type="preRenderView" />
 	<f:event listener="#{filmController.top10}" type="preRenderView" />
 </f:metadata>
 

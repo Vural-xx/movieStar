@@ -18,6 +18,8 @@ public interface FilmFacade {
 	public String alleFilme();
 	
 	public List<Film> top10();
+
+	public String sortiereFilm(String sortiertyp);
 	
 	public void filmBewerten( Long FID, double sterne);
 	

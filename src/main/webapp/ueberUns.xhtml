@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a = "http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template = "/templates/commom-template.xhtml">
+<ui:define name="content">
+	<div class="containerRegistieren">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="registrieren">
+				<h1 class="font-50 pd-b-50">Über Uns</h1>
+			<h3>Vural Yilmaz</h3>
+			<h3>Christin Ubben</h3>
+			<h3>Jannis Lindenberg</h3>
+			<h3>Florian Meinert</h3>
+			</div>
+		</div>
+	</div>
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(350).css({'overflow':'visible'});
+        })
+    //]]>
+	</script>
+</ui:define>	
+</ui:composition>
+</html>

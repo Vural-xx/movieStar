@@ -15,6 +15,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import comparator.FilmComparatorNameAZ;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
@@ -118,11 +119,6 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 	
 
-	public List<Film> findAlle(){
-		Criteria criteria = session.createCriteria(Film.class);
-		return criteria.list();
-	}
-
 	@Override
 	public Film filmSuchenByName(String name) {
 		session.beginTransaction();
@@ -162,9 +158,9 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	public List<Film> alleFilme() {
 		session.beginTransaction();
 		Criteria criteria = session.createCriteria(Film.class);
-		session.flush();
+		session.getTransaction().commit();
 		return criteria.list();
 	}
-	
+
 	
 }

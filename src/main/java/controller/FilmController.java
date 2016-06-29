@@ -12,13 +12,23 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
 import Database.FilmDAO;
+import comparator.FilmComparatorNameAZ;
+import comparator.FilmComparatorNameZA;
+import comparator.FilmComparatorNeusterFilm;
+import comparator.FilmComparatorNeusterUpload;
+import comparator.FilmComparatorNiedrigsteSterne;
+import comparator.FilmComparatorAeltesterFilm;
+import comparator.FilmComparatorAeltesterUpload;
+import comparator.FilmComparatorHoechsteSterne;
 import enums.FilmAuswahl;
 import enums.Genre;
+import enums.SortierTyp;
 import interfaces.FilmFacade;
 import model.Feld;
 import model.Film;
 import model.Filter;
 import model.Mitwirkende;
+import util.SortFilter;
 
 @ManagedBean(name="filmController")
 @SessionScoped
@@ -28,6 +38,17 @@ public class FilmController implements FilmFacade {
 	private List top10List;
 	private Film wochenFilm;
 	private FilmDAO filmDAO;
+	SortFilter sortFilter= new SortFilter();
+	
+	
+
+	public SortFilter getSortFilter() {
+		return sortFilter;
+	}
+
+	public void setSortFilter(SortFilter sortFilter) {
+		this.sortFilter = sortFilter;
+	}
 
 	@ManagedProperty(value="#{BenutzerController}")
 	private BenutzerController benutzerController;
@@ -196,7 +217,6 @@ public class FilmController implements FilmFacade {
 		top10List =null;
 		top10List = filmDAO.top10();
 		wochenFilm = filmDerWoche(top10List);
-		System.out.println(wochenFilm.getName());
 		return top10List;
 	}
 
@@ -242,6 +262,64 @@ public class FilmController implements FilmFacade {
 		}
 		return film;
 	}
+
+	@Override
+	public String sortiereFilm(String sortiertyp) {
+		
+		switch (sortiertyp) {
+		case "HOECHSTESTERNE":
+			FilmComparatorHoechsteSterne filmComparatorHoechsteSterne= new FilmComparatorHoechsteSterne();	
+			
+			sortFilter.sterneBool(true);
+			filme.sort(filmComparatorHoechsteSterne);
+			break;
+		case "NIEDRIGSTESTERNE":
+			FilmComparatorNiedrigsteSterne filmComparatorNiedrigsteSterne= new FilmComparatorNiedrigsteSterne();
+			sortFilter.sterneBool(false);
+			filme.sort(filmComparatorNiedrigsteSterne);
+			break;
+		case "NEUSTERFILM":
+			FilmComparatorNeusterFilm filmComparatorNeusterFilm = new FilmComparatorNeusterFilm();
+			sortFilter.erscheinungsjahrBool(true);
+			filme.sort(filmComparatorNeusterFilm);
+			break;
+		case "AELTESTERFILM":
+			FilmComparatorAeltesterFilm filmComparatorAeltesterFilm= new FilmComparatorAeltesterFilm();
+			sortFilter.erscheinungsjahrBool(false);
+			filme.sort(filmComparatorAeltesterFilm);
+			break;
+		case "NAMEAZ":
+			FilmComparatorNameAZ filmComparatorNameAZ = new FilmComparatorNameAZ();
+			sortFilter.nameBool(true);
+			filme.sort(filmComparatorNameAZ);
+			break;
+		case "NAMEZA":
+			FilmComparatorNameZA filmComparatorNameZA = new FilmComparatorNameZA();
+			sortFilter.nameBool(false);
+			filme.sort(filmComparatorNameZA);
+			break;
+		case "AELTESTERUPLOAD":
+			FilmComparatorNeusterUpload filmComparatorNeusterUpload = new FilmComparatorNeusterUpload();
+			sortFilter.uploadBool(false);
+			filme.sort(filmComparatorNeusterUpload);
+			break;
+		case "NEUSTERUPLOAD":
+			FilmComparatorAeltesterUpload filmComparatorAeltesterUpload = new FilmComparatorAeltesterUpload();
+			sortFilter.uploadBool(true);
+			filme.sort(filmComparatorAeltesterUpload);
+			break;
+			
+
+		default:
+			break;
+		}
+
+
+		
+		return navigationController.toAlleFilme();
+	}
+	
+	
 	
 	
 
