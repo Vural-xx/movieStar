@@ -16,6 +16,22 @@
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-30">
 				<h1 class="font-50">#{filmController.film.name}</h1>
 				<img class="mg-l-70 pd-t-20 w250" src="assets/img/django.jpg"></img>
+				<h:form>
+    <h:selectOneRadio rendered="#{BenutzerController.loggedIn}" name="voteStars" id="voteStars" class="voteStars mg-l-70 mg-t-20" value="#{filmController.bewertungSterne}">
+        <f:selectItem itemLabel="1" id="item1"  itemValue="1" />
+        <f:selectItem itemLabel="1.5" id="item2"  itemValue="1.5" />
+        <f:selectItem itemLabel="2" id="item3"  itemValue="2" />
+        <f:selectItem itemLabel="2.5" id="item4"  itemValue="2.5" />
+        <f:selectItem itemLabel="3" id="item5"  itemValue="3" />
+        <f:selectItem itemLabel="3.5" id="item6"  itemValue="3.5" />
+        <f:selectItem itemLabel="4" id="item7"  itemValue="4" />
+        <f:selectItem itemLabel="4.5" id="item8"  itemValue="4.5" />
+        <f:selectItem itemLabel="5" id="item9"  itemValue="5" />
+    </h:selectOneRadio>
+</h:form>
+			<h:commandButton rendered="#{BenutzerController.loggedIn}" class="btn btn-default" type="submit" action="#{filmController.bewerteFilm()}" value="Suche">
+										</h:commandButton>
+
 		</div>
 			
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-50">
@@ -24,7 +40,7 @@
 				<h2>#{msg['filmDauer']}</h2>
 				<p>#{filmController.film.dauer}</p>
 				<h2>#{msg['filmMitwirkende']}</h2>
-				<p>Amber Tamblyn, Arielle Kebbel, Jennifer Beals, Edison Chen, Sarah Michelle Gellar</p>
+				<p>#{filmController.getMitwirkende()}</p>
 				<div class="starsContainer">
 				<p class="pd-t-30 font-40">#{msg['filmSterne']}</p>
 				<p class="font-100">#{filmController.film.sterne}</p>

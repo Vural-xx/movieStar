@@ -71,5 +71,11 @@ public class Mitwirkende implements Serializable {
 		this.filme = filme;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return vorname+" "+name;
+	}
+	
 	
 }

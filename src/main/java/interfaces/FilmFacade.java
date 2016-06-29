@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.List;
 
+import model.Bewertung;
 import model.Film;
 import model.Filter;
 
@@ -18,6 +19,8 @@ public interface FilmFacade {
 	public String alleFilme();
 	
 	public List<Film> top10();
+	
+	public String bewerteFilm();
 
 	public String sortiereFilm(String sortiertyp);
 	

@@ -24,6 +24,7 @@ import enums.FilmAuswahl;
 import enums.Genre;
 import enums.SortierTyp;
 import interfaces.FilmFacade;
+import model.Bewertung;
 import model.Feld;
 import model.Film;
 import model.Filter;
@@ -35,6 +36,15 @@ import util.SortFilter;
 public class FilmController implements FilmFacade {
 	
 	private Film film;
+	private double bewertungSterne;
+	public double getBewertungSterne() {
+		return bewertungSterne;
+	}
+
+	public void setBewertungSterne(double bewertungSterne) {
+		this.bewertungSterne = bewertungSterne;
+	}
+
 	private List top10List;
 	private Film wochenFilm;
 	private FilmDAO filmDAO;
@@ -320,7 +330,33 @@ public class FilmController implements FilmFacade {
 	}
 	
 	
+	public String getMitwirkende() {
+		String mitwirkende = "";
+		for(Mitwirkende a: film.getMitwirkende()){
+			if(mitwirkende != ""){
+				mitwirkende = mitwirkende + ", ";
+			}
+			if(a.getVorname() != null && a.getName() != null){
+			mitwirkende = mitwirkende + a.getVorname() + a.getName();
+		} else if(a.getName() == null){
+			mitwirkende = mitwirkende + a.getVorname();
+		} else if(a.getVorname() == null){
+			mitwirkende= mitwirkende + a.getName();
+		}
+			
+		}
+		return mitwirkende;
+	}
 	
+	@Override
+	public String bewerteFilm() {
+		Bewertung bewertung = new Bewertung();
+		bewertung.setErsteller(benutzerController.getBenutzer());
+		bewertung.setSterne(bewertungSterne);
+		filmDAO.bewerteFilm(bewertung, film);
+		return navigationController.toFilm();
+	}
+
 	
 
 }

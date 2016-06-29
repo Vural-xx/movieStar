@@ -5,6 +5,7 @@ import java.util.List;
 import interfaces.BenutzerFacade;
 import interfaces.FilmFacade;
 import model.Benutzer;
+import model.Bewertung;
 import model.Film;
 import model.Filter;
 
@@ -143,6 +144,11 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	@Override
 	public String sortiereFilm(String sortiertyp) {
 		return filmController.sortiereFilm(sortiertyp);
+	}
+
+	@Override
+	public String bewerteFilm() {
+		return filmController.bewerteFilm();
 	}
 	
 	

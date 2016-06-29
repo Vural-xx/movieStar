@@ -17,6 +17,7 @@ import org.hibernate.criterion.Restrictions;
 
 import comparator.FilmComparatorNameAZ;
 import model.Benutzer;
+import model.Bewertung;
 import model.Film;
 import model.Filter;
 import util.HibernateUtil;
@@ -160,6 +161,22 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		Criteria criteria = session.createCriteria(Film.class);
 		session.getTransaction().commit();
 		return criteria.list();
+	}
+
+	@Override
+	public boolean bewerteFilm(Bewertung bewertung, Film film) {
+		session.beginTransaction();
+		try {
+			session.save(bewertung);
+			session.update(film);
+			session.getTransaction().commit();
+			System.out.println("Update Film und erstelle Bewertung");
+			return true;
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+		}
+		return false;
 	}
 
 	
