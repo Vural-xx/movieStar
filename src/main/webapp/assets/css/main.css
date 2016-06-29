@@ -117,14 +117,18 @@ display:block;
 .pd-t-50 {
 	padding-top: 50px;
 }
+
+.pd-b-50 {
+	padding-bottom: 50px;
+}
 .font-100 {
 	font-size: 100px;
 }
 .font-70 {
-	font-size: 70px;
+	font-size: 70px !important;
 }
 .font-50 {
-	font-size: 50px;
+	font-size: 50px !important;
 }
 .font-40 {
 	font-size: 40px;
@@ -410,6 +414,11 @@ input, #button {
     font-weight: 100;
     margin-top: 30px;
 }
+
+.glyph-top-4 {
+	top: 4px;
+}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 768px) {
 	

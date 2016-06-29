@@ -138,7 +138,11 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	@Override
 	public String benutzerLoeschen(Benutzer benutzer) {
 		return "geloescht";
+	}
 		
+	@Override
+	public String sortiereFilm(String sortiertyp) {
+		return filmController.sortiereFilm(sortiertyp);
 	}
 	
 	
