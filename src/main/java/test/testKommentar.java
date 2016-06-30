@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import enums.Rolle;
+import enums.Rechte;
 import model.Benutzer;
 import model.Film;
 import model.Kommentar;
@@ -26,7 +26,7 @@ public class testKommentar {
 			benutzer.setBenutzername("test");
 			benutzer.setEmail("test@test.de");
 			benutzer.setPasswort("Test#124!");
-			benutzer.setRolle(Rolle.BENUTZER);
+			benutzer.setRechte(Rechte.BENUTZER);
 			session.save(benutzer);
 	
 			benutzer.getErstellteFilme().add(film);

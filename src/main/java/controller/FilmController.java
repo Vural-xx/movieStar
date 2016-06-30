@@ -31,12 +31,13 @@ import model.Filter;
 import model.Mitwirkende;
 import util.SortFilter;
 
-@ManagedBean(name="filmController")
+@ManagedBean(name = "filmController")
 @SessionScoped
 public class FilmController implements FilmFacade {
-	
+
 	private Film film;
 	private double bewertungSterne;
+
 	public double getBewertungSterne() {
 		return bewertungSterne;
 	}
@@ -48,9 +49,7 @@ public class FilmController implements FilmFacade {
 	private List top10List;
 	private Film wochenFilm;
 	private FilmDAO filmDAO;
-	SortFilter sortFilter= new SortFilter();
-	
-	
+	SortFilter sortFilter = new SortFilter();
 
 	public SortFilter getSortFilter() {
 		return sortFilter;
@@ -60,9 +59,9 @@ public class FilmController implements FilmFacade {
 		this.sortFilter = sortFilter;
 	}
 
-	@ManagedProperty(value="#{BenutzerController}")
+	@ManagedProperty(value = "#{BenutzerController}")
 	private BenutzerController benutzerController;
-	
+
 	public BenutzerController getBenutzerController() {
 		return benutzerController;
 	}
@@ -71,18 +70,15 @@ public class FilmController implements FilmFacade {
 		this.benutzerController = benutzerController;
 	}
 
-	@ManagedProperty(value="#{navigationController}")
+	@ManagedProperty(value = "#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
 	private List<Feld> felder = new ArrayList<Feld>();
-	
 
 	public FilmController() {
 		filmDAO = new FilmDAO();
 	}
-	
-	
-	
+
 	public Film getWochenFilm() {
 		return wochenFilm;
 	}
@@ -102,8 +98,8 @@ public class FilmController implements FilmFacade {
 	public Film getFilm() {
 		return film;
 	}
-	
-	public void setFilm(Film film){
+
+	public void setFilm(Film film) {
 		this.film = film;
 	}
 
@@ -114,7 +110,7 @@ public class FilmController implements FilmFacade {
 	public void setNavigationController(NavigationController navigationController) {
 		this.navigationController = navigationController;
 	}
-	
+
 	@Override
 	public String filmErstellen(Film film) {
 		mitwirkendeZuFilmHinzufuegen();
@@ -122,55 +118,54 @@ public class FilmController implements FilmFacade {
 		filmDAO.filmErstellen(film);
 		return listeVorbereiten();
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public String filmUpdate(Film film) {
 		mitwirkendeZuFilmHinzufuegen();
 		filmDAO.filmUpdate(film);
 		return listeVorbereiten();
 		// TODO Auto-generated method stub
-		
+
 	}
-	
 
 	@Override
 	public String filmSuchen(String suche) {
 		filme = filmDAO.filmSuchen(suche);
 		return navigationController.toSuche();
-		
+
 	}
 
 	@Override
 	public void filmSuchenErweitert(Film film) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void filmBewerten(Long FID, double sterne) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void filmKommentieren(Long FID, String kommentar) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void filmFiltern(Filter filter) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	public void filmVorbereiten(ComponentSystemEvent event){
+
+	public void filmVorbereiten(ComponentSystemEvent event) {
 		this.film = new Film();
 		System.out.println("Bin drin");
 	}
-	
-	public String listeVorbereiten(){
+
+	public String listeVorbereiten() {
 		System.out.println("test");
 		this.setFilme(filmDAO.filmFuerErsteller(benutzerController.getBenutzer()));
 		return navigationController.toFilmListe();
@@ -183,25 +178,25 @@ public class FilmController implements FilmFacade {
 	public void setFilme(List filme) {
 		this.filme = filme;
 	}
-	
+
 	public SelectItem[] getGenreValues() {
-	    SelectItem[] items = new SelectItem[Genre.values().length];
-	    int i = 0;
-	    for(Genre g: Genre.values()) {
-	      items[i++] = new SelectItem(g, g.getLabel());
-	    }
-	    return items;
-	  }
-	
-	public String selectFilm(String  name, String filmauswahl){
+		SelectItem[] items = new SelectItem[Genre.values().length];
+		int i = 0;
+		for (Genre g : Genre.values()) {
+			items[i++] = new SelectItem(g, g.getLabel());
+		}
+		return items;
+	}
+
+	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
 		mitwirkendeZuFelderHinzufuegen();
 		System.out.println(FilmAuswahl.FILM);
 		System.out.println(filmauswahl);
-		if(filmauswahl.equals(FilmAuswahl.FILM.toString())){
+		if (filmauswahl.equals(FilmAuswahl.FILM.toString())) {
 			return navigationController.toFilm();
-			
-		}else if(filmauswahl.equals(FilmAuswahl.FILMUPDATE.toString())){
+
+		} else if (filmauswahl.equals(FilmAuswahl.FILMUPDATE.toString())) {
 			return navigationController.toFilmUpdate();
 		}
 		return "false";
@@ -224,9 +219,9 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public List<Film> top10() {
-		top10List =null;
+		top10List = null;
 		top10List = filmDAO.top10();
-		wochenFilm = filmDerWoche(top10List);
+	//	wochenFilm = filmDerWoche(top10List);
 		return top10List;
 	}
 
@@ -236,55 +231,57 @@ public class FilmController implements FilmFacade {
 		filme = filmDAO.alleFilme();
 		return navigationController.toAlleFilme();
 	}
-	
-	public void mitwirkendeZuFilmHinzufuegen(){
-		for(Feld f : felder){
+
+	public void mitwirkendeZuFilmHinzufuegen() {
+		for (Feld f : felder) {
 			Mitwirkende mitwirkende = new Mitwirkende();
-			if(!f.getValue().equals("")){
+			if (!f.getValue().equals("")) {
 				mitwirkende.setName(f.getValue());
 				film.getMitwirkende().add(mitwirkende);
 			}
 		}
 		felder = new ArrayList<Feld>();
-		
+
 	}
-	
-	public void mitwirkendeZuFelderHinzufuegen(){
+
+	public void mitwirkendeZuFelderHinzufuegen() {
 		int counter = 0;
-		for(Mitwirkende m : film.getMitwirkende()){
+		for (Mitwirkende m : film.getMitwirkende()) {
 			counter++;
-			Feld feld = new Feld(counter+".");
+			Feld feld = new Feld(counter + ".");
 			feld.setValue(m.getName());
 			felder.add(feld);
 		}
 	}
-	
-	public Film filmDerWoche(List<Film> filme){
-		Random random= new Random();
-		Film film= null;
-		int i = random.nextInt(((filme.size()-1) - 0)+1)+0;
+
+	public Film filmDerWoche(List<Film> filme) {
+		/*
+		Random random = new Random();
+		Film film = null;
+		int i = random.nextInt(((filme.size() - 1) - 0) + 1) + 0;
 		System.out.println(i);
 		System.out.println(filme.get(i).getName());
-		if(filme.get(i) != null){
-		film=filme.get(i);	
-		} else{
-		film=filmDerWoche(top10List);
+		if (filme.get(i) != null) {
+			film = filme.get(i);
+		} else {
+			film = filmDerWoche(top10List);
 		}
-		return film;
+		return film;*/
+		return null;
 	}
 
 	@Override
 	public String sortiereFilm(String sortiertyp) {
-		
+
 		switch (sortiertyp) {
 		case "HOECHSTESTERNE":
-			FilmComparatorHoechsteSterne filmComparatorHoechsteSterne= new FilmComparatorHoechsteSterne();	
-			
+			FilmComparatorHoechsteSterne filmComparatorHoechsteSterne = new FilmComparatorHoechsteSterne();
+
 			sortFilter.sterneBool(true);
 			filme.sort(filmComparatorHoechsteSterne);
 			break;
 		case "NIEDRIGSTESTERNE":
-			FilmComparatorNiedrigsteSterne filmComparatorNiedrigsteSterne= new FilmComparatorNiedrigsteSterne();
+			FilmComparatorNiedrigsteSterne filmComparatorNiedrigsteSterne = new FilmComparatorNiedrigsteSterne();
 			sortFilter.sterneBool(false);
 			filme.sort(filmComparatorNiedrigsteSterne);
 			break;
@@ -294,7 +291,7 @@ public class FilmController implements FilmFacade {
 			filme.sort(filmComparatorNeusterFilm);
 			break;
 		case "AELTESTERFILM":
-			FilmComparatorAeltesterFilm filmComparatorAeltesterFilm= new FilmComparatorAeltesterFilm();
+			FilmComparatorAeltesterFilm filmComparatorAeltesterFilm = new FilmComparatorAeltesterFilm();
 			sortFilter.erscheinungsjahrBool(false);
 			filme.sort(filmComparatorAeltesterFilm);
 			break;
@@ -318,36 +315,34 @@ public class FilmController implements FilmFacade {
 			sortFilter.uploadBool(true);
 			filme.sort(filmComparatorAeltesterUpload);
 			break;
-			
 
 		default:
 			break;
 		}
 
-
-		
 		return navigationController.toAlleFilme();
 	}
-	
-	
+
 	public String getMitwirkende() {
 		String mitwirkende = "";
-		for(Mitwirkende a: film.getMitwirkende()){
-			if(mitwirkende != ""){
-				mitwirkende = mitwirkende + ", ";
+		if (film.getMitwirkende() != null) {
+			for (Mitwirkende a : film.getMitwirkende()) {
+				if (mitwirkende != "") {
+					mitwirkende = mitwirkende + ", ";
+				}
+				if (a.getVorname() != null && a.getName() != null) {
+					mitwirkende = mitwirkende + a.getVorname() + a.getName();
+				} else if (a.getName() == null) {
+					mitwirkende = mitwirkende + a.getVorname();
+				} else if (a.getVorname() == null) {
+					mitwirkende = mitwirkende + a.getName();
+				}
+
 			}
-			if(a.getVorname() != null && a.getName() != null){
-			mitwirkende = mitwirkende + a.getVorname() + a.getName();
-		} else if(a.getName() == null){
-			mitwirkende = mitwirkende + a.getVorname();
-		} else if(a.getVorname() == null){
-			mitwirkende= mitwirkende + a.getName();
-		}
-			
 		}
 		return mitwirkende;
 	}
-	
+
 	@Override
 	public String bewerteFilm() {
 		Bewertung bewertung = new Bewertung();
@@ -356,7 +351,5 @@ public class FilmController implements FilmFacade {
 		filmDAO.bewerteFilm(bewertung, film);
 		return navigationController.toFilm();
 	}
-
-	
 
 }

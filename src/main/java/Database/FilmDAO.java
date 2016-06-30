@@ -26,7 +26,9 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
-	private static String sqlStatus = "";
+
+	public static String sqlStatus = "";
+
 	
 	private final Session session;
 	
@@ -39,7 +41,9 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	public void setSqlStatus(String sqlStatus) {
-		FilmDAO.sqlStatus = sqlStatus;
+
+		this.sqlStatus = sqlStatus;
+
 	}
 
 	public String getSQLnotification() {
