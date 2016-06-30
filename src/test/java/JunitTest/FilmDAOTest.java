@@ -48,9 +48,6 @@ public class FilmDAOTest {
 		film.setErscheinungsjahr(erscheinungsjahr);
 		film.setBeschreibung(beschreibung);
 		film.setGenre(Genre.ACTION);
-
-		
-		
 	}
 	
 

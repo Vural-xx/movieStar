@@ -77,6 +77,7 @@ public class FilmController implements FilmFacade {
 
 	public FilmController() {
 		filmDAO = new FilmDAO();
+		navigationController = new NavigationController();
 	}
 
 	public Film getWochenFilm() {
@@ -166,7 +167,6 @@ public class FilmController implements FilmFacade {
 	}
 
 	public String listeVorbereiten() {
-		System.out.println("test");
 		this.setFilme(filmDAO.filmFuerErsteller(benutzerController.getBenutzer()));
 		return navigationController.toFilmListe();
 	}
@@ -351,5 +351,15 @@ public class FilmController implements FilmFacade {
 		filmDAO.bewerteFilm(bewertung, film);
 		return navigationController.toFilm();
 	}
+
+	@Override
+	public boolean filmLoeschen(Film film) {
+		if(filmDAO.filmLoeschen(film)){
+			return true;
+		}
+		return false;
+	}
+	
+	
 
 }

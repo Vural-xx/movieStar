@@ -29,5 +29,7 @@ public interface FilmFacade {
 	public void filmKommentieren(Long FID, String kommentar);
 	
 	public void filmFiltern(Filter filter);
+	
+	public boolean filmLoeschen(Film film);
 
 }
