@@ -154,7 +154,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria.add(Restrictions.eq("name", name));
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail film suchen by");
 		}
@@ -171,7 +171,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			results = criteria.list();
 			session.getTransaction().commit();
 			setSqlStatus("Neue Film List gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail neuste film");
 		}
@@ -189,7 +189,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria.setMaxResults(5);
 			results = criteria.list();
 			setSqlStatus("Top10 gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail top 10");
 		}
@@ -205,7 +205,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria = session.createCriteria(Film.class);
 			session.getTransaction().commit();
 			setSqlStatus("Alle Filme gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail alle FIlme");
 		}
@@ -220,7 +220,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			session.save(bewertung);
 			session.update(film);
 			session.getTransaction().commit();
-			System.out.println("Update Film und erstelle Bewertung");
+			setSqlStatus("Update Film und erstelle Bewertung");
+			System.out.println(sqlStatus);
 			return true;
 
 		} catch (Exception e) {

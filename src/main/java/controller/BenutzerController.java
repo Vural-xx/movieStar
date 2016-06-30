@@ -140,13 +140,16 @@ public class BenutzerController implements BenutzerFacade {
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(email,benutzername, passwort));
 		if(benutzer == null){
 			datenÄndern = false;
-//			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
-//			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
 		}else{
 			datenÄndern = benutzer.getPasswort().equals(passwort);
 		}
 		if (datenÄndern) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
+				if(FacesContext.getCurrentInstance() == null){
+				
+				}else{
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
+			}
+
 			benutzer.setEmail(email);
 			benutzer.setBenutzername(benutzername);
 			benutzer.setPasswort(neues_passwort);
@@ -154,11 +157,6 @@ public class BenutzerController implements BenutzerFacade {
 
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die Änderung war nicht erfolgreich!", null));
-//			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
-//			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
-			
-
-
 		}
 		
 		return "benutzerVerwalten";
