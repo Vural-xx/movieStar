@@ -3,69 +3,99 @@ package controller;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+/**
+ * @author MacBook
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class NavigationController  {
 	
      
     /**
-     * Go to register page.
-     * @return Register page name.
+     * Wechsel zur Register Seite
+     * @return Register
      */
     public String toRegister() {
         return "/register.xhtml";
     }
     
     /**
-     * Go to login page.
-     * @return Login page name.
+     * Wechsel zur login Seite
+     * @return Login 
      */
     public String toLogin() {
         return "/login.xhtml";
     }
     
     /**
-     * Go to login page.
-     * @return Login page name.
+     * Wechsel zur Film Liste.
+     * @return Login
      */
     public String toFilmListe() {
         return "/filmListe.xhtml";
     }
     
     /**
-     * Go to login page.
-     * @return Login page name.
+     * Wechseln zum FilmFormular
+     * @return Login 
      */
     public String toFilmFormular() {
         return "/filmformular?faces-redirect=true";
     }
     /**
-     * Go to such page
-     * @return String suche
+     * Wechsel zur Suche Seite
+     * @return Suche
      */
     public String toSuche(){
     	return "/such.xhtml";
     }
     
+    /**
+     * Wechsel zur Film Seite
+     * @return Film
+     */
     public String toFilm(){
     	return "/film.xhtml";
     }
     
+    /**
+     * Wechsel zum Film Update Seite
+     * @return
+     */
     public String toFilmUpdate() {
     	return "/filmUpdate.xhtml";
     }
+    
+    /**
+     * Wechsel zur Index Seite
+     * @return index
+     */
     public String toIndex() {
     	return "/index.xhtml";
     }
  
 
+    /**
+     * Wechsel zur alle Filme Seite 
+     * @return
+     */
     public String toAlleFilme(){
     	return "/alleFilme.xhtml";
     }
+    
+    /**
+     * Wechsel zur BenutzerVerwalten Seite
+     * @return
+     */
     public String toBenutzerVerwalten(){
     	return "/benutzerVerwalten.xhtml";
     }
     
+    /**
+     * Wechsel zur eigene Filme Seite
+     * @return
+     */
     public String toEigeneFilme(){
     	return "/eigeneFilme.xhtml";
     }

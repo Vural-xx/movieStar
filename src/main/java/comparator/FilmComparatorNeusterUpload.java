@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import model.Film;
 
+/**
+ * @author MacBook
+ * Zur Sortierung nach den neuesten Upload
+ *
+ */
 public class FilmComparatorNeusterUpload implements Comparator<Film> {
 	
 	@Override

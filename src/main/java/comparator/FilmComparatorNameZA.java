@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import model.Film;
 
+/**
+ * @author MacBook
+ * Zur Sortierung nach Namen von Z nach A
+ *
+ */
 public class FilmComparatorNameZA implements Comparator<Film> {
 
 	@Override
