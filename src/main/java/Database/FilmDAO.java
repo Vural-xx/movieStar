@@ -24,18 +24,22 @@ import util.HibernateUtil;
 
 public class FilmDAO implements interfaces.FilmDAOInterface {
 	
+	Configuration con = new Configuration();
 	public static String SQLnotification = "";
-	static String sqlStatus = "";
+	private static String sqlStatus = "";
 	
-	private final Session session = HibernateUtil.getSessionFactory().openSession();
+	private final Session session;
 	
+	public FilmDAO() {
+		session =  HibernateUtil.getSessionFactory().openSession();
+	}
 	
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
 
 	public void setSqlStatus(String sqlStatus) {
-		BenutzerDAO.sqlStatus = sqlStatus;
+		FilmDAO.sqlStatus = sqlStatus;
 	}
 
 	public String getSQLnotification() {
@@ -48,7 +52,6 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 
 	@Override
 	public Film filmErstellen(Film film) {
-		//System.out.println(film.getName());
 		session.beginTransaction();
 		try {
 			session.save(film);
@@ -58,7 +61,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			return film;
 
 		} catch (Exception e) {
-			System.err.println("Fail");
+			System.err.println("FailFilm");
+			sqlStatus = "Film anlegen fehlgeschlagen";
 			return null;
 		}
 	}
@@ -69,11 +73,11 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		try {
 			session.update(film);
 			session.getTransaction().commit();
-			setSqlStatus("Film erfolgreich angelegt");
+			setSqlStatus("Film update erfolgreich");
 			return film;
 
 		} catch (Exception e) {
-			System.err.println("Fail");
+			System.err.println("FailFilmUpdate");
 			return null;
 		}
 	}
