@@ -46,7 +46,7 @@
 					<h:commandLink action="#{filmController.sortiereFilm('AELTESTERUPLOAD')}" rendered="#{filmController.sortFilter.upload}"><span class="glyphicon glyphicon-chevron-up glyph-top-4"></span></h:commandLink>
 					<h:commandLink action="#{filmController.sortiereFilm('NEUSTERUPLOAD')}" rendered="#{!filmController.sortFilter.upload}"><span class="glyphicon glyphicon-chevron-down glyph-top-4"></span></h:commandLink>
 		</f:facet>
-		#{fi.uploaddatum}
+		#{fi.formatDatum}
 		</h:column>
 		</h:dataTable>
 				

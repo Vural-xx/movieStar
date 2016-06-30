@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,5 +203,12 @@ public class Film implements Serializable{
 	public void setBewertungen(List <Bewertung> bewertungen) {
 		this.bewertungen = bewertungen;
 	} 
+	
+	public String getFormatDatum(){
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd.mm.yyyy");
+		System.out.println(dt1.format(uploaddatum));
+		return dt1.format(uploaddatum);
+		
+	}
 
 }
