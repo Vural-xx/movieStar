@@ -135,7 +135,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	
-	public boolean benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
+	public String benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
 		// TODO Auto-generated method stub
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(email,benutzername, passwort));
 		if(benutzer == null){
@@ -146,19 +146,22 @@ public class BenutzerController implements BenutzerFacade {
 			datenÄndern = benutzer.getPasswort().equals(passwort);
 		}
 		if (datenÄndern) {
-//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Die Änderung war erfolgreich!", null));
 			benutzer.setEmail(email);
 			benutzer.setBenutzername(benutzername);
 			benutzer.setPasswort(neues_passwort);
+			return "benutzerVerwalten";
 
 		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die Änderung war nicht erfolgreich!", null));
 //			FacesMessage msg = new FacesMessage("Änderung war nicht erfolgreich");
 //			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
-			return false;
+			
+
 
 		}
 		benutzerDAO.benutzerUpdate(benutzer);
-		return true;
+		return "benutzerVerwalten";
 	}
 
 	@Override
