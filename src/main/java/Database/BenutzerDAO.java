@@ -27,7 +27,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
-	private static String sqlStatus = "";
+	public static String sqlStatus = "";
 	
 	private final Session session;
 	

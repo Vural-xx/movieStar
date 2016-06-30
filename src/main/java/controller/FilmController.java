@@ -221,7 +221,7 @@ public class FilmController implements FilmFacade {
 	public List<Film> top10() {
 		top10List = null;
 		top10List = filmDAO.top10();
-		wochenFilm = filmDerWoche(top10List);
+	//	wochenFilm = filmDerWoche(top10List);
 		return top10List;
 	}
 
@@ -255,6 +255,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	public Film filmDerWoche(List<Film> filme) {
+		/*
 		Random random = new Random();
 		Film film = null;
 		int i = random.nextInt(((filme.size() - 1) - 0) + 1) + 0;
@@ -265,7 +266,8 @@ public class FilmController implements FilmFacade {
 		} else {
 			film = filmDerWoche(top10List);
 		}
-		return film;
+		return film;*/
+		return null;
 	}
 
 	@Override
