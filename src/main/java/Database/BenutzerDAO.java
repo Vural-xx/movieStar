@@ -8,6 +8,9 @@ import javax.faces.event.AjaxBehaviorEvent;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
+
+import enums.BenutzerStatus;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,41 +18,55 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import enums.Status;
 import interfaces.BenutzerDAOInterface;
 import model.Benutzer;
 import model.Film;
 import model.Filter;
 import util.HibernateUtil;
 
+/**
+ * @author MacBook
+ * Datenbank für Benutzer
+ *
+ */
 @ManagedBean(name = "benutzerDAO")
 public class BenutzerDAO implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
-	public static String SQLnotification = "";
+	//public static String SQLnotification = "";
 	public static String sqlStatus = "";
-	
 	private final Session session;
 	
+	/**
+	 * Konstruktor BenutzerDAO
+	 */
 	public BenutzerDAO() {
 		session =  HibernateUtil.getSessionFactory().openSession();
 	}
 	
+	/**
+	 * Getter vom SQL Status
+	 * @return
+	 */
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
 
+	/**
+	 * Setter vom SQL Status
+	 * @param sqlStatus
+	 */
 	public void setSqlStatus(String sqlStatus) {
 		BenutzerDAO.sqlStatus = sqlStatus;
 	}
 
-	public String getSQLnotification() {
-		return SQLnotification;
-	}
-
-	public void setSQLnotification(String sQLnotification) {
-		SQLnotification = sQLnotification;
-	}
+//	public String getSQLnotification() {
+//		return SQLnotification;
+//	}
+//
+//	public void setSQLnotification(String sQLnotification) {
+//		SQLnotification = sQLnotification;
+//	}
 
 	@Override
 	public boolean benutzerErstellen(Benutzer benutzer) {
@@ -160,7 +177,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 	}
 
 	@Override
-	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email) {
+	public void benutzerBlockieren(BenutzerStatus benutzerstatus, String benutzername, String email) {
 		// TODO Auto-generated method stub
 
 	}
@@ -171,9 +188,9 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		return false;
 	}
 
-	public void statusAenderung(AjaxBehaviorEvent event) {
-		setSQLnotification(getSqlStatus());
-	}
+//	public void statusAenderung(AjaxBehaviorEvent event) {
+//		setSQLnotification(getSqlStatus());
+//	}
 	
 	public boolean benutzerLoeschen(Benutzer benutzer){
 		session.beginTransaction();

@@ -1,5 +1,9 @@
 package enums;
 
+/**
+ * @author MacBook
+ * Klasse für Enum Genre 
+ */
 public enum Genre {
 	ACTION("Action"),
 	DRAMA("Drama"),
