@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import model.Film;
 
+/**
+ * @author MacBook
+ * Zur Sortierung nach den höchsten Sternen
+ *
+ */
 public class FilmComparatorHoechsteSterne implements Comparator<Film> {
 
 	@Override

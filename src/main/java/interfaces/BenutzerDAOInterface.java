@@ -1,6 +1,6 @@
 package interfaces;
 
-import enums.Status;
+import enums.BenutzerStatus;
 import model.Benutzer;
 
 public interface BenutzerDAOInterface {
@@ -13,7 +13,7 @@ public interface BenutzerDAOInterface {
 	
 	public Benutzer benutzerUpdate(Benutzer benutzer);
 	
-	public void benutzerBlockieren(Status benutzerstatus, String benutzername, String email);
+	public void benutzerBlockieren(BenutzerStatus benutzerstatus, String benutzername, String email);
 	
 	public boolean kommentareLoeschen(Long KID);
 

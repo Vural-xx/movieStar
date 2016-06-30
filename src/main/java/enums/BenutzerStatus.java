@@ -14,6 +14,10 @@ import org.hibernate.annotations.Tuplizer;
 
 import util.EnumTuplizer;
 
+/**
+ * @author MacBook
+ * Klasse für Enum BenutzerStatus
+ */
 @Entity
 @Table(name = "Benutzerstatus")
 //@Tuplizer(impl = EnumTuplizer.class)

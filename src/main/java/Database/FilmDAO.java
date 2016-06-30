@@ -23,36 +23,49 @@ import model.Filter;
 import model.Kommentar;
 import util.HibernateUtil;
 
+/**
+ * @author MacBook
+ * Datenbank für Filme
+ */
 public class FilmDAO implements interfaces.FilmDAOInterface {
 
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
-
 	public static String sqlStatus = "";
-
 	private final Session session;
 
+	/**
+	 * Kontruktor
+	 */
 	public FilmDAO() {
 		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
+	/**
+	 * Getter vom SQL Status
+	 * @return
+	 */
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
 
+	/**
+	 * Setter vom SQL Status
+	 * @param sqlStatus
+	 */
 	public void setSqlStatus(String sqlStatus) {
 
 		this.sqlStatus = sqlStatus;
 
 	}
 
-	public String getSQLnotification() {
-		return SQLnotification;
-	}
-
-	public void setSQLnotification(String sQLnotification) {
-		SQLnotification = sQLnotification;
-	}
+//	public String getSQLnotification() {
+//		return SQLnotification;
+//	}
+//
+//	public void setSQLnotification(String sQLnotification) {
+//		SQLnotification = sQLnotification;
+//	}
 
 	@Override
 	public Film filmErstellen(Film film) {
@@ -71,6 +84,11 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 	}
 
+	/**
+	 * Funktion um Änderung im Film aktualisieren
+	 * @param film
+	 * @return
+	 */
 	public Film filmUpdate(Film film) {
 		// System.out.println(film.getName());
 		session.beginTransaction();

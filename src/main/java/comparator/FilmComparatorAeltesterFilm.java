@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import model.Film;
 
+/**
+ * @author MacBook
+ * Zur Sortierung nach dem ältesten Film
+ *
+ */
 public class FilmComparatorAeltesterFilm implements Comparator<Film> {
 
 	@Override

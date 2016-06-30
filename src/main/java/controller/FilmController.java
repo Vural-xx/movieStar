@@ -7,9 +7,7 @@ import java.util.Random;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
 import Database.FilmDAO;
 import comparator.FilmComparatorNameAZ;
@@ -22,7 +20,6 @@ import comparator.FilmComparatorAeltesterUpload;
 import comparator.FilmComparatorHoechsteSterne;
 import enums.FilmAuswahl;
 import enums.Genre;
-import enums.SortierTyp;
 import interfaces.FilmFacade;
 import model.Bewertung;
 import model.Feld;
@@ -32,6 +29,11 @@ import model.Kommentar;
 import model.Mitwirkende;
 import util.SortFilter;
 
+/**
+ * @author MacBook
+ *  FilmController zur Verknüpfung der Filmansicht und der Filmdatenbank
+ *
+ */
 @ManagedBean(name = "filmController")
 @SessionScoped
 public class FilmController implements FilmFacade {
@@ -39,77 +41,133 @@ public class FilmController implements FilmFacade {
 	private Film film;
 	private double bewertungSterne;
 	private Kommentar kommentar;
-
-	public double getBewertungSterne() {
-		return bewertungSterne;
-	}
-
-	public void setBewertungSterne(double bewertungSterne) {
-		this.bewertungSterne = bewertungSterne;
-	}
-
 	private List top10List;
 	private Film wochenFilm;
 	private FilmDAO filmDAO;
 	SortFilter sortFilter = new SortFilter();
-
-	public SortFilter getSortFilter() {
-		return sortFilter;
-	}
-
-	public void setSortFilter(SortFilter sortFilter) {
-		this.sortFilter = sortFilter;
-	}
-
 	@ManagedProperty(value = "#{BenutzerController}")
 	private BenutzerController benutzerController;
-
-	public BenutzerController getBenutzerController() {
-		return benutzerController;
-	}
-
-	public void setBenutzerController(BenutzerController benutzerController) {
-		this.benutzerController = benutzerController;
-	}
-
 	@ManagedProperty(value = "#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
 	private List<Feld> felder = new ArrayList<Feld>();
-
+	
+	/**
+	 * Konstruktor des FilmControllers
+	 */
 	public FilmController() {
 		filmDAO = new FilmDAO();
 		navigationController = new NavigationController();
 	}
 
+	/**
+	 * Getter von BewertungSterne
+	 * @return bewertungSterne
+	 */
+	public double getBewertungSterne() {
+		return bewertungSterne;
+	}
+
+	/**
+	 * Setter von BewertungSterne
+	 * @param bewertungSterne
+	 */
+	public void setBewertungSterne(double bewertungSterne) {
+		this.bewertungSterne = bewertungSterne;
+	}
+
+	/**
+	 * Getter des SortierungsFilter
+	 * @return sortFilter
+	 */
+	public SortFilter getSortFilter() {
+		return sortFilter;
+	}
+
+	/**
+	 * Setter des SortierungsFilter
+	 * @param sortFilter
+	 */
+	public void setSortFilter(SortFilter sortFilter) {
+		this.sortFilter = sortFilter;
+	}
+
+	/**
+	 * Getter vom BenutzerController
+	 * @return benutzerController
+	 */
+	public BenutzerController getBenutzerController() {
+		return benutzerController;
+	}
+
+	/**
+	 * Setter vom BenutzerController
+	 * @param benutzerController
+	 */
+	public void setBenutzerController(BenutzerController benutzerController) {
+		this.benutzerController = benutzerController;
+	}
+
+	/**
+	 * Getter von dem Film der Woche
+	 * @return wochenFilm
+	 */
 	public Film getWochenFilm() {
 		return wochenFilm;
 	}
 
+	/**
+	 * Setter von dem Film der Woche
+	 * @param wochenFilm
+	 */
 	public void setWochenFilm(Film wochenFilm) {
 		this.wochenFilm = wochenFilm;
 	}
 
+	/**
+	 * Getter der Top 10 Liste
+	 * @return top10List
+	 */
 	public List getTop10List() {
 		return top10List;
 	}
 
+	/**
+	 * Setter der Top 10 Liste
+	 * @param top10List
+	 */
 	public void setTop10List(List top10List) {
 		this.top10List = top10List;
 	}
 
+	/**
+	 * Getter von Film
+	 * @return film
+	 */
 	public Film getFilm() {
 		return film;
 	}
 
+	/**
+	 * Setter von Film
+	 * @param film
+	 */
 	public void setFilm(Film film) {
 		this.film = film;
 	}
 
+	/**
+	 * Getter vom NavigationController
+	 * @return navigationController
+	 */
 	public NavigationController getNavigationController() {
 		return navigationController;
 	}
 
+	/**
+	 * Setter vom NavigationController
+	 * @param navigationController
+	 */
 	public void setNavigationController(NavigationController navigationController) {
 		this.navigationController = navigationController;
 	}
@@ -121,6 +179,37 @@ public class FilmController implements FilmFacade {
 	public void setKommentar(Kommentar kommentar) {
 		this.kommentar = kommentar;
 	}
+	/**
+	 * Getter von Film Liste
+	 * @return
+	 */
+	public List getFilme() {
+		return filme;
+	}
+
+	/**
+	 * Setter von Film Liste
+	 * @param filme
+	 */
+	public void setFilme(List filme) {
+		this.filme = filme;
+	}
+	
+	/**
+	 * Getter von Felder
+	 * @return
+	 */
+	public List<Feld> getFelder() {
+		return felder;
+	}
+
+	/**
+	 * Setter von Felder
+	 * @param felder
+	 */
+	public void setFelder(List<Feld> felder) {
+		this.felder = felder;
+	}
 
 	@Override
 	public String filmErstellen(Film film) {
@@ -131,6 +220,11 @@ public class FilmController implements FilmFacade {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Funktion zur Aktualisierung von Film
+	 * @param film
+	 * @return
+	 */
 	public String filmUpdate(Film film) {
 		mitwirkendeZuFilmHinzufuegen();
 		filmDAO.filmUpdate(film);
@@ -167,25 +261,31 @@ public class FilmController implements FilmFacade {
 
 	}
 
+	/**
+	 * Funktion zur Vorbereitung der Film Liste
+	 * @return
+	 */
 	public String filmVorbereiten() {
 		this.film = new Film();
 		this.felder = new ArrayList<Feld>();
 		return navigationController.toFilmFormular();
 	}
 
+	/**
+	 * Funktion zur Vorbereitung der Liste der erstellten Filme
+	 * @return
+	 */
 	public String listeVorbereiten() {
 		this.setFilme(filmDAO.filmFuerErsteller(benutzerController.getBenutzer()));
 		return navigationController.toFilmListe();
 	}
 
-	public List getFilme() {
-		return filme;
-	}
 
-	public void setFilme(List filme) {
-		this.filme = filme;
-	}
 
+	/**
+	 * Funktion zur Genre Auswahl
+	 * @return items
+	 */
 	public SelectItem[] getGenreValues() {
 		SelectItem[] items = new SelectItem[Genre.values().length];
 		int i = 0;
@@ -195,6 +295,12 @@ public class FilmController implements FilmFacade {
 		return items;
 	}
 
+	/**
+	 * Funktion zur Film Auswahl
+	 * @param name
+	 * @param filmauswahl
+	 * @return
+	 */
 	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
 		List<Kommentar> kommentare = film.getKommentare();
@@ -214,13 +320,7 @@ public class FilmController implements FilmFacade {
 		return "false";
 	}
 
-	public List<Feld> getFelder() {
-		return felder;
-	}
 
-	public void setFelder(List<Feld> felder) {
-		this.felder = felder;
-	}
 
 	@Override
 	public String neusteFilme() {
@@ -248,6 +348,9 @@ public class FilmController implements FilmFacade {
 		return navigationController.toAlleFilme();
 	}
 
+	/**
+	 * Funktion um Mitwirkende einem Film hinzufügen
+	 */
 	public void mitwirkendeZuFilmHinzufuegen() {
 		for (Feld f : felder) {
 			Mitwirkende mitwirkende = new Mitwirkende();
@@ -261,6 +364,9 @@ public class FilmController implements FilmFacade {
 		felder = new ArrayList<Feld>();
 	}
 
+	/**
+	 * Hilfsfunktion um Mitwirkende zum Felder hinzuzufügen
+	 */
 	public void mitwirkendeZuFelderHinzufuegen() {
 		int counter = 0;
 		for (Mitwirkende m : film.getMitwirkende()) {
@@ -271,6 +377,11 @@ public class FilmController implements FilmFacade {
 		}
 	}
 
+	/**
+	 * Funktion um den Film der Woche auszulesen
+	 * @param filme
+	 * @return
+	 */
 	public Film filmDerWoche(List<Film> filme) {
 		Random random = new Random();
 		Film film = null;
@@ -338,6 +449,10 @@ public class FilmController implements FilmFacade {
 		return navigationController.toAlleFilme();
 	}
 
+	/**
+	 * Funktion um die Mitwirkende eines Films zu bekommen
+	 * @return
+	 */
 	public String getMitwirkende() {
 		String mitwirkende = "";
 		if (film.getMitwirkende() != null) {
@@ -381,6 +496,10 @@ public class FilmController implements FilmFacade {
 	}
 	
 	
+	/**
+	 * boolean zur Prüfung, ob Mitwirkende bereits vorhanden sind
+	 * @return
+	 */
 	public boolean mitwirkenderBereitsVorhanden(){
 		for (Mitwirkende m : film.getMitwirkende()){
 			for(Feld f : felder){

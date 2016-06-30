@@ -11,6 +11,11 @@ import Database.BenutzerDAO;
 import interfaces.BenutzerFacade;
 import model.Benutzer;
 
+/**
+ * @author MacBook
+ * BenutzerController zur Verknüpfung der Benutzeransicht und der Benutzerdatenbank
+ *
+ */
 @ManagedBean(name="BenutzerController")
 @SessionScoped
 public class BenutzerController implements BenutzerFacade {
@@ -28,58 +33,112 @@ public class BenutzerController implements BenutzerFacade {
 	private String neues_passwort = null;
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
-	
-	public NavigationController getNavigationController() {
-		return navigationController;
-	}
 
-	public void setNavigationController(NavigationController navigationController) {
-		this.navigationController = navigationController;
-	}
 	
+	/**
+	 * Konstruktor von BenutzerController
+	 */
 	public BenutzerController() {
 		benutzerDAO = new BenutzerDAO();
 	}
 	
+	
+	/**
+	 * Getter von NavigationController
+	 * @return NavigationController
+	 */
+	public NavigationController getNavigationController() {
+		return navigationController;
+	}
+
+	/**
+	 * Setter von NavigationController
+	 * @param navigationController
+	 */
+	public void setNavigationController(NavigationController navigationController) {
+		this.navigationController = navigationController;
+	}
+	
+	/**
+	 * Getter von Benutzer
+	 * @return benutzer
+	 */
 	public Benutzer getBenutzer() {
 		return benutzer;
 	}
 
+	/**
+	 * Setter von Benutzer
+	 * @param benutzer
+	 */
 	public void setBenutzer(Benutzer benutzer) {
 		this.benutzer = benutzer;
 	}
 
+	/**
+	 * boolean zur Prüfung, ob Email bereits vorhanden ist
+	 * @return emailVorhanden
+	 */
 	public boolean isEmailVorhanden() {
 		return emailVorhanden;
 	}
 
+	/**
+	 * Setzt Status, das EmailVorhanden ist
+	 * @param emailVorhanden
+	 */
 	public void setEmailVorhanden(boolean emailVorhanden) {
 		this.emailVorhanden = emailVorhanden;
 	}
 
+	/**
+	 * boolean zur Prüfung, ob Nutzername bereits vorhanden ist
+	 * @return nutzernameVorhanden
+	 */
 	public boolean isNutzernameVorhanden() {
 		return nutzernameVorhanden;
 	}
 
+	/**
+	 * Setzt Status, das Nutzname vorhanden ist
+	 * @param nutzernameVorhanden
+	 */
 	public void setNutzernameVorhanden(boolean nutzernameVorhanden) {
 		this.nutzernameVorhanden = nutzernameVorhanden;
 	}
 
+	/**
+	 * Getter von Nutzername
+	 * @return nutzername
+	 */
 	public String getNutzername() {
 		return nutzername;
 	}
 
+	/**
+	 * Setter von Nutzername
+	 * @param nutzername
+	 */
 	public void setNutzername(String nutzername) {
 		this.nutzername = nutzername;
 	}
 
+	/**
+	 * Getter von EmailAdresse
+	 * @return emailAdresse
+	 */
 	public String getEmailAdresse() {
 		return emailAdresse;
 	}
 
+	/**
+	 * Setter von EmailAdresse;
+	 * @param emailAdresse
+	 */
 	public void setEmailAdresse(String emailAdresse) {
 		this.emailAdresse = emailAdresse;
 	}
+
 
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
@@ -188,10 +247,18 @@ public class BenutzerController implements BenutzerFacade {
 		return nutzernameVorhanden;
 	}
 
+	/**
+	 * boolean zur Prüfung, ob der Nutzer eingeloggt ist
+	 * @return loggedIn
+	 */
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
 
+	/**
+	 * Setzt Status, das Nutzer eingeloggt ist
+	 * @param loggedIn
+	 */
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
