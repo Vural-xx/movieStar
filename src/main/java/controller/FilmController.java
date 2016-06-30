@@ -159,6 +159,7 @@ public class FilmController implements FilmFacade {
 
 	public String filmVorbereiten() {
 		this.film = new Film();
+		this.felder = new ArrayList<Feld>();
 		return navigationController.toFilmFormular();
 	}
 
@@ -186,6 +187,7 @@ public class FilmController implements FilmFacade {
 
 	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
+		felder = new ArrayList<Feld>();
 		mitwirkendeZuFelderHinzufuegen();
 		
 		if (filmauswahl.equals(FilmAuswahl.FILM.toString())) {
@@ -236,7 +238,9 @@ public class FilmController implements FilmFacade {
 			Mitwirkende mitwirkende = new Mitwirkende();
 			if (!f.getValue().equals("")) {
 				mitwirkende.setName(f.getValue());
-				film.getMitwirkende().add(mitwirkende);
+				if(!mitwirkenderBereitsVorhanden()){
+					film.getMitwirkende().add(mitwirkende);
+				}
 			}
 		}
 		felder = new ArrayList<Feld>();
@@ -361,6 +365,17 @@ public class FilmController implements FilmFacade {
 		return navigationController.toEigeneFilme();
 	}
 	
+	
+	public boolean mitwirkenderBereitsVorhanden(){
+		for (Mitwirkende m : film.getMitwirkende()){
+			for(Feld f : felder){
+				if(m.getName().equals(f.getValue())){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 
 }
