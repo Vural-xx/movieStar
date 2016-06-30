@@ -181,13 +181,13 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		try {
 			session.delete(benutzer);
 			session.getTransaction().commit();
-			setSqlStatus("Erfolgreich gelöscht");
+			setSqlStatus("Benutzer erfolgreich gelöscht");
 			System.out.println(sqlStatus);
 			return true;
 
 		} catch (Exception e) {
 			System.err.println("Fail");
-			sqlStatus = "Löschen fehlgeschlagen";
+			sqlStatus = "Benutzer löschen fehlgeschlagen";
 			return false;
 		}
 	}

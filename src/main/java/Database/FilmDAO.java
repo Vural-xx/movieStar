@@ -72,12 +72,13 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 	
 	public Film filmUpdate(Film film) {
-		System.out.println(film.getName());
+		//System.out.println(film.getName());
 		session.beginTransaction();
 		try {
 			session.update(film);
 			session.getTransaction().commit();
 			setSqlStatus("Film update erfolgreich");
+			System.out.println(sqlStatus);
 			return film;
 
 		} catch (Exception e) {
@@ -113,10 +114,12 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		
 		try {
 			session.beginTransaction();
-			System.out.println(film);
+			//System.out.println(film);
 			Query q= session.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
 			q.setParameter("keyWord", "%"+film+"%");
 			filmList = q.list();
+			setSqlStatus("Film suche erfolgreich");
+			System.out.println(sqlStatus);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -205,6 +208,23 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			System.err.println("Fail");
 		}
 		return false;
+	}
+	
+	public boolean filmLoeschen(Film film){
+		session.beginTransaction();
+		
+		try {
+			session.delete(film);
+			session.getTransaction().commit();
+			setSqlStatus("Film erfolgreich gelöscht");
+			System.out.println(sqlStatus);
+			return true;
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+			sqlStatus = "Film löschen fehlgeschlagen";
+			return false;
+		}
 	}
 
 	
