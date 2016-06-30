@@ -161,9 +161,9 @@ public class FilmController implements FilmFacade {
 
 	}
 
-	public void filmVorbereiten(ComponentSystemEvent event) {
+	public String filmVorbereiten() {
 		this.film = new Film();
-		System.out.println("Bin drin");
+		return navigationController.toFilmFormular();
 	}
 
 	public String listeVorbereiten() {
