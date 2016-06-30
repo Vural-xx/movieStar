@@ -154,6 +154,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria.add(Restrictions.eq("name", name));
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
+			return (Film) results.get(0);
 
 		} catch (Exception e) {
 			System.err.println("Fail film suchen by");

@@ -12,7 +12,7 @@ public interface FilmFacade {
 	
 	public String filmSuchen(String suche);
 	
-	public void filmSuchenErweitert(Film film);
+	public boolean filmSuchenErweitert(Film film);
 	
 	public String neusteFilme();
 	
@@ -24,11 +24,11 @@ public interface FilmFacade {
 
 	public String sortiereFilm(String sortiertyp);
 	
-	public void filmBewerten( Long FID, double sterne);
+	public boolean filmBewerten( Long FID, double sterne);
 	
-	public void filmKommentieren(Long FID, String kommentar);
+	public boolean filmKommentieren(Long FID, String kommentar);
 	
-	public void filmFiltern(Filter filter);
+	public boolean filmFiltern(Filter filter);
 	
 	public boolean filmLoeschen(Film film);
 

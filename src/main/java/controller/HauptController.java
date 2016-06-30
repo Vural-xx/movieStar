@@ -68,29 +68,29 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	
 
 	@Override
-	public void filmSuchenErweitert(Film film) {
-		filmController.filmSuchenErweitert(film);
+	public boolean filmSuchenErweitert(Film film) {
+		return filmController.filmSuchenErweitert(film);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void filmBewerten(Long FID, double sterne) {
-		filmController.filmBewerten(FID, sterne);
+	public boolean filmBewerten(Long FID, double sterne) {
+		return filmController.filmBewerten(FID, sterne);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void filmKommentieren(Long FID, String kommentar) {
-		filmController.filmKommentieren(FID, kommentar);
+	public boolean filmKommentieren(Long FID, String kommentar) {
+		return filmController.filmKommentieren(FID, kommentar);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void filmFiltern(Filter filter) {
-		filmController.filmFiltern(filter);
+	public boolean filmFiltern(Filter filter) {
+		return filmController.filmFiltern(filter);
 		// TODO Auto-generated method stub
 		
 	}

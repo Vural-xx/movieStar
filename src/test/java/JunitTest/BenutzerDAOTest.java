@@ -1,6 +1,7 @@
 package JunitTest;
 
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import Database.BenutzerDAO;
 import controller.BenutzerController;
@@ -11,7 +12,9 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BenutzerDAOTest {
 	
 	private String email;
@@ -28,43 +31,43 @@ public class BenutzerDAOTest {
 		passwort = "Test-1!";
 		dao = new BenutzerDAO();
 		benutzer = new Benutzer(email, benutzername, passwort);
-		benutzerDatenGespeichert();
+//		aBenutzerDatenGespeichert();
 	}
 	
 	@Test
-	public void benutzerDatenGespeichert(){
+	public void aBenutzerDatenGespeichert(){
 		dao.benutzerErstellen(benutzer);
 		Assert.assertEquals("Erfolgreich registriert" , dao.getSqlStatus());
 	}
 	
 	@Test
-	public void benutzerDatenSuchen(){
+	public void bBenutzerDatenSuchen(){
 		dao.benutzerSuchen(benutzer);
 		Assert.assertEquals("Benutzer gefunden", dao.getSqlStatus());
 	}
 	
 	@Test
-	public void benutzerEMailVorhanden(){
+	public void cBenutzerEMailVorhanden(){
 		dao.benutzerVorhanden(benutzer, email);
 		Assert.assertEquals("Benutzer vorhanden", dao.getSqlStatus());
 	}
 	
 	@Test
-	public void benutzerBenutzernameVorhanden(){
+	public void dBenutzerBenutzernameVorhanden(){
 		dao.benutzerVorhanden(benutzer, benutzername);
 		Assert.assertEquals("Benutzer vorhanden", dao.getSqlStatus());
 	}
 	
 	@Test
-	public void benutzerUpdaten(){
+	public void eBenutzerUpdaten(){
 		dao.benutzerUpdate(benutzer);
 		Assert.assertEquals("Erfolgreich geändert", dao.getSqlStatus());
 	}
 	
-	@After
-	public void benutzerLoeschen(){
+	@Test
+	public void fBenutzerLoeschen(){
 		dao.benutzerLoeschen(benutzer);
-		Assert.assertEquals("Erfolgreich gelöscht" , dao.getSqlStatus());
+		Assert.assertEquals("Benutzer erfolgreich gelöscht" , dao.getSqlStatus());
 	}
 }
 

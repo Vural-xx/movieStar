@@ -119,45 +119,41 @@ public class FilmController implements FilmFacade {
 		filmDAO.filmErstellen(film);
 		return listeVorbereiten();
 		// TODO Auto-generated method stub
-
 	}
 
 	public String filmUpdate(Film film) {
 		mitwirkendeZuFilmHinzufuegen();
 		filmDAO.filmUpdate(film);
 		return listeVorbereiten();
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public String filmSuchen(String suche) {
 		filme = filmDAO.filmSuchen(suche);
 		return navigationController.toSuche();
+	}
+
+	@Override
+	public boolean filmSuchenErweitert(Film film) {
+		return true;
 
 	}
 
 	@Override
-	public void filmSuchenErweitert(Film film) {
-		// TODO Auto-generated method stub
+	public boolean filmBewerten(Long FID, double sterne) {
+		return true;
 
 	}
 
 	@Override
-	public void filmBewerten(Long FID, double sterne) {
-		// TODO Auto-generated method stub
+	public boolean filmKommentieren(Long FID, String kommentar) {
+		return true;
 
 	}
 
 	@Override
-	public void filmKommentieren(Long FID, String kommentar) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void filmFiltern(Filter filter) {
-		// TODO Auto-generated method stub
+	public boolean filmFiltern(Filter filter) {
+		return true;
 
 	}
 
@@ -191,12 +187,13 @@ public class FilmController implements FilmFacade {
 	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
 		mitwirkendeZuFelderHinzufuegen();
-		System.out.println(FilmAuswahl.FILM);
-		System.out.println(filmauswahl);
+		
 		if (filmauswahl.equals(FilmAuswahl.FILM.toString())) {
+			
 			return navigationController.toFilm();
 
 		} else if (filmauswahl.equals(FilmAuswahl.FILMUPDATE.toString())) {
+			
 			return navigationController.toFilmUpdate();
 		}
 		return "false";
@@ -243,7 +240,6 @@ public class FilmController implements FilmFacade {
 			}
 		}
 		felder = new ArrayList<Feld>();
-
 	}
 
 	public void mitwirkendeZuFelderHinzufuegen() {
