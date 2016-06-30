@@ -10,48 +10,44 @@
 <ui:composition template = "/templates/commom-template.xhtml">
 	
 		<ui:define name="content">
-	<div class="container firstContainer">
+	<h:form>
+	<div class="container firstContainer container-btrap-clear ">
 		<div class="row">
-		<div class="col-md-12 maTop100">
+			<div class="col-md-10 col-md-offset-1 textpadding pd-l-50 pd-t-30">
+				<h1 class="font-40">Filme</h1>			
 		
-		
-		<h:form>
-		<h:commandButton class="btn btn-default" type="submit" action="#{filmController.top10}" value="Suche">
-											</h:commandButton>
-													<h:commandButton class="btn btn-default" type="submit" action="#{filmController.neusteFilme}" value="Suche">
-											</h:commandButton>
-		<h:inputText class="dpnone"  binding="#{jaja}"></h:inputText>
-		
-		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="1" cellpadding="10px">
+		<h:dataTable value="#{filmController.filme}" var="fi" style="border-collapse: collapse" border="0" cellpadding="10">
 		<h:column>
-		<f:facet name="header">Name</f:facet>
-		#{fi.name}
+		<f:facet name="header">Filmtitel
+		</f:facet>
+						<h:commandLink action="#{filmController.selectFilm(fi.name, 'FILM')}"
+							value="#{fi.name}" />
 		</h:column>
 			<h:column>
-		<f:facet name="header">Erscheinungsjahr</f:facet>
+		<f:facet name="header">Erscheinungsjahr
+		</f:facet>
 		#{fi.erscheinungsjahr}
 		</h:column>
+
+
 			<h:column>
-		<f:facet name="header">Beschreibung</f:facet>
-		#{fi.beschreibung}
-		</h:column>
-			<h:column>
-		<f:facet name="header">Sterne</f:facet>
+		<f:facet name="header">Sterne
+		</f:facet>
 		#{fi.sterne}
 		</h:column>
 		<h:column>
-		<f:facet name="header">Datum</f:facet>
-		#{fi.uploaddatum}
+		<f:facet name="header">Datum
+		</f:facet>
+		#{fi.formatDatum}
 		</h:column>
 		</h:dataTable>
-		</h:form>
-
+				
 		</div>
-		
-		
-		
-		</div>
+			
+		  </div>
 	</div>
+	</h:form>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>

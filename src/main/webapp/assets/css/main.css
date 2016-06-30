@@ -86,6 +86,9 @@ display:block;
 .mg-t-20{
 	margin-top: 20px;
 }
+.mg-t-50{
+	margin-top: 50px;
+}
 
 .mg-t-b-20 {
 	margin: 20px 0;
@@ -260,6 +263,10 @@ input, button {
 .bordertest {
 	border:1px solid grey;
 	border-radius: 2px;
+}
+
+.border-dotted-b {
+	    border: 1px dotted black;
 }
 
 .border-bottom {
