@@ -150,7 +150,7 @@ public class BenutzerController implements BenutzerFacade {
 			benutzer.setEmail(email);
 			benutzer.setBenutzername(benutzername);
 			benutzer.setPasswort(neues_passwort);
-			return "benutzerVerwalten";
+			benutzerDAO.benutzerUpdate(benutzer);
 
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die Änderung war nicht erfolgreich!", null));
@@ -160,7 +160,6 @@ public class BenutzerController implements BenutzerFacade {
 
 
 		}
-		benutzerDAO.benutzerUpdate(benutzer);
 		return "benutzerVerwalten";
 	}
 
