@@ -62,5 +62,8 @@ public class NavigationController  {
     public String toAlleFilme(){
     	return "/alleFilme.xhtml";
     }
+    public String toBenutzerVerwalten(){
+    	return "/benutzerVerwalten.xhtml";
+    }
 
 }
