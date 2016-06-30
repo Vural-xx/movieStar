@@ -21,14 +21,14 @@
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmName']}</div>
 					<div class="col-xs-10 inputpd-80-768">
-						<h:inputText id="filmname" class="" value="#{filmController.film.name}"></h:inputText>
+						<h:inputText id="filmname" class="" value="#{filmController.film.name}" disabled="true"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmGenre']}</div>
 					<div class="col-xs-10 inputpd-80-768">
 							<h:selectOneMenu class="inputmarginbottom-15"
-								value="#{filmController.film.genre}">
+								value="#{filmController.film.genre}" disabled="true">
 								<f:selectItems value="#{filmController.genreValues}" />
 							</h:selectOneMenu>  
 					</div>
@@ -36,13 +36,13 @@
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmDauer']}</div>
 					<div class="col-xs-10 inputpd-80-768">
-							<h:inputText class="" value="#{filmController.film.dauer}"></h:inputText>
+							<h:inputText class="" value="#{filmController.film.dauer}" disabled="true"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-2 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
 					<div class="col-xs-10 inputpd-80-768">
-							 <my:dynamicFieldList value="#{filmController.felder}" />
+							 <my:dynamicFieldList value="#{filmController.felder}" disabled="true"/>
 					</div>
 				</div>
 					<div class="row">
