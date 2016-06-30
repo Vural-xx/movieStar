@@ -20,6 +20,7 @@ import model.Benutzer;
 import model.Bewertung;
 import model.Film;
 import model.Filter;
+import model.Kommentar;
 import util.HibernateUtil;
 
 public class FilmDAO implements interfaces.FilmDAOInterface {
@@ -245,6 +246,24 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		} catch (Exception e) {
 			System.err.println("Fail");
 			sqlStatus = "Film löschen fehlgeschlagen";
+			return false;
+		}
+	}
+	
+	public boolean filmKommentieren(Kommentar kommentar, Film film) {
+		session.beginTransaction();
+
+		try {
+			session.save(kommentar);
+			session.update(film);
+			session.getTransaction().commit();
+			setSqlStatus("Film erfolgreich kommentiert");
+			System.out.println(sqlStatus);
+			return true;
+
+		} catch (Exception e) {
+			System.err.println("Fail");
+			sqlStatus = "Film kommentieren fehlgeschlagen";
 			return false;
 		}
 	}

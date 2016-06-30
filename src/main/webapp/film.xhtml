@@ -16,7 +16,6 @@
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-30">
 				<h1 class="font-50">#{filmController.film.name}</h1>
 				<img class="mg-l-70 mg-t-50 w250 border-dotted-b" src="assets/img/filmbild.jpg"></img>
-				<h:form>
     <h:selectOneRadio rendered="#{BenutzerController.loggedIn}" name="voteStars" id="voteStars" class="voteStars mg-l-70 mg-t-20" value="#{filmController.bewertungSterne}">
         <f:selectItem itemLabel="1" id="item1"  itemValue="1" />
         <f:selectItem itemLabel="1.5" id="item2"  itemValue="1.5" />
@@ -28,7 +27,6 @@
         <f:selectItem itemLabel="4.5" id="item8"  itemValue="4.5" />
         <f:selectItem itemLabel="5" id="item9"  itemValue="5" />
     </h:selectOneRadio>
-</h:form>
 			<h:commandButton rendered="#{BenutzerController.loggedIn}" class="btn btn-default" type="submit" action="#{filmController.bewerteFilm()}" value="Suche">
 										</h:commandButton>
 
@@ -55,6 +53,24 @@
 			
 		</div>
 	</div>
+	<div>Hallo</div>
+	
+	<h:dataTable value="#{filmController.film.kommentare}" var="k"
+					styleClass="order-table" headerClass="order-table-header"
+					rowClasses="order-table-odd-row,order-table-even-row">
+					<h:column>#{k.text}</h:column>
+				</h:dataTable>
+				
+				
+				<div class="row">
+						<div class="col-sm-3 txt-pd-l-20">Kommentar</div>
+						<div class="col-sm-9">
+							<h:inputTextarea class="kommentarinput" value="#{filmController.kommentar.text}"></h:inputTextarea>
+						</div>
+						<div class="col-sm-9">
+							<h:commandButton value="Kommentar speichern" action="#{filmController.kommentarHinzufuegen}"></h:commandButton>
+						</div>						
+					</div>
 
 	</h:form>
 

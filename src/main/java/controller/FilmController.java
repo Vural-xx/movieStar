@@ -28,6 +28,7 @@ import model.Bewertung;
 import model.Feld;
 import model.Film;
 import model.Filter;
+import model.Kommentar;
 import model.Mitwirkende;
 import util.SortFilter;
 
@@ -37,6 +38,7 @@ public class FilmController implements FilmFacade {
 
 	private Film film;
 	private double bewertungSterne;
+	private Kommentar kommentar;
 
 	public double getBewertungSterne() {
 		return bewertungSterne;
@@ -110,6 +112,14 @@ public class FilmController implements FilmFacade {
 
 	public void setNavigationController(NavigationController navigationController) {
 		this.navigationController = navigationController;
+	}
+	
+	public Kommentar getKommentar() {
+		return kommentar;
+	}
+
+	public void setKommentar(Kommentar kommentar) {
+		this.kommentar = kommentar;
 	}
 
 	@Override
@@ -187,7 +197,10 @@ public class FilmController implements FilmFacade {
 
 	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
+		List<Kommentar> kommentare = film.getKommentare();
+		Kommentar test = kommentare.get(0);
 		felder = new ArrayList<Feld>();
+		kommentar = new Kommentar();
 		mitwirkendeZuFelderHinzufuegen();
 		
 		if (filmauswahl.equals(FilmAuswahl.FILM.toString())) {
@@ -225,6 +238,8 @@ public class FilmController implements FilmFacade {
 		}
 		return top10List;
 	}
+
+	
 
 	@Override
 	public String alleFilme() {
@@ -377,5 +392,11 @@ public class FilmController implements FilmFacade {
 		return false;
 	}
 	
+	public String kommentarHinzufuegen(){
+		kommentar.setErsteller(benutzerController.getBenutzer());
+		film.getKommentare().add(kommentar);
+		filmDAO.filmKommentieren(kommentar, film);
+		return navigationController.toAlleFilme();
+	}
 
 }
