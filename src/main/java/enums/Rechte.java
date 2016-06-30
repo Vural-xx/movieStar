@@ -1,6 +1,6 @@
 package enums;
 
-public enum Rolle {
+public enum Rechte {
 	BENUTZER,
 	ADMIN
 }

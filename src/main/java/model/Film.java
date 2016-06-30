@@ -26,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -44,7 +45,7 @@ public class Film implements Serializable{
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "beschreibung")
+	@Column(name = "beschreibung", length = 512)
 	private String beschreibung;
 	
 	@Column(name = "erscheinungsjahr")
@@ -57,7 +58,6 @@ public class Film implements Serializable{
 	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
 	
-	@Column(name = "sterne")
 	private double sterne;
 	
 	private Date uploaddatum;
@@ -95,11 +95,6 @@ public class Film implements Serializable{
 	@Column(name="titelbild")
 	@Lob
 	private Blob titelbild;
-	
-	/*
-	@Column(name = "gallerie" )
-	@Lob
-	private List<Blob> gallerie = new ArrayList<Blob>(0);*/
 	
 	@OneToMany
 	@JoinColumn(name="verwandte_filme_ids")
@@ -193,16 +188,7 @@ public class Film implements Serializable{
 	public void setTitelbild(Blob titelbild) {
 		this.titelbild = titelbild;
 	}
-	
-	/*
-	public List<Blob> getGallerie() {
-		return gallerie;
-	}
-	public void setGallerie(List<Blob> gallerie) {
-		this.gallerie = gallerie;
-	}*/
-	
-	
+		
 	public List<Film> getVerwandteFilme() {
 		return verwandteFilme;
 	}

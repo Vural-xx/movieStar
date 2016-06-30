@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import Database.BenutzerDAO;
 import controller.BenutzerController;
-import enums.Rolle;
+import enums.Rechte;
 import model.Benutzer;
 
 import org.junit.After;
@@ -18,7 +18,7 @@ public class BenutzerDAOTest {
 	private String benutzername;
 	private String passwort;
 	private Benutzer benutzer;
-	private Rolle rolle;
+	private Rechte rolle;
 	private BenutzerDAO dao;
 	
 	@Before

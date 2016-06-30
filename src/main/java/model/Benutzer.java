@@ -20,7 +20,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import enums.Rolle;
+import enums.BenutzerStatus;
+import enums.Rechte;
 
 @Entity
 @Table(name = "Benutzer")
@@ -45,8 +46,13 @@ public class Benutzer implements Serializable {
 	
 	@Column(name = "rolle")
 	@Enumerated(EnumType.STRING)
-	private Rolle rolle;
+	private Rechte rechte;
 	
+	@Column(name = "benutzerstatus")
+	@Enumerated(EnumType.STRING)
+	private BenutzerStatus benutzerstatus;
+	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ersteller")
 	private Collection<Film> erstellteFilme = new ArrayList<Film>(0);
 
@@ -98,14 +104,21 @@ public class Benutzer implements Serializable {
 	}
 
 
-	public Rolle getRolle() {
-		return rolle;
+	public Rechte getRechte() {
+		return rechte;
 	}
 
-	public void setRolle(Rolle rolle) {
-		this.rolle = rolle;
+	public void setRechte(Rechte rechte) {
+		this.rechte = rechte;
 	} 
 	
+	public BenutzerStatus getBenutzerstatus() {
+		return benutzerstatus;
+	}
+
+	public void setBenutzerstatus(BenutzerStatus benutzerstatus) {
+		this.benutzerstatus = benutzerstatus;
+	}
 	
 	public Collection<Film> getErstellteFilme() {
 		return erstellteFilme;

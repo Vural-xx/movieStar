@@ -25,7 +25,7 @@ import util.HibernateUtil;
 public class FilmDAO implements interfaces.FilmDAOInterface {
 	
 	public static String SQLnotification = "";
-	static String sqlStatus = "";
+	public static String sqlStatus = "";
 	
 	private final Session session = HibernateUtil.getSessionFactory().openSession();
 	
@@ -35,7 +35,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	public void setSqlStatus(String sqlStatus) {
-		BenutzerDAO.sqlStatus = sqlStatus;
+		this.sqlStatus = sqlStatus;
 	}
 
 	public String getSQLnotification() {
