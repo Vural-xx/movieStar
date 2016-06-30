@@ -23,19 +23,18 @@ import model.Filter;
 import util.HibernateUtil;
 
 public class FilmDAO implements interfaces.FilmDAOInterface {
-	
+
 	Configuration con = new Configuration();
 	public static String SQLnotification = "";
 
 	public static String sqlStatus = "";
 
-	
 	private final Session session;
-	
+
 	public FilmDAO() {
-		session =  HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 	}
-	
+
 	public String getSqlStatus() {
 		return sqlStatus;
 	}
@@ -70,9 +69,9 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			return null;
 		}
 	}
-	
+
 	public Film filmUpdate(Film film) {
-		//System.out.println(film.getName());
+		// System.out.println(film.getName());
 		session.beginTransaction();
 		try {
 			session.update(film);
@@ -86,37 +85,37 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			return null;
 		}
 	}
-	
-	public List<Film> filmFuerErsteller(Benutzer benutzer){
+
+	public List<Film> filmFuerErsteller(Benutzer benutzer) {
 		session.beginTransaction();
 
 		try {
-			Query q= session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer");
+			Query q = session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer");
 			List results = q.list();
 			if (results.size() == 0) {
 				return null;
 			} else {
 				return results;
 			}
-			
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
-	
+
 		}
 		return null;
 	}
-	
 
 	@Override
 	public List<Film> filmSuchen(String film) {
-		
-		List<Film> filmList= new ArrayList<Film>();
-		
+
+		List<Film> filmList = new ArrayList<Film>();
+
 		try {
 			session.beginTransaction();
-			//System.out.println(film);
-			Query q= session.createQuery("select p from Film p where " + "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
-			q.setParameter("keyWord", "%"+film+"%");
+			// System.out.println(film);
+			Query q = session.createQuery("select p from Film p where "
+					+ "p.name like :keyWord or p.erscheinungsjahr like " + ":keyWord or p.beschreibung like :keyWord");
+			q.setParameter("keyWord", "%" + film + "%");
 			filmList = q.list();
 			setSqlStatus("Film suche erfolgreich");
 			System.out.println(sqlStatus);
@@ -128,20 +127,17 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 		return filmList;
 	}
-	
-	
-	
 
 	@Override
 	public void filmBewerten(Long FID, double sterne) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void filmKommentieren(Long FID, String kommentar) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -149,48 +145,72 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 	@Override
 	public Film filmSuchenByName(String name) {
-		session.beginTransaction();
-		Criteria criteria = session.createCriteria(Film.class);
-		criteria.add(Restrictions.eq("name", name));
-		List results = criteria.list();
+		List results = null;
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Film.class);
+			criteria.add(Restrictions.eq("name", name));
+			results = criteria.list();
+			setSqlStatus("Film erfolgreich gesucht");
+
+		} catch (Exception e) {
+			System.err.println("Fail film suchen by");
+		}
 		return (Film) results.get(0);
 	}
 
 	@Override
 	public List<Film> neusteFilme() {
-		
-		session.beginTransaction();
-		Criteria criteria = session.createCriteria(Film.class);
-		criteria.addOrder(Order.desc("uploaddatum"));
-		List<Film> results = criteria.list();
-		session.getTransaction().commit();
-	
+		List<Film> results = null;
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Film.class);
+			criteria.addOrder(Order.desc("uploaddatum"));
+			results = criteria.list();
+			session.getTransaction().commit();
+			setSqlStatus("Neue Film List gefunden");
+
+		} catch (Exception e) {
+			System.err.println("Fail neuste film");
+		}
 
 		return results;
 	}
 
-
 	@Override
 	public List<Film> top10() {
-		session.beginTransaction();
-		Criteria criteria = session.createCriteria(Film.class);
-		criteria.addOrder(Order.desc("sterne"));
-		criteria.setMaxResults(5);
-		List<Film> results = criteria.list();
-	
+		List<Film> results = null;
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Film.class);
+			criteria.addOrder(Order.desc("sterne"));
+			criteria.setMaxResults(5);
+			results = criteria.list();
+			setSqlStatus("Top10 gefunden");
+
+		} catch (Exception e) {
+			System.err.println("Fail top 10");
+		}
 
 		return results;
 	}
 
 	@Override
 	public List<Film> alleFilme() {
-		session.beginTransaction();
-		Criteria criteria = session.createCriteria(Film.class);
-		session.getTransaction().commit();
+		Criteria criteria = null;
+		try {
+			session.beginTransaction();
+			criteria = session.createCriteria(Film.class);
+			session.getTransaction().commit();
+			setSqlStatus("Alle Filme gefunden");
+
+		} catch (Exception e) {
+			System.err.println("Fail alle FIlme");
+		}
+
 		return criteria.list();
 	}
 
@@ -205,14 +225,14 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			return true;
 
 		} catch (Exception e) {
-			System.err.println("Fail");
+			System.err.println("Fail bewerte film");
 		}
 		return false;
 	}
-	
-	public boolean filmLoeschen(Film film){
+
+	public boolean filmLoeschen(Film film) {
 		session.beginTransaction();
-		
+
 		try {
 			session.delete(film);
 			session.getTransaction().commit();
@@ -227,5 +247,4 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 	}
 
-	
 }
