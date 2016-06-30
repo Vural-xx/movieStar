@@ -38,6 +38,13 @@ public class EmailValidator implements Validator{
 			throw new ValidatorException(msg);
 
 		}
-
+	}
+	
+	public boolean validate(String email){
+		matcher = pattern.matcher(email);
+		if(!matcher.matches()){
+			return false;
+		}
+		return true;
 	}
 }

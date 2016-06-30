@@ -34,6 +34,13 @@ public class PasswordValidator implements Validator{
 			throw new ValidatorException(msg);
 
 		}
-
+	}
+	
+	public boolean validate(String passwort){
+		matcher = pattern.matcher(passwort);
+		if(!matcher.matches()){
+			return false;
+		}
+		return true;
 	}
 }
