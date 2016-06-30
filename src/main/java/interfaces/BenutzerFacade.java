@@ -14,7 +14,7 @@ public interface BenutzerFacade {
 	
 	public void passwortVergessen(String email, String benutzername, String passwort);
 	
-	public boolean benutzerVerwalten(String email, String benutzername, String passwort, String new_passwort);
+	public String benutzerVerwalten(String email, String benutzername, String passwort, String new_passwort);
 	
 	public void benutzerBlockieren(String benutzername, String email);
 	

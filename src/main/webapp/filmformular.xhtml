@@ -8,9 +8,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:my="http://java.sun.com/jsf/composite/components">
 <ui:composition template = "/templates/commom-template.xhtml">
-<f:metadata>
-	<f:event listener="#{filmController.filmVorbereiten}" type="preRenderView" />
-</f:metadata>
 
 <ui:define name="content">
 	<h:form>
@@ -24,7 +21,7 @@
 				<div class="row">
 					<div class="col-xs-3 txt-pd-l-20">#{msg['filmName']}</div>
 					<div class="col-xs-9 inputpd-80-768">
-						<h:inputText id="filmname" class="" value="#{filmController.film.name}"></h:inputText>
+						<h:inputText id="filmname" class="" value="#{filmController.film.name}" required="true" requiredMessage="Bitte geben Sie einen Film Namen an"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
@@ -39,13 +36,13 @@
 								<div class="row">
 					<div class="col-xs-3 txt-pd-l-20">#{msg['filmErscheinungsjahr']}</div>
 					<div class="col-xs-9 inputpd-80-768">
-							<h:inputText class="" value="#{filmController.film.erscheinungsjahr}"></h:inputText>
+							<h:inputText class="" value="#{filmController.film.erscheinungsjahr}"  required="true" requiredMessage="Bitte geben Sie das Erscheinungsjahr an"></h:inputText>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-3 txt-pd-l-20">#{msg['filmDauer']}</div>
 					<div class="col-xs-9 inputpd-80-768">
-							<h:inputText class="" value="#{filmController.film.dauer}"></h:inputText>
+							<h:inputText class="" value="#{filmController.film.dauer}"   required="true" requiredMessage="Bitte geben Sie die Filmdauer an" ></h:inputText>
 					</div>
 				</div>
 				<div class="row">
@@ -57,7 +54,7 @@
 					<div class="row">
 						<div class="col-sm-3 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
 						<div class="col-sm-9">
-							<h:inputTextarea class="beschreibunginput" value="#{filmController.film.beschreibung}" ></h:inputTextarea>
+							<h:inputTextarea class="beschreibunginput" value="#{filmController.film.beschreibung}"  required="true" requiredMessage="Bitte fügen Sie eine Beschreibung hinzu" ></h:inputTextarea>
 						</div>
 					
 					</div>

@@ -47,7 +47,7 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	}
 
 	@Override
-	public boolean benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
+	public String benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
 		return benutzerController.benutzerVerwalten(email, benutzername, passwort, neues_passwort);
 		// TODO Auto-generated method stub
 		
@@ -150,11 +150,19 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	public String bewerteFilm() {
 		return filmController.bewerteFilm();
 	}
+	
+	
+	
 
 	@Override
 	public boolean filmLoeschen(Film film) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String filmFuerErsteller() {
+		return filmController.filmFuerErsteller();
 	}
 	
 	

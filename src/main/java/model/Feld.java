@@ -19,6 +19,12 @@ public class Feld implements Serializable {
         this.label = label;
     }
 
+    public Feld(String label, String value) {
+        this.label = label;
+        this.value = value;
+    }
+
+    
     public String getLabel() {
         return label;
     }
@@ -34,5 +40,6 @@ public class Feld implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
+    
 
 }

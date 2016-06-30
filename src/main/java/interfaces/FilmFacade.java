@@ -21,6 +21,8 @@ public interface FilmFacade {
 	public List<Film> top10();
 	
 	public String bewerteFilm();
+	
+	public String filmFuerErsteller();
 
 	public String sortiereFilm(String sortiertyp);
 	

@@ -17,6 +17,7 @@ import Database.FilmDAO;
 import controller.BenutzerController;
 import enums.Genre;
 import model.Benutzer;
+import model.Bewertung;
 import model.Film;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -25,25 +26,22 @@ public class FilmDAOTest {
 	private String name;
 	private String beschreibung;
 	private String erscheinungsjahr;
-	//private Benutzer ersteller;
+	private Bewertung bewertung;
+	private double sterne;
 	private FilmDAO filmDao;
-	//private BenutzerDAO benutzerDAO;
 	private Film film;
 	
 	@Before
 	public void initialisieren(){
 		filmDao = new FilmDAO();
-		//benutzerDAO = new BenutzerDAO();
 		name = "X-Men2";
 		beschreibung = "Actionfilm";
 		erscheinungsjahr = "1998";
 		film = new Film();
-//		ersteller = new Benutzer();
-//		ersteller.setEmail("jannis@jannis.de");
-//		ersteller.setBenutzername("Ja");
-//		ersteller.setPasswort("Test134+");
+		bewertung = new Bewertung();
+		sterne = 3.0;
+		bewertung.setSterne(sterne);
 		film.setName(name);
-		//film.setErsteller(ersteller);
 		film.setUploaddatum(new Date());
 		film.setErscheinungsjahr(erscheinungsjahr);
 		film.setBeschreibung(beschreibung);
@@ -53,7 +51,6 @@ public class FilmDAOTest {
 
 	@Test
 	public void aFilmErstellenTest() {
-		//benutzerDAO.benutzerErstellen(ersteller);
 		filmDao.filmErstellen(film);
 		Assert.assertEquals("Film erfolgreich angelegt" , filmDao.getSqlStatus());
 	}
@@ -70,13 +67,31 @@ public class FilmDAOTest {
 		filmDao.filmSuchen("X-Men2");
 		Assert.assertEquals("Film suche erfolgreich", filmDao.getSqlStatus());
 	}
+	
+	@Test
+	public void dNeusteFilmeTest(){
+		Assert.assertFalse(filmDao.neusteFilme() == null);
+	}
+	
+	@Test
+	public void eTop10Test(){
+		Assert.assertFalse(filmDao.top10() == null);
+	}
+	
+	@Test
+	public void fAlleFilmeTest(){
+		Assert.assertFalse(filmDao.alleFilme() == null);
+	}
 
+	@Test
+	public void gFilmBewertenTest(){
+		filmDao.bewerteFilm(bewertung, film);
+		Assert.assertEquals("Update Film und erstelle Bewertung", filmDao.getSqlStatus());
+	}
 	 
 	@Test
-	public void eFilmLoeschen(){
-		//benutzerDAO.benutzerLoeschen(ersteller);
+	public void hFilmLoeschen(){
 		filmDao.filmLoeschen(film);
-		//Assert.assertEquals("Benutzer erfolgreich gelöscht" , benutzerDAO.getSqlStatus());
 		Assert.assertEquals("Film erfolgreich gelöscht", filmDao.getSqlStatus());
 	}
 }

@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.List;
 
+import model.Benutzer;
 import model.Bewertung;
 import model.Film;
 import model.Filter;
@@ -24,6 +25,8 @@ public interface FilmDAOInterface {
 	public List<Film> alleFilme();
 	
 	public List<Film> top10();
+	
+	public List<Film> filmFuerErsteller(Benutzer benutzer);
 	
 	public boolean bewerteFilm(Bewertung bewertung, Film film);
 	

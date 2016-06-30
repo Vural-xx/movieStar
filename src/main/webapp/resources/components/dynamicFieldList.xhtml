@@ -10,8 +10,8 @@
         <h:dataTable id="table" binding="#{cc.table}" value="#{cc.attrs.value}" var="field">
             <h:column><h:outputLabel value="#{field.label}" /></h:column>
             <h:column><h:inputText value="#{field.value}" /></h:column>
-            <h:column><h:commandButton value="remove" action="#{cc.remove}" ><f:ajax render="table"/></h:commandButton></h:column>
+            <h:column><h:commandButton value="remove" action="#{cc.remove}"></h:commandButton></h:column>
         </h:dataTable>
-        <h:commandButton value="add" action="#{cc.add}" ><f:ajax render="table"/></h:commandButton>
+        <h:commandButton value="add" action="#{cc.add}"></h:commandButton>
     </cc:implementation>
 </ui:composition>

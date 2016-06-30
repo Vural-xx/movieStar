@@ -205,8 +205,8 @@ public class Film implements Serializable{
 	} 
 	
 	public String getFormatDatum(){
-		SimpleDateFormat dt1 = new SimpleDateFormat("dd.mm.yyyy");
-		System.out.println(dt1.format(uploaddatum));
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy");
+		//System.out.println(dt1.format(uploaddatum));
 		return dt1.format(uploaddatum);
 		
 	}

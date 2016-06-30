@@ -86,11 +86,13 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 	}
 
+	@Override
 	public List<Film> filmFuerErsteller(Benutzer benutzer) {
 		session.beginTransaction();
 
 		try {
-			Query q = session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer");
+			Query q = session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer where benutzer.email = :keyWord");
+			q.setParameter("keyWord", benutzer.getEmail());
 			List results = q.list();
 			if (results.size() == 0) {
 				return null;
@@ -155,7 +157,6 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
 			return (Film) results.get(0);
-
 		} catch (Exception e) {
 			System.err.println("Fail film suchen by");
 		}
@@ -172,7 +173,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			results = criteria.list();
 			session.getTransaction().commit();
 			setSqlStatus("Neue Film List gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail neuste film");
 		}
@@ -190,7 +191,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria.setMaxResults(5);
 			results = criteria.list();
 			setSqlStatus("Top10 gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail top 10");
 		}
@@ -206,7 +207,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			criteria = session.createCriteria(Film.class);
 			session.getTransaction().commit();
 			setSqlStatus("Alle Filme gefunden");
-
+			System.out.println(sqlStatus);
 		} catch (Exception e) {
 			System.err.println("Fail alle FIlme");
 		}
@@ -221,7 +222,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			session.save(bewertung);
 			session.update(film);
 			session.getTransaction().commit();
-			System.out.println("Update Film und erstelle Bewertung");
+			setSqlStatus("Update Film und erstelle Bewertung");
+			System.out.println(sqlStatus);
 			return true;
 
 		} catch (Exception e) {

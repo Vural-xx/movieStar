@@ -46,6 +46,12 @@ display:block;
 	text-decoration: none;
 }
 
+.nav>li>a {
+position: relative;
+    display: block;
+    padding: 15px 10px;
+}
+
 .w250 {
 	width: 250px;
 }
@@ -370,6 +376,13 @@ input, #button {
 	
 }
 
+footer {
+	
+	position: relative;
+	bottom:0;
+	margin: 10px 0;
+}
+
 /* Preoloader */
 
 #preloader {
@@ -405,7 +418,7 @@ input, #button {
 /* Benutzer Ändern */
 #benutzerAendern {
 	margin: auto;
-	width: 350px;
+	width: 500px;
 	margin-top: 150px;
 	border: 1px solid grey;
     border-radius: 11px;
@@ -437,6 +450,47 @@ input, #button {
 
 
 /* RESPONSIVE */
+
+
+
+
+@media (max-width: 1300px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
 @media only screen and (max-width: 768px) {
 	
 	.inputpd-80-768 {

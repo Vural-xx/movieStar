@@ -43,13 +43,22 @@ public class BenutzerControllerTest{
 		Assert.assertEquals("index", benCon.logIn(benutzer.getEmail(), benutzer.getPasswort()));
 	}
 	
+	
 	@Test
-	public void cEmailInDBVorhanden(){
+	public void cBenutzerVerwaltenTest(){
+		benutzer.setBenutzername("Horst");
+		Assert.assertEquals("benutzerVerwalten", benCon.benutzerVerwalten(benutzer.getEmail(), benutzer.getBenutzername(), benutzer.getPasswort(), neuesPasswort));
+		
+	}
+	
+	
+	@Test
+	public void dEmailInDBVorhanden(){
 		Assert.assertFalse(benCon.getEmailInDBVorhanden());
 	}
 	
 	@After
-	public void dLoeschenTest(){
+	public void eLoeschenTest(){
 		benCon.benutzerLoeschen(benutzer);
 	}
 

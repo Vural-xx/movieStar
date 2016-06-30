@@ -41,7 +41,9 @@
             				<li><h:link outcome="login" rendered="#{!BenutzerController.loggedIn}">Login<span id="login-nav" class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span></h:link></li>
 							<li><h:commandLink class="c-white" outcome="login" rendered="#{BenutzerController.loggedIn}" action="#{BenutzerController.logOut}" >Logout<span id="logout-nav" class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span></h:commandLink></li>
 							<li><h:link class="c-white" outcome="benutzerVerwalten" rendered="#{BenutzerController.loggedIn}">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-user glyphicon-nav-pos"></span></h:link></li>
-							<li><h:link class="c-white" outcome="filmformular" rendered="#{BenutzerController.loggedIn}">Film erstellen<span class="glyphicon glyphicon-cloud-upload glyphicon-nav-pos"></span><span id="film-nav"></span></h:link></li>
+							<li><h:commandLink class="c-white" outcome="filmformular" rendered="#{BenutzerController.loggedIn}" action="#{filmController.filmVorbereiten}">Film erstellen<span class="glyphicon glyphicon-cloud-upload glyphicon-nav-pos"></span><span id="film-nav"></span></h:commandLink></li>
+							<li><h:link class="c-white" outcome="eigeneFilme" rendered="#{BenutzerController.loggedIn}">Eigene Filme<span id="profil-nav" class="glyphicon glyphicon-user glyphicon-nav-pos"></span><span id="profil-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:link></li>
+
 <!-- 							<li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li> -->
             				<li><h:commandLink action="#{filmController.alleFilme}">Filme<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:commandLink></li>
 
@@ -78,10 +80,13 @@
    		<div id = "content" class = "content">
    			<ui:insert name = "content">Main Content</ui:insert>
    		</div>
-   		<div id = "bottom" class = "bottom pd-l-30 pd-t-50">
-   			<ui:insert name = "bottom"> &copy;Copyright 2016 HS Bremen</ui:insert>
-   		</div>
-   
+
+ 
+       <footer class="footer">
+      <div class="container-fluid">
+        <ui:insert name = "bottom"> &copy;Copyright 2016 HS Bremen</ui:insert>
+      </div>
+    </footer>
    
    </h:body>
     
