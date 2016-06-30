@@ -360,6 +360,11 @@ public class FilmController implements FilmFacade {
 		return false;
 	}
 	
+	public String filmFuerErsteller(){
+		filme =filmDAO.filmFuerErsteller(benutzerController.getBenutzer());
+		return navigationController.toEigeneFilme();
+	}
+	
 	
 
 }

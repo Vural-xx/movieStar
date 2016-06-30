@@ -86,11 +86,13 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 	}
 
+	@Override
 	public List<Film> filmFuerErsteller(Benutzer benutzer) {
 		session.beginTransaction();
 
 		try {
-			Query q = session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer");
+			Query q = session.createQuery("select filme from Film filme left join fetch filme.ersteller benutzer where benutzer.email = :keyWord");
+			q.setParameter("keyWord", benutzer.getEmail());
 			List results = q.list();
 			if (results.size() == 0) {
 				return null;

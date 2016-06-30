@@ -7,6 +7,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
 <ui:composition template = "/templates/commom-template.xhtml">
+<f:metadata>
+	<f:event listener="#{filmController.filmFuerErsteller}" type="preRenderView" />
+</f:metadata>
 
 
 <ui:define name="content">
@@ -22,7 +25,7 @@
 			<h:commandLink action="#{filmController.sortiereFilm('NAMEAZ')}" rendered="#{!filmController.sortFilter.name}"><span class="glyphicon glyphicon-chevron-up glyph-top-4"></span></h:commandLink>
 				<h:commandLink action="#{filmController.sortiereFilm('NAMEZA')}" rendered="#{filmController.sortFilter.name}"><span class="glyphicon glyphicon-chevron-down glyph-top-4"></span></h:commandLink>
 		</f:facet>
-						<h:commandLink action="#{filmController.selectFilm(fi.name, 'FILM')}"
+						<h:commandLink action="#{filmController.selectFilm(fi.name, 'FILMUPDATE')}"
 							value="#{fi.name}" />
 		</h:column>
 			<h:column>

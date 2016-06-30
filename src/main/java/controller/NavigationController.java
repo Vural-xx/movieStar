@@ -65,5 +65,9 @@ public class NavigationController  {
     public String toBenutzerVerwalten(){
     	return "/benutzerVerwalten.xhtml";
     }
+    
+    public String toEigeneFilme(){
+    	return "/eigeneFilme.xhtml";
+    }
 
 }
