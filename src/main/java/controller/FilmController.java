@@ -303,8 +303,6 @@ public class FilmController implements FilmFacade {
 	 */
 	public String selectFilm(String name, String filmauswahl) {
 		film = filmDAO.filmSuchenByName(name);
-		List<Kommentar> kommentare = film.getKommentare();
-		Kommentar test = kommentare.get(0);
 		felder = new ArrayList<Feld>();
 		kommentar = new Kommentar();
 		mitwirkendeZuFelderHinzufuegen();
