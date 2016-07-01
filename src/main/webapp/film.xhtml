@@ -57,29 +57,28 @@
 			<div class="col-lg-12 textpadding pd-l-50">
 				<h2>Kommentare</h2>	
 			</div>
-			
-		</div>
+			</div>
+		<div class="row">
 	<h:dataTable value="#{filmController.film.kommentare}" var="k"
 					styleClass="order-table" headerClass="order-table-header"
 					rowClasses="order-table-odd-row,order-table-even-row">
 					<h:column>
-					<div class="col-lg-12 textpadding pd-l-50">
+					<div class="col-lg-12 textpadding pd-l-100 border-grey-b">
 						<h4>Kommentar von <b>#{k.ersteller.benutzername}</b> </h4>
 						<p>#{k.text}</p>
 					</div>
-						
 					</h:column>
 				</h:dataTable>
-				
+				</div>
+
+
 				
 				<div class="row">
-						<div class="col-sm-3 txt-pd-l-20">Kommentar</div>
-						<div class="col-sm-9">
-							<h:inputTextarea class="kommentarinput" value="#{filmController.kommentar.text}"></h:inputTextarea>
-						</div>
-						<div class="col-sm-9">
-							<h:commandButton value="Kommentar speichern" action="#{filmController.kommentarHinzufuegen}"></h:commandButton>
-						</div>						
+						<div class="col-md-4 pd-l-50 font-30 pd-t-50">Kommentar schreiben
+						<h:inputTextarea class="kommentarinput mg-l-50 mg-t-20" value="#{filmController.kommentar.text}"></h:inputTextarea>
+						
+							<h:commandButton class="kommentarbutton" value="Kommentar speichern" action="#{filmController.kommentarHinzufuegen}"></h:commandButton>
+					</div>
 					</div>
 
 	</h:form>
