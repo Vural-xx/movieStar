@@ -25,12 +25,12 @@
 		<h:column>
     		
 			<div class="row">
-			<div class="col-sm-4">
+			<div class="col-md-4">
 			<div class="picContainer">
 				<img class="responsive border-dotted-b" src="assets/img/filmbild.jpg"></img>
 				</div>
 			</div>
-			 <div class="col-sm-8">
+			 <div class="col-md-8">
 			 <h2><h:commandLink class="titellink" action="#{filmController.selectFilm(fi.name, 'FILM')}" value="#{fi.name}" /></h2>
 			 <h4 class="pd-t-20">Beschreibung</h4>
 			 <p>#{fi.beschreibung}</p>
@@ -38,13 +38,14 @@
 			 
 			 </div>
 			</div>
+
 			<div class="row mg-t-b-20 border-bottom">
 			<div class="col-sm-3 pd-l-45"><p class="font-15">Uploader: #{fi.ersteller.benutzername}</p></div>
 			<div class="col-sm-5"><p class="font-15">Upload-Datum: #{fi.formatDatum}</p></div>
 			<div class="col-sm-3"><p class="font-15">Dauer: #{fi.dauer} min</p></div>
 			</div>
 			
-		</h:column>	
+					</h:column>	
     	</h:dataTable>
 		</h:form>
   
@@ -80,6 +81,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     //<![CDATA[
