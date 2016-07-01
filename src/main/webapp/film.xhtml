@@ -53,10 +53,22 @@
 			
 		</div>
 	</div>	
+	<div class="row">
+			<div class="col-lg-12 textpadding pd-l-50">
+				<h2>Kommentare</h2>	
+			</div>
+			
+		</div>
 	<h:dataTable value="#{filmController.film.kommentare}" var="k"
 					styleClass="order-table" headerClass="order-table-header"
 					rowClasses="order-table-odd-row,order-table-even-row">
-					<h:column>#{k.text}</h:column>
+					<h:column>
+					<div class="col-lg-12 textpadding pd-l-50">
+						<h4>Kommentar von <b>#{k.ersteller.benutzername}</b> </h4>
+						<p>#{k.text}</p>
+					</div>
+						
+					</h:column>
 				</h:dataTable>
 				
 				
