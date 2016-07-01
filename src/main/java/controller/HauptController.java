@@ -156,8 +156,7 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 
 	@Override
 	public boolean filmLoeschen(Film film) {
-		// TODO Auto-generated method stub
-		return false;
+		return filmController.filmLoeschen(film);
 	}
 
 	@Override

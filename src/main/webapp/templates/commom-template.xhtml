@@ -1,110 +1,179 @@
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
-    <link rel="stylesheet" href="assets/css/main.css"></link>
-    <link href='https://fonts.googleapis.com/css?family=Jura:400,300' rel='stylesheet' type='text/css'></link>
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png"></link>
-	<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png"></link>
-	<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png"></link>
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png"></link>
-	<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png"></link>
-	<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png"></link>
-	<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png"></link>
-	<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png"></link>
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png"></link>
-	<link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png"></link>
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png"></link>
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png"></link>
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"></link>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link rel="stylesheet" href="assets/css/main.css"></link>
+	<link href='https://fonts.googleapis.com/css?family=Jura:400,300'
+		rel='stylesheet' type='text/css'></link>
+	<link rel="apple-touch-icon" sizes="57x57"
+		href="assets/favicon/apple-icon-57x57.png"></link>
+	<link rel="apple-touch-icon" sizes="60x60"
+		href="assets/favicon/apple-icon-60x60.png"></link>
+	<link rel="apple-touch-icon" sizes="72x72"
+		href="assets/favicon/apple-icon-72x72.png"></link>
+	<link rel="apple-touch-icon" sizes="76x76"
+		href="assets/favicon/apple-icon-76x76.png"></link>
+	<link rel="apple-touch-icon" sizes="114x114"
+		href="assets/favicon/apple-icon-114x114.png"></link>
+	<link rel="apple-touch-icon" sizes="120x120"
+		href="assets/favicon/apple-icon-120x120.png"></link>
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="assets/favicon/apple-icon-144x144.png"></link>
+	<link rel="apple-touch-icon" sizes="152x152"
+		href="assets/favicon/apple-icon-152x152.png"></link>
+	<link rel="apple-touch-icon" sizes="180x180"
+		href="assets/favicon/apple-icon-180x180.png"></link>
+	<link rel="icon" type="image/png" sizes="192x192"
+		href="assets/favicon/android-icon-192x192.png"></link>
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="assets/favicon/favicon-32x32.png"></link>
+	<link rel="icon" type="image/png" sizes="96x96"
+		href="assets/favicon/favicon-96x96.png"></link>
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="assets/favicon/favicon-16x16.png"></link>
 	<link rel="manifest" href="/manifest.json"></link>
 	<meta name="msapplication-TileColor" content="#ffffff"></meta>
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png"></meta>
 	<meta name="theme-color" content="#ffffff"></meta>
-    <title>
-    	<ui:insert name ="title">movieDatabase</ui:insert>
-    </title>
-    </h:head>
-    	<div id="preloader">
-    	<div id="status"><h:graphicImage value="assets/img/preloader.gif" /></div>
-    	<h1 id="load"><strong>movie</strong>Database</h1></div>
-	
-   	<h:body>
-   		<div class="container">
-   			<ui:insert name ="header">
-   				<div class="navbar-header">
-				<nav class="navbar navbar-inverse navbar-fixed-top">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed"
-								data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-								aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-							</button>
-							<h:link class="navbar-brand" outcome="index">movie<strong>Database</strong>
-							</h:link>
-						</div>
-					<div id="navbar" class="collapse navbar-collapse">
-						<h:form>
-						<ul class="nav navbar-nav">					
-            				<li><h:link outcome="login" rendered="#{!BenutzerController.loggedIn}">Login<span id="login-nav" class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span></h:link></li>
-							<li><h:commandLink class="c-white" outcome="login" rendered="#{BenutzerController.loggedIn}" action="#{BenutzerController.logOut}" >Logout<span id="logout-nav" class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span></h:commandLink></li>
-							<li><h:link class="c-white" outcome="benutzerVerwalten" rendered="#{BenutzerController.loggedIn}">Profil verwalten<span id="profil-nav" class="glyphicon glyphicon-user glyphicon-nav-pos"></span></h:link></li>
-							<li><h:commandLink class="c-white" outcome="filmformular" rendered="#{BenutzerController.loggedIn}" action="#{filmController.filmVorbereiten}">Film erstellen<span class="glyphicon glyphicon-cloud-upload glyphicon-nav-pos"></span><span id="film-nav"></span></h:commandLink></li>
-							<li><h:link class="c-white" outcome="eigeneFilme" rendered="#{BenutzerController.loggedIn}">Eigene Filme<span id="profil-nav" class="glyphicon glyphicon-user glyphicon-nav-pos"></span><span id="profil-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:link></li>
+	<title><ui:insert name="title">movieDatabase</ui:insert></title>
+</h:head>
+<div id="preloader">
+	<div id="status">
+		<h:graphicImage value="assets/img/preloader.gif" />
+	</div>
+	<h1 id="load">
+		<strong>movie</strong>Database
+	</h1>
+</div>
 
-<!-- 							<li><h:link outcome="index">Home<span id="index-nav" class="glyphicon glyphicon-index"></span></h:link></li> -->
-            				<li><h:commandLink action="#{filmController.alleFilme}">Filme<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:commandLink></li>
+<h:body>
+	<div class="container">
+		<ui:insert name="header">
 
-							<li><h:link outcome="kontakt">Kontakt<span id="kontakt-nav" class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span></h:link></li>
+
+			<!-- Static navbar -->
+			<nav class="navbar navbar-inverse  navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+
+					<h:link class="navbar-brand" outcome="index">movie<strong>Database</strong>
+					</h:link>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<h:form>
+						<ul class="nav navbar-nav">
+							<li><h:link outcome="login"
+									rendered="#{!BenutzerController.loggedIn}">Login<span
+										id="login-nav"
+										class="glyphicon glyphicon-log-in glyphicon-nav-pos"></span>
+								</h:link></li>
+							<li><h:commandLink class="c-white" outcome="login"
+									rendered="#{BenutzerController.loggedIn}"
+									action="#{BenutzerController.logOut}">Logout<span
+										id="logout-nav"
+										class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span>
+								</h:commandLink></li>
+															<li><h:link outcome="adminBereich"
+									rendered="#{BenutzerController.admin}">Admin<span
+										id="admin-nav"
+										class="glyphicon glyphicon-wrench glyphicon-nav-pos c-blue"></span>
+								</h:link></li>
+							<h:panelGroup rendered="#{BenutzerController.loggedIn}">
+
+
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Benutzeroption <span class="caret"></span></a>
+
+									<ul class="dropdown-menu navcolor">
+										<li class="dropdown-header">Profil</li>
+										<li><h:link class="c-white" outcome="benutzerVerwalten"
+												rendered="#{BenutzerController.loggedIn}">Profil verwalten<span
+													id="profil-nav"
+													class="glyphicon glyphicon-user glyphicon-nav-pos"></span>
+											</h:link></li>
+
+
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">Filme</li>
+										<li><h:link class="c-white" outcome="eigeneFilme"
+												rendered="#{BenutzerController.loggedIn}">Eigene Filme<span
+													id="profil-nav"
+													class="glyphicon glyphicon-user glyphicon-nav-pos"></span>
+												<span id="profil-nav"
+													class="glyphicon glyphicon-film glyphicon-nav-pos"></span>
+											</h:link></li>
+
+										<li><h:commandLink class="c-white" outcome="filmformular"
+												rendered="#{BenutzerController.loggedIn}"
+												action="#{filmController.filmVorbereiten}">Film erstellen<span
+													class="glyphicon glyphicon-cloud-upload glyphicon-nav-pos"></span>
+												<span id="film-nav"></span>
+											</h:commandLink></li>
+
+									</ul></li>
+							</h:panelGroup>
+							<li><h:link outcome="kontakt">Kontakt<span
+										id="kontakt-nav"
+										class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span>
+								</h:link></li>
 							<li><h:link outcome="ueberUns">Über Uns</h:link></li>
 
 						</ul>
-						</h:form>
-							<div class="col-sm-3 col-md-3 pull-right">
-								<h:form class="navbar-form" role="search">
-									<div class="input-group">
-										<h:inputText type="text" binding="#{searchWord}" class="form-control" placeholder="Search"
-										name="srch-term" id="srch-term"></h:inputText>
-										<div class="input-group-btn">
-											<h:commandButton class="btn btn-default" type="submit" action="#{filmController.filmSuchen(searchWord.value)}" value="Suche">
-											</h:commandButton>
-												
-										</div>
-									</div>
-								</h:form>
-							</div>
-					</div>
-						<!--/.nav-collapse -->
-					</div>
-				</nav>
-				</div>	
-				
-	
+					</h:form>
+					<ul class="nav navbar-nav navbar-right">
+						<h:form class="navbar-form" role="search">
+							<div class="input-group">
+								<h:inputText type="text" binding="#{searchWord}"
+									class="form-control" placeholder="Search" name="srch-term"
+									id="srch-term"></h:inputText>
+								<div class="input-group-btn">
+									<h:commandButton class="btn btn-default" type="submit"
+										action="#{filmController.filmSuchen(searchWord.value)}"
+										value="Suche">
+									</h:commandButton>
 
-			</ui:insert>
+								</div>
+							</div>
+						</h:form>
+					</ul>
+
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid --> </nav>
+
+
+
+		</ui:insert>
 	</div>
 
-  
-   		<div id = "content" class = "content">
-   			<ui:insert name = "content">Main Content</ui:insert>
-   		</div>
 
- 
-       <footer class="footer">
-      <div class="container-fluid">
-        <ui:insert name = "bottom"> &copy;Copyright 2016 HS Bremen</ui:insert>
-      </div>
-    </footer>
-   
-   </h:body>
-    
+	<div id="content" class="content">
+		<ui:insert name="content">Main Content</ui:insert>
+	</div>
+
+
+	<footer class="footer">
+	<div class="container-fluid">
+		<ui:insert name="bottom"> &copy;Copyright 2016 HS Bremen</ui:insert>
+	</div>
+	</footer>
+
+</h:body>
+
 </html>

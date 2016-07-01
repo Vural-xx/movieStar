@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import Database.BenutzerDAO;
+import enums.Rechte;
 import interfaces.BenutzerFacade;
 import model.Benutzer;
 
@@ -28,6 +29,7 @@ public class BenutzerController implements BenutzerFacade {
 	private boolean emailVorhanden = false;
 	private boolean nutzernameVorhanden = false;
 	private boolean loggedIn = false;
+	private boolean admin = false;
 	private boolean registrieren = false;
 	private boolean datenÄndern = false;
 	private String neues_passwort = null;
@@ -138,6 +140,18 @@ public class BenutzerController implements BenutzerFacade {
 	public void setEmailAdresse(String emailAdresse) {
 		this.emailAdresse = emailAdresse;
 	}
+	
+	
+
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
 
 	public String registrieren(String email, String benutzername, String passwort) {
@@ -158,6 +172,14 @@ public class BenutzerController implements BenutzerFacade {
 	public String logIn(String logIn, String passwort) {
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
+			if(benutzer.getRechte() != null){
+				if(benutzer.getRechte().equals(Rechte.ADMIN)){
+					setAdmin(true);	
+					} else {
+						setAdmin(false);
+					}
+				
+			}
 			setLoggedIn(true);
 			this.benutzer = benutzer;
 			return "index";
@@ -183,6 +205,11 @@ public class BenutzerController implements BenutzerFacade {
 	public String logOut() {
 		// TODO Auto-generated method stub
 		setLoggedIn(false);
+		if(benutzer.getRechte() != null){
+			if(benutzer.getRechte().equals(Rechte.ADMIN)){
+				setAdmin(false);	
+				}
+		}
 		benutzer = null;
 		return navigationController.toIndex();
 

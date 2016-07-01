@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/templates/commom-template.xhtml">
+	<f:metadata>
+		<f:event listener="#{filmController.alleFilme}" type="preRenderView" />
+	</f:metadata>
+
+
+
+	<ui:define name="content">
+		<h:form>
+			<div class="container firstContainer container-btrap-clear ">
+				<div class="row">
+					<div class="col-md-9 col-md-offset-3 textpadding pd-l-50 pd-t-30">
+						<h1 class="font-40">Filme</h1>
+
+						<h:dataTable value="#{filmController.filme}" var="fi"
+							style="border-collapse: collapse" border="0" cellpadding="10">
+							<h:column>
+								<f:facet name="header">Filmtitel
+			<h:commandLink action="#{filmController.sortiereFilm('NAMEAZ')}"
+										rendered="#{!filmController.sortFilter.name}">
+										<span class="glyphicon glyphicon-chevron-up glyph-top-4"></span>
+									</h:commandLink>
+									<h:commandLink
+										action="#{filmController.sortiereFilm('NAMEZA')}"
+										rendered="#{filmController.sortFilter.name}">
+										<span class="glyphicon glyphicon-chevron-down glyph-top-4"></span>
+									</h:commandLink>
+								</f:facet>
+								<h:commandLink
+									action="#{filmController.selectFilm(fi.name, 'FILM')}"
+									value="#{fi.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Erscheinungsjahr
+						<h:commandLink
+										action="#{filmController.sortiereFilm('NEUSTERFILM')}"
+										rendered="#{!filmController.sortFilter.erscheinungsjahr}">
+										<span class="glyphicon glyphicon-chevron-up glyph-top-4"></span>
+									</h:commandLink>
+									<h:commandLink
+										action="#{filmController.sortiereFilm('AELTESTERFILM')}"
+										rendered="#{filmController.sortFilter.erscheinungsjahr}">
+										<span class="glyphicon glyphicon-chevron-down glyph-top-4"></span>
+									</h:commandLink>
+								</f:facet>
+		#{fi.erscheinungsjahr}
+		</h:column>
+
+
+							<h:column>
+								<f:facet name="header">Sterne
+				<h:commandLink
+										action="#{filmController.sortiereFilm('HOECHSTESTERNE')}"
+										rendered="#{!filmController.sortFilter.sterneUp}">
+										<span class="glyphicon glyphicon-chevron-up glyph-top-4"></span>
+									</h:commandLink>
+									<h:commandLink
+										action="#{filmController.sortiereFilm('NIEDRIGSTESTERNE')}"
+										rendered="#{filmController.sortFilter.sterneUp}">
+										<span class="glyphicon glyphicon-chevron-down glyph-top-4"></span>
+									</h:commandLink>
+								</f:facet>
+		#{fi.sterne}
+		</h:column>
+							<h:column>
+								<f:facet name="header">Datum
+					<h:commandLink
+										action="#{filmController.sortiereFilm('AELTESTERUPLOAD')}"
+										rendered="#{filmController.sortFilter.upload}">
+										<span class="glyphicon glyphicon-chevron-up glyph-top-4"></span>
+									</h:commandLink>
+									<h:commandLink
+										action="#{filmController.sortiereFilm('NEUSTERUPLOAD')}"
+										rendered="#{!filmController.sortFilter.upload}">
+										<span class="glyphicon glyphicon-chevron-down glyph-top-4"></span>
+									</h:commandLink>
+								</f:facet>
+		#{fi.formatDatum}
+		</h:column>
+							<h:column>
+								<f:facet name="header">Löschen
+		</f:facet>
+								<h:commandButton action="#{filmController.filmLoeschen(fi)}"
+									value="Löschen"></h:commandButton>
+							</h:column>
+						</h:dataTable>
+
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+
+
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			$(window).load(function() { // makes sure the whole site is loaded
+				$('#status').fadeOut(); // will first fade out the loading animation
+				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+				$('body').delay(350).css({
+					'overflow' : 'visible'
+				});
+			})
+			//]]>
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+</html>
