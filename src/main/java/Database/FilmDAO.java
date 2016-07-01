@@ -169,16 +169,16 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	@Override
 	public Film filmSuchenByName(String name) {
 		List results = null;
+		session.clear();
 		try {
 			session.beginTransaction();
-		//	Query q = session.createQuery("select filme from Film filme left join fetch Bewertung bewertung where filme.name = :keyWord");
 			Criteria criteria = session.createCriteria(Film.class);
 			criteria.add(Restrictions.eq("name", name));
-		//	q.setParameter("keyWord", name);
-		//	results = q.list();
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
+			session.getTransaction().commit();
 			return (Film) results.get(0);
+			
 		} catch (Exception e) {
 			System.err.println("Fail film suchen by");
 		}
