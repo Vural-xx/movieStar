@@ -171,15 +171,18 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		List results = null;
 		try {
 			session.beginTransaction();
+		//	Query q = session.createQuery("select filme from Film filme left join fetch Bewertung bewertung where filme.name = :keyWord");
 			Criteria criteria = session.createCriteria(Film.class);
 			criteria.add(Restrictions.eq("name", name));
+		//	q.setParameter("keyWord", name);
+		//	results = q.list();
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
 			return (Film) results.get(0);
 		} catch (Exception e) {
 			System.err.println("Fail film suchen by");
 		}
-		return (Film) results.get(0);
+		return null;
 	}
 
 	@Override

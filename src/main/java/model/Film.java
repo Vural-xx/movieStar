@@ -30,6 +30,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Type;
 
 import enums.Genre;
@@ -60,6 +61,7 @@ public class Film implements Serializable{
 	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
 	
+	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_id where f.name = name)")
 	private double sterne;
 	
 	private Date uploaddatum;
@@ -71,11 +73,11 @@ public class Film implements Serializable{
 	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
 	
 	@OneToMany
-	@JoinColumn(name = "unterkommentare_id")
+	@JoinColumn(name = "film_id")
 	private List<Kommentar> kommentare;
 	
 	@OneToMany
-	@JoinColumn(name = "bewertungen_id")
+	@JoinColumn(name = "film_id")
 	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)

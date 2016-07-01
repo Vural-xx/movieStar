@@ -302,6 +302,7 @@ public class FilmController implements FilmFacade {
 	 * @return
 	 */
 	public String selectFilm(String name, String filmauswahl) {
+		film = null;
 		film = filmDAO.filmSuchenByName(name);
 		felder = new ArrayList<Feld>();
 		kommentar = new Kommentar();
@@ -476,6 +477,7 @@ public class FilmController implements FilmFacade {
 		Bewertung bewertung = new Bewertung();
 		bewertung.setErsteller(benutzerController.getBenutzer());
 		bewertung.setSterne(bewertungSterne);
+		film.getBewertungen().add(bewertung);
 		filmDAO.bewerteFilm(bewertung, film);
 		return navigationController.toFilm();
 	}
