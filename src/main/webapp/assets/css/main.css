@@ -158,7 +158,6 @@ position: relative;
 
 th,tr,td {
 	padding: 5px;
-	padding-left: 50px;
 }
 th:first-child, tr:first-child,td:first-child {
 	padding-left: 0;
