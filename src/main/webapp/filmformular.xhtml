@@ -36,7 +36,9 @@
 								<div class="row">
 					<div class="col-xs-3 txt-pd-l-20">#{msg['filmErscheinungsjahr']}</div>
 					<div class="col-xs-9 inputpd-80-768">
-							<h:inputText class="" value="#{filmController.film.erscheinungsjahr}"  required="true" requiredMessage="Bitte geben Sie das Erscheinungsjahr an"></h:inputText>
+							<h:inputText class="" value="#{filmController.film.erscheinungsjahr}"  required="true" requiredMessage="Bitte geben Sie das Erscheinungsjahr an">
+								<f:validateLength minimum="4" maximum="4" />
+							</h:inputText>
 					</div>
 				</div>
 				<div class="row">
