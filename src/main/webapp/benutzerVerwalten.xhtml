@@ -30,15 +30,10 @@
 								rendered="#{BenutzerController.emailInDBVorhanden}"
 								style="color:red; margin:5px; display:block" />
 						</h:panelGroup>
-
 						<h:message for="email_input" style="color:red" />
- 				
- 				
- 				
- 				
  				<h:outputLabel>Bitte geben Sie ihren neuen Benutzernamen ein:</h:outputLabel>
     			<h:inputText id="benutzername_input" binding="#{input2}" a:placeholder="#{BenutzerController.benutzer.benutzername}" >
-						<f:ajax event="valueChange" execute="benutzername_input"
+						<f:ajax event="valueChange" 
 								render="outputNutzernameCheck speicherButton"></f:ajax>
 				</h:inputText>
 				<h:panelGroup id="outputNutzernameCheck">
@@ -47,7 +42,7 @@
 								rendered="#{BenutzerController.nutzernameInDBVorhanden}"
 								style="color:red; margin:5px; display:block" />
 				</h:panelGroup>
-    			
+    			<h:message for="benutzername_input"  style="color:red" />
         		<h:outputLabel>Bitte geben Sie ihr altes Passwort ein:</h:outputLabel>
 				<h:inputSecret id="altes_password_input" binding="#{input3}"  />
   				<h:outputLabel>Bitte geben Sie ihr neues Passwort ein:</h:outputLabel>
@@ -70,7 +65,7 @@
 
 
  
-        		<h:outputLabel class="statusMessage" id="outputMessage" value="#{benutzerDAO.sqlStatus}" infoClass="infoMessage"></h:outputLabel>
+        	
         
     		</h:form>
              	</div>

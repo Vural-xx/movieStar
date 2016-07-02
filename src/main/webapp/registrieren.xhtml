@@ -38,9 +38,11 @@
 						<h:inputText id="benutzername_input" binding="#{input2}" size="40"
 							a:placeholder="Benutzername"
 							value="#{BenutzerController.nutzername}">
-							<f:ajax event="valueChange" execute="benutzername_input"
+							<f:ajax event="valueChange" 
 								render="outputNutzernameCheck registerButton"></f:ajax>
 						</h:inputText>
+			
+						<h:message for="benutzername_input"  style="color:red" />
 						<h:panelGroup id="outputNutzernameCheck">
 							<h:outputText id="outputNutzernameCheckZwei"
 								value="Benutzername schon vorhanden."
@@ -66,10 +68,6 @@
 								rendered="#{!BenutzerController.nutzernameVorhanden and !BenutzerController.emailVorhanden}">
 							</h:commandButton>
 						</h:panelGroup>
-
-
-						<h:outputLabel class="statusMessage" id="outputMessage"
-							value="#{benutzerDAO.sqlStatus}" infoClass="infoMessage"></h:outputLabel>
 
 					</h:form>
 
