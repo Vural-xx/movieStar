@@ -91,6 +91,9 @@ position: relative;
 .mg-l-50{
 	margin-left: 50px;
 }
+.mg-l-20{
+	margin-left: 20px;
+}
 
 .mg-t-20{
 	margin-top: 20px;
@@ -465,7 +468,12 @@ footer {
 }
 
 .voteStars td {
-	padding-left: 5px;
+	padding-left: 15px;
+}
+
+.bewerteButton {
+	margin-left: 150px;
+	margin-top: 20px;
 }
 
 

@@ -16,8 +16,8 @@
 			<div class="col-lg-6 textpadding pd-l-50 pd-t-30">
 				<h1 class="font-50">#{filmController.film.name}</h1>
 				<img class="mg-l-70 mg-t-50 w250 border-dotted-b" src="assets/img/filmbild.jpg"></img>
-    <h:selectOneRadio rendered="#{BenutzerController.loggedIn}" name="voteStars" id="voteStars" class="voteStars mg-l-70 mg-t-20" value="#{filmController.bewertungSterne}">
-        <f:selectItem itemLabel="1" id="item1"  itemValue="1" />
+    <h:selectOneRadio  rendered="#{BenutzerController.loggedIn}" name="voteStars" id="voteStars" class="voteStars mg-l-20 mg-t-20" value="#{filmController.bewertungSterne}">
+        <f:selectItem itemLabel="1" id="item1"  itemValue="1"  />
         <f:selectItem itemLabel="1.5" id="item2"  itemValue="1.5" />
         <f:selectItem itemLabel="2" id="item3"  itemValue="2" />
         <f:selectItem itemLabel="2.5" id="item4"  itemValue="2.5" />
@@ -27,7 +27,7 @@
         <f:selectItem itemLabel="4.5" id="item8"  itemValue="4.5" />
         <f:selectItem itemLabel="5" id="item9"  itemValue="5" />
     </h:selectOneRadio>
-			<h:commandButton rendered="#{BenutzerController.loggedIn}" class="btn btn-default" type="submit" action="#{filmController.bewerteFilm()}" value="Suche">
+			<h:commandButton rendered="#{BenutzerController.loggedIn}" class="btn btn-default bewerteButton" type="submit" action="#{filmController.bewerteFilm()}" value="Bewerte">
 										</h:commandButton>
 
 		</div>
@@ -72,7 +72,7 @@
 				</div>
 
 
-				
+				<h:panelGroup rendered="#{BenutzerController.loggedIn}">
 				<div class="row">
 						<div class="col-md-4 pd-l-50 font-30 pd-t-50">Kommentar schreiben
 						<h:inputTextarea class="kommentarinput mg-l-50 mg-t-20" value="#{filmController.kommentar.text}"></h:inputTextarea>
@@ -80,6 +80,7 @@
 							<h:commandButton class="kommentarbutton" value="Kommentar speichern" action="#{filmController.kommentarHinzufuegen}"></h:commandButton>
 					</div>
 					</div>
+					</h:panelGroup>
 
 	</h:form>
 
