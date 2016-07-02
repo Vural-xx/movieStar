@@ -31,5 +31,7 @@ public interface FilmDAOInterface {
 	public boolean bewerteFilm(Bewertung bewertung, Film film);
 	
 	public Film filmSuchenByName(String name);
+	
+	public boolean filmVorhanden(Film film);
 
 }

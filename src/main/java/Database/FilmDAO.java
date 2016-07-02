@@ -184,6 +184,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 		return null;
 	}
+	
+	
 
 	@Override
 	public List<Film> neusteFilme() {
@@ -288,6 +290,22 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			sqlStatus = "Film kommentieren fehlgeschlagen";
 			return false;
 		}
+	}
+
+	@Override
+	public boolean filmVorhanden(Film film) {
+		session.clear();
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Film.class);
+			criteria.add(Restrictions.eq("name", film.getName()));
+			criteria.add(Restrictions.eq("erscheinungsjahr", film.getErscheinungsjahr()));
+			return !criteria.list().isEmpty();
+			
+		} catch (Exception e) {
+			System.err.println("Fail Filmvorhanden");
+		}
+		return false;
 	}
 
 }

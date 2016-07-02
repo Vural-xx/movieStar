@@ -14,12 +14,14 @@ import javax.faces.bean.RequestScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -51,6 +53,7 @@ public class Film implements Serializable{
 	@Column(name = "beschreibung", length = 512)
 	private String beschreibung;
 	
+	@Id
 	@Column(name = "erscheinungsjahr")
 	private String erscheinungsjahr;
 	
@@ -61,23 +64,29 @@ public class Film implements Serializable{
 	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
 	
-	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_id where f.name = name)")
+	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name where f.name = name AND f.erscheinungsjahr = b.film_erscheinungsjahr)")
 	private Double sterne;
 	
 	private Date uploaddatum;
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "film_mitwirkende", joinColumns = { 
-			@JoinColumn(name = "film_name") }, 
+			@JoinColumn(name = "film_name", referencedColumnName="name"), @JoinColumn(name = "film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")}, 
 			inverseJoinColumns = { @JoinColumn(name = "mitwirkende_name") })
 	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
 	
 	@OneToMany
-	@JoinColumn(name = "film_id")
+	@JoinColumns({
+	       @JoinColumn(name="film_name", referencedColumnName="name"),
+	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
+	})
 	private List<Kommentar> kommentare;
 	
 	@OneToMany
-	@JoinColumn(name = "film_id")
+	@JoinColumns({
+	       @JoinColumn(name="film_name", referencedColumnName="name"),
+	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
+	})
 	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)
@@ -101,7 +110,10 @@ public class Film implements Serializable{
 	private Blob titelbild;
 	
 	@OneToMany
-	@JoinColumn(name="verwandte_filme_ids")
+	@JoinColumns({
+	       @JoinColumn(name="verwandter_film_name", referencedColumnName="name"),
+	       @JoinColumn(name="verwandter_film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
+	})
 	private List<Film> verwandteFilme = new ArrayList<Film>(0);
 	
 	public String getName() {
@@ -123,6 +135,7 @@ public class Film implements Serializable{
 	public String getErscheinungsjahr() {
 		return erscheinungsjahr;
 	}
+	
 	public void setErscheinungsjahr(String erscheinungsjahr) {
 		this.erscheinungsjahr = erscheinungsjahr;
 	}

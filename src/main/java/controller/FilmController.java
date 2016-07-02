@@ -215,7 +215,7 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public String filmErstellen(Film film) {
-		if(filmDAO.filmSuchenByName(film.getName()) == null){
+		if(!filmDAO.filmVorhanden(film)){
 			mitwirkendeZuFilmHinzufuegen();
 			film.setUploaddatum(new Date());
 			filmDAO.filmErstellen(film);
