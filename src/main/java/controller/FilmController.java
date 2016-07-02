@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import Database.FilmDAO;
 import comparator.FilmComparatorNameAZ;
@@ -213,10 +215,14 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public String filmErstellen(Film film) {
-		mitwirkendeZuFilmHinzufuegen();
-		film.setUploaddatum(new Date());
-		filmDAO.filmErstellen(film);
-		return listeVorbereiten();
+		if(filmDAO.filmSuchenByName(film.getName()) == null){
+			mitwirkendeZuFilmHinzufuegen();
+			film.setUploaddatum(new Date());
+			filmDAO.filmErstellen(film);
+			return listeVorbereiten();
+		}
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Film ist bereits vorhanden", null));
+		return "";
 		// TODO Auto-generated method stub
 	}
 
