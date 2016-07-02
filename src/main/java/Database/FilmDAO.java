@@ -224,6 +224,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	@Override
 	public List<Film> alleFilme() {
 		Criteria criteria = null;
+		session.clear();
 		try {
 			session.beginTransaction();
 			criteria = session.createCriteria(Film.class);
