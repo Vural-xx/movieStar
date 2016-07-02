@@ -479,6 +479,7 @@ public class FilmController implements FilmFacade {
 		bewertung.setSterne(bewertungSterne);
 		film.getBewertungen().add(bewertung);
 		filmDAO.bewerteFilm(bewertung, film);
+		film = filmDAO.filmSuchenByName(film.getName());
 		return navigationController.toFilm();
 	}
 
