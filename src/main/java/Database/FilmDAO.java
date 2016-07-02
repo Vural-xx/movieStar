@@ -167,13 +167,14 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	@Override
-	public Film filmSuchenByName(String name) {
+	public Film filmSuchenByKey(String name, String erscheinungsjahr) {
 		List results = null;
 		session.clear();
 		try {
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Film.class);
 			criteria.add(Restrictions.eq("name", name));
+			criteria.add(Restrictions.eq("erscheinungsjahr", erscheinungsjahr));
 			results = criteria.list();
 			setSqlStatus("Film erfolgreich gesucht");
 			session.getTransaction().commit();
@@ -290,22 +291,6 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 			sqlStatus = "Film kommentieren fehlgeschlagen";
 			return false;
 		}
-	}
-
-	@Override
-	public boolean filmVorhanden(Film film) {
-		session.clear();
-		try {
-			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Film.class);
-			criteria.add(Restrictions.eq("name", film.getName()));
-			criteria.add(Restrictions.eq("erscheinungsjahr", film.getErscheinungsjahr()));
-			return !criteria.list().isEmpty();
-			
-		} catch (Exception e) {
-			System.err.println("Fail Filmvorhanden");
-		}
-		return false;
 	}
 
 }

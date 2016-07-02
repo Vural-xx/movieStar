@@ -22,7 +22,7 @@
 			<h:commandLink action="#{filmController.sortiereFilm('NAMEAZ')}" rendered="#{!filmController.sortFilter.name}"><span class="glyphicon glyphicon-chevron-up glyph-top-4"></span></h:commandLink>
 				<h:commandLink action="#{filmController.sortiereFilm('NAMEZA')}" rendered="#{filmController.sortFilter.name}"><span class="glyphicon glyphicon-chevron-down glyph-top-4"></span></h:commandLink>
 		</f:facet>
-						<h:commandLink action="#{filmController.selectFilm(fi.name, 'FILM')}"
+						<h:commandLink action="#{filmController.selectFilm(fi.name,fi.erscheinungsjahr, 'FILM')}"
 							value="#{fi.name}" />
 		</h:column>
 			<h:column>

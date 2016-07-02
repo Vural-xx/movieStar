@@ -20,7 +20,7 @@
 		<h:column>
 		<f:facet name="header">Filmtitel
 		</f:facet>
-						<h:commandLink action="#{filmController.selectFilm(fi.name, 'FILM')}"
+						<h:commandLink action="#{filmController.selectFilm(fi.name,fi.erscheinungsjahr, 'FILM')}"
 							value="#{fi.name}" />
 		</h:column>
 			<h:column>

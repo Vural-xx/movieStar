@@ -215,7 +215,7 @@ public class FilmController implements FilmFacade {
 
 	@Override
 	public String filmErstellen(Film film) {
-		if(!filmDAO.filmVorhanden(film)){
+		if(filmDAO.filmSuchenByKey(film.getName(), film.getErscheinungsjahr()) == null){
 			mitwirkendeZuFilmHinzufuegen();
 			film.setUploaddatum(new Date());
 			filmDAO.filmErstellen(film);
@@ -307,9 +307,9 @@ public class FilmController implements FilmFacade {
 	 * @param filmauswahl
 	 * @return
 	 */
-	public String selectFilm(String name, String filmauswahl) {
+	public String selectFilm(String name, String erscheinungsjahr, String filmauswahl) {
 		film = null;
-		film = filmDAO.filmSuchenByName(name);
+		film = filmDAO.filmSuchenByKey(name, erscheinungsjahr);
 		felder = new ArrayList<Feld>();
 		kommentar = new Kommentar();
 		mitwirkendeZuFelderHinzufuegen();
@@ -485,7 +485,7 @@ public class FilmController implements FilmFacade {
 		bewertung.setSterne(bewertungSterne);
 		film.getBewertungen().add(bewertung);
 		filmDAO.bewerteFilm(bewertung, film);
-		film = filmDAO.filmSuchenByName(film.getName());
+		film = filmDAO.filmSuchenByKey(film.getName(), film.getErscheinungsjahr());
 		return navigationController.toFilm();
 	}
 
