@@ -62,7 +62,7 @@ public class Film implements Serializable{
 	private Benutzer ersteller;
 	
 	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_id where f.name = name)")
-	private double sterne;
+	private Double sterne;
 	
 	private Date uploaddatum;
 		
@@ -153,10 +153,14 @@ public class Film implements Serializable{
 	
 	
 
-	public double getSterne() {
-		return sterne;
+	public Double getSterne() {
+		if(sterne == null){
+			return 0.0;
+		}else{
+			return sterne;
+		}
 	}
-	public void setSterne(double sterne) {
+	public void setSterne(Double sterne) {
 		this.sterne = sterne;
 	}
 	
