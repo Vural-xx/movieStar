@@ -24,7 +24,7 @@ public class KommentarDAO {
 	}
 	
 	/**
-	 * Funktion um Kommentare zu finden
+	 * Methode um Kommentare zu finden
 	 * @param text
 	 */
 	public void findKommentarByText(String text){

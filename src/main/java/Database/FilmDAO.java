@@ -85,7 +85,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	/**
-	 * Funktion um Änderung im Film aktualisieren
+	 * Methode um Änderung im Film aktualisieren
 	 * @param film
 	 * @return
 	 */

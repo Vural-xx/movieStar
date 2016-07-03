@@ -14,15 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * @author MacBook
+ * Klasse Bewertung
+ *
+ */
 @Entity
 @Table(name = "Bewertungen")
 @ManagedBean(name="bewertung")
 @RequestScoped
 public class Bewertung implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8842428397839522473L;
 	
 	@Id
@@ -37,24 +39,47 @@ public class Bewertung implements Serializable {
 	@Column(name="sterne")
 	private double sterne;
 	
+	/**
+	 * Getter von ID - Bewertung 
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
+	/**
+	 * Setter von ID - Bewertung
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	/**
+	 * Getter von Bewertungsersteller
+	 * @return
+	 */
 	public Benutzer getErsteller() {
 		return ersteller;
 	}
+	/**
+	 * Setter von Bewertungsersteller
+	 * @param ersteller
+	 */
 	public void setErsteller(Benutzer ersteller) {
 		this.ersteller = ersteller;
 	}
+	/**
+	 * Getter von Sterne
+	 * @return
+	 */
 	public double getSterne() {
 		return sterne;
 	}
+	/**
+	 * Setter von Sterne
+	 * @param sterne
+	 */
 	public void setSterne(double sterne) {
 		this.sterne = sterne;
 	}
 	
-
 }

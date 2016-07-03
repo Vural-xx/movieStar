@@ -10,6 +10,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
+/**
+ * @author MacBook
+ * Klasse zur Sprachenveränderung der Webseite
+ *
+ */
 @ManagedBean(name="language")
 @SessionScoped
 public class LanguageBean implements Serializable{

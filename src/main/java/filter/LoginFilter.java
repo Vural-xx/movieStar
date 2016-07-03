@@ -16,7 +16,7 @@ import controller.BenutzerController;
 public class LoginFilter implements Filter {
  
     /**
-     * Checks if user is logged in. If not it redirects to the login.xhtml page.
+     * Überprüft, ob Benutzer eingeloggt ist. Wenn nicht, wird er zur Login.xhtml weitergeleitet
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // Get the loginBean from session attribute
@@ -35,10 +35,10 @@ public class LoginFilter implements Filter {
     }
  
     public void init(FilterConfig config) throws ServletException {
-        // Nothing to do here!
+        // Wird nicht genutzt
     }
  
     public void destroy() {
-        // Nothing to do here!
+        // Wird nicht genutzt
     }  
 }

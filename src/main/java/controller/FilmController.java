@@ -227,7 +227,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion zur Aktualisierung von Film
+	 * Methode zur Aktualisierung von Film
 	 * @param film
 	 * @return
 	 */
@@ -268,7 +268,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion zur Vorbereitung der Film Liste
+	 * Methode zur Vorbereitung der Film Liste
 	 * @return
 	 */
 	public String filmVorbereiten() {
@@ -278,7 +278,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion zur Vorbereitung der Liste der erstellten Filme
+	 * Methode zur Vorbereitung der Liste der erstellten Filme
 	 * @return
 	 */
 	public String listeVorbereiten() {
@@ -289,7 +289,7 @@ public class FilmController implements FilmFacade {
 
 
 	/**
-	 * Funktion zur Genre Auswahl
+	 * Methode zur Genre Auswahl
 	 * @return items
 	 */
 	public SelectItem[] getGenreValues() {
@@ -302,7 +302,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion zur Film Auswahl
+	 * Methode zur Film Auswahl
 	 * @param name
 	 * @param filmauswahl
 	 * @return
@@ -354,7 +354,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion um Mitwirkende einem Film hinzufügen
+	 * Methode um Mitwirkende einem Film hinzufügen
 	 */
 	public void mitwirkendeZuFilmHinzufuegen() {
 		for (Feld f : felder) {
@@ -370,7 +370,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Hilfsfunktion um Mitwirkende zum Felder hinzuzufügen
+	 * HilfsMethode um Mitwirkende zum Felder hinzuzufügen
 	 */
 	public void mitwirkendeZuFelderHinzufuegen() {
 		int counter = 0;
@@ -383,7 +383,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion um den Film der Woche auszulesen
+	 * Methode um den Film der Woche auszulesen
 	 * @param filme
 	 * @return
 	 */
@@ -455,7 +455,7 @@ public class FilmController implements FilmFacade {
 	}
 
 	/**
-	 * Funktion um die Mitwirkende eines Films zu bekommen
+	 * Methode um die Mitwirkende eines Films zu bekommen
 	 * @return
 	 */
 	public String getMitwirkende() {

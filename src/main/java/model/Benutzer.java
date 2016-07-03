@@ -23,15 +23,16 @@ import javax.persistence.Table;
 import enums.BenutzerStatus;
 import enums.Rechte;
 
+/**
+ * @author MacBook
+ *Klasse Benutzer
+ */
 @Entity
 @Table(name = "Benutzer")
 @ManagedBean(name = "benutzer")
 @SessionScoped
 public class Benutzer implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7700810203468542310L;
 	
 	@Id
@@ -57,6 +58,9 @@ public class Benutzer implements Serializable {
 	private Collection<Film> erstellteFilme = new ArrayList<Film>(0);
 
 
+	/**
+	 * Konstruktor von Benutzer
+	 */
 	public Benutzer() {
 		// TODO Auto-generated constructor stub
 	}
@@ -77,58 +81,103 @@ public class Benutzer implements Serializable {
 		this.passwort= passwort;
 	}
 	
+	/**
+	 * Getter von Email
+	 * @return
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * Setter von Email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	
+	/**
+	 * Getter von Benutzername
+	 * @return
+	 */
 	public String getBenutzername() {
 		return benutzername;
 	}
 
+	/**
+	 * Setter von Benutzername
+	 * @param benutzername
+	 */
 	public void setBenutzername(String benutzername) {
 		this.benutzername = benutzername;
 	}
 
 	
+	/**
+	 * Getter von Passwort
+	 * @return
+	 */
 	public String getPasswort() {
 		return passwort;
 	}
 
+	/**
+	 * Setter von Passwort
+	 * @param passwort
+	 */
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
 
 
+	/**
+	 * Getter von Rechte
+	 * @return
+	 */
 	public Rechte getRechte() {
 		return rechte;
 	}
 
+	/**
+	 * Setter von Rechte
+	 * @param rechte
+	 */
 	public void setRechte(Rechte rechte) {
 		this.rechte = rechte;
 	} 
 	
+	/**
+	 * Getter von Benutzerstatus
+	 * @return
+	 */
 	public BenutzerStatus getBenutzerstatus() {
 		return benutzerstatus;
 	}
 
+	/**
+	 * Setter von Benutzerstatus
+	 * @param benutzerstatus
+	 */
 	public void setBenutzerstatus(BenutzerStatus benutzerstatus) {
 		this.benutzerstatus = benutzerstatus;
 	}
 	
+	/**
+	 * Getter von erstellte Filme
+	 * @return
+	 */
 	public Collection<Film> getErstellteFilme() {
 		return erstellteFilme;
 	}
 
+	/**
+	 * Setter von erstellte Filme
+	 * @param erstellteFilme
+	 */
 	public void setErstellteFilme(Collection<Film> erstellteFilme) {
 		this.erstellteFilme = erstellteFilme;
 	}
-	
-	
-
 	
 }

@@ -37,13 +37,19 @@ import org.hibernate.annotations.Type;
 
 import enums.Genre;
 
+/**
+ * @author MacBook
+ * Klasse Film
+ *
+ */
+/**
+ * @author MacBook
+ *
+ */
 @Entity
 @Table(name = "Filme")
 public class Film implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -550197280185627795L;
 	
 	@Id
@@ -97,14 +103,7 @@ public class Film implements Serializable{
 	@Column(name = "genres", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
-	
-	
-	public Genre getGenre() {
-		return genre;
-	}
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
+
 	@Column(name="titelbild")
 	@Lob
 	private Blob titelbild;
@@ -116,56 +115,122 @@ public class Film implements Serializable{
 	})
 	private List<Film> verwandteFilme = new ArrayList<Film>(0);
 	
+	/**
+	 * Getter Filmname
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * Setter Filmname
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Getter Genre
+	 * @return
+	 */
+	public Genre getGenre() {
+		return genre;
+	}
 	
+	/**
+	 * Setter Genre
+	 * @param genre
+	 */
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+	
+	/**
+	 * Getter Filmbeschreibung
+	 * @return
+	 */
 	public String getBeschreibung() {
 		return beschreibung;
 	}
+	
+	/**
+	 * Setter Filmbeschreibung
+	 * @param beschreibung
+	 */
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
 
 	
+	/**
+	 * Getter Erscheinungsjahr
+	 * @return
+	 */
 	public String getErscheinungsjahr() {
 		return erscheinungsjahr;
 	}
 	
+	/**
+	 * Setter Erscheinungsjahr
+	 * @param erscheinungsjahr
+	 */
 	public void setErscheinungsjahr(String erscheinungsjahr) {
 		this.erscheinungsjahr = erscheinungsjahr;
 	}
 	
-	
-	
+	/**
+	 * Getter Uploaddatum
+	 * @return
+	 */
 	public Date getUploaddatum() {
 		return uploaddatum;
 	}
+	
+	/**
+	 * Setter Uploaddatum
+	 * @param uploaddatum
+	 */
 	public void setUploaddatum(Date uploaddatum) {
 		this.uploaddatum = uploaddatum;
 	}
+	
+	/**
+	 * Getter Filmdauer
+	 * @return
+	 */
 	public String getDauer() {
 		return dauer;
 	}
+	
+	/**Setter Filmdauer
+	 * @param dauer
+	 */
 	public void setDauer(String dauer) {
 		this.dauer = dauer;
 	}
-	
 
+	/**
+	 * Getter Filmersteller
+	 * @return
+	 */
 	public Benutzer getErsteller() {
 		return ersteller;
 	}
 	
+	/**
+	 * Setter Filmersteller
+	 * @param ersteller
+	 */
 	public void setErsteller(Benutzer ersteller) {
 		this.ersteller = ersteller;
 	}
-	
-	
 
+	/**
+	 * Getter Sterne
+	 * @return
+	 */
 	public Double getSterne() {
 		if(sterne == null){
 			return 0.0;
@@ -173,56 +238,117 @@ public class Film implements Serializable{
 			return sterne;
 		}
 	}
+	/**
+	 * Setter Sterne
+	 * @param sterne
+	 */
 	public void setSterne(Double sterne) {
 		this.sterne = sterne;
 	}
 	
-	
+	/**
+	 * Getter Mitwirkende
+	 * @return
+	 */
 	public List<Mitwirkende> getMitwirkende() {
 		return mitwirkende;
 	}
+	
+	/**
+	 * Setter Mitwirkende
+	 * @param mitwirkende
+	 */
 	public void setMitwirkende(List<Mitwirkende> mitwirkende) {
 		this.mitwirkende = mitwirkende;
 	}
 	
 	
+	/**
+	 * Getter Kommentare
+	 * @return
+	 */
 	public List<Kommentar> getKommentare() {
 		return kommentare;
 	}
 	
+	/**
+	 * Setter Kommentare
+	 * @param kommentare
+	 */
 	public void setKommentare(List<Kommentar> kommentare) {
 		this.kommentare = kommentare;
 	}
 	
 	
+	/**
+	 * Getter Genre Liste 
+	 * @return
+	 */
 	public List<Genre> getGenres() {
 		return genres;
 	}
+	
+	/**
+	 * Setter Genre Liste
+	 * @param genre
+	 */
 	public void setGenres(List<Genre> genre) {
 		this.genres = genre;
 	}
 	
 	
+	/**
+	 * Getter Titelbild
+	 * @return
+	 */
 	public Blob getTitelbild() {
 		return titelbild;
 	}
+	
+	/**
+	 * Setter Titelbild
+	 * @param titelbild
+	 */
 	public void setTitelbild(Blob titelbild) {
 		this.titelbild = titelbild;
 	}
 		
+	/**
+	 * Getter Verwandte Filme
+	 * @return
+	 */
 	public List<Film> getVerwandteFilme() {
 		return verwandteFilme;
 	}
+	
+	/**
+	 * Setter verwandte Filme
+	 * @param verwandteFilme
+	 */
 	public void setVerwandteFilme(List<Film> verwandteFilme) {
 		this.verwandteFilme = verwandteFilme;
 	}
+	
+	/**
+	 * Getter Bewertung
+	 * @return
+	 */
 	public List <Bewertung> getBewertungen() {
 		return bewertungen;
 	}
+	
+	/**
+	 * Setter Filmbewertung
+	 * @param bewertungen
+	 */
 	public void setBewertungen(List <Bewertung> bewertungen) {
 		this.bewertungen = bewertungen;
 	} 
 	
+	/**
+	 * Getter DatumFormat
+	 * @return
+	 */
 	public String getFormatDatum(){
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy");
 		//System.out.println(dt1.format(uploaddatum));
