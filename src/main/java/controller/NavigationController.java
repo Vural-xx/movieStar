@@ -41,7 +41,7 @@ public class NavigationController  {
      * @return Login 
      */
     public String toFilmFormular() {
-        return "/secured/filmFormular.xhtml";
+        return "/secured/filmformular.xhtml";
     }
     /**
      * Wechsel zur Suche Seite

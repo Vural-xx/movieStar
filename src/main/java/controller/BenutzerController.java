@@ -20,17 +20,50 @@ import model.Benutzer;
 @ManagedBean(name="BenutzerController")
 @SessionScoped
 public class BenutzerController implements BenutzerFacade {
-
+	
+	/**
+	 * BenutzerDAO benutzerDAO
+	 */
 	private BenutzerDAO benutzerDAO;
+	
+	/**
+	 * Benutzer benutzer
+	 */
 	@ManagedProperty(value="#{benutzer}")
 	private Benutzer benutzer;
+	/**
+	 * String emailAdresse
+	 */
 	private String emailAdresse;
+	
+	/**
+	 * String nutzername
+	 */
 	private String nutzername;
+	/**
+	 * boolean loggedIn
+	 */
 	private boolean loggedIn = false;
+	/**
+	 * boolean admin
+	 */
 	private boolean admin = false;
+	/**
+	 * boolean registrieren
+	 */
 	private boolean registrieren = false;
+	/**
+	 * boolean datenÄndern
+	 */
 	private boolean datenÄndern = false;
+	/**
+	 * String neues_passwort
+	 */
 	private String neues_passwort = null;
+	
+	/**
+	 * NavigationController navigationController
+	 */
 	@ManagedProperty(value="#{navigationController}")
 	private NavigationController navigationController;
 
@@ -108,18 +141,27 @@ public class BenutzerController implements BenutzerFacade {
 	}
 	
 	
-
+	/**
+	 * getter isAdmin
+	 * @return
+	 */
 
 	public boolean isAdmin() {
 		return admin;
 	}
-
-
+	
+	/**
+	 * setter Admin
+	 * @param admin
+	 */
+	
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 
-
+	/**
+	 * registrieren prüft ob der benutzer schon existiert. Existiert kein Benutzer wird einer erstellt
+	 */
 	public String registrieren(String email, String benutzername, String passwort) {
 		Benutzer benutzer = new Benutzer(email, benutzername, passwort);
 		registrieren = benutzerDAO.benutzerErstellen(benutzer);
@@ -134,6 +176,10 @@ public class BenutzerController implements BenutzerFacade {
 		}
 		return " ";
 	}
+	
+	/**
+	 * Benutzer wird gesucht. Wird benutzer gefunden logged der User sich ein
+	 */
 
 	public String logIn(String logIn, String passwort) {
 		System.out.println("test");
