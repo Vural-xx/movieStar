@@ -394,7 +394,7 @@ public class FilmController implements FilmFacade {
 	 */
 	public String listeVorbereiten() {
 		this.setFilme(filmDAO.filmFuerErsteller(benutzerController.getBenutzer()));
-		return navigationController.toFilmListe();
+		return navigationController.toEigeneFilme();
 	}
 
 	/**
