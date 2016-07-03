@@ -8,7 +8,6 @@
     </cc:interface>
     <cc:implementation>
         <h:dataTable id="table" binding="#{cc.table}" value="#{cc.attrs.value}" var="field">
-            <h:column><h:outputLabel value="#{field.label}" /></h:column>
             <h:column><h:inputText value="#{field.value}" /></h:column>
             <h:column><h:commandButton value="remove" action="#{cc.remove}"></h:commandButton></h:column>
         </h:dataTable>
