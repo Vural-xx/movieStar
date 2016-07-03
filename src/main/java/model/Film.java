@@ -77,6 +77,7 @@ public class Film implements Serializable{
 	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name where f.name = name AND f.erscheinungsjahr = b.film_erscheinungsjahr)")
 	private Double sterne;
 	
+	@Column(name="uploaddatum")
 	private Date uploaddatum;
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -92,11 +93,7 @@ public class Film implements Serializable{
 	})
 	private List<Kommentar> kommentare;
 	
-	@OneToMany
-	@JoinColumns({
-	       @JoinColumn(name="film_name", referencedColumnName="name"),
-	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
-	})
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film")
 	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)

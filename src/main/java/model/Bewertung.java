@@ -6,10 +6,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,6 +41,13 @@ public class Bewertung implements Serializable {
 	
 	@Column(name="sterne")
 	private double sterne;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns({
+	       @JoinColumn(name="film_name", referencedColumnName="name"),
+	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
+	})
+	private Film film;
 	
 	/**
 	 * Getter von ID - Bewertung 
@@ -80,6 +90,14 @@ public class Bewertung implements Serializable {
 	 */
 	public void setSterne(double sterne) {
 		this.sterne = sterne;
+	}
+	
+	public Film getFilm() {
+		return film;
+	}
+	
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 	
 }

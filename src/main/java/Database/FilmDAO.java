@@ -264,7 +264,8 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		session.beginTransaction();
 
 		try {
-			Query q = session.createQuery("SELECT f FROM Film f LEFT JOIN fetch Bewertung bewertungen on f.name = :keyFilm  where bewertungen.ersteller.email = :keyErsteller and  bewertungen right outer join = :keyFilm");
+			//SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name where f.name = name AND f.erscheinungsjahr = b.film_erscheinungsjahr
+			Query q = session.createQuery("SELECT f FROM Film f LEFT JOIN fetch Bewertung bewertungen on f.name = :keyFilm  where bewertungen.ersteller.email = :keyErsteller and  bewertungen  = :keyFilm");
 			q.setParameter("keyErsteller",benutzer.getEmail());
 			q.setParameter("keyFilm", film.getName());
 			//q.setParameter("keyErscheinung", film.getErscheinungsjahr());
