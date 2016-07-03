@@ -163,6 +163,12 @@ public class HauptController implements BenutzerFacade, FilmFacade {
 	public String filmFuerErsteller() {
 		return filmController.filmFuerErsteller();
 	}
+
+	@Override
+	public boolean filmBereitsBewertet() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 
