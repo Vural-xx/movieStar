@@ -170,6 +170,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	public String logIn(String logIn, String passwort) {
+		System.out.println("test");
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
 			if(benutzer.getRechte() != null){
@@ -203,14 +204,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 
 	public String logOut() {
-		// TODO Auto-generated method stub
-		setLoggedIn(false);
-		if(benutzer.getRechte() != null){
-			if(benutzer.getRechte().equals(Rechte.ADMIN)){
-				setAdmin(false);	
-				}
-		}
-		benutzer = null;
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return navigationController.toIndex();
 
 	}
