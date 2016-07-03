@@ -13,7 +13,14 @@ public class FilmComparatorAeltesterFilm implements Comparator<Film> {
 
 	@Override
 	public int compare(Film o1, Film o2) {
-		return o2.getErscheinungsjahr().toString().compareTo(o1.getErscheinungsjahr().toString());
+		if(o1.getErscheinungsjahr() > o2.getErscheinungsjahr()){
+			return 1;
+		}else if(o1.getErscheinungsjahr() == o2.getErscheinungsjahr()){
+			return 0;
+		}else{
+			return -1;
+		}
+		
 	}
 
 }

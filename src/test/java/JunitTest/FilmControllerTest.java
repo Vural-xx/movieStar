@@ -29,7 +29,7 @@ public class FilmControllerTest {
 
 	private String name;
 	private String beschreibung;
-	private String erscheinungsjahr;
+	private int erscheinungsjahr;
 	private Film film;
 	private FilmController fiCon;
 	private Benutzer ersteller;
@@ -47,7 +47,7 @@ public class FilmControllerTest {
 		filme = new ArrayList<Film>();
 		name = "X-Men2";
 		beschreibung = "Actionfilm";
-		erscheinungsjahr = "1998";
+		erscheinungsjahr = 1998;
 		ersteller = new Benutzer();
 		ersteller.setEmail("jannis@jannis.de");
 		ersteller.setBenutzername("Ja");

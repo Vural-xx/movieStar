@@ -25,7 +25,7 @@ public class FilmDAOTest {
 	
 	private String name;
 	private String beschreibung;
-	private String erscheinungsjahr;
+	private int erscheinungsjahr;
 	private Bewertung bewertung;
 	private double sterne;
 	private FilmDAO filmDao;
@@ -36,7 +36,7 @@ public class FilmDAOTest {
 		filmDao = new FilmDAO();
 		name = "X-Men2";
 		beschreibung = "Actionfilm";
-		erscheinungsjahr = "1998";
+		erscheinungsjahr = 1998;
 		film = new Film();
 		bewertung = new Bewertung();
 		sterne = 3.0;

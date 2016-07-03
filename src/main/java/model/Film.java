@@ -31,6 +31,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Type;
@@ -61,7 +63,9 @@ public class Film implements Serializable{
 	
 	@Id
 	@Column(name = "erscheinungsjahr")
-	private String erscheinungsjahr;
+	@Min(1895)
+	@Max(2020)
+	private int erscheinungsjahr;
 	
 	@Column(name = "dauer")
 	private String dauer;
@@ -168,7 +172,7 @@ public class Film implements Serializable{
 	 * Getter Erscheinungsjahr
 	 * @return
 	 */
-	public String getErscheinungsjahr() {
+	public int getErscheinungsjahr() {
 		return erscheinungsjahr;
 	}
 	
@@ -176,7 +180,7 @@ public class Film implements Serializable{
 	 * Setter Erscheinungsjahr
 	 * @param erscheinungsjahr
 	 */
-	public void setErscheinungsjahr(String erscheinungsjahr) {
+	public void setErscheinungsjahr(int erscheinungsjahr) {
 		this.erscheinungsjahr = erscheinungsjahr;
 	}
 	

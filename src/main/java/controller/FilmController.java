@@ -307,7 +307,7 @@ public class FilmController implements FilmFacade {
 	 * @param filmauswahl
 	 * @return
 	 */
-	public String selectFilm(String name, String erscheinungsjahr, String filmauswahl) {
+	public String selectFilm(String name, int erscheinungsjahr, String filmauswahl) {
 		film = null;
 		film = filmDAO.filmSuchenByKey(name, erscheinungsjahr);
 		felder = new ArrayList<Feld>();

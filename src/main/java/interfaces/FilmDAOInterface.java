@@ -89,7 +89,7 @@ public interface FilmDAOInterface {
 	 * @param erscheinungsjahr
 	 * @return
 	 */
-	public Film filmSuchenByKey(String name, String erscheinungsjahr);
+	public Film filmSuchenByKey(String name, int erscheinungsjahr);
 	
 
 }

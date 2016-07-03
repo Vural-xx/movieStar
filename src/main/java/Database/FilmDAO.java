@@ -167,7 +167,7 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 	}
 
 	@Override
-	public Film filmSuchenByKey(String name, String erscheinungsjahr) {
+	public Film filmSuchenByKey(String name, int erscheinungsjahr) {
 		List results = null;
 		session.clear();
 		try {
