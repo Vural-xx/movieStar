@@ -130,14 +130,16 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		session.beginTransaction();
 
 		try {
-			if(emailOderBenutzername.equals("E-mail")){
+			if(emailOderBenutzername.equals("E-mail") && benutzer.getEmail()!= null){
 				String selectionQuery = "from Benutzer where email = :email";
 				query = session.createQuery(selectionQuery);
 				query.setParameter("email", benutzer.getEmail());
-			}else{
+			}else if(emailOderBenutzername.equals("Benutzername") && benutzer.getBenutzername() != null){
 				String selectionQuery = "from Benutzer where benutzername = :benutzername";
 				query = session.createQuery(selectionQuery);
 				query.setParameter("benutzername", benutzer.getBenutzername());
+			}else {
+				return false;
 			}
 			
 			results = query.list();
