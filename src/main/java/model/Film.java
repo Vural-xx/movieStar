@@ -93,7 +93,11 @@ public class Film implements Serializable{
 	})
 	private List<Kommentar> kommentare;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film")
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumns({
+	       @JoinColumn(name="film_name", referencedColumnName="name"),
+	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
+	})
 	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
 	
 	@ElementCollection(targetClass = Genre.class)

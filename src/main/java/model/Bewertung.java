@@ -42,12 +42,6 @@ public class Bewertung implements Serializable {
 	@Column(name="sterne")
 	private double sterne;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({
-	       @JoinColumn(name="film_name", referencedColumnName="name"),
-	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
-	})
-	private Film film;
 	
 	/**
 	 * Getter von ID - Bewertung 
@@ -91,13 +85,5 @@ public class Bewertung implements Serializable {
 	public void setSterne(double sterne) {
 		this.sterne = sterne;
 	}
-	
-	public Film getFilm() {
-		return film;
-	}
-	
-	public void setFilm(Film film) {
-		this.film = film;
-	}
-	
+		
 }
