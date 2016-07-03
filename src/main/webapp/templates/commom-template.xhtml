@@ -90,11 +90,11 @@
 										id="logout-nav"
 										class="glyphicon glyphicon-log-out glyphicon-nav-pos"></span>
 								</h:commandLink></li>
-															<li><h:link outcome="adminBereich"
+															<li><h:commandLink action="#{navigationController.toAdminBereich}"
 									rendered="#{BenutzerController.benutzer.rechte == 'ADMIN'}">Admin<span
 										id="admin-nav"
 										class="glyphicon glyphicon-wrench glyphicon-nav-pos c-blue"></span>
-								</h:link></li>
+								</h:commandLink></li>
 							<h:panelGroup rendered="#{BenutzerController.loggedIn}">
 
 

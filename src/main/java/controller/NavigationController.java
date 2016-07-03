@@ -64,7 +64,7 @@ public class NavigationController  {
      * @return
      */
     public String toFilmUpdate() {
-    	return "/filmUpdate.xhtml";
+    	return "/secured/filmUpdate.xhtml";
     }
     
     /**
@@ -89,7 +89,7 @@ public class NavigationController  {
      * @return
      */
     public String toEigeneFilme(){
-    	return "/eigeneFilme.xhtml";
+    	return "/secured/eigeneFilme.xhtml";
     }
     
     /**
@@ -114,6 +114,10 @@ public class NavigationController  {
     
     public String toBenutzerVerwaltung(){
     	return "/secured/benutzerVerwalten.xhtml";
+    }
+    
+    public String toAdminBereich(){
+    	return "/secured/adminBereich.xhtml";
     }
     
    
