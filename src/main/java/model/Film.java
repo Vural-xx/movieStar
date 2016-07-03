@@ -68,7 +68,7 @@ public class Film implements Serializable{
 	private int erscheinungsjahr;
 	
 	@Column(name = "dauer")
-	private String dauer;
+	private int dauer;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ersteller")
@@ -204,14 +204,14 @@ public class Film implements Serializable{
 	 * Getter Filmdauer
 	 * @return
 	 */
-	public String getDauer() {
+	public int getDauer() {
 		return dauer;
 	}
 	
 	/**Setter Filmdauer
 	 * @param dauer
 	 */
-	public void setDauer(String dauer) {
+	public void setDauer(int dauer) {
 		this.dauer = dauer;
 	}
 
