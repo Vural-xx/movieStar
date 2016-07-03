@@ -94,7 +94,10 @@ public class Benutzer implements Serializable {
 		this.benutzername= benutzername;
 		this.email= email;
 		this.passwort= passwort;
+		this.benutzerstatus = BenutzerStatus.FREIGESCHALTET;
+		this.rechte = Rechte.BENUTZER;
 	}
+	
 	
 	/**
 	 * Getter von Email
