@@ -21,13 +21,11 @@ import model.Benutzer;
 @SessionScoped
 public class BenutzerController implements BenutzerFacade {
 
-	BenutzerDAO benutzerDAO;
+	private BenutzerDAO benutzerDAO;
 	@ManagedProperty(value="#{benutzer}")
 	private Benutzer benutzer;
-	String emailAdresse;
-	String nutzername;
-	private boolean emailVorhanden = false;
-	private boolean nutzernameVorhanden = false;
+	private String emailAdresse;
+	private String nutzername;
 	private boolean loggedIn = false;
 	private boolean admin = false;
 	private boolean registrieren = false;
@@ -75,38 +73,6 @@ public class BenutzerController implements BenutzerFacade {
 	 */
 	public void setBenutzer(Benutzer benutzer) {
 		this.benutzer = benutzer;
-	}
-
-	/**
-	 * boolean zur Prüfung, ob Email bereits vorhanden ist
-	 * @return emailVorhanden
-	 */
-	public boolean isEmailVorhanden() {
-		return emailVorhanden;
-	}
-
-	/**
-	 * Setzt Status, das EmailVorhanden ist
-	 * @param emailVorhanden
-	 */
-	public void setEmailVorhanden(boolean emailVorhanden) {
-		this.emailVorhanden = emailVorhanden;
-	}
-
-	/**
-	 * boolean zur Prüfung, ob Nutzername bereits vorhanden ist
-	 * @return nutzernameVorhanden
-	 */
-	public boolean isNutzernameVorhanden() {
-		return nutzernameVorhanden;
-	}
-
-	/**
-	 * Setzt Status, das Nutzname vorhanden ist
-	 * @param nutzernameVorhanden
-	 */
-	public void setNutzernameVorhanden(boolean nutzernameVorhanden) {
-		this.nutzernameVorhanden = nutzernameVorhanden;
 	}
 
 	/**
@@ -249,15 +215,13 @@ public class BenutzerController implements BenutzerFacade {
 	@Override
 	public boolean getEmailInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(emailAdresse, "email");
-		emailVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "E-mail");
-		return emailVorhanden;
+		return benutzerDAO.benutzerVorhanden(benutzer, "E-mail");
 	}
 
 	@Override
 	public boolean getNutzernameInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(nutzername);
-		nutzernameVorhanden = benutzerDAO.benutzerVorhanden(benutzer, "Benutzername");
-		return nutzernameVorhanden;
+		return benutzerDAO.benutzerVorhanden(benutzer, "Benutzername");
 	}
 
 	/**
@@ -279,5 +243,11 @@ public class BenutzerController implements BenutzerFacade {
 	@Override
 	public boolean benutzerLoeschen(Benutzer benutzer) {
 		return benutzerDAO.benutzerLoeschen(benutzer);
+	}
+	
+	public String profilVerwaltungVorbereiten(){
+		this.emailAdresse = null;
+		this.nutzername = null;
+		return navigationController.toBenutzerVerwalten();
 	}
 }

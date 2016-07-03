@@ -65,7 +65,7 @@
 							<h:commandButton value="registrieren"
 								action="#{BenutzerController.registrieren(input1.value,input2.value,input3.value)}"
 								update=":benutzer, :message"
-								rendered="#{!BenutzerController.nutzernameVorhanden and !BenutzerController.emailVorhanden}">
+								rendered="#{!BenutzerController.nutzernameInDBVorhanden and !BenutzerController.emailInDBVorhanden}">
 							</h:commandButton>
 						</h:panelGroup>
 
