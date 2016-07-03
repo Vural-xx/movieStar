@@ -10,6 +10,11 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+/**
+ * @author MacBook
+ * Klasse zur Passwort Validierung
+ *
+ */
 @FacesValidator("PasswordValidation")
 public class PasswordValidator implements Validator{
 
@@ -18,6 +23,9 @@ public class PasswordValidator implements Validator{
 	private Pattern pattern;
 	private Matcher matcher;
 	
+	/**
+	 * Kontruktor
+	 */
 	public PasswordValidator(){
 		  pattern = Pattern.compile(PASSWORD_PATTERN);
 	}
@@ -36,6 +44,11 @@ public class PasswordValidator implements Validator{
 		}
 	}
 	
+	/**
+	 * Boolean zur Validierung
+	 * @param passwort
+	 * @return
+	 */
 	public boolean validate(String passwort){
 		matcher = pattern.matcher(passwort);
 		if(!matcher.matches()){

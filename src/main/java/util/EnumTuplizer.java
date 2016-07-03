@@ -7,6 +7,11 @@ import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.entity.PojoEntityTuplizer;
 
+/**
+ * @author MacBook
+ * Klasse zum Erstellen einer Enum Tabelle
+ *
+ */
 public class EnumTuplizer extends PojoEntityTuplizer {
 	public EnumTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);

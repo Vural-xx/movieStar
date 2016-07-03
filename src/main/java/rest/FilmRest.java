@@ -16,11 +16,19 @@ import com.google.gson.Gson;
 import model.Benutzer;
 import model.Film;
 
+/**
+ * @author MacBook
+ * Klasse RestFilme
+ *
+ */
 @Path("filme")
 public class FilmRest {
 	
 public static List<Film> filme = new ArrayList<Film>();
 	
+	/**
+	 * Methode um Filme zu füllen
+	 */
 	private void fillFilme(){
 		if(filme.size()==0){
 			Film film1 = new Film();
@@ -34,6 +42,10 @@ public static List<Film> filme = new ArrayList<Film>();
 		}
 	}
 	
+	/**
+	 * Methode um Filme zu bekommen
+	 * @return
+	 */
 	@GET
 	public String getFilme(){
 		fillFilme();
@@ -41,6 +53,11 @@ public static List<Film> filme = new ArrayList<Film>();
 		return gson.toJson(filme);	
 	}
 	
+	/**
+	 * Methode um Filme zu bekommen
+	 * @param filmid
+	 * @return
+	 */
 	@GET
 	@Path("{id}")
 	public String getFilm(@PathParam("id") Long filmid){
@@ -55,6 +72,12 @@ public static List<Film> filme = new ArrayList<Film>();
 		
 	}
 	
+	/**
+	 * Methode um Filme zu erstellen
+	 * @param name
+	 * @param beschreibung
+	 * @return
+	 */
 	@POST
 	public Response createFilm(@FormParam("name") String name, @FormParam("beschreibung") String beschreibung){
 		fillFilme();

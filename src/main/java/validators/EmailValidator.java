@@ -12,6 +12,11 @@ import javax.faces.validator.ValidatorException;
 
 
 
+/**
+ * @author MacBook
+ * Klasse zur Email Validierung
+ *
+ */
 @FacesValidator(value="EmailValidation")
 public class EmailValidator implements Validator{
 
@@ -22,10 +27,14 @@ public class EmailValidator implements Validator{
 	private Pattern pattern;
 	private Matcher matcher;
 	
+	/**
+	 * Konstruktor
+	 */
 	public EmailValidator(){
 		  pattern = Pattern.compile(EMAIL_PATTERN);
 	}
 	
+
 	@Override
 	public void validate(FacesContext context, UIComponent component,
 			Object value) throws ValidatorException {
@@ -40,6 +49,11 @@ public class EmailValidator implements Validator{
 		}
 	}
 	
+	/**
+	 * Boolean zur Validierung
+	 * @param email
+	 * @return
+	 */
 	public boolean validate(String email){
 		matcher = pattern.matcher(email);
 		if(!matcher.matches()){

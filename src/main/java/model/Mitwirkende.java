@@ -27,12 +27,16 @@ public class Mitwirkende implements Serializable {
 	private static final long serialVersionUID = -3185319011120312486L;
 	
 	/**
-	 * Kontruktor
+	 * Konstruktor
 	 */
 	public Mitwirkende(){
 		
 	}
 	
+	/**
+	 * Konstruktor
+	 * @param name
+	 */
 	public Mitwirkende(String name){
 		this.name = name;
 	}

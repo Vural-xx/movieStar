@@ -17,10 +17,18 @@ import com.google.gson.Gson;
 import model.Benutzer;
 import model.Film;
 
+/**
+ * @author MacBook
+ * Klasse RestBenutzer
+ *
+ */
 @Path("/benutzer")
 public class BenutzerRest {
 	public static List<Benutzer> benutzers = new ArrayList<Benutzer>();
 	
+	/**
+	 * Rest zum Benutzer füllen
+	 */
 	private void fillBenutzer(){
 		if(benutzers.size()==0){
 			benutzers= new ArrayList<Benutzer>();
@@ -56,6 +64,10 @@ public class BenutzerRest {
 		}
 	}
 	
+	/**
+	 * Methode um den Benutzer zu erhalten
+	 * @return
+	 */
 	@GET
 	public String getUsersJson(){
 		fillBenutzer();
@@ -63,6 +75,11 @@ public class BenutzerRest {
 		return gson.toJson(benutzers);	
 	}
 	
+	/**
+	 * Methode um den Benutzer zu erhalten
+	 * @param userid
+	 * @return
+	 */
 	@GET
 	@Path("{id}")
 	public String getUserJson(@PathParam("id") Long userid){
@@ -77,6 +94,11 @@ public class BenutzerRest {
 		
 	}
 	
+	/**
+	 * Methode um einem Film zu suchen
+	 * @param userid
+	 * @return
+	 */
 	@GET
 	@Path("{id}/filme")
 	public String getUserMovies(@PathParam("id") Long userid){
@@ -90,6 +112,12 @@ public class BenutzerRest {
 		return keinErgebnisse();
 	}
 	
+	/**
+	 * Methode um einem Film zu suchen
+	 * @param userid
+	 * @param filmId
+	 * @return
+	 */
 	@GET
 	@Path("{id}/filme/{filmid}")
 	public String getUserMovies(@PathParam("id") Long userid,@PathParam("filmid") Long filmId){
@@ -107,6 +135,12 @@ public class BenutzerRest {
 		return keinErgebnisse();
 	}
 	
+	/**
+	 * POST Methode um einen Benutzer zu erstellen
+	 * @param name
+	 * @param email
+	 * @return
+	 */
 	@POST
 	public Response createUser(@FormParam("name") String name, @FormParam("email") String email){
 		fillBenutzer();
@@ -118,6 +152,11 @@ public class BenutzerRest {
 		return Response.status(200).build();
 	}
 	
+	/**
+	 * DELETE Methode um einen Benutzer zu löschen
+	 * @param name
+	 * @return
+	 */
 	@DELETE
 	public Response deleteUser(@FormParam("name") String name){
 		fillBenutzer();

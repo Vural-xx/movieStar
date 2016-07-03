@@ -65,16 +65,31 @@ public class Benutzer implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Konstruktor von Benutzer
+	 * @param benutzername
+	 */
 	public Benutzer(String benutzername){
 		this.benutzername = benutzername;
 	}
 	
 
+	/**
+	 * Konstruktor von Benutzer
+	 * @param email
+	 * @param passwort
+	 */
 	public Benutzer(String email, String passwort){
 		this.email= email;
 		this.passwort= passwort;
 	}
 
+	/**
+	 * Konstruktor von Benutzer
+	 * @param email
+	 * @param benutzername
+	 * @param passwort
+	 */
 	public Benutzer(String email, String benutzername, String passwort){
 		this.benutzername= benutzername;
 		this.email= email;
