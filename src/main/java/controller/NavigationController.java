@@ -17,7 +17,7 @@ public class NavigationController {
 	 * @return Register
 	 */
 	public String toRegister() {
-		return "/register.xhtml";
+		return "/register.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -26,7 +26,7 @@ public class NavigationController {
 	 * @return Login
 	 */
 	public String toLogin() {
-		return "/login.xhtml";
+		return "/login.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class NavigationController {
 	 * @return Login
 	 */
 	public String toFilmListe() {
-		return "/filmListe.xhtml";
+		return "/filmListe.xhtml?faces-redirect=true";
 	}
 
 	/**
