@@ -45,12 +45,6 @@
 							<h:inputText class="" value="#{filmController.film.dauer}" disabled="true"></h:inputText>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-3 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
-					<div class="col-xs-9 inputpd-80-768">
-							 <my:dynamicFieldList value="#{filmController.felder}" disabled="true"/>
-					</div>
-				</div>
 					<div class="row">
 						<div class="col-sm-3 txt-pd-l-20">#{msg['filmBeschreibung']}</div>
 						<div class="col-sm-9">
@@ -58,6 +52,12 @@
 						</div>
 					
 					</div>
+					<div class="row">
+						<div class="col-xs-3 txt-pd-l-20">#{msg['filmMitwirkende']}</div>
+						<div class="col-xs-9 inputpd-80-768">
+							#{filmController.getMitwirkende()}
+						</div>
+						</div>
 					</div>
 						<div class="col-lg-4">
 					<h2>Beschreibung</h2>
