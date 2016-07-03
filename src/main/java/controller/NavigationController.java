@@ -41,14 +41,14 @@ public class NavigationController  {
      * @return Login 
      */
     public String toFilmFormular() {
-        return "/secured/filmformular.xhtml";
+        return "/secured/filmformular.xhtml?faces-redirect=true";
     }
     /**
      * Wechsel zur Suche Seite
      * @return Suche
      */
     public String toSuche(){
-    	return "/such.xhtml";
+    	return "/such.xhtml?faces-redirect=true";
     }
     
     /**
@@ -56,7 +56,7 @@ public class NavigationController  {
      * @return Film
      */
     public String toFilm(){
-    	return "/film.xhtml";
+    	return "/film.xhtml?faces-redirect=true";
     }
     
     /**
@@ -64,7 +64,7 @@ public class NavigationController  {
      * @return
      */
     public String toFilmUpdate() {
-    	return "/secured/filmUpdate.xhtml";
+    	return "/secured/filmUpdate.xhtml?faces-redirect=true";
     }
     
     /**
@@ -72,7 +72,7 @@ public class NavigationController  {
      * @return index
      */
     public String toIndex() {
-    	return "/index.xhtml";
+    	return "/index.xhtml?faces-redirect=true";
     }
  
 
@@ -81,7 +81,7 @@ public class NavigationController  {
      * @return
      */
     public String toAlleFilme(){
-    	return "/alleFilme.xhtml";
+    	return "/alleFilme.xhtml?faces-redirect=true";
     }
     
     /**
@@ -89,7 +89,7 @@ public class NavigationController  {
      * @return
      */
     public String toEigeneFilme(){
-    	return "/secured/eigeneFilme.xhtml";
+    	return "/secured/eigeneFilme.xhtml?faces-redirect=true";
     }
     
     /**
@@ -97,7 +97,7 @@ public class NavigationController  {
      * @return
      */
     public String toBenutzerVerwalten(){
-    	return "/secured/benutzerVerwalten.xhtml";
+    	return "/secured/benutzerVerwalten.xhtml?faces-redirect=true";
     }
     
     /**
@@ -105,19 +105,19 @@ public class NavigationController  {
      * @return
      */
     public String toKontakt(){
-    	return "/kontakt.xhtml";
+    	return "/kontakt.xhtml?faces-redirect=true";
     }
     
     public String toUeberUns(){
-    	return "/ueberUns.xhtml";
+    	return "/ueberUns.xhtml?faces-redirect=true";
     }
     
     public String toBenutzerVerwaltung(){
-    	return "/secured/benutzerVerwalten.xhtml";
+    	return "/secured/benutzerVerwalten.xhtml?faces-redirect=true";
     }
     
     public String toAdminBereich(){
-    	return "/secured/adminBereich.xhtml";
+    	return "/secured/adminBereich.xhtml?faces-redirect=true";
     }
     
    
