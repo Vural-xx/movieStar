@@ -178,7 +178,7 @@ public class BenutzerController implements BenutzerFacade {
 	}
 	
 	/**
-	 * Benutzer wird gesucht. Wird benutzer gefunden logged der User sich ein
+	 * Benutzer wird gesucht. Wird benutzer gefunden logged der User sich ein.
 	 */
 
 	public String logIn(String logIn, String passwort) {
@@ -200,12 +200,21 @@ public class BenutzerController implements BenutzerFacade {
 		}
 	}
 	
+	/**
+	 * Default nachricht für Kontakt übermittlung
+	 * @return
+	 */
+	
 	public String kontakt(){
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank. Ihre Nachricht wurde erfolgreich übermittelt", null));
 		return "kontakt";
 		
 	}
+	
+	/**
+	 * Session wird beendet
+	 */
 
 	public String logOut() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -217,7 +226,10 @@ public class BenutzerController implements BenutzerFacade {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/**
+	 * Benutzert wird gesucht und kann danach editiert werden.
+	 */
 	
 	public String benutzerVerwalten(String email, String benutzername, String passwort, String neues_passwort) {
 		// TODO Auto-generated method stub
@@ -257,12 +269,20 @@ public class BenutzerController implements BenutzerFacade {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/**
+	 * Prüft ob der Benutzer in der DB vorhanden ist via Email
+	 */
 
 	@Override
 	public boolean getEmailInDBVorhanden() {
 		Benutzer benutzer = new Benutzer(emailAdresse, "email");
 		return benutzerDAO.benutzerVorhanden(benutzer, "E-mail");
 	}
+	
+	/**
+	 * Prüft ob der Benutzer in der DB vorhanden ist via Benutzername
+	 */
 
 	@Override
 	public boolean getNutzernameInDBVorhanden() {
@@ -290,6 +310,10 @@ public class BenutzerController implements BenutzerFacade {
 	public boolean benutzerLoeschen(Benutzer benutzer) {
 		return benutzerDAO.benutzerLoeschen(benutzer);
 	}
+	
+	/**
+	 * profil verwaltung vorbereitet
+	 */
 	
 	public String profilVerwaltungVorbereiten(){
 		this.emailAdresse = null;
