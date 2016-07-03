@@ -18,6 +18,7 @@ public class LoginFilter implements Filter {
     /**
      * Überprüft, ob Benutzer eingeloggt ist. Wenn nicht, wird er zur Login.xhtml weitergeleitet
      */
+
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // Get the loginBean from session attribute
     	BenutzerController benutzerController = (BenutzerController)((HttpServletRequest)request).getSession().getAttribute("BenutzerController");
