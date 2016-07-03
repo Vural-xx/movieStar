@@ -250,7 +250,7 @@ public class Film implements Serializable {
 		if (sterne == null) {
 			return 0.0;
 		} else {
-			return sterne;
+			return round(sterne,2);
 		}
 	}
 
@@ -381,6 +381,21 @@ public class Film implements Serializable {
 		// System.out.println(dt1.format(uploaddatum));
 		return dt1.format(uploaddatum);
 
+	}
+	
+	/**
+	 * Funktion um sterne mit beliebigem nachkommawert anzuzeigen.
+	 * @param value double wert der formatiert werden soll.
+	 * @param places: Nachkommastellen
+	 * @return: formatierter Double wert
+	 */
+	private double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
 	}
 
 }
