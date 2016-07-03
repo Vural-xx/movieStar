@@ -17,8 +17,8 @@ import model.Mitwirkende;
  * Dient zur Erstellung einer dynamischen Liste von Mitwirkenden
  *
  */
-@FacesComponent(value="dynamicFieldList") // To be specified in componentType attribute.
-@SuppressWarnings({"rawtypes", "unchecked"}) // We don't care about the actual model item type anyway.
+@FacesComponent(value="dynamicFieldList") 
+@SuppressWarnings({"rawtypes", "unchecked"}) 
 public class DynamicFieldList extends UINamingContainer {
 
     private UIData table;
