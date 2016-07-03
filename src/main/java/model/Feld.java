@@ -22,13 +22,6 @@ public class Feld implements Serializable {
 	/**
 	 * Konstruktor
 	 */
-	public Feld(String label) {
-		this.label = label;
-	}
-
-	/**
-	 * Konstruktor
-	 */
 	public Feld(String label, String value) {
 		this.label = label;
 		this.value = value;

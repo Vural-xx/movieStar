@@ -29,7 +29,7 @@ public class DynamicFieldList extends UINamingContainer {
      */
     public void add() {
     	counter++;
-        ((List) getAttributes().get("value")).add(new Feld(""));
+        ((List) getAttributes().get("value")).add(new Feld());
     }
 
     /**

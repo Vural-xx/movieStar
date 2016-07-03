@@ -473,9 +473,7 @@ public class FilmController implements FilmFacade {
 			Mitwirkende mitwirkende = new Mitwirkende();
 			if (!f.getValue().equals("")) {
 				mitwirkende.setName(f.getValue());
-				if (!mitwirkenderBereitsVorhanden()) {
-					film.getMitwirkende().add(mitwirkende);
-				}
+				film.getMitwirkende().add(mitwirkende);
 			}
 		}
 		felder = new ArrayList<Feld>();
@@ -488,7 +486,7 @@ public class FilmController implements FilmFacade {
 		int counter = 0;
 		for (Mitwirkende m : film.getMitwirkende()) {
 			counter++;
-			Feld feld = new Feld(counter + ".");
+			Feld feld = new Feld();
 			feld.setValue(m.getName());
 			felder.add(feld);
 		}
@@ -645,6 +643,7 @@ public class FilmController implements FilmFacade {
 	 * @return
 	 */
 	public boolean mitwirkenderBereitsVorhanden() {
+		
 		for (Mitwirkende m : film.getMitwirkende()) {
 			for (Feld f : felder) {
 				if (m.getName().equals(f.getValue())) {
