@@ -41,7 +41,7 @@ public class NavigationController  {
      * @return Login 
      */
     public String toFilmFormular() {
-        return "/filmformular?faces-redirect=true";
+        return "/secured/filmformular?faces-redirect=true";
     }
     /**
      * Wechsel zur Suche Seite
@@ -85,19 +85,38 @@ public class NavigationController  {
     }
     
     /**
-     * Wechsel zur BenutzerVerwalten Seite
-     * @return
-     */
-    public String toBenutzerVerwalten(){
-    	return "/benutzerVerwalten.xhtml";
-    }
-    
-    /**
      * Wechsel zur eigene Filme Seite
      * @return
      */
     public String toEigeneFilme(){
     	return "/eigeneFilme.xhtml";
     }
+    
+    /**
+     * Wechsel zur BenutzerVerwalten Seite
+     * @return
+     */
+    public String toBenutzerVerwalten(){
+    	return "/secured/benutzerVerwalten.xhtml";
+    }
+    
+    /**
+     * Wechsel zur eigene Filme Seite
+     * @return
+     */
+    public String toKontakt(){
+    	return "/kontakt.xhtml";
+    }
+    
+    public String toUeberUns(){
+    	return "/ueberUns.xhtml";
+    }
+    
+    public String toBenutzerVerwaltung(){
+    	return "/secured/benutzerVerwalten.xhtml";
+    }
+    
+   
+  
 
 }

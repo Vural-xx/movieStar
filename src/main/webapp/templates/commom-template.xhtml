@@ -10,6 +10,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet"></link>
 	<link rel="stylesheet" href="assets/css/main.css"></link>
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet"></link>
+	<link rel="stylesheet" href="../assets/css/main.css"></link>
 	<link href='https://fonts.googleapis.com/css?family=Jura:400,300'
 		rel='stylesheet' type='text/css'></link>
 	<link rel="apple-touch-icon" sizes="57x57"
@@ -69,9 +71,10 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-
-					<h:link class="navbar-brand" outcome="index">movie<strong>Database</strong>
-					</h:link>
+					<h:form>
+					<h:commandLink class="navbar-brand" action="#{navigationController.toIndex}">movie<strong>Database</strong>
+					</h:commandLink>
+					</h:form>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<h:form>
@@ -101,24 +104,24 @@
 
 									<ul class="dropdown-menu navcolor">
 										<li class="dropdown-header">Profil</li>
-										<li><h:link class="c-white" outcome="benutzerVerwalten"
+										<li><h:commandLink class="c-white" action="#{navigationController.toBenutzerVerwalten}"
 												rendered="#{BenutzerController.loggedIn}">Profil verwalten<span
 													id="profil-nav"
 													class="glyphicon glyphicon-user glyphicon-nav-pos"></span>
-											</h:link></li>
+											</h:commandLink></li>
 
 
 										<li role="separator" class="divider"></li>
 										<li class="dropdown-header">Filme</li>
-										<li><h:link class="c-white" outcome="eigeneFilme"
+										<li><h:commandLink class="c-white" action="#{navigationController.toEigeneFilme}"
 												rendered="#{BenutzerController.loggedIn}">Eigene Filme<span
 													id="profil-nav"
 													class="glyphicon glyphicon-user glyphicon-nav-pos"></span>
 												<span id="profil-nav"
 													class="glyphicon glyphicon-film glyphicon-nav-pos"></span>
-											</h:link></li>
+											</h:commandLink></li>
 
-										<li><h:commandLink class="c-white" outcome="filmformular"
+										<li><h:commandLink class="c-white" outcome="secured/filmformular"
 												rendered="#{BenutzerController.loggedIn}"
 												action="#{filmController.filmVorbereiten}">Film erstellen<span
 													class="glyphicon glyphicon-cloud-upload glyphicon-nav-pos"></span>
@@ -128,12 +131,16 @@
 									</ul></li>
 							</h:panelGroup>
 							            				<li><h:commandLink action="#{filmController.alleFilme}">Filme<span id="film-nav" class="glyphicon glyphicon-film glyphicon-nav-pos"></span></h:commandLink></li>
+														<li><h:commandLink action="#{navigationController.toKontakt}">Kontakt<span id="kontakt-nav" class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span></h:commandLink></li>
+														<li><h:commandLink action="#{navigationController.toUeberUns}">Ueber uns<span id="ueber-nav" class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span></h:commandLink></li>
+							
+							<!-- 
 							<li><h:link outcome="kontakt">Kontakt<span
 										id="kontakt-nav"
-										class="glyphicon glyphicon-envelope glyphicon-nav-pos"></span>
+										class="glyphicon glyphicon-envelope glyphicon-nav-pos" ></span>
 								</h:link></li>
 							<li><h:link outcome="ueberUns">Über Uns</h:link></li>
-
+							 -->
 						</ul>
 					</h:form>
 					<ul class="nav navbar-nav navbar-right">
