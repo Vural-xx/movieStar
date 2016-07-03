@@ -173,14 +173,6 @@ public class BenutzerController implements BenutzerFacade {
 		System.out.println("test");
 		Benutzer benutzer = benutzerDAO.benutzerSuchen(new Benutzer(logIn, passwort));
 		if (benutzer != null) {
-			if(benutzer.getRechte() != null){
-				if(benutzer.getRechte().equals(Rechte.ADMIN)){
-					setAdmin(true);	
-					} else {
-						setAdmin(false);
-					}
-				
-			}
 			setLoggedIn(true);
 			this.benutzer = benutzer;
 			return "index";
