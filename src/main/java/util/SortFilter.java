@@ -1,8 +1,7 @@
 package util;
 
 /**
- * @author MacBook
- * Klasse zur Sortierung des Filters
+ * @author MacBook Klasse zur Sortierung des Filters
  *
  */
 public class SortFilter {
@@ -14,6 +13,7 @@ public class SortFilter {
 
 	/**
 	 * Methode ob Sterne auf oder absteigen
+	 * 
 	 * @param bool
 	 * @return
 	 */
@@ -29,6 +29,7 @@ public class SortFilter {
 
 	/**
 	 * Methode, ob Erscheinungsjahr vorliegt
+	 * 
 	 * @param bool
 	 * @return
 	 */
@@ -41,9 +42,10 @@ public class SortFilter {
 
 		return erscheinungsjahr;
 	}
-	
+
 	/**
 	 * Methode ob Upload vorliegt
+	 * 
 	 * @param bool
 	 * @return
 	 */
@@ -59,6 +61,7 @@ public class SortFilter {
 
 	/**
 	 * Methode ob Name vorliegt
+	 * 
 	 * @param bool
 	 * @return
 	 */
@@ -72,10 +75,9 @@ public class SortFilter {
 		return name;
 	}
 
-	
-	
 	/**
 	 * Methode, ob Upload vorgenommen wurde
+	 * 
 	 * @return
 	 */
 	public boolean isUpload() {
@@ -84,6 +86,7 @@ public class SortFilter {
 
 	/**
 	 * Methode um Upload zu setzen
+	 * 
 	 * @param upload
 	 */
 	public void setUpload(boolean upload) {
@@ -92,6 +95,7 @@ public class SortFilter {
 
 	/**
 	 * Methode, ob Erscheinungsjahr vorgenommen wurde
+	 * 
 	 * @return
 	 */
 	public boolean isErscheinungsjahr() {
@@ -100,6 +104,7 @@ public class SortFilter {
 
 	/**
 	 * Methode um Upload zu setzen
+	 * 
 	 * @param erscheinungsjahr
 	 */
 	public void setErscheinungsjahr(boolean erscheinungsjahr) {
@@ -108,6 +113,7 @@ public class SortFilter {
 
 	/**
 	 * Methode, ob Name vorliegt
+	 * 
 	 * @return
 	 */
 	public boolean isName() {
@@ -116,6 +122,7 @@ public class SortFilter {
 
 	/**
 	 * Methode, ob Name zu setzen
+	 * 
 	 * @param name
 	 */
 	public void setName(boolean name) {
@@ -124,6 +131,7 @@ public class SortFilter {
 
 	/**
 	 * Methode um Sterne zu erhöhen
+	 * 
 	 * @return
 	 */
 	public boolean isSterneUp() {
@@ -132,6 +140,7 @@ public class SortFilter {
 
 	/**
 	 * Methode um Sterne zu erhöhen
+	 * 
 	 * @param sterneUp
 	 */
 	public void setSterneUp(boolean sterneUp) {
