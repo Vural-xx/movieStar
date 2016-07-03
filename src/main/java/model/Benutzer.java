@@ -24,8 +24,7 @@ import enums.BenutzerStatus;
 import enums.Rechte;
 
 /**
- * @author MacBook
- *Klasse Benutzer
+ * @author MacBook Klasse Benutzer
  */
 @Entity
 @Table(name = "Benutzer")
@@ -34,29 +33,27 @@ import enums.Rechte;
 public class Benutzer implements Serializable {
 
 	private static final long serialVersionUID = 7700810203468542310L;
-	
+
 	@Id
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "benutzername")
 	private String benutzername;
-	
+
 	@Column(name = "passwort")
 	private String passwort;
-	
+
 	@Column(name = "rolle")
 	@Enumerated(EnumType.STRING)
 	private Rechte rechte;
-	
+
 	@Column(name = "benutzerstatus")
 	@Enumerated(EnumType.STRING)
 	private BenutzerStatus benutzerstatus;
-	
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ersteller")
 	private Collection<Film> erstellteFilme = new ArrayList<Film>(0);
-
 
 	/**
 	 * Konstruktor von Benutzer
@@ -64,43 +61,45 @@ public class Benutzer implements Serializable {
 	public Benutzer() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * Konstruktor von Benutzer
+	 * 
 	 * @param benutzername
 	 */
-	public Benutzer(String benutzername){
+	public Benutzer(String benutzername) {
 		this.benutzername = benutzername;
 	}
-	
 
 	/**
 	 * Konstruktor von Benutzer
+	 * 
 	 * @param email
 	 * @param passwort
 	 */
-	public Benutzer(String email, String passwort){
-		this.email= email;
-		this.passwort= passwort;
+	public Benutzer(String email, String passwort) {
+		this.email = email;
+		this.passwort = passwort;
 	}
 
 	/**
 	 * Konstruktor von Benutzer
+	 * 
 	 * @param email
 	 * @param benutzername
 	 * @param passwort
 	 */
-	public Benutzer(String email, String benutzername, String passwort){
-		this.benutzername= benutzername;
-		this.email= email;
-		this.passwort= passwort;
+	public Benutzer(String email, String benutzername, String passwort) {
+		this.benutzername = benutzername;
+		this.email = email;
+		this.passwort = passwort;
 		this.benutzerstatus = BenutzerStatus.FREIGESCHALTET;
 		this.rechte = Rechte.BENUTZER;
 	}
-	
-	
+
 	/**
 	 * Getter von Email
+	 * 
 	 * @return
 	 */
 	public String getEmail() {
@@ -109,15 +108,16 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von Email
+	 * 
 	 * @param email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	
 	/**
 	 * Getter von Benutzername
+	 * 
 	 * @return
 	 */
 	public String getBenutzername() {
@@ -126,15 +126,16 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von Benutzername
+	 * 
 	 * @param benutzername
 	 */
 	public void setBenutzername(String benutzername) {
 		this.benutzername = benutzername;
 	}
 
-	
 	/**
 	 * Getter von Passwort
+	 * 
 	 * @return
 	 */
 	public String getPasswort() {
@@ -143,15 +144,16 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von Passwort
+	 * 
 	 * @param passwort
 	 */
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
 
-
 	/**
 	 * Getter von Rechte
+	 * 
 	 * @return
 	 */
 	public Rechte getRechte() {
@@ -160,14 +162,16 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von Rechte
+	 * 
 	 * @param rechte
 	 */
 	public void setRechte(Rechte rechte) {
 		this.rechte = rechte;
-	} 
-	
+	}
+
 	/**
 	 * Getter von Benutzerstatus
+	 * 
 	 * @return
 	 */
 	public BenutzerStatus getBenutzerstatus() {
@@ -176,14 +180,16 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von Benutzerstatus
+	 * 
 	 * @param benutzerstatus
 	 */
 	public void setBenutzerstatus(BenutzerStatus benutzerstatus) {
 		this.benutzerstatus = benutzerstatus;
 	}
-	
+
 	/**
 	 * Getter von erstellte Filme
+	 * 
 	 * @return
 	 */
 	public Collection<Film> getErstellteFilme() {
@@ -192,10 +198,11 @@ public class Benutzer implements Serializable {
 
 	/**
 	 * Setter von erstellte Filme
+	 * 
 	 * @param erstellteFilme
 	 */
 	public void setErstellteFilme(Collection<Film> erstellteFilme) {
 		this.erstellteFilme = erstellteFilme;
 	}
-	
+
 }

@@ -11,22 +11,21 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 /**
- * @author MacBook
- * Klasse zur Sprachenveränderung der Webseite
+ * @author MacBook Klasse zur Sprachenveränderung der Webseite
  *
  */
-@ManagedBean(name="language")
+@ManagedBean(name = "language")
 @SessionScoped
-public class LanguageBean implements Serializable{
-	
+public class LanguageBean implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String localeCode;
-	
-	private static Map<String,Object> countries;
-	static{
-		countries = new LinkedHashMap<String,Object>();
-		countries.put("German", Locale.GERMAN); //label, value
+
+	private static Map<String, Object> countries;
+	static {
+		countries = new LinkedHashMap<String, Object>();
+		countries.put("German", Locale.GERMAN); // label, value
 		countries.put("English", Locale.ENGLISH);
 	}
 
@@ -34,31 +33,27 @@ public class LanguageBean implements Serializable{
 		return countries;
 	}
 
-	
 	public String getLocaleCode() {
 		return localeCode;
 	}
-
 
 	public void setLocaleCode(String localeCode) {
 		this.localeCode = localeCode;
 	}
 
+	public void countryLocaleCodeChanged(ValueChangeEvent e) {
 
-	public void countryLocaleCodeChanged(ValueChangeEvent e){
-		
 		String newLocaleValue = e.getNewValue().toString();
-		
-		//loop a map to compare the locale code
-        for (Map.Entry<String, Object> entry : countries.entrySet()) {
-        
-        	if(entry.getValue().toString().equals(newLocaleValue)){
-        		
-        		FacesContext.getCurrentInstance()
-        			.getViewRoot().setLocale((Locale)entry.getValue());
-        		
-        	}
-        }
+
+		// loop a map to compare the locale code
+		for (Map.Entry<String, Object> entry : countries.entrySet()) {
+
+			if (entry.getValue().toString().equals(newLocaleValue)) {
+
+				FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
+
+			}
+		}
 
 	}
 

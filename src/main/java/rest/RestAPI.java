@@ -7,21 +7,21 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/test")
 public class RestAPI {
-	
+
 	@GET
-	public String sayHello(){
+	public String sayHello() {
 		return "Hello";
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String sayHelloJSON(){
+	public String sayHelloJSON() {
 		return "{'hello':'Hello'}";
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public String sayHelloXML(){
+	public String sayHelloXML() {
 		return "<hello>hello</hello>";
 	}
 

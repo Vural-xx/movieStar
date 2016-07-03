@@ -16,8 +16,7 @@ import javax.persistence.Table;
 import enums.FilmRolle;
 
 /**
- * @author MacBook
- * Klasse Mitwirkende
+ * @author MacBook Klasse Mitwirkende
  *
  */
 @Entity
@@ -25,92 +24,103 @@ import enums.FilmRolle;
 public class Mitwirkende implements Serializable {
 
 	private static final long serialVersionUID = -3185319011120312486L;
-	
+
 	/**
 	 * Konstruktor
 	 */
-	public Mitwirkende(){
-		
+	public Mitwirkende() {
+
 	}
-	
+
 	/**
 	 * Konstruktor
+	 * 
 	 * @param name
 	 */
-	public Mitwirkende(String name){
+	public Mitwirkende(String name) {
 		this.name = name;
 	}
 
 	@Id
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="vorname")
+
+	@Column(name = "vorname")
 	private String vorname;
-	
+
 	@Column(name = "film_rolle")
 	@Enumerated(EnumType.STRING)
 	private FilmRolle filmRolle;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "mitwirkende")
-	private List<Film> filme = new ArrayList<Film>(0); 
-	
+	private List<Film> filme = new ArrayList<Film>(0);
+
 	/**
 	 * Getter Name Mitwirkender
+	 * 
 	 * @return
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * Setter Name Mitwirkender
+	 * 
 	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
-	 * Getter Vorname Mitwirkender 
+	 * Getter Vorname Mitwirkender
+	 * 
 	 * @return
 	 */
 	public String getVorname() {
 		return vorname;
 	}
-	
+
 	/**
 	 * Setter Vorname Mitwirkender
+	 * 
 	 * @param vorname
 	 */
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
 	}
-	
+
 	/**
 	 * Getter FilmRolle
+	 * 
 	 * @return
 	 */
 	public FilmRolle getFilmRolle() {
 		return filmRolle;
 	}
-	
+
 	/**
 	 * Setter FilmRolle
+	 * 
 	 * @param filmRolle
 	 */
 	public void setFilmRolle(FilmRolle filmRolle) {
 		this.filmRolle = filmRolle;
 	}
-	
+
 	/**
 	 * Getter Film Liste
+	 * 
 	 * @return
 	 */
 	public List<Film> getFilme() {
 		return filme;
 	}
-	
+
 	/**
 	 * Setter Film Liste
+	 * 
 	 * @param filme
 	 */
 	public void setFilme(List<Film> filme) {
@@ -119,9 +129,8 @@ public class Mitwirkende implements Serializable {
 
 	@Override
 	public String toString() {
-		
-		return vorname+" "+name;
+
+		return vorname + " " + name;
 	}
-	
-	
+
 }

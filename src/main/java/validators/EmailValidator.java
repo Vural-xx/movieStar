@@ -10,53 +10,48 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-
-
 /**
- * @author MacBook
- * Klasse zur Email Validierung
+ * @author MacBook Klasse zur Email Validierung
  *
  */
-@FacesValidator(value="EmailValidation")
-public class EmailValidator implements Validator{
+@FacesValidator(value = "EmailValidation")
+public class EmailValidator implements Validator {
 
-	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\." +
-			"[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*" +
-			"(\\.[A-Za-z]{2,})$";
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\."
+			+ "[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*" + "(\\.[A-Za-z]{2,})$";
 
 	private Pattern pattern;
 	private Matcher matcher;
-	
+
 	/**
 	 * Konstruktor
 	 */
-	public EmailValidator(){
-		  pattern = Pattern.compile(EMAIL_PATTERN);
+	public EmailValidator() {
+		pattern = Pattern.compile(EMAIL_PATTERN);
 	}
-	
 
 	@Override
-	public void validate(FacesContext context, UIComponent component,
-			Object value) throws ValidatorException {
-		
+	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+
 		matcher = pattern.matcher(value.toString());
-		if(!matcher.matches()){
-			
+		if (!matcher.matches()) {
+
 			FacesMessage msg = new FacesMessage("Falsches E-Mail Format");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR );
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 
 		}
 	}
-	
+
 	/**
 	 * Boolean zur Validierung
+	 * 
 	 * @param email
 	 * @return
 	 */
-	public boolean validate(String email){
+	public boolean validate(String email) {
 		matcher = pattern.matcher(email);
-		if(!matcher.matches()){
+		if (!matcher.matches()) {
 			return false;
 		}
 		return true;

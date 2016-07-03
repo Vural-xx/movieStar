@@ -50,166 +50,173 @@ import enums.Genre;
  */
 @Entity
 @Table(name = "Filme")
-public class Film implements Serializable{
+public class Film implements Serializable {
 
 	private static final long serialVersionUID = -550197280185627795L;
-	
+
 	@Id
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "beschreibung", length = 512)
 	private String beschreibung;
-	
+
 	@Id
 	@Column(name = "erscheinungsjahr")
 	@Min(1895)
 	@Max(2020)
 	private int erscheinungsjahr;
-	
+
 	@Column(name = "dauer")
 	private int dauer;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
-	
+
 	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name where f.name = name AND f.erscheinungsjahr = b.film_erscheinungsjahr)")
 	private Double sterne;
-	
-	@Column(name="uploaddatum")
+
+	@Column(name = "uploaddatum")
 	private Date uploaddatum;
-		
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "film_mitwirkende", joinColumns = { 
-			@JoinColumn(name = "film_name", referencedColumnName="name"), @JoinColumn(name = "film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")}, 
-			inverseJoinColumns = { @JoinColumn(name = "mitwirkende_name") })
+	@JoinTable(name = "film_mitwirkende", joinColumns = {
+			@JoinColumn(name = "film_name", referencedColumnName = "name"),
+			@JoinColumn(name = "film_erscheinungsjahr", referencedColumnName = "erscheinungsjahr") }, inverseJoinColumns = {
+					@JoinColumn(name = "mitwirkende_name") })
 	private List<Mitwirkende> mitwirkende = new ArrayList<Mitwirkende>(0);
-	
+
 	@OneToMany
-	@JoinColumns({
-	       @JoinColumn(name="film_name", referencedColumnName="name"),
-	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
-	})
+	@JoinColumns({ @JoinColumn(name = "film_name", referencedColumnName = "name"),
+			@JoinColumn(name = "film_erscheinungsjahr", referencedColumnName = "erscheinungsjahr") })
 	private List<Kommentar> kommentare;
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumns({
-	       @JoinColumn(name="film_name", referencedColumnName="name"),
-	       @JoinColumn(name="film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
-	})
-	private List <Bewertung> bewertungen = new ArrayList<Bewertung>(0);
-	
+	@JoinColumns({ @JoinColumn(name = "film_name", referencedColumnName = "name"),
+			@JoinColumn(name = "film_erscheinungsjahr", referencedColumnName = "erscheinungsjahr") })
+	private List<Bewertung> bewertungen = new ArrayList<Bewertung>(0);
+
 	@ElementCollection(targetClass = Genre.class)
 	@Column(name = "genres", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private List<Genre> genres;
-	
+
 	@Column(name = "genres", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
 
-	@Column(name="titelbild")
+	@Column(name = "titelbild")
 	@Lob
 	private Blob titelbild;
-	
+
 	@OneToMany
-	@JoinColumns({
-	       @JoinColumn(name="verwandter_film_name", referencedColumnName="name"),
-	       @JoinColumn(name="verwandter_film_erscheinungsjahr", referencedColumnName="erscheinungsjahr")
-	})
+	@JoinColumns({ @JoinColumn(name = "verwandter_film_name", referencedColumnName = "name"),
+			@JoinColumn(name = "verwandter_film_erscheinungsjahr", referencedColumnName = "erscheinungsjahr") })
 	private List<Film> verwandteFilme = new ArrayList<Film>(0);
-	
+
 	/**
 	 * Getter Filmname
+	 * 
 	 * @return
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Setter Filmname
+	 * 
 	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Getter Genre
+	 * 
 	 * @return
 	 */
 	public Genre getGenre() {
 		return genre;
 	}
-	
+
 	/**
 	 * Setter Genre
+	 * 
 	 * @param genre
 	 */
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
-	
+
 	/**
 	 * Getter Filmbeschreibung
+	 * 
 	 * @return
 	 */
 	public String getBeschreibung() {
 		return beschreibung;
 	}
-	
+
 	/**
 	 * Setter Filmbeschreibung
+	 * 
 	 * @param beschreibung
 	 */
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
 
-	
 	/**
 	 * Getter Erscheinungsjahr
+	 * 
 	 * @return
 	 */
 	public int getErscheinungsjahr() {
 		return erscheinungsjahr;
 	}
-	
+
 	/**
 	 * Setter Erscheinungsjahr
+	 * 
 	 * @param erscheinungsjahr
 	 */
 	public void setErscheinungsjahr(int erscheinungsjahr) {
 		this.erscheinungsjahr = erscheinungsjahr;
 	}
-	
+
 	/**
 	 * Getter Uploaddatum
+	 * 
 	 * @return
 	 */
 	public Date getUploaddatum() {
 		return uploaddatum;
 	}
-	
+
 	/**
 	 * Setter Uploaddatum
+	 * 
 	 * @param uploaddatum
 	 */
 	public void setUploaddatum(Date uploaddatum) {
 		this.uploaddatum = uploaddatum;
 	}
-	
+
 	/**
 	 * Getter Filmdauer
+	 * 
 	 * @return
 	 */
 	public int getDauer() {
 		return dauer;
 	}
-	
-	/**Setter Filmdauer
+
+	/**
+	 * Setter Filmdauer
+	 * 
 	 * @param dauer
 	 */
 	public void setDauer(int dauer) {
@@ -218,14 +225,16 @@ public class Film implements Serializable{
 
 	/**
 	 * Getter Filmersteller
+	 * 
 	 * @return
 	 */
 	public Benutzer getErsteller() {
 		return ersteller;
 	}
-	
+
 	/**
 	 * Setter Filmersteller
+	 * 
 	 * @param ersteller
 	 */
 	public void setErsteller(Benutzer ersteller) {
@@ -234,131 +243,144 @@ public class Film implements Serializable{
 
 	/**
 	 * Getter Sterne
+	 * 
 	 * @return
 	 */
 	public Double getSterne() {
-		if(sterne == null){
+		if (sterne == null) {
 			return 0.0;
-		}else{
+		} else {
 			return sterne;
 		}
 	}
+
 	/**
 	 * Setter Sterne
+	 * 
 	 * @param sterne
 	 */
 	public void setSterne(Double sterne) {
 		this.sterne = sterne;
 	}
-	
+
 	/**
 	 * Getter Mitwirkende
+	 * 
 	 * @return
 	 */
 	public List<Mitwirkende> getMitwirkende() {
 		return mitwirkende;
 	}
-	
+
 	/**
 	 * Setter Mitwirkende
+	 * 
 	 * @param mitwirkende
 	 */
 	public void setMitwirkende(List<Mitwirkende> mitwirkende) {
 		this.mitwirkende = mitwirkende;
 	}
-	
-	
+
 	/**
 	 * Getter Kommentare
+	 * 
 	 * @return
 	 */
 	public List<Kommentar> getKommentare() {
 		return kommentare;
 	}
-	
+
 	/**
 	 * Setter Kommentare
+	 * 
 	 * @param kommentare
 	 */
 	public void setKommentare(List<Kommentar> kommentare) {
 		this.kommentare = kommentare;
 	}
-	
-	
+
 	/**
-	 * Getter Genre Liste 
+	 * Getter Genre Liste
+	 * 
 	 * @return
 	 */
 	public List<Genre> getGenres() {
 		return genres;
 	}
-	
+
 	/**
 	 * Setter Genre Liste
+	 * 
 	 * @param genre
 	 */
 	public void setGenres(List<Genre> genre) {
 		this.genres = genre;
 	}
-	
-	
+
 	/**
 	 * Getter Titelbild
+	 * 
 	 * @return
 	 */
 	public Blob getTitelbild() {
 		return titelbild;
 	}
-	
+
 	/**
 	 * Setter Titelbild
+	 * 
 	 * @param titelbild
 	 */
 	public void setTitelbild(Blob titelbild) {
 		this.titelbild = titelbild;
 	}
-		
+
 	/**
 	 * Getter Verwandte Filme
+	 * 
 	 * @return
 	 */
 	public List<Film> getVerwandteFilme() {
 		return verwandteFilme;
 	}
-	
+
 	/**
 	 * Setter verwandte Filme
+	 * 
 	 * @param verwandteFilme
 	 */
 	public void setVerwandteFilme(List<Film> verwandteFilme) {
 		this.verwandteFilme = verwandteFilme;
 	}
-	
+
 	/**
 	 * Getter Bewertung
+	 * 
 	 * @return
 	 */
-	public List <Bewertung> getBewertungen() {
+	public List<Bewertung> getBewertungen() {
 		return bewertungen;
 	}
-	
+
 	/**
 	 * Setter Filmbewertung
+	 * 
 	 * @param bewertungen
 	 */
-	public void setBewertungen(List <Bewertung> bewertungen) {
+	public void setBewertungen(List<Bewertung> bewertungen) {
 		this.bewertungen = bewertungen;
-	} 
-	
+	}
+
 	/**
 	 * Getter DatumFormat
+	 * 
 	 * @return
 	 */
-	public String getFormatDatum(){
+	public String getFormatDatum() {
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy");
-		//System.out.println(dt1.format(uploaddatum));
+		// System.out.println(dt1.format(uploaddatum));
 		return dt1.format(uploaddatum);
-		
+
 	}
 
 }

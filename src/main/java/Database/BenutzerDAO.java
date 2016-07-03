@@ -25,27 +25,27 @@ import model.Filter;
 import util.HibernateUtil;
 
 /**
- * @author MacBook
- * Datenbank für Benutzer
+ * @author MacBook Datenbank für Benutzer
  *
  */
 @ManagedBean(name = "benutzerDAO")
 public class BenutzerDAO implements BenutzerDAOInterface {
 
 	Configuration con = new Configuration();
-	//public static String SQLnotification = "";
+	// public static String SQLnotification = "";
 	public static String sqlStatus = "";
 	private final Session session;
-	
+
 	/**
 	 * Konstruktor BenutzerDAO
 	 */
 	public BenutzerDAO() {
-		session =  HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 	}
-	
+
 	/**
 	 * Getter vom SQL Status
+	 * 
 	 * @return
 	 */
 	public String getSqlStatus() {
@@ -54,20 +54,24 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 
 	/**
 	 * Setter vom SQL Status
+	 * 
 	 * @param sqlStatus
 	 */
 	public void setSqlStatus(String sqlStatus) {
 		BenutzerDAO.sqlStatus = sqlStatus;
 	}
 
-//	public String getSQLnotification() {
-//		return SQLnotification;
-//	}
-//
-//	public void setSQLnotification(String sQLnotification) {
-//		SQLnotification = sQLnotification;
-//	}
+	// public String getSQLnotification() {
+	// return SQLnotification;
+	// }
+	//
+	// public void setSQLnotification(String sQLnotification) {
+	// SQLnotification = sQLnotification;
+	// }
 
+	/**
+	 * Benutzer wird auf der Datenbank erstellt
+	 */
 	@Override
 	public boolean benutzerErstellen(Benutzer benutzer) {
 
@@ -91,6 +95,9 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 
 	}
 
+	/**
+	 * Benutzer wird in der DB gesucht
+	 */
 	@Override
 	public Benutzer benutzerSuchen(Benutzer benutzer) {
 
@@ -98,10 +105,9 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 
 		try {
 			Criteria criteria = session.createCriteria(Benutzer.class);
-			criteria.add(Restrictions.or(
-					Restrictions.eq("email", benutzer.getEmail()), 
+			criteria.add(Restrictions.or(Restrictions.eq("email", benutzer.getEmail()),
 					Restrictions.eq("benutzername", benutzer.getEmail())));
-			if(!benutzer.getPasswort().equals("")){
+			if (!benutzer.getPasswort().equals("")) {
 				criteria.add(Restrictions.eq("passwort", benutzer.getPasswort()));
 			}
 			List results = criteria.list();
@@ -112,7 +118,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 				sqlStatus = "Benutzer gefunden";
 				return dbBenutzer;
 			}
-			
+
 		} catch (Exception e) {
 			System.err.println("Fail");
 			sqlStatus = "Suche fehlgeschlagen";
@@ -122,6 +128,9 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		return null;
 	}
 
+	/**
+	 * Benutzer wird geprüft ob er auf der DB schon vorhanden ist
+	 */
 	public boolean benutzerVorhanden(Benutzer benutzer, String emailOderBenutzername) {
 		Query query;
 		List results = null;
@@ -130,27 +139,27 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		session.beginTransaction();
 
 		try {
-			if(emailOderBenutzername.equals("E-mail") && benutzer.getEmail()!= null){
+			if (emailOderBenutzername.equals("E-mail") && benutzer.getEmail() != null) {
 				String selectionQuery = "from Benutzer where email = :email";
 				query = session.createQuery(selectionQuery);
 				query.setParameter("email", benutzer.getEmail());
-			}else if(emailOderBenutzername.equals("Benutzername") && benutzer.getBenutzername() != null){
+			} else if (emailOderBenutzername.equals("Benutzername") && benutzer.getBenutzername() != null) {
 				String selectionQuery = "from Benutzer where benutzername = :benutzername";
 				query = session.createQuery(selectionQuery);
 				query.setParameter("benutzername", benutzer.getBenutzername());
-			}else {
+			} else {
 				return false;
 			}
-			
+
 			results = query.list();
-			
+
 			if (results.size() == 0) {
 				return false;
 			} else {
 				sqlStatus = "Benutzer vorhanden";
 				return true;
 			}
-			
+
 		} catch (Exception e) {
 			System.err.println("Fail");
 			sqlStatus = "Suche fehlgeschlagen";
@@ -159,12 +168,15 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
+	/**
+	 * Benutzer wird auf der DB geupdated
+	 */
 	@Override
 	public Benutzer benutzerUpdate(Benutzer benutzer) {
 		// TODO Auto-generated method stub
 		session.beginTransaction();
-		
+
 		try {
 			session.update(benutzer);
 			session.getTransaction().commit();
@@ -190,13 +202,16 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		return false;
 	}
 
-//	public void statusAenderung(AjaxBehaviorEvent event) {
-//		setSQLnotification(getSqlStatus());
-//	}
-	
-	public boolean benutzerLoeschen(Benutzer benutzer){
+	// public void statusAenderung(AjaxBehaviorEvent event) {
+	// setSQLnotification(getSqlStatus());
+	// }
+
+	/**
+	 * Benutzer wird gelöscht
+	 */
+	public boolean benutzerLoeschen(Benutzer benutzer) {
 		session.beginTransaction();
-		
+
 		try {
 			session.delete(benutzer);
 			session.getTransaction().commit();
