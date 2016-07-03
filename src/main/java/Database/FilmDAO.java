@@ -257,6 +257,34 @@ public class FilmDAO implements interfaces.FilmDAOInterface {
 		}
 		return false;
 	}
+	
+	public boolean filmBereitsBewertet(Benutzer benutzer, Film film){
+		boolean tempBool = false;
+		List results = null;
+		session.beginTransaction();
+
+		try {
+			Query q = session.createQuery("SELECT f FROM Film f LEFT JOIN fetch Bewertung bewertungen on f.name = :keyFilm  where bewertungen.ersteller.email = :keyErsteller and  bewertungen right outer join = :keyFilm");
+			q.setParameter("keyErsteller",benutzer.getEmail());
+			q.setParameter("keyFilm", film.getName());
+			//q.setParameter("keyErscheinung", film.getErscheinungsjahr());
+			session.getTransaction().commit();
+			results = q.list();
+			if(results.size()!= 0){
+				tempBool= false;
+			} else {
+				tempBool= true;
+			}
+			
+			System.out.println(film.getName() + benutzer.getEmail());
+			
+			
+			
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return tempBool;
+	}
 
 	public boolean filmLoeschen(Film film) {
 		session.beginTransaction();

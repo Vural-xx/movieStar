@@ -52,6 +52,7 @@ public class FilmController implements FilmFacade {
 	@ManagedProperty(value = "#{navigationController}")
 	private NavigationController navigationController;
 	private List filme;
+	private Boolean filmBewertet = false;
 	private List<Feld> felder = new ArrayList<Feld>();
 	
 	/**
@@ -211,6 +212,23 @@ public class FilmController implements FilmFacade {
 	 */
 	public void setFelder(List<Feld> felder) {
 		this.felder = felder;
+	}
+	
+	/**
+	 * getter von filmbewertet
+	 * @return
+	 */
+
+	public Boolean getFilmBewertet() {
+		return filmBewertet;
+	}
+	/**
+	 * Setter von Film bewertet
+	 * @param filmBewertet
+	 */
+
+	public void setFilmBewertet(Boolean filmBewertet) {
+		this.filmBewertet = filmBewertet;
 	}
 
 	@Override
@@ -523,6 +541,12 @@ public class FilmController implements FilmFacade {
 		film.getKommentare().add(kommentar);
 		filmDAO.filmKommentieren(kommentar, film);
 		return navigationController.toAlleFilme();
+	}
+
+	@Override
+	public boolean filmBereitsBewertet() {
+		filmBewertet = filmDAO.filmBereitsBewertet(benutzerController.getBenutzer(), film);
+		return filmBewertet;
 	}
 
 }

@@ -100,5 +100,14 @@ public interface FilmFacade {
 	 * @return
 	 */
 	public boolean filmLoeschen(Film film);
+	
+	/**
+	 * Prüft ob ein Film von dem selben nutzer bereits bewertet wurde
+	 * @param benutzer
+	 * @param film
+	 * @return
+	 */
+	
+	public boolean filmBereitsBewertet();
 
 }
