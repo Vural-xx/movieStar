@@ -79,11 +79,6 @@ public class FilmControllerTest {
 		Assert.assertEquals("/such.xhtml", fiCon.filmSuchen("X-Men 2"));
 	}
 	
-	@Test
-	public void dFilmSuchenErweitertTest() {
-		Assert.assertTrue(fiCon.filmSuchenErweitert(film));
-
-	}
 
 	@Test
 	public void eFilmBewertenTest() {
@@ -97,10 +92,6 @@ public class FilmControllerTest {
 
 	}
 
-	@Test
-	public void gFilmFilternTest() {
-		Assert.assertTrue(fiCon.filmFiltern(filter));
-	}
 	
 	@Test
 	public void hNeusteFilmeTest() {

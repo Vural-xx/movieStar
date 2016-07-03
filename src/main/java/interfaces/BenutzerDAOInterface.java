@@ -44,23 +44,6 @@ public interface BenutzerDAOInterface {
 	public Benutzer benutzerUpdate(Benutzer benutzer);
 
 	/**
-	 * AdminMethode zur Blockierung eines Benutzers
-	 * 
-	 * @param benutzerstatus
-	 * @param benutzername
-	 * @param email
-	 */
-	public void benutzerBlockieren(BenutzerStatus benutzerstatus, String benutzername, String email);
-
-	/**
-	 * AdminMethode zur Löschung von Kommentaren
-	 * 
-	 * @param KID
-	 * @return
-	 */
-	public boolean kommentareLoeschen(Long KID);
-
-	/**
 	 * AdminMethode zur Löschung eines Benutzers
 	 * 
 	 * @param benutzer

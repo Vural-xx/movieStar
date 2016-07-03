@@ -29,14 +29,6 @@ public interface FilmFacade {
 	public String filmSuchen(String suche);
 
 	/**
-	 * Methode zur erweiterten Suche eines Films
-	 * 
-	 * @param film
-	 * @return
-	 */
-	public boolean filmSuchenErweitert(Film film);
-
-	/**
 	 * Methode zur Auswahl der neuesten Filme
 	 * 
 	 * @return
@@ -96,14 +88,6 @@ public interface FilmFacade {
 	 * @return
 	 */
 	public boolean filmKommentieren(Long FID, String kommentar);
-
-	/**
-	 * Methode zur Filterung von Filmen
-	 * 
-	 * @param filter
-	 * @return
-	 */
-	public boolean filmFiltern(Filter filter);
 
 	/**
 	 * Adminfunktion zur Löschung von Filmen

@@ -190,17 +190,7 @@ public class BenutzerDAO implements BenutzerDAOInterface {
 		return null;
 	}
 
-	@Override
-	public void benutzerBlockieren(BenutzerStatus benutzerstatus, String benutzername, String email) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public boolean kommentareLoeschen(Long KID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	// public void statusAenderung(AjaxBehaviorEvent event) {
 	// setSQLnotification(getSqlStatus());

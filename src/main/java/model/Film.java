@@ -73,13 +73,8 @@ public class Film implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ersteller")
 	private Benutzer ersteller;
-<<<<<<< HEAD
-	
-	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name and f.erscheinungsjahr = b.film_erscheinungsjahr where  name = b.film_name and erscheinungsjahr = b.film_erscheinungsjahr)")
-=======
 
-	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name where f.name = name AND f.erscheinungsjahr = b.film_erscheinungsjahr)")
->>>>>>> origin/develop
+	@Formula("(SELECT avg(b.sterne) FROM Filme f left join Bewertungen b  on f.name = b.film_name and f.erscheinungsjahr = b.film_erscheinungsjahr where  name = b.film_name and erscheinungsjahr = b.film_erscheinungsjahr)")
 	private Double sterne;
 
 	@Column(name = "uploaddatum")

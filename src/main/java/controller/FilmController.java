@@ -346,11 +346,7 @@ public class FilmController implements FilmFacade {
 		return navigationController.toSuche();
 	}
 
-	@Override
-	public boolean filmSuchenErweitert(Film film) {
-		return true;
-
-	}
+	
 
 	/**
 	 * film bewerten boolean
@@ -378,11 +374,7 @@ public class FilmController implements FilmFacade {
 
 	}
 
-	@Override
-	public boolean filmFiltern(Filter filter) {
-		return true;
 
-	}
 
 	/**
 	 * Methode zur Vorbereitung der Film Liste
