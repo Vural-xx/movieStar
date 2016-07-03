@@ -18,7 +18,7 @@
     		<h:form>
     		<h:messages id="messagesInfo" infoStyle="color:green" />
     		<h:messages for="speicherButton" style="color:red" />
-   				<h:outputLabel>Bitte geben Sie ihre neue E-Mail Adresse ein:</h:outputLabel>
+   				<h:outputLabel>Bitte geben Sie ihre E-Mail Adresse ein:</h:outputLabel>
  				<h:inputText id="email_input" a:placeholder = "#{BenutzerController.benutzer.email}" binding="#{input1}">
 							<f:validator validatorId="EmailValidation"></f:validator>
 							<f:ajax event="valueChange" execute="email_input"
